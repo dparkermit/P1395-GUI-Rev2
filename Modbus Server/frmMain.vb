@@ -1,6 +1,18 @@
 ﻿Public Class frmMain
 
 
+
+    Public Const ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT As UInt16 = 0
+    Public Const ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT As UInt16 = 1
+    Public Const ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT As UInt16 = 2
+    Public Const ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT As UInt16 = 3
+    Public Const ETHERNET_CMD_HEATER_MAGNET_ON As UInt16 = 4
+    Public Const ETHERNET_CMD_HEATER_MAGNET_OFF As UInt16 = 5
+    Public Const ETHERNET_CMD_HV_LAMBDA_ON As UInt16 = 6
+    Public Const ETHERNET_CMD_HV_LAMBDA_OFF As UInt16 = 7
+    Public Const ETHERNET_CMD_RESET_FAULTS As UInt16 = 8
+
+
     Dim board_index As Byte = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -51,22 +63,135 @@
 
                 ' lstBoxEvents.Items.Insert(0, Now & " #" & Trim(Str(EVENTCONNECTED + 1)) & " " & EventNames(EVENTCONNECTED))
             End If
+            LabelAgileInfo.Text = "A" & (ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_number_high_word * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_number_low_word) & "-" & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_dash & "  Rev-" & Convert.ToChar(ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_rev_ascii) & "  SN-" & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.serial_number 'Dparker need to add in the first Char
+            LabelFirmwareVerssion.Text = "Firmware Version " & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_major_rev & "." & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_branch & "." & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_minor_rev
 
 
-            '   If (ServerSettings.update_loop_count > 0) Then
-            '  Call datalog()
-            lblStatusWord0.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0.ToString("x")
-            lblStatusWord1.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1.ToString("x")
-            lblStatusWordA.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_A.ToString("x")
-            lblStatusWordB.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_B.ToString("x")
 
-            lblfStatusWord0Mask.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0_inhbit_mask.ToString("x")
-            lblStatusWord1Mask.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1_fault_mask.ToString("x")
 
-            ivalue = ServerSettings.ETMEthernetTXDataStructure(board_index).custom_data_word_count
-            lblLastCustomData.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).custom_data(ivalue - 1).ToString("x")
+            Dim status_word_0 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0
+            Dim status_word_1 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1
+            CheckBoxStatusBit0.Checked = status_word_0 And &H1
+            CheckBoxStatusBit1.Checked = status_word_0 And &H2
+            CheckBoxStatusBit2.Checked = status_word_0 And &H4
+            CheckBoxStatusBit3.Checked = status_word_0 And &H8
+            CheckBoxStatusBit4.Checked = status_word_0 And &H10
+            CheckBoxStatusBit5.Checked = status_word_0 And &H20
+            CheckBoxStatusBit6.Checked = status_word_0 And &H40
+            CheckBoxStatusBit7.Checked = status_word_0 And &H80
+            CheckBoxStatusBit8.Checked = status_word_0 And &H100
+            CheckBoxStatusBit9.Checked = status_word_0 And &H200
+            CheckBoxStatusBit10.Checked = status_word_0 And &H400
+            CheckBoxStatusBit11.Checked = status_word_0 And &H800
+            CheckBoxStatusBit12.Checked = status_word_0 And &H1000
+            CheckBoxStatusBit13.Checked = status_word_0 And &H2000
+            CheckBoxStatusBit14.Checked = status_word_0 And &H4000
+            CheckBoxStatusBit15.Checked = status_word_0 And &H8000
 
-            'End If ' loop count > 0, data valid
+            CheckBoxFaultBit0.Checked = status_word_1 And &H1
+            CheckBoxFaultBit1.Checked = status_word_1 And &H2
+            CheckBoxFaultBit2.Checked = status_word_1 And &H4
+            CheckBoxFaultBit3.Checked = status_word_1 And &H8
+            CheckBoxFaultBit4.Checked = status_word_1 And &H10
+            CheckBoxFaultBit5.Checked = status_word_1 And &H20
+            CheckBoxFaultBit6.Checked = status_word_1 And &H40
+            CheckBoxFaultBit7.Checked = status_word_1 And &H80
+            CheckBoxFaultBit8.Checked = status_word_1 And &H100
+            CheckBoxFaultBit9.Checked = status_word_1 And &H200
+            CheckBoxFaultBit10.Checked = status_word_1 And &H400
+            CheckBoxFaultBit11.Checked = status_word_1 And &H800
+            CheckBoxFaultBit12.Checked = status_word_1 And &H1000
+            CheckBoxFaultBit13.Checked = status_word_1 And &H2000
+            CheckBoxFaultBit14.Checked = status_word_1 And &H4000
+            CheckBoxFaultBit15.Checked = status_word_1 And &H8000
+
+            LabelCanCXECReg.Text = "CXEC Register = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_CXEC_reg.ToString("x")
+            LabelCanErrorFlagCount.Text = "Error Flag Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_error_flag
+            LabelCanTX1Count.Text = "TX1 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_tx_1
+            LabelCanTX2Count.Text = "TX2 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_tx_2
+            LabelCanRX0Filt0Count.Text = "RX0 Filt 0 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_0_filt_0
+            LabelCanRX0Filt1Count.Text = "RX0 Filt 1 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_0_filt_1
+            LabelCanRX1Filt2Count.Text = "RX1 Filt 2 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_1_filt_2
+            LabelCanISREnteredCount.Text = "ISR Entered Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_isr_entered
+            LabelCanUnknownIdentifierCount.Text = "Unknown ID Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_unknown_message_identifier
+            LabelCanInvalidIndexCount.Text = "Invalid Index Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_invalid_index
+            LabelCanAddressErrorCount.Text = "Address Error Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_address_error
+            LabelCanTX0Count.Text = "TX 0 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_tx_0
+            LabelCanTXBufOverflowCount.Text = "TX Ovrfl Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_message_tx_buffer_overflow
+            LabelCanRXBufferOverflowCount.Text = "RX Ovrfl Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_message_rx_buffer_overflow
+            LabelCAnDataLogRXBufferOVerflowCount.Text = "Log RX Ovrfl Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_data_log_rx_buffer_overflow
+            LabelCanTimeoutCount.Text = "Can Timeout Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_timeout
+
+
+            LabelErrorI2CBusCount.Text = "I2C Bus Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.i2c_bus_error_count
+            LabelErrorSPIBusCount.Text = "SPI Bus Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.spi_bus_error_count
+            LabelErrorCanBusCount.Text = "Can Bus Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.can_bus_error_count
+            LabelErrorScaleCount.Text = "Scale Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.scale_error_count
+            LabelErrorResetCount.Text = "Reset Count = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.reset_count
+            LabelErrorSelfTestResultRegister.Text = "Self Test = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.self_test_result_register.ToString("x")
+            LabelErrorTBD1.Text = "N/A"
+            LabelErrorTBD2.Text = "N/A"
+
+            LabelDebug0.Text = "Debug 0 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_0
+            LabelDebug1.Text = "Debug 1 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_1
+            LabelDebug2.Text = "Debug 2 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_2
+            LabelDebug3.Text = "Debug 3 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_3
+            LabelDebug4.Text = "Debug 4 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_4
+            LabelDebug5.Text = "Debug 5 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_5
+            LabelDebug6.Text = "Debug 6 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_6
+            LabelDebug7.Text = "Debug 7 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_7
+
+            LabelDebug8.Text = "Debug 8 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_8
+            LabelDebug9.Text = "Debug 9 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_9
+            LabelDebugA.Text = "Debug A = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A
+            LabelDebugB.Text = "Debug B = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B
+            LabelDebugC.Text = "Debug C = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_C
+            LabelDebugD.Text = "Debug D = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D
+            LabelDebugE.Text = "Debug E = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
+            LabelDebugF.Text = "Debug F = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
+
+
+
+
+            ' HV Lambda Specific Data
+            If (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
+                LabelHVSetHigh.Visible = True
+                LabelHVSetLow.Visible = True
+                LabelHVEOCNotReached.Visible = True
+                LabelHVVmon.Visible = True
+                LabelHVImon.Visible = True
+                LabelHVBasePlateTemp.Visible = True
+                ButtonSetLambdaLow.Visible = True
+                ButtonSetLamdbaHigh.Visible = True
+                TextBoxLambdaHigh.Visible = True
+                TextBoxLambdaLow.Visible = True
+                ButtonLambdaOn.Visible = True
+                ButtonLambdaoff.Visible = True
+            Else
+                LabelHVSetHigh.Visible = False
+                LabelHVSetLow.Visible = False
+                LabelHVEOCNotReached.Visible = False
+                LabelHVVmon.Visible = False
+                LabelHVImon.Visible = False
+                LabelHVBasePlateTemp.Visible = False
+                ButtonSetLambdaLow.Visible = False
+                ButtonSetLamdbaHigh.Visible = False
+                TextBoxLambdaHigh.Visible = False
+                TextBoxLambdaLow.Visible = False
+                ButtonLambdaOn.Visible = False
+                ButtonLambdaoff.Visible = False
+            End If
+            LabelHVSetHigh.Text = "HVLambda High Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(0)
+            LabelHVSetLow.Text = "HVLambda Low Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(1)
+            LabelHVEOCNotReached.Text = "EOC Error Count = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(2)
+            LabelHVVmon.Text = "Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(3)
+            LabelHVImon.Text = "Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(4)
+            LabelHVBasePlateTemp.Text = "Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(5)
+
+
+
+
+
 
 
         End If ' connected
@@ -93,15 +218,55 @@
         board_index = cboIndex.SelectedIndex + 1
     End Sub
 
-    Private Sub txtCmdReady_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCmdReady.TextChanged
-        ServerSettings.command_ready = Val(txtCmdReady.Text)
-    End Sub
 
-    Private Sub txtCmdIndex_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCmdIndex.TextChanged
+    Public command_count As UInt16
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         ServerSettings.command_index = Val(txtCmdIndex.Text)
+        ServerSettings.command_data = Val(txtCmdData.Text)
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
     End Sub
 
-    Private Sub txtCmdData_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCmdData.TextChanged
-        ServerSettings.command_data = Val(txtCmdData.Text)
+    Private Sub ButtonSetLamdbaHigh_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLamdbaHigh.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxLambdaHigh.Text
+            ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+       
+    End Sub
+
+    Private Sub ButtonSetLambdaLow_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLambdaLow.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxLambdaLow.Text
+            ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+    End Sub
+
+    Private Sub ButtonLambdaOn_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLambdaOn.Click
+        ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_ON
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonLambdaoff_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLambdaoff.Click
+        ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_OFF
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
     End Sub
 End Class
