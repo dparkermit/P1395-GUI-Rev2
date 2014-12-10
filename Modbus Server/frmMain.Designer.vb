@@ -25,6 +25,17 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ButtonResetAllFaults = New System.Windows.Forms.Button()
+        Me.ButtonLambdaOn = New System.Windows.Forms.Button()
+        Me.ButtonLambdaoff = New System.Windows.Forms.Button()
+        Me.LabelHVBasePlateTemp = New System.Windows.Forms.Label()
+        Me.LabelHVImon = New System.Windows.Forms.Label()
+        Me.LabelHVVmon = New System.Windows.Forms.Label()
+        Me.LabelHVEOCNotReached = New System.Windows.Forms.Label()
+        Me.LabelHVSetLow = New System.Windows.Forms.Label()
+        Me.LabelHVSetHigh = New System.Windows.Forms.Label()
+        Me.ButtonSetLambdaLow = New System.Windows.Forms.Button()
+        Me.TextBoxLambdaLow = New System.Windows.Forms.TextBox()
         Me.ButtonSetLamdbaHigh = New System.Windows.Forms.Button()
         Me.TextBoxLambdaHigh = New System.Windows.Forms.TextBox()
         Me.LabelFirmwareVerssion = New System.Windows.Forms.Label()
@@ -103,21 +114,22 @@ Partial Class frmMain
         Me.CheckBoxStatusBit0 = New System.Windows.Forms.CheckBox()
         Me.cboIndex = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtCmdIndex = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtCmdData = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBoxLambdaLow = New System.Windows.Forms.TextBox()
-        Me.ButtonSetLambdaLow = New System.Windows.Forms.Button()
-        Me.LabelHVSetHigh = New System.Windows.Forms.Label()
-        Me.LabelHVSetLow = New System.Windows.Forms.Label()
-        Me.LabelHVEOCNotReached = New System.Windows.Forms.Label()
-        Me.LabelHVVmon = New System.Windows.Forms.Label()
-        Me.LabelHVImon = New System.Windows.Forms.Label()
-        Me.LabelHVBasePlateTemp = New System.Windows.Forms.Label()
-        Me.ButtonLambdaoff = New System.Windows.Forms.Button()
-        Me.ButtonLambdaOn = New System.Windows.Forms.Button()
+        Me.ButtonHtrMagOn = New System.Windows.Forms.Button()
+        Me.ButtonHtrMagOff = New System.Windows.Forms.Button()
+        Me.LabelHtrMagMagVmon = New System.Windows.Forms.Label()
+        Me.LabelHtrMagMagImon = New System.Windows.Forms.Label()
+        Me.LabelHtrMagHtrVmon = New System.Windows.Forms.Label()
+        Me.LabelHtrMagHtrImon = New System.Windows.Forms.Label()
+        Me.LabelHtrMagHtrSetPoint = New System.Windows.Forms.Label()
+        Me.LabelHtrMagMagSetPoint = New System.Windows.Forms.Label()
+        Me.ButtonHtrMagSetMag = New System.Windows.Forms.Button()
+        Me.TextBoxMagCurrent = New System.Windows.Forms.TextBox()
+        Me.ButtonHtrMagSetHtr = New System.Windows.Forms.Button()
+        Me.TextBoxHtrCurrent = New System.Windows.Forms.TextBox()
+        Me.LabelHtrMagMagVolSetPointRback = New System.Windows.Forms.Label()
+        Me.LabelHtrMagMagSetPointRback = New System.Windows.Forms.Label()
+        Me.LabelHtrMagHtrVolSetPointRback = New System.Windows.Forms.Label()
+        Me.LabelHtrMagHtrSetPointRback = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -127,22 +139,39 @@ Partial Class frmMain
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagMagVolSetPointRback)
+        Me.GroupBox1.Controls.Add(Me.ButtonResetAllFaults)
+        Me.GroupBox1.Controls.Add(Me.ButtonHtrMagOn)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagMagSetPointRback)
         Me.GroupBox1.Controls.Add(Me.ButtonLambdaOn)
+        Me.GroupBox1.Controls.Add(Me.ButtonHtrMagOff)
         Me.GroupBox1.Controls.Add(Me.ButtonLambdaoff)
         Me.GroupBox1.Controls.Add(Me.LabelHVBasePlateTemp)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagHtrVolSetPointRback)
         Me.GroupBox1.Controls.Add(Me.LabelHVImon)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagMagVmon)
         Me.GroupBox1.Controls.Add(Me.LabelHVVmon)
         Me.GroupBox1.Controls.Add(Me.LabelHVEOCNotReached)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagHtrSetPointRback)
         Me.GroupBox1.Controls.Add(Me.LabelHVSetLow)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagMagImon)
         Me.GroupBox1.Controls.Add(Me.LabelHVSetHigh)
         Me.GroupBox1.Controls.Add(Me.ButtonSetLambdaLow)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagHtrVmon)
         Me.GroupBox1.Controls.Add(Me.TextBoxLambdaLow)
+        Me.GroupBox1.Controls.Add(Me.TextBoxHtrCurrent)
         Me.GroupBox1.Controls.Add(Me.ButtonSetLamdbaHigh)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagHtrImon)
         Me.GroupBox1.Controls.Add(Me.TextBoxLambdaHigh)
+        Me.GroupBox1.Controls.Add(Me.ButtonHtrMagSetHtr)
         Me.GroupBox1.Controls.Add(Me.LabelFirmwareVerssion)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagHtrSetPoint)
         Me.GroupBox1.Controls.Add(Me.LabelAgileInfo)
+        Me.GroupBox1.Controls.Add(Me.TextBoxMagCurrent)
         Me.GroupBox1.Controls.Add(Me.LabelErrorTBD2)
+        Me.GroupBox1.Controls.Add(Me.LabelHtrMagMagSetPoint)
         Me.GroupBox1.Controls.Add(Me.LabelErrorTBD1)
+        Me.GroupBox1.Controls.Add(Me.ButtonHtrMagSetMag)
         Me.GroupBox1.Controls.Add(Me.LabelErrorSelfTestResultRegister)
         Me.GroupBox1.Controls.Add(Me.LabelErrorResetCount)
         Me.GroupBox1.Controls.Add(Me.LabelErrorScaleCount)
@@ -215,10 +244,124 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.CheckBoxStatusBit0)
         Me.GroupBox1.Location = New System.Drawing.Point(29, 24)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(765, 531)
+        Me.GroupBox1.Size = New System.Drawing.Size(765, 582)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
+        '
+        'ButtonResetAllFaults
+        '
+        Me.ButtonResetAllFaults.Location = New System.Drawing.Point(266, 394)
+        Me.ButtonResetAllFaults.Name = "ButtonResetAllFaults"
+        Me.ButtonResetAllFaults.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonResetAllFaults.TabIndex = 205
+        Me.ButtonResetAllFaults.Text = "Reset All Faults"
+        Me.ButtonResetAllFaults.UseVisualStyleBackColor = True
+        '
+        'ButtonLambdaOn
+        '
+        Me.ButtonLambdaOn.Location = New System.Drawing.Point(539, 293)
+        Me.ButtonLambdaOn.Name = "ButtonLambdaOn"
+        Me.ButtonLambdaOn.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonLambdaOn.TabIndex = 204
+        Me.ButtonLambdaOn.Text = "Lambda On"
+        Me.ButtonLambdaOn.UseVisualStyleBackColor = True
+        Me.ButtonLambdaOn.Visible = False
+        '
+        'ButtonLambdaoff
+        '
+        Me.ButtonLambdaoff.Location = New System.Drawing.Point(539, 322)
+        Me.ButtonLambdaoff.Name = "ButtonLambdaoff"
+        Me.ButtonLambdaoff.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonLambdaoff.TabIndex = 203
+        Me.ButtonLambdaoff.Text = "Lambda Off"
+        Me.ButtonLambdaoff.UseVisualStyleBackColor = True
+        Me.ButtonLambdaoff.Visible = False
+        '
+        'LabelHVBasePlateTemp
+        '
+        Me.LabelHVBasePlateTemp.AutoSize = True
+        Me.LabelHVBasePlateTemp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVBasePlateTemp.Location = New System.Drawing.Point(430, 489)
+        Me.LabelHVBasePlateTemp.Name = "LabelHVBasePlateTemp"
+        Me.LabelHVBasePlateTemp.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVBasePlateTemp.TabIndex = 202
+        Me.LabelHVBasePlateTemp.Text = "LabelHVLambda"
+        Me.LabelHVBasePlateTemp.Visible = False
+        '
+        'LabelHVImon
+        '
+        Me.LabelHVImon.AutoSize = True
+        Me.LabelHVImon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVImon.Location = New System.Drawing.Point(430, 473)
+        Me.LabelHVImon.Name = "LabelHVImon"
+        Me.LabelHVImon.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVImon.TabIndex = 201
+        Me.LabelHVImon.Text = "LabelHVLambda"
+        Me.LabelHVImon.Visible = False
+        '
+        'LabelHVVmon
+        '
+        Me.LabelHVVmon.AutoSize = True
+        Me.LabelHVVmon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVVmon.Location = New System.Drawing.Point(430, 457)
+        Me.LabelHVVmon.Name = "LabelHVVmon"
+        Me.LabelHVVmon.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVVmon.TabIndex = 200
+        Me.LabelHVVmon.Text = "LabelHVLambda"
+        Me.LabelHVVmon.Visible = False
+        '
+        'LabelHVEOCNotReached
+        '
+        Me.LabelHVEOCNotReached.AutoSize = True
+        Me.LabelHVEOCNotReached.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVEOCNotReached.Location = New System.Drawing.Point(430, 441)
+        Me.LabelHVEOCNotReached.Name = "LabelHVEOCNotReached"
+        Me.LabelHVEOCNotReached.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVEOCNotReached.TabIndex = 199
+        Me.LabelHVEOCNotReached.Text = "LabelHVLambda"
+        Me.LabelHVEOCNotReached.Visible = False
+        '
+        'LabelHVSetLow
+        '
+        Me.LabelHVSetLow.AutoSize = True
+        Me.LabelHVSetLow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVSetLow.Location = New System.Drawing.Point(430, 425)
+        Me.LabelHVSetLow.Name = "LabelHVSetLow"
+        Me.LabelHVSetLow.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVSetLow.TabIndex = 198
+        Me.LabelHVSetLow.Text = "LabelHVLambda"
+        Me.LabelHVSetLow.Visible = False
+        '
+        'LabelHVSetHigh
+        '
+        Me.LabelHVSetHigh.AutoSize = True
+        Me.LabelHVSetHigh.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHVSetHigh.Location = New System.Drawing.Point(430, 409)
+        Me.LabelHVSetHigh.Name = "LabelHVSetHigh"
+        Me.LabelHVSetHigh.Size = New System.Drawing.Size(111, 16)
+        Me.LabelHVSetHigh.TabIndex = 197
+        Me.LabelHVSetHigh.Text = "LabelHVLambda"
+        Me.LabelHVSetHigh.Visible = False
+        '
+        'ButtonSetLambdaLow
+        '
+        Me.ButtonSetLambdaLow.Location = New System.Drawing.Point(539, 374)
+        Me.ButtonSetLambdaLow.Name = "ButtonSetLambdaLow"
+        Me.ButtonSetLambdaLow.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonSetLambdaLow.TabIndex = 196
+        Me.ButtonSetLambdaLow.Text = "Set Lambda Low"
+        Me.ButtonSetLambdaLow.UseVisualStyleBackColor = True
+        Me.ButtonSetLambdaLow.Visible = False
+        '
+        'TextBoxLambdaLow
+        '
+        Me.TextBoxLambdaLow.Location = New System.Drawing.Point(433, 377)
+        Me.TextBoxLambdaLow.MaxLength = 5
+        Me.TextBoxLambdaLow.Name = "TextBoxLambdaLow"
+        Me.TextBoxLambdaLow.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxLambdaLow.TabIndex = 195
+        Me.TextBoxLambdaLow.Visible = False
         '
         'ButtonSetLamdbaHigh
         '
@@ -228,6 +371,7 @@ Partial Class frmMain
         Me.ButtonSetLamdbaHigh.TabIndex = 194
         Me.ButtonSetLamdbaHigh.Text = "Set Lambda High"
         Me.ButtonSetLamdbaHigh.UseVisualStyleBackColor = True
+        Me.ButtonSetLamdbaHigh.Visible = False
         '
         'TextBoxLambdaHigh
         '
@@ -236,6 +380,7 @@ Partial Class frmMain
         Me.TextBoxLambdaHigh.Name = "TextBoxLambdaHigh"
         Me.TextBoxLambdaHigh.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxLambdaHigh.TabIndex = 6
+        Me.TextBoxLambdaHigh.Visible = False
         '
         'LabelFirmwareVerssion
         '
@@ -1058,156 +1203,165 @@ Partial Class frmMain
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Choose a board:"
         '
-        'Label7
+        'ButtonHtrMagOn
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(862, 423)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(83, 13)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Command Index"
+        Me.ButtonHtrMagOn.Location = New System.Drawing.Point(539, 293)
+        Me.ButtonHtrMagOn.Name = "ButtonHtrMagOn"
+        Me.ButtonHtrMagOn.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonHtrMagOn.TabIndex = 217
+        Me.ButtonHtrMagOn.Text = "Htr Mag On"
+        Me.ButtonHtrMagOn.UseVisualStyleBackColor = True
         '
-        'txtCmdIndex
+        'ButtonHtrMagOff
         '
-        Me.txtCmdIndex.Location = New System.Drawing.Point(865, 439)
-        Me.txtCmdIndex.MaxLength = 5
-        Me.txtCmdIndex.Name = "txtCmdIndex"
-        Me.txtCmdIndex.Size = New System.Drawing.Size(100, 20)
-        Me.txtCmdIndex.TabIndex = 4
+        Me.ButtonHtrMagOff.Location = New System.Drawing.Point(539, 322)
+        Me.ButtonHtrMagOff.Name = "ButtonHtrMagOff"
+        Me.ButtonHtrMagOff.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonHtrMagOff.TabIndex = 216
+        Me.ButtonHtrMagOff.Text = "Htr Mag Off"
+        Me.ButtonHtrMagOff.UseVisualStyleBackColor = True
         '
-        'Label9
+        'LabelHtrMagMagVmon
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(862, 472)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(80, 13)
-        Me.Label9.TabIndex = 0
-        Me.Label9.Text = "Command Data"
+        Me.LabelHtrMagMagVmon.AutoSize = True
+        Me.LabelHtrMagMagVmon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagMagVmon.Location = New System.Drawing.Point(430, 489)
+        Me.LabelHtrMagMagVmon.Name = "LabelHtrMagMagVmon"
+        Me.LabelHtrMagMagVmon.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagMagVmon.TabIndex = 215
+        Me.LabelHtrMagMagVmon.Text = "LabelHtrMag"
         '
-        'txtCmdData
+        'LabelHtrMagMagImon
         '
-        Me.txtCmdData.Location = New System.Drawing.Point(865, 488)
-        Me.txtCmdData.MaxLength = 5
-        Me.txtCmdData.Name = "txtCmdData"
-        Me.txtCmdData.Size = New System.Drawing.Size(100, 20)
-        Me.txtCmdData.TabIndex = 4
+        Me.LabelHtrMagMagImon.AutoSize = True
+        Me.LabelHtrMagMagImon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagMagImon.Location = New System.Drawing.Point(430, 473)
+        Me.LabelHtrMagMagImon.Name = "LabelHtrMagMagImon"
+        Me.LabelHtrMagMagImon.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagMagImon.TabIndex = 214
+        Me.LabelHtrMagMagImon.Text = "LabelHtrMag"
         '
-        'Button1
+        'LabelHtrMagHtrVmon
         '
-        Me.Button1.Location = New System.Drawing.Point(825, 533)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.LabelHtrMagHtrVmon.AutoSize = True
+        Me.LabelHtrMagHtrVmon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagHtrVmon.Location = New System.Drawing.Point(430, 457)
+        Me.LabelHtrMagHtrVmon.Name = "LabelHtrMagHtrVmon"
+        Me.LabelHtrMagHtrVmon.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagHtrVmon.TabIndex = 213
+        Me.LabelHtrMagHtrVmon.Text = "LabelHtrMag"
         '
-        'TextBoxLambdaLow
+        'LabelHtrMagHtrImon
         '
-        Me.TextBoxLambdaLow.Location = New System.Drawing.Point(433, 377)
-        Me.TextBoxLambdaLow.MaxLength = 5
-        Me.TextBoxLambdaLow.Name = "TextBoxLambdaLow"
-        Me.TextBoxLambdaLow.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxLambdaLow.TabIndex = 195
+        Me.LabelHtrMagHtrImon.AutoSize = True
+        Me.LabelHtrMagHtrImon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagHtrImon.Location = New System.Drawing.Point(430, 441)
+        Me.LabelHtrMagHtrImon.Name = "LabelHtrMagHtrImon"
+        Me.LabelHtrMagHtrImon.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagHtrImon.TabIndex = 212
+        Me.LabelHtrMagHtrImon.Text = "LabelHtrMag"
         '
-        'ButtonSetLambdaLow
+        'LabelHtrMagHtrSetPoint
         '
-        Me.ButtonSetLambdaLow.Location = New System.Drawing.Point(539, 374)
-        Me.ButtonSetLambdaLow.Name = "ButtonSetLambdaLow"
-        Me.ButtonSetLambdaLow.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonSetLambdaLow.TabIndex = 196
-        Me.ButtonSetLambdaLow.Text = "Set Lambda Low"
-        Me.ButtonSetLambdaLow.UseVisualStyleBackColor = True
+        Me.LabelHtrMagHtrSetPoint.AutoSize = True
+        Me.LabelHtrMagHtrSetPoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagHtrSetPoint.Location = New System.Drawing.Point(430, 425)
+        Me.LabelHtrMagHtrSetPoint.Name = "LabelHtrMagHtrSetPoint"
+        Me.LabelHtrMagHtrSetPoint.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagHtrSetPoint.TabIndex = 211
+        Me.LabelHtrMagHtrSetPoint.Text = "LabelHtrMag"
         '
-        'LabelHVSetHigh
+        'LabelHtrMagMagSetPoint
         '
-        Me.LabelHVSetHigh.AutoSize = True
-        Me.LabelHVSetHigh.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVSetHigh.Location = New System.Drawing.Point(430, 409)
-        Me.LabelHVSetHigh.Name = "LabelHVSetHigh"
-        Me.LabelHVSetHigh.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVSetHigh.TabIndex = 197
-        Me.LabelHVSetHigh.Text = "LabelHVLambda"
+        Me.LabelHtrMagMagSetPoint.AutoSize = True
+        Me.LabelHtrMagMagSetPoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagMagSetPoint.Location = New System.Drawing.Point(430, 409)
+        Me.LabelHtrMagMagSetPoint.Name = "LabelHtrMagMagSetPoint"
+        Me.LabelHtrMagMagSetPoint.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagMagSetPoint.TabIndex = 210
+        Me.LabelHtrMagMagSetPoint.Text = "LabelHtrMag"
         '
-        'LabelHVSetLow
+        'ButtonHtrMagSetMag
         '
-        Me.LabelHVSetLow.AutoSize = True
-        Me.LabelHVSetLow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVSetLow.Location = New System.Drawing.Point(430, 425)
-        Me.LabelHVSetLow.Name = "LabelHVSetLow"
-        Me.LabelHVSetLow.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVSetLow.TabIndex = 198
-        Me.LabelHVSetLow.Text = "LabelHVLambda"
+        Me.ButtonHtrMagSetMag.Location = New System.Drawing.Point(539, 374)
+        Me.ButtonHtrMagSetMag.Name = "ButtonHtrMagSetMag"
+        Me.ButtonHtrMagSetMag.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonHtrMagSetMag.TabIndex = 209
+        Me.ButtonHtrMagSetMag.Text = "Set Mag Curr"
+        Me.ButtonHtrMagSetMag.UseVisualStyleBackColor = True
         '
-        'LabelHVEOCNotReached
+        'TextBoxMagCurrent
         '
-        Me.LabelHVEOCNotReached.AutoSize = True
-        Me.LabelHVEOCNotReached.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVEOCNotReached.Location = New System.Drawing.Point(430, 441)
-        Me.LabelHVEOCNotReached.Name = "LabelHVEOCNotReached"
-        Me.LabelHVEOCNotReached.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVEOCNotReached.TabIndex = 199
-        Me.LabelHVEOCNotReached.Text = "LabelHVLambda"
+        Me.TextBoxMagCurrent.Location = New System.Drawing.Point(433, 377)
+        Me.TextBoxMagCurrent.MaxLength = 5
+        Me.TextBoxMagCurrent.Name = "TextBoxMagCurrent"
+        Me.TextBoxMagCurrent.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxMagCurrent.TabIndex = 208
         '
-        'LabelHVVmon
+        'ButtonHtrMagSetHtr
         '
-        Me.LabelHVVmon.AutoSize = True
-        Me.LabelHVVmon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVVmon.Location = New System.Drawing.Point(430, 457)
-        Me.LabelHVVmon.Name = "LabelHVVmon"
-        Me.LabelHVVmon.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVVmon.TabIndex = 200
-        Me.LabelHVVmon.Text = "LabelHVLambda"
+        Me.ButtonHtrMagSetHtr.Location = New System.Drawing.Point(539, 350)
+        Me.ButtonHtrMagSetHtr.Name = "ButtonHtrMagSetHtr"
+        Me.ButtonHtrMagSetHtr.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonHtrMagSetHtr.TabIndex = 207
+        Me.ButtonHtrMagSetHtr.Text = "Set Htr Curr"
+        Me.ButtonHtrMagSetHtr.UseVisualStyleBackColor = True
         '
-        'LabelHVImon
+        'TextBoxHtrCurrent
         '
-        Me.LabelHVImon.AutoSize = True
-        Me.LabelHVImon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVImon.Location = New System.Drawing.Point(430, 473)
-        Me.LabelHVImon.Name = "LabelHVImon"
-        Me.LabelHVImon.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVImon.TabIndex = 201
-        Me.LabelHVImon.Text = "LabelHVLambda"
+        Me.TextBoxHtrCurrent.Location = New System.Drawing.Point(433, 351)
+        Me.TextBoxHtrCurrent.MaxLength = 5
+        Me.TextBoxHtrCurrent.Name = "TextBoxHtrCurrent"
+        Me.TextBoxHtrCurrent.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxHtrCurrent.TabIndex = 206
         '
-        'LabelHVBasePlateTemp
+        'LabelHtrMagMagVolSetPointRback
         '
-        Me.LabelHVBasePlateTemp.AutoSize = True
-        Me.LabelHVBasePlateTemp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelHVBasePlateTemp.Location = New System.Drawing.Point(430, 489)
-        Me.LabelHVBasePlateTemp.Name = "LabelHVBasePlateTemp"
-        Me.LabelHVBasePlateTemp.Size = New System.Drawing.Size(111, 16)
-        Me.LabelHVBasePlateTemp.TabIndex = 202
-        Me.LabelHVBasePlateTemp.Text = "LabelHVLambda"
+        Me.LabelHtrMagMagVolSetPointRback.AutoSize = True
+        Me.LabelHtrMagMagVolSetPointRback.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagMagVolSetPointRback.Location = New System.Drawing.Point(430, 553)
+        Me.LabelHtrMagMagVolSetPointRback.Name = "LabelHtrMagMagVolSetPointRback"
+        Me.LabelHtrMagMagVolSetPointRback.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagMagVolSetPointRback.TabIndex = 221
+        Me.LabelHtrMagMagVolSetPointRback.Text = "LabelHtrMag"
         '
-        'ButtonLambdaoff
+        'LabelHtrMagMagSetPointRback
         '
-        Me.ButtonLambdaoff.Location = New System.Drawing.Point(539, 322)
-        Me.ButtonLambdaoff.Name = "ButtonLambdaoff"
-        Me.ButtonLambdaoff.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonLambdaoff.TabIndex = 203
-        Me.ButtonLambdaoff.Text = "Lambda Off"
-        Me.ButtonLambdaoff.UseVisualStyleBackColor = True
+        Me.LabelHtrMagMagSetPointRback.AutoSize = True
+        Me.LabelHtrMagMagSetPointRback.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagMagSetPointRback.Location = New System.Drawing.Point(430, 537)
+        Me.LabelHtrMagMagSetPointRback.Name = "LabelHtrMagMagSetPointRback"
+        Me.LabelHtrMagMagSetPointRback.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagMagSetPointRback.TabIndex = 220
+        Me.LabelHtrMagMagSetPointRback.Text = "LabelHtrMag"
         '
-        'ButtonLambdaOn
+        'LabelHtrMagHtrVolSetPointRback
         '
-        Me.ButtonLambdaOn.Location = New System.Drawing.Point(539, 293)
-        Me.ButtonLambdaOn.Name = "ButtonLambdaOn"
-        Me.ButtonLambdaOn.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonLambdaOn.TabIndex = 204
-        Me.ButtonLambdaOn.Text = "Lambda On"
-        Me.ButtonLambdaOn.UseVisualStyleBackColor = True
+        Me.LabelHtrMagHtrVolSetPointRback.AutoSize = True
+        Me.LabelHtrMagHtrVolSetPointRback.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagHtrVolSetPointRback.Location = New System.Drawing.Point(430, 521)
+        Me.LabelHtrMagHtrVolSetPointRback.Name = "LabelHtrMagHtrVolSetPointRback"
+        Me.LabelHtrMagHtrVolSetPointRback.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagHtrVolSetPointRback.TabIndex = 219
+        Me.LabelHtrMagHtrVolSetPointRback.Text = "LabelHtrMag"
+        '
+        'LabelHtrMagHtrSetPointRback
+        '
+        Me.LabelHtrMagHtrSetPointRback.AutoSize = True
+        Me.LabelHtrMagHtrSetPointRback.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHtrMagHtrSetPointRback.Location = New System.Drawing.Point(430, 505)
+        Me.LabelHtrMagHtrSetPointRback.Name = "LabelHtrMagHtrSetPointRback"
+        Me.LabelHtrMagHtrSetPointRback.Size = New System.Drawing.Size(86, 16)
+        Me.LabelHtrMagHtrSetPointRback.TabIndex = 218
+        Me.LabelHtrMagHtrSetPointRback.Text = "LabelHtrMag"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1050, 583)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.txtCmdData)
-        Me.Controls.Add(Me.txtCmdIndex)
+        Me.ClientSize = New System.Drawing.Size(1072, 656)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.cboIndex)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmMain"
         Me.Text = "A36507 Test"
@@ -1221,10 +1375,6 @@ Partial Class frmMain
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cboIndex As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents txtCmdIndex As System.Windows.Forms.TextBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents txtCmdData As System.Windows.Forms.TextBox
     Friend WithEvents LabelErrorTBD2 As System.Windows.Forms.Label
     Friend WithEvents LabelErrorTBD1 As System.Windows.Forms.Label
     Friend WithEvents LabelErrorSelfTestResultRegister As System.Windows.Forms.Label
@@ -1299,7 +1449,6 @@ Partial Class frmMain
     Friend WithEvents CheckBoxStatusBit0 As System.Windows.Forms.CheckBox
     Friend WithEvents LabelFirmwareVerssion As System.Windows.Forms.Label
     Friend WithEvents LabelAgileInfo As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents TextBoxLambdaHigh As System.Windows.Forms.TextBox
     Friend WithEvents ButtonSetLamdbaHigh As System.Windows.Forms.Button
     Friend WithEvents TextBoxLambdaLow As System.Windows.Forms.TextBox
@@ -1312,4 +1461,21 @@ Partial Class frmMain
     Friend WithEvents LabelHVSetHigh As System.Windows.Forms.Label
     Friend WithEvents ButtonLambdaOn As System.Windows.Forms.Button
     Friend WithEvents ButtonLambdaoff As System.Windows.Forms.Button
+    Friend WithEvents ButtonResetAllFaults As System.Windows.Forms.Button
+    Friend WithEvents ButtonHtrMagOn As System.Windows.Forms.Button
+    Friend WithEvents ButtonHtrMagOff As System.Windows.Forms.Button
+    Friend WithEvents LabelHtrMagMagVmon As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagMagImon As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagHtrVmon As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagHtrImon As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagHtrSetPoint As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagMagSetPoint As System.Windows.Forms.Label
+    Friend WithEvents ButtonHtrMagSetMag As System.Windows.Forms.Button
+    Friend WithEvents TextBoxMagCurrent As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonHtrMagSetHtr As System.Windows.Forms.Button
+    Friend WithEvents TextBoxHtrCurrent As System.Windows.Forms.TextBox
+    Friend WithEvents LabelHtrMagMagVolSetPointRback As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagMagSetPointRback As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagHtrVolSetPointRback As System.Windows.Forms.Label
+    Friend WithEvents LabelHtrMagHtrSetPointRback As System.Windows.Forms.Label
 End Class

@@ -151,6 +151,57 @@
             LabelDebugF.Text = "Debug F = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
 
 
+            'Heater Mag Specific Data
+
+            If (board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET) Then
+                LabelHtrMagHtrSetPoint.Visible = True
+                LabelHtrMagMagSetPoint.Visible = True
+                LabelHtrMagHtrImon.Visible = True
+                LabelHtrMagHtrVmon.Visible = True
+                LabelHtrMagMagImon.Visible = True
+                LabelHtrMagMagVmon.Visible = True
+                LabelHtrMagHtrSetPointRback.Visible = True
+                LabelHtrMagHtrVolSetPointRback.Visible = True
+                LabelHtrMagMagSetPointRback.Visible = True
+                LabelHtrMagMagVolSetPointRback.Visible = True
+                ButtonHtrMagOn.Visible = True
+                ButtonHtrMagOff.Visible = True
+                TextBoxHtrCurrent.Visible = True
+                TextBoxMagCurrent.Visible = True
+                ButtonHtrMagSetHtr.Visible = True
+                ButtonHtrMagSetMag.Visible = True
+            Else
+                LabelHtrMagHtrSetPoint.Visible = False
+                LabelHtrMagMagSetPoint.Visible = False
+                LabelHtrMagHtrImon.Visible = False
+                LabelHtrMagHtrVmon.Visible = False
+                LabelHtrMagMagImon.Visible = False
+                LabelHtrMagMagVmon.Visible = False
+                LabelHtrMagHtrSetPointRback.Visible = False
+                LabelHtrMagHtrVolSetPointRback.Visible = False
+                LabelHtrMagMagSetPointRback.Visible = False
+                LabelHtrMagMagVolSetPointRback.Visible = False
+                ButtonHtrMagOn.Visible = False
+                ButtonHtrMagOff.Visible = False
+                TextBoxHtrCurrent.Visible = False
+                TextBoxMagCurrent.Visible = False
+                ButtonHtrMagSetHtr.Visible = False
+                ButtonHtrMagSetMag.Visible = False
+            End If
+
+
+            LabelHtrMagHtrSetPoint.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
+            LabelHtrMagMagSetPoint.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
+            LabelHtrMagHtrImon.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
+            LabelHtrMagHtrVmon.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
+            LabelHtrMagMagImon.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
+            LabelHtrMagMagVmon.Text = "Mag Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(5)
+            LabelHtrMagHtrSetPointRback.Text = "Heater Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(6)
+            LabelHtrMagHtrVolSetPointRback.Text = "Heater Vol Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(7)
+            LabelHtrMagMagSetPointRback.Text = "Magnet Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(8)
+            LabelHtrMagMagVolSetPointRback.Text = "Magnet Vol Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(9)
+
+
 
 
             ' HV Lambda Specific Data
@@ -220,12 +271,6 @@
 
 
     Public command_count As UInt16
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        ServerSettings.command_index = Val(txtCmdIndex.Text)
-        ServerSettings.command_data = Val(txtCmdData.Text)
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
-    End Sub
 
     Private Sub ButtonSetLamdbaHigh_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLamdbaHigh.Click
         Dim program_word As UInt16
@@ -268,5 +313,54 @@
         ServerSettings.command_data = 0
         command_count = command_count + 1
         ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonResetAllFaults_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetAllFaults.Click
+        ServerSettings.command_index = ETHERNET_CMD_RESET_FAULTS
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagOn_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagOn.Click
+        ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_ON
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagOff_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagOff.Click
+        ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_OFF
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagSetHtr_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagSetHtr.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxHtrCurrent.Text
+            ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+    End Sub
+
+    Private Sub ButtonHtrMagSetMag_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagSetMag.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxMagCurrent.Text
+            ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
     End Sub
 End Class
