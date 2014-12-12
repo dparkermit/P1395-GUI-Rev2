@@ -189,9 +189,8 @@
                 ButtonHtrMagSetMag.Visible = False
             End If
 
-
-            LabelHtrMagHtrSetPoint.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
-            LabelHtrMagMagSetPoint.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
+            LabelHtrMagMagSetPoint.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
+            LabelHtrMagHtrSetPoint.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
             LabelHtrMagHtrImon.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
             LabelHtrMagHtrVmon.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
             LabelHtrMagMagImon.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
