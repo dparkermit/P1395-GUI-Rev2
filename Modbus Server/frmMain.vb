@@ -11,7 +11,9 @@
     Public Const ETHERNET_CMD_HV_LAMBDA_ON As UInt16 = 6
     Public Const ETHERNET_CMD_HV_LAMBDA_OFF As UInt16 = 7
     Public Const ETHERNET_CMD_RESET_FAULTS As UInt16 = 8
-
+    Public Const PULSE_SYNC_SEND_DEFAULT_CMD As UInt16 = 9
+    Public Const PULSE_SYNC_ENABLE_HV_ON As UInt16 = 10
+    Public Const PULSE_SYNC_ENABLE_HV_OFF As UInt16 = 11
 
     Dim board_index As Byte = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA
 
@@ -361,5 +363,26 @@
             MsgBox("You must enter valid Integer data")
 
         End Try
+    End Sub
+
+    Private Sub ButtonPulseSyncConfig_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPulseSyncConfig.Click
+        ServerSettings.command_index = PULSE_SYNC_SEND_DEFAULT_CMD
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub PulseSyncEnable_Click(sender As System.Object, e As System.EventArgs) Handles PulseSyncEnable.Click
+        ServerSettings.command_index = PULSE_SYNC_ENABLE_HV_ON
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub PulseSyncDisable_Click(sender As System.Object, e As System.EventArgs) Handles PulseSyncDisable.Click
+        ServerSettings.command_index = PULSE_SYNC_ENABLE_HV_OFF
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
     End Sub
 End Class
