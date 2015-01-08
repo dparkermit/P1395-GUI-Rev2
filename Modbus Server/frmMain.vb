@@ -153,23 +153,27 @@
             LabelErrorTBD1.Text = "N/A"
             LabelErrorTBD2.Text = "N/A"
 
-            LabelDebug0.Text = "Debug 0 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_0
-            LabelDebug1.Text = "Debug 1 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_1
-            LabelDebug2.Text = "Debug 2 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_2
-            LabelDebug3.Text = "Debug 3 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_3
-            LabelDebug4.Text = "Debug 4 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_4
-            LabelDebug5.Text = "Debug 5 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_5
-            LabelDebug6.Text = "Debug 6 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_6
-            LabelDebug7.Text = "Debug 7 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_7
 
-            LabelDebug8.Text = "Debug 8 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_8
-            LabelDebug9.Text = "Debug 9 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_9
-            LabelDebugA.Text = "Debug A = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A
-            LabelDebugB.Text = "Debug B = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B
-            LabelDebugC.Text = "Debug C = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_C
-            LabelDebugD.Text = "Debug D = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D
-            LabelDebugE.Text = "Debug E = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
-            LabelDebugF.Text = "Debug F = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
+
+
+            LabelValueDebug0.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_0
+            LabelValueDebug1.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_1
+            LabelValueDebug2.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_2
+            LabelValueDebug3.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_3
+            LabelValueDebug4.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_4
+            LabelValueDebug5.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_5
+            LabelValueDebug6.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_6
+            LabelValueDebug7.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_7
+            LabelValueDebug8.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_8
+            LabelValueDebug9.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_9
+            LabelValueDebugA.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A
+            LabelValueDebugB.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B
+            LabelValueDebugC.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_C
+            LabelValueDebugD.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D
+            LabelValueDebugE.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
+            LabelValueDebugF.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
+
+
 
 
             'Heater Mag Specific Data
@@ -200,6 +204,23 @@
                 CheckBoxFaultBitD.Text = "HW TEMP SW"
                 CheckBoxFaultBitE.Text = "COOLANT FLT"
                 CheckBoxFaultBitF.Text = "CAN FLT"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
 
                 update_1_cmd_index = ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT
                 ButtonUpdateInput1.Text = "Set Heater"
@@ -239,9 +260,9 @@
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
                 CheckBoxStatusBit0.Text = "AT EOC"
                 CheckBoxStatusBit1.Text = "HIGH MODE"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit2.Text = "HV OFF"
+                CheckBoxStatusBit3.Text = "STATE FLT"
+                CheckBoxStatusBit4.Text = "PWR OFF"
                 CheckBoxStatusBit5.Text = "Unused"
                 CheckBoxStatusBit6.Text = "Unused"
                 CheckBoxStatusBit7.Text = "Unused"
@@ -253,8 +274,8 @@
                 CheckBoxFaultBit4.Text = "Over Temp"
                 CheckBoxFaultBit5.Text = "Interlock"
                 CheckBoxFaultBit6.Text = "Load FLT"
-                CheckBoxFaultBit7.Text = "Can FLT"
-                CheckBoxFaultBit8.Text = "Unused"
+                CheckBoxFaultBit7.Text = "PWR UP"
+                CheckBoxFaultBit8.Text = "Can FLT"
                 CheckBoxFaultBit9.Text = "Unused"
                 CheckBoxFaultBitA.Text = "Unused"
                 CheckBoxFaultBitB.Text = "Unused"
@@ -263,7 +284,22 @@
                 CheckBoxFaultBitE.Text = "Unused"
                 CheckBoxFaultBitF.Text = "Unused"
 
-
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
 
                 update_1_cmd_index = ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT
                 ButtonUpdateInput1.Text = "Set High"
@@ -322,6 +358,23 @@
                 CheckBoxFaultBitE.Text = "Fault E"
                 CheckBoxFaultBitF.Text = "Fault F"
 
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
                 ButtonBoardCommand.Text = "Send Config"
                 board_command_index = PULSE_SYNC_SEND_DEFAULT_CMD
 
@@ -369,6 +422,22 @@
                 CheckBoxFaultBitE.Text = "Fault E"
                 CheckBoxFaultBitF.Text = "Fault F"
 
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
 
                 TextBoxInput1.Visible = False
                 ButtonUpdateInput1.Visible = False
