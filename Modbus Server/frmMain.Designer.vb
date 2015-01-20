@@ -25,6 +25,22 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.LabelValueDebugF = New System.Windows.Forms.Label()
+        Me.LabelValueDebugE = New System.Windows.Forms.Label()
+        Me.LabelValueDebugD = New System.Windows.Forms.Label()
+        Me.LabelValueDebugC = New System.Windows.Forms.Label()
+        Me.LabelValueDebugB = New System.Windows.Forms.Label()
+        Me.LabelValueDebugA = New System.Windows.Forms.Label()
+        Me.LabelValueDebug9 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug8 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug7 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug6 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug5 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug4 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug3 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug2 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug1 = New System.Windows.Forms.Label()
+        Me.LabelValueDebug0 = New System.Windows.Forms.Label()
         Me.ButtonBoardCommand = New System.Windows.Forms.Button()
         Me.LabelValue10 = New System.Windows.Forms.Label()
         Me.LabelValue9 = New System.Windows.Forms.Label()
@@ -123,22 +139,8 @@ Partial Class frmMain
         Me.ButtonToggleHighSpeedDataLogging = New System.Windows.Forms.Button()
         Me.ButtonTogglePulseSyncHV = New System.Windows.Forms.Button()
         Me.ButtonTogglePulseSyncXray = New System.Windows.Forms.Button()
-        Me.LabelValueDebug0 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug9 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug8 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug7 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug6 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug5 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug4 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug3 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug2 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug1 = New System.Windows.Forms.Label()
-        Me.LabelValueDebugF = New System.Windows.Forms.Label()
-        Me.LabelValueDebugE = New System.Windows.Forms.Label()
-        Me.LabelValueDebugD = New System.Windows.Forms.Label()
-        Me.LabelValueDebugC = New System.Windows.Forms.Label()
-        Me.LabelValueDebugB = New System.Windows.Forms.Label()
-        Me.LabelValueDebugA = New System.Windows.Forms.Label()
+        Me.ButtonEEPROMTest = New System.Windows.Forms.Button()
+        Me.ButtonEEpromReadTest = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -260,6 +262,166 @@ Partial Class frmMain
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
+        '
+        'LabelValueDebugF
+        '
+        Me.LabelValueDebugF.AutoSize = True
+        Me.LabelValueDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugF.Location = New System.Drawing.Point(675, 256)
+        Me.LabelValueDebugF.Name = "LabelValueDebugF"
+        Me.LabelValueDebugF.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugF.TabIndex = 256
+        Me.LabelValueDebugF.Text = "ValueDebug"
+        '
+        'LabelValueDebugE
+        '
+        Me.LabelValueDebugE.AutoSize = True
+        Me.LabelValueDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugE.Location = New System.Drawing.Point(675, 240)
+        Me.LabelValueDebugE.Name = "LabelValueDebugE"
+        Me.LabelValueDebugE.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugE.TabIndex = 255
+        Me.LabelValueDebugE.Text = "ValueDebug"
+        '
+        'LabelValueDebugD
+        '
+        Me.LabelValueDebugD.AutoSize = True
+        Me.LabelValueDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugD.Location = New System.Drawing.Point(675, 224)
+        Me.LabelValueDebugD.Name = "LabelValueDebugD"
+        Me.LabelValueDebugD.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugD.TabIndex = 254
+        Me.LabelValueDebugD.Text = "ValueDebug"
+        '
+        'LabelValueDebugC
+        '
+        Me.LabelValueDebugC.AutoSize = True
+        Me.LabelValueDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugC.Location = New System.Drawing.Point(675, 208)
+        Me.LabelValueDebugC.Name = "LabelValueDebugC"
+        Me.LabelValueDebugC.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugC.TabIndex = 253
+        Me.LabelValueDebugC.Text = "ValueDebug"
+        '
+        'LabelValueDebugB
+        '
+        Me.LabelValueDebugB.AutoSize = True
+        Me.LabelValueDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugB.Location = New System.Drawing.Point(675, 192)
+        Me.LabelValueDebugB.Name = "LabelValueDebugB"
+        Me.LabelValueDebugB.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugB.TabIndex = 252
+        Me.LabelValueDebugB.Text = "ValueDebug"
+        '
+        'LabelValueDebugA
+        '
+        Me.LabelValueDebugA.AutoSize = True
+        Me.LabelValueDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebugA.Location = New System.Drawing.Point(675, 176)
+        Me.LabelValueDebugA.Name = "LabelValueDebugA"
+        Me.LabelValueDebugA.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebugA.TabIndex = 251
+        Me.LabelValueDebugA.Text = "ValueDebug"
+        '
+        'LabelValueDebug9
+        '
+        Me.LabelValueDebug9.AutoSize = True
+        Me.LabelValueDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug9.Location = New System.Drawing.Point(675, 160)
+        Me.LabelValueDebug9.Name = "LabelValueDebug9"
+        Me.LabelValueDebug9.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug9.TabIndex = 250
+        Me.LabelValueDebug9.Text = "ValueDebug"
+        '
+        'LabelValueDebug8
+        '
+        Me.LabelValueDebug8.AutoSize = True
+        Me.LabelValueDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug8.Location = New System.Drawing.Point(675, 144)
+        Me.LabelValueDebug8.Name = "LabelValueDebug8"
+        Me.LabelValueDebug8.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug8.TabIndex = 249
+        Me.LabelValueDebug8.Text = "ValueDebug"
+        '
+        'LabelValueDebug7
+        '
+        Me.LabelValueDebug7.AutoSize = True
+        Me.LabelValueDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug7.Location = New System.Drawing.Point(675, 128)
+        Me.LabelValueDebug7.Name = "LabelValueDebug7"
+        Me.LabelValueDebug7.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug7.TabIndex = 248
+        Me.LabelValueDebug7.Text = "ValueDebug"
+        '
+        'LabelValueDebug6
+        '
+        Me.LabelValueDebug6.AutoSize = True
+        Me.LabelValueDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug6.Location = New System.Drawing.Point(675, 112)
+        Me.LabelValueDebug6.Name = "LabelValueDebug6"
+        Me.LabelValueDebug6.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug6.TabIndex = 247
+        Me.LabelValueDebug6.Text = "ValueDebug"
+        '
+        'LabelValueDebug5
+        '
+        Me.LabelValueDebug5.AutoSize = True
+        Me.LabelValueDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug5.Location = New System.Drawing.Point(675, 96)
+        Me.LabelValueDebug5.Name = "LabelValueDebug5"
+        Me.LabelValueDebug5.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug5.TabIndex = 246
+        Me.LabelValueDebug5.Text = "ValueDebug"
+        '
+        'LabelValueDebug4
+        '
+        Me.LabelValueDebug4.AutoSize = True
+        Me.LabelValueDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug4.Location = New System.Drawing.Point(675, 80)
+        Me.LabelValueDebug4.Name = "LabelValueDebug4"
+        Me.LabelValueDebug4.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug4.TabIndex = 245
+        Me.LabelValueDebug4.Text = "ValueDebug"
+        '
+        'LabelValueDebug3
+        '
+        Me.LabelValueDebug3.AutoSize = True
+        Me.LabelValueDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug3.Location = New System.Drawing.Point(675, 64)
+        Me.LabelValueDebug3.Name = "LabelValueDebug3"
+        Me.LabelValueDebug3.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug3.TabIndex = 244
+        Me.LabelValueDebug3.Text = "ValueDebug"
+        '
+        'LabelValueDebug2
+        '
+        Me.LabelValueDebug2.AutoSize = True
+        Me.LabelValueDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug2.Location = New System.Drawing.Point(675, 48)
+        Me.LabelValueDebug2.Name = "LabelValueDebug2"
+        Me.LabelValueDebug2.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug2.TabIndex = 243
+        Me.LabelValueDebug2.Text = "ValueDebug"
+        '
+        'LabelValueDebug1
+        '
+        Me.LabelValueDebug1.AutoSize = True
+        Me.LabelValueDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug1.Location = New System.Drawing.Point(675, 32)
+        Me.LabelValueDebug1.Name = "LabelValueDebug1"
+        Me.LabelValueDebug1.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug1.TabIndex = 242
+        Me.LabelValueDebug1.Text = "ValueDebug"
+        '
+        'LabelValueDebug0
+        '
+        Me.LabelValueDebug0.AutoSize = True
+        Me.LabelValueDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValueDebug0.Location = New System.Drawing.Point(675, 16)
+        Me.LabelValueDebug0.Name = "LabelValueDebug0"
+        Me.LabelValueDebug0.Size = New System.Drawing.Size(84, 16)
+        Me.LabelValueDebug0.TabIndex = 241
+        Me.LabelValueDebug0.Text = "ValueDebug"
         '
         'ButtonBoardCommand
         '
@@ -1307,171 +1469,31 @@ Partial Class frmMain
         Me.ButtonTogglePulseSyncXray.Text = "Toggle Pulse Sync XRAY bit"
         Me.ButtonTogglePulseSyncXray.UseVisualStyleBackColor = True
         '
-        'LabelValueDebug0
+        'ButtonEEPROMTest
         '
-        Me.LabelValueDebug0.AutoSize = True
-        Me.LabelValueDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug0.Location = New System.Drawing.Point(675, 16)
-        Me.LabelValueDebug0.Name = "LabelValueDebug0"
-        Me.LabelValueDebug0.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug0.TabIndex = 241
-        Me.LabelValueDebug0.Text = "ValueDebug"
+        Me.ButtonEEPROMTest.Location = New System.Drawing.Point(849, 233)
+        Me.ButtonEEPROMTest.Name = "ButtonEEPROMTest"
+        Me.ButtonEEPROMTest.Size = New System.Drawing.Size(116, 23)
+        Me.ButtonEEPROMTest.TabIndex = 241
+        Me.ButtonEEPROMTest.Text = "EEProm Set Test"
+        Me.ButtonEEPROMTest.UseVisualStyleBackColor = True
         '
-        'LabelValueDebug9
+        'ButtonEEpromReadTest
         '
-        Me.LabelValueDebug9.AutoSize = True
-        Me.LabelValueDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug9.Location = New System.Drawing.Point(675, 160)
-        Me.LabelValueDebug9.Name = "LabelValueDebug9"
-        Me.LabelValueDebug9.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug9.TabIndex = 250
-        Me.LabelValueDebug9.Text = "ValueDebug"
-        '
-        'LabelValueDebug8
-        '
-        Me.LabelValueDebug8.AutoSize = True
-        Me.LabelValueDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug8.Location = New System.Drawing.Point(675, 144)
-        Me.LabelValueDebug8.Name = "LabelValueDebug8"
-        Me.LabelValueDebug8.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug8.TabIndex = 249
-        Me.LabelValueDebug8.Text = "ValueDebug"
-        '
-        'LabelValueDebug7
-        '
-        Me.LabelValueDebug7.AutoSize = True
-        Me.LabelValueDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug7.Location = New System.Drawing.Point(675, 128)
-        Me.LabelValueDebug7.Name = "LabelValueDebug7"
-        Me.LabelValueDebug7.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug7.TabIndex = 248
-        Me.LabelValueDebug7.Text = "ValueDebug"
-        '
-        'LabelValueDebug6
-        '
-        Me.LabelValueDebug6.AutoSize = True
-        Me.LabelValueDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug6.Location = New System.Drawing.Point(675, 112)
-        Me.LabelValueDebug6.Name = "LabelValueDebug6"
-        Me.LabelValueDebug6.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug6.TabIndex = 247
-        Me.LabelValueDebug6.Text = "ValueDebug"
-        '
-        'LabelValueDebug5
-        '
-        Me.LabelValueDebug5.AutoSize = True
-        Me.LabelValueDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug5.Location = New System.Drawing.Point(675, 96)
-        Me.LabelValueDebug5.Name = "LabelValueDebug5"
-        Me.LabelValueDebug5.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug5.TabIndex = 246
-        Me.LabelValueDebug5.Text = "ValueDebug"
-        '
-        'LabelValueDebug4
-        '
-        Me.LabelValueDebug4.AutoSize = True
-        Me.LabelValueDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug4.Location = New System.Drawing.Point(675, 80)
-        Me.LabelValueDebug4.Name = "LabelValueDebug4"
-        Me.LabelValueDebug4.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug4.TabIndex = 245
-        Me.LabelValueDebug4.Text = "ValueDebug"
-        '
-        'LabelValueDebug3
-        '
-        Me.LabelValueDebug3.AutoSize = True
-        Me.LabelValueDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug3.Location = New System.Drawing.Point(675, 64)
-        Me.LabelValueDebug3.Name = "LabelValueDebug3"
-        Me.LabelValueDebug3.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug3.TabIndex = 244
-        Me.LabelValueDebug3.Text = "ValueDebug"
-        '
-        'LabelValueDebug2
-        '
-        Me.LabelValueDebug2.AutoSize = True
-        Me.LabelValueDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug2.Location = New System.Drawing.Point(675, 48)
-        Me.LabelValueDebug2.Name = "LabelValueDebug2"
-        Me.LabelValueDebug2.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug2.TabIndex = 243
-        Me.LabelValueDebug2.Text = "ValueDebug"
-        '
-        'LabelValueDebug1
-        '
-        Me.LabelValueDebug1.AutoSize = True
-        Me.LabelValueDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug1.Location = New System.Drawing.Point(675, 32)
-        Me.LabelValueDebug1.Name = "LabelValueDebug1"
-        Me.LabelValueDebug1.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug1.TabIndex = 242
-        Me.LabelValueDebug1.Text = "ValueDebug"
-        '
-        'LabelValueDebugF
-        '
-        Me.LabelValueDebugF.AutoSize = True
-        Me.LabelValueDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugF.Location = New System.Drawing.Point(675, 256)
-        Me.LabelValueDebugF.Name = "LabelValueDebugF"
-        Me.LabelValueDebugF.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugF.TabIndex = 256
-        Me.LabelValueDebugF.Text = "ValueDebug"
-        '
-        'LabelValueDebugE
-        '
-        Me.LabelValueDebugE.AutoSize = True
-        Me.LabelValueDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugE.Location = New System.Drawing.Point(675, 240)
-        Me.LabelValueDebugE.Name = "LabelValueDebugE"
-        Me.LabelValueDebugE.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugE.TabIndex = 255
-        Me.LabelValueDebugE.Text = "ValueDebug"
-        '
-        'LabelValueDebugD
-        '
-        Me.LabelValueDebugD.AutoSize = True
-        Me.LabelValueDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugD.Location = New System.Drawing.Point(675, 224)
-        Me.LabelValueDebugD.Name = "LabelValueDebugD"
-        Me.LabelValueDebugD.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugD.TabIndex = 254
-        Me.LabelValueDebugD.Text = "ValueDebug"
-        '
-        'LabelValueDebugC
-        '
-        Me.LabelValueDebugC.AutoSize = True
-        Me.LabelValueDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugC.Location = New System.Drawing.Point(675, 208)
-        Me.LabelValueDebugC.Name = "LabelValueDebugC"
-        Me.LabelValueDebugC.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugC.TabIndex = 253
-        Me.LabelValueDebugC.Text = "ValueDebug"
-        '
-        'LabelValueDebugB
-        '
-        Me.LabelValueDebugB.AutoSize = True
-        Me.LabelValueDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugB.Location = New System.Drawing.Point(675, 192)
-        Me.LabelValueDebugB.Name = "LabelValueDebugB"
-        Me.LabelValueDebugB.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugB.TabIndex = 252
-        Me.LabelValueDebugB.Text = "ValueDebug"
-        '
-        'LabelValueDebugA
-        '
-        Me.LabelValueDebugA.AutoSize = True
-        Me.LabelValueDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugA.Location = New System.Drawing.Point(675, 176)
-        Me.LabelValueDebugA.Name = "LabelValueDebugA"
-        Me.LabelValueDebugA.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugA.TabIndex = 251
-        Me.LabelValueDebugA.Text = "ValueDebug"
+        Me.ButtonEEpromReadTest.Location = New System.Drawing.Point(849, 264)
+        Me.ButtonEEpromReadTest.Name = "ButtonEEpromReadTest"
+        Me.ButtonEEpromReadTest.Size = New System.Drawing.Size(116, 23)
+        Me.ButtonEEpromReadTest.TabIndex = 242
+        Me.ButtonEEpromReadTest.Text = "EEProm Read Test"
+        Me.ButtonEEpromReadTest.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1072, 656)
+        Me.Controls.Add(Me.ButtonEEpromReadTest)
+        Me.Controls.Add(Me.ButtonEEPROMTest)
         Me.Controls.Add(Me.ButtonTogglePulseSyncXray)
         Me.Controls.Add(Me.ButtonTogglePulseSyncHV)
         Me.Controls.Add(Me.ButtonToggleHighSpeedDataLogging)
@@ -1606,4 +1628,6 @@ Partial Class frmMain
     Friend WithEvents LabelValueDebug2 As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebug1 As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebug0 As System.Windows.Forms.Label
+    Friend WithEvents ButtonEEPROMTest As System.Windows.Forms.Button
+    Friend WithEvents ButtonEEpromReadTest As System.Windows.Forms.Button
 End Class

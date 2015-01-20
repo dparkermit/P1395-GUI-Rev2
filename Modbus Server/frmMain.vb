@@ -395,6 +395,75 @@
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
 
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) Then
+                CheckBoxStatusBit0.Text = "HIGH MODE"
+                CheckBoxStatusBit1.Text = "Arc"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit6.Text = "Unused"
+                CheckBoxStatusBit7.Text = "Unused"
+
+                CheckBoxFaultBit0.Text = "Arc Slow"
+                CheckBoxFaultBit1.Text = "Arc Fast"
+                CheckBoxFaultBit2.Text = "Arc Cont"
+                CheckBoxFaultBit3.Text = "Can FLT"
+                CheckBoxFaultBit4.Text = "Unused"
+                CheckBoxFaultBit5.Text = "Unused"
+                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit7.Text = "Unused"
+                CheckBoxFaultBit8.Text = "Unused"
+                CheckBoxFaultBit9.Text = "Unused"
+                CheckBoxFaultBitA.Text = "Unused"
+                CheckBoxFaultBitB.Text = "Unused"
+                CheckBoxFaultBitC.Text = "Unused"
+                CheckBoxFaultBitD.Text = "Unused"
+                CheckBoxFaultBitE.Text = "Unused"
+                CheckBoxFaultBitF.Text = "Unused"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
+                LabelValue1.Text = "Arcs Today = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(1)
+                LabelValue2.Text = "Imon High = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(2)
+                LabelValue3.Text = "Imon Low = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(3)
+                LabelValue4.Text = "Arcs Total = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(5) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(4)
+                LabelValue5.Text = "Pulses Today = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(7) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(6)
+                LabelValue6.Text = "Pulse Total = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(11) * 2 ^ 48 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(10) * 2 ^ 32 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(9) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(8)
+
+                TextBoxInput1.Visible = False
+                ButtonUpdateInput1.Visible = False
+                TextBoxInput2.Visible = False
+                ButtonUpdateInput2.Visible = False
+                ButtonBoardCommand.Visible = False
+
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = True
+                LabelValue7.Visible = False
+                LabelValue8.Visible = False
+                LabelValue9.Visible = False
+                LabelValue10.Visible = False
+
+
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
                 CheckBoxStatusBit1.Text = "Status 1"
@@ -572,6 +641,20 @@
 
     Private Sub ButtonBoardCommand_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBoardCommand.Click
         ServerSettings.command_index = board_command_index
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonEEPROMTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEPROMTest.Click
+        ServerSettings.command_index = 5
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonEEpromReadTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEpromReadTest.Click
+        ServerSettings.command_index = 6
         ServerSettings.command_data = 0
         command_count = command_count + 1
         ServerSettings.command_ready = command_count
