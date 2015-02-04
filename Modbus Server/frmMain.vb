@@ -83,6 +83,7 @@
             Dim status_word_0 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0
             Dim status_word_1 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1
 
+
             If (status_word_0 And &H80) Then
                 ' This board is not connected
                 LabelBoardStatus.Text = "WARNING!!!! NOT CONNECTED"
@@ -150,8 +151,8 @@
             LabelErrorScaleCount.Text = "Scale Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.scale_error_count
             LabelErrorResetCount.Text = "Reset Count = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.reset_count
             LabelErrorSelfTestResultRegister.Text = "Self Test = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.self_test_result_register.ToString("x")
-            LabelErrorTBD1.Text = "N/A"
-            LabelErrorTBD2.Text = "N/A"
+            LabelErrorStatusDataA.Text = "Data A = " & ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_A
+            LabelErrorStatusDataB.Text = "Data B = " & ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_B
 
 
 
@@ -173,7 +174,69 @@
             LabelValueDebugE.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
             LabelValueDebugF.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
 
+            ' Update the current Sync Bits
+            Dim Sync_data As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).debug_data.debug_F
+            CheckBoxSyncBit0.Checked = Sync_data And &H1
+            CheckBoxSyncBit1.Checked = Sync_data And &H2
+            CheckBoxSyncBit2.Checked = Sync_data And &H4
+            CheckBoxSyncBit3.Checked = Sync_data And &H8
+            CheckBoxSyncBit4.Checked = Sync_data And &H10
+            CheckBoxSyncBit5.Checked = Sync_data And &H20
+            CheckBoxSyncBit6.Checked = Sync_data And &H40
+            CheckBoxSyncBit7.Checked = Sync_data And &H80
 
+            ' Update the connected Boards
+            'Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
+            CheckBoxIonPumpConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).status_data.status_word_0 And &H80
+            CheckBoxPulseCurrentMonitorConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).status_data.status_word_0 And &H80
+            CheckBoxPulseSyncConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.status_word_0 And &H80
+            CheckBoxHVLambdaConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).status_data.status_word_0 And &H80
+            CheckBoxAFCConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).status_data.status_word_0 And &H80
+            CheckBoxCoolingConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).status_data.status_word_0 And &H80
+            CheckBoxHtrMagConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).status_data.status_word_0 And &H80
+            CheckBoxGunDriverConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).status_data.status_word_0 And &H80
+
+            ' Update the Faulted Boards
+            'Dim FaultedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
+            CheckBoxOperateIonPump.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).status_data.status_word_0 And &H1
+            CheckBoxOperateMagnetronCurrentMon.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).status_data.status_word_0 And &H1
+            CheckBoxOperatePulseSync.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.status_word_0 And &H1
+            CheckBoxOperateHVLambda.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).status_data.status_word_0 And &H1
+            CheckBoxOperateAFC.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).status_data.status_word_0 And &H1
+            CheckBoxOperateCooling.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).status_data.status_word_0 And &H1
+            CheckBoxOperateHtrMag.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).status_data.status_word_0 And &H1
+            CheckBoxOperateGunDriver.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).status_data.status_word_0 And &H1
+            CheckBoxOperateEthernet.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).status_data.status_word_0 And &H1
+
+            'Update the ECB State
+            Dim ECBState As String = ""
+            Select Case ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(1)
+                Case &H10
+                    ECBState = "Startup"
+                Case &H12
+                    ECBState = "Wait Personality"
+                Case &H15
+                    ECBState = "Wait For Init"
+                Case &H20
+                    ECBState = "Warmup"
+                Case &H30
+                    ECBState = "Standby"
+                Case &H40
+                    ECBState = "Drive Up"
+                Case &H50
+                    ECBState = "Ready"
+                Case &H60
+                    ECBState = "X-Ray On"
+                Case &H80
+                    ECBState = "Fault Hold"
+                Case &H90
+                    ECBState = "Fault Reset"
+                Case &HA0
+                    ECBState = "System Error"
+                Case Else
+                    ECBState = "Unknown State"
+            End Select
+            LabelECBState.Text = "ECB State = " & ECBState
 
 
             'Heater Mag Specific Data
@@ -257,6 +320,78 @@
                 LabelValue9.Visible = True
                 LabelValue10.Visible = True
 
+
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
+                CheckBoxStatusBit0.Text = "X-Ray Dis"
+                CheckBoxStatusBit1.Text = "Unused"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit6.Text = "Unused"
+                CheckBoxStatusBit7.Text = "Unused"
+
+                CheckBoxFaultBit0.Text = "Drive Up Flt"
+                CheckBoxFaultBit1.Text = "Unused"
+                CheckBoxFaultBit2.Text = "Unused"
+                CheckBoxFaultBit3.Text = "Unused"
+                CheckBoxFaultBit4.Text = "Unused"
+                CheckBoxFaultBit5.Text = "Unused"
+                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit7.Text = "Gun Htr Off"
+                CheckBoxFaultBit8.Text = "HV Lambda"
+                CheckBoxFaultBit9.Text = "Ion Pimp"
+                CheckBoxFaultBitA.Text = "AFC"
+                CheckBoxFaultBitB.Text = "Cooling"
+                CheckBoxFaultBitC.Text = "Htr/Mag"
+                CheckBoxFaultBitD.Text = "Gun Drv"
+                CheckBoxFaultBitE.Text = "I pulse"
+                CheckBoxFaultBitF.Text = "Pulse Sync"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
+
+
+                LabelValue1.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
+                LabelValue2.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(1)
+                LabelValue3.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(2)
+                LabelValue4.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(3)
+                LabelValue5.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
+                LabelValue6.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(5)
+
+                TextBoxInput1.Visible = False
+                ButtonUpdateInput1.Visible = False
+                TextBoxInput2.Visible = False
+                ButtonUpdateInput2.Visible = False
+                ButtonBoardCommand.Visible = False
+
+                LabelValue1.Visible = False
+                LabelValue2.Visible = False
+                LabelValue3.Visible = False
+                LabelValue4.Visible = False
+                LabelValue5.Visible = False
+                LabelValue6.Visible = False
+                LabelValue7.Visible = False
+                LabelValue8.Visible = False
+                LabelValue9.Visible = False
+                LabelValue10.Visible = False
+
+
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
                 CheckBoxStatusBit0.Text = "AT EOC"
                 CheckBoxStatusBit1.Text = "HIGH MODE"
@@ -332,31 +467,31 @@
                 LabelValue10.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) Then
-                CheckBoxStatusBit0.Text = "Status 0"
-                CheckBoxStatusBit1.Text = "Status 1"
-                CheckBoxStatusBit2.Text = "Status 2"
-                CheckBoxStatusBit3.Text = "Status 3"
-                CheckBoxStatusBit4.Text = "Status 4"
-                CheckBoxStatusBit5.Text = "Status 5"
-                CheckBoxStatusBit6.Text = "Status 6"
-                CheckBoxStatusBit7.Text = "Status 7"
+                CheckBoxStatusBit0.Text = "Cust HV OFF"
+                CheckBoxStatusBit1.Text = "Cust X-Ray OFF"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Over PRF"
+                CheckBoxStatusBit5.Text = "Only Low"
+                CheckBoxStatusBit6.Text = "Only High"
+                CheckBoxStatusBit7.Text = "Unused"
 
-                CheckBoxFaultBit0.Text = "Fault 0"
-                CheckBoxFaultBit1.Text = "Fault 1"
-                CheckBoxFaultBit2.Text = "Fault 2"
-                CheckBoxFaultBit3.Text = "Fault 3"
-                CheckBoxFaultBit4.Text = "Fault 4"
-                CheckBoxFaultBit5.Text = "Fault 5"
-                CheckBoxFaultBit6.Text = "Fault 6"
-                CheckBoxFaultBit7.Text = "Fault 7"
-                CheckBoxFaultBit8.Text = "Fault 8"
-                CheckBoxFaultBit9.Text = "Fault 9"
-                CheckBoxFaultBitA.Text = "Fault A"
-                CheckBoxFaultBitB.Text = "Fault B"
-                CheckBoxFaultBitC.Text = "Fault C"
-                CheckBoxFaultBitD.Text = "Fault D"
-                CheckBoxFaultBitE.Text = "Fault E"
-                CheckBoxFaultBitF.Text = "Fault F"
+                CheckBoxFaultBit0.Text = "Panel Open"
+                CheckBoxFaultBit1.Text = "Keylock"
+                CheckBoxFaultBit2.Text = "X-Ray Timing"
+                CheckBoxFaultBit3.Text = "Trigger ON"
+                CheckBoxFaultBit4.Text = "X-Ray/No HV"
+                CheckBoxFaultBit5.Text = "Sync Timeout"
+                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit7.Text = "Unused"
+                CheckBoxFaultBit8.Text = "Unused"
+                CheckBoxFaultBit9.Text = "Unused"
+                CheckBoxFaultBitA.Text = "Unused"
+                CheckBoxFaultBitB.Text = "Unused"
+                CheckBoxFaultBitC.Text = "Unused"
+                CheckBoxFaultBitD.Text = "Unused"
+                CheckBoxFaultBitE.Text = "Unused"
+                CheckBoxFaultBitF.Text = "Unused"
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -375,6 +510,8 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
+                LabelValue1.Text = "LEDs = 0x" & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(12).ToString("x")
+
                 ButtonBoardCommand.Text = "Send Config"
                 board_command_index = PULSE_SYNC_SEND_DEFAULT_CMD
 
@@ -384,7 +521,7 @@
                 ButtonUpdateInput2.Visible = False
                 ButtonBoardCommand.Visible = True
 
-                LabelValue1.Visible = False
+                LabelValue1.Visible = True
                 LabelValue2.Visible = False
                 LabelValue3.Visible = False
                 LabelValue4.Visible = False
@@ -409,7 +546,7 @@
                 CheckBoxFaultBit1.Text = "Arc Fast"
                 CheckBoxFaultBit2.Text = "Arc Cont"
                 CheckBoxFaultBit3.Text = "Can FLT"
-                CheckBoxFaultBit4.Text = "Unused"
+                CheckBoxFaultBit4.Text = "False Trig"
                 CheckBoxFaultBit5.Text = "Unused"
                 CheckBoxFaultBit6.Text = "Unused"
                 CheckBoxFaultBit7.Text = "Unused"
@@ -462,7 +599,6 @@
                 LabelValue8.Visible = False
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
-
 
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
@@ -659,4 +795,5 @@
         command_count = command_count + 1
         ServerSettings.command_ready = command_count
     End Sub
+
 End Class
