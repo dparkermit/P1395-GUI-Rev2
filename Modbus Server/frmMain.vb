@@ -6,21 +6,14 @@
     Public Const ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT As UInt16 = 1
     Public Const ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT As UInt16 = 2
     Public Const ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT As UInt16 = 3
-    Public Const PULSE_SYNC_SEND_DEFAULT_CMD As UInt16 = 4
-
-
-    Public Const ETHERNET_TOGGLE_RESET As UInt16 = 20
-    Public Const ETHERNET_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = 21
-    Public Const PULSE_SYNC_TOGGLE_HV_ENABLE As UInt16 = 22
-    Public Const PULSE_SYNC_TOGGLE_XRAY_ENABLE As UInt16 = 23
-    Public Const ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT As UInt16 = 24
-
-    Public Const ETHERNET_CMD_UNKNOWN As UInt16 = 255
-
-    Public update_1_cmd_index As UInt16
-    Public update_2_cmd_index As UInt16
-
-    Public board_command_index As UInt16
+    Public Const ETHERNET_CMD_HEATER_MAGNET_ON As UInt16 = 4
+    Public Const ETHERNET_CMD_HEATER_MAGNET_OFF As UInt16 = 5
+    Public Const ETHERNET_CMD_HV_LAMBDA_ON As UInt16 = 6
+    Public Const ETHERNET_CMD_HV_LAMBDA_OFF As UInt16 = 7
+    Public Const ETHERNET_CMD_RESET_FAULTS As UInt16 = 8
+    Public Const ETHERNET_CMD_COOLING_SF6_PULSE_LIMIT_OVERRIDE As UInt16 = 9
+    Public Const ETHERNET_CMD_COOLING_SF6_LEAK_LIMIT_OVERRIDE As UInt16 = 10
+    Public Const ETHERNET_CMD_COOLING_RESET_BOTTLE_COUNT As UInt16 = 11
 
 
 
@@ -82,32 +75,22 @@
 
             Dim status_word_0 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0
             Dim status_word_1 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1
-
-            If (status_word_0 And &H80) Then
-                ' This board is not connected
-                LabelBoardStatus.Text = "WARNING!!!! NOT CONNECTED"
-            Else
-                LabelBoardStatus.Text = ""
-            End If
-            ' this board is connected
-
-
-            CheckBoxControlBit0.Checked = status_word_0 And &H1
-            CheckBoxControlBit1.Checked = status_word_0 And &H2
-            CheckBoxControlBit2.Checked = status_word_0 And &H4
-            CheckBoxControlBit3.Checked = status_word_0 And &H8
-            CheckBoxControlBit4.Checked = status_word_0 And &H10
-            CheckBoxControlBit5.Checked = status_word_0 And &H20
-            CheckBoxControlBit6.Checked = status_word_0 And &H40
-            CheckBoxControlBit7.Checked = status_word_0 And &H80
-            CheckBoxStatusBit0.Checked = status_word_0 And &H100
-            CheckBoxStatusBit1.Checked = status_word_0 And &H200
-            CheckBoxStatusBit2.Checked = status_word_0 And &H400
-            CheckBoxStatusBit3.Checked = status_word_0 And &H800
-            CheckBoxStatusBit4.Checked = status_word_0 And &H1000
-            CheckBoxStatusBit5.Checked = status_word_0 And &H2000
-            CheckBoxStatusBit6.Checked = status_word_0 And &H4000
-            CheckBoxStatusBit7.Checked = status_word_0 And &H8000
+            CheckBoxStatusBit0.Checked = status_word_0 And &H1
+            CheckBoxStatusBit1.Checked = status_word_0 And &H2
+            CheckBoxStatusBit2.Checked = status_word_0 And &H4
+            CheckBoxStatusBit3.Checked = status_word_0 And &H8
+            CheckBoxStatusBit4.Checked = status_word_0 And &H10
+            CheckBoxStatusBit5.Checked = status_word_0 And &H20
+            CheckBoxStatusBit6.Checked = status_word_0 And &H40
+            CheckBoxStatusBit7.Checked = status_word_0 And &H80
+            CheckBoxStatusBit8.Checked = status_word_0 And &H100
+            CheckBoxStatusBit9.Checked = status_word_0 And &H200
+            CheckBoxStatusBit10.Checked = status_word_0 And &H400
+            CheckBoxStatusBit11.Checked = status_word_0 And &H800
+            CheckBoxStatusBit12.Checked = status_word_0 And &H1000
+            CheckBoxStatusBit13.Checked = status_word_0 And &H2000
+            CheckBoxStatusBit14.Checked = status_word_0 And &H4000
+            CheckBoxStatusBit15.Checked = status_word_0 And &H8000
 
             CheckBoxFaultBit0.Checked = status_word_1 And &H1
             CheckBoxFaultBit1.Checked = status_word_1 And &H2
@@ -119,12 +102,12 @@
             CheckBoxFaultBit7.Checked = status_word_1 And &H80
             CheckBoxFaultBit8.Checked = status_word_1 And &H100
             CheckBoxFaultBit9.Checked = status_word_1 And &H200
-            CheckBoxFaultBitA.Checked = status_word_1 And &H400
-            CheckBoxFaultBitB.Checked = status_word_1 And &H800
-            CheckBoxFaultBitC.Checked = status_word_1 And &H1000
-            CheckBoxFaultBitD.Checked = status_word_1 And &H2000
-            CheckBoxFaultBitE.Checked = status_word_1 And &H4000
-            CheckBoxFaultBitF.Checked = status_word_1 And &H8000
+            CheckBoxFaultBit10.Checked = status_word_1 And &H400
+            CheckBoxFaultBit11.Checked = status_word_1 And &H800
+            CheckBoxFaultBit12.Checked = status_word_1 And &H1000
+            CheckBoxFaultBit13.Checked = status_word_1 And &H2000
+            CheckBoxFaultBit14.Checked = status_word_1 And &H4000
+            CheckBoxFaultBit15.Checked = status_word_1 And &H8000
 
             LabelCanCXECReg.Text = "CXEC Register = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_CXEC_reg.ToString("x")
             LabelCanErrorFlagCount.Text = "Error Flag Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_error_flag
@@ -153,311 +136,143 @@
             LabelErrorTBD1.Text = "N/A"
             LabelErrorTBD2.Text = "N/A"
 
+            LabelDebug0.Text = "Debug 0 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_0
+            LabelDebug1.Text = "Debug 1 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_1
+            LabelDebug2.Text = "Debug 2 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_2
+            LabelDebug3.Text = "Debug 3 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_3
+            LabelDebug4.Text = "Debug 4 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_4
+            LabelDebug5.Text = "Debug 5 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_5
+            LabelDebug6.Text = "Debug 6 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_6
+            LabelDebug7.Text = "Debug 7 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_7
 
-
-
-            LabelValueDebug0.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_0
-            LabelValueDebug1.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_1
-            LabelValueDebug2.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_2
-            LabelValueDebug3.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_3
-            LabelValueDebug4.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_4
-            LabelValueDebug5.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_5
-            LabelValueDebug6.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_6
-            LabelValueDebug7.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_7
-            LabelValueDebug8.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_8
-            LabelValueDebug9.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_9
-            LabelValueDebugA.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A
-            LabelValueDebugB.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B
-            LabelValueDebugC.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_C
-            LabelValueDebugD.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D
-            LabelValueDebugE.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
-            LabelValueDebugF.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
-
-
+            LabelDebug8.Text = "Debug 8 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_8
+            LabelDebug9.Text = "Debug 9 = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_9
+            LabelDebugA.Text = "Debug A = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A
+            LabelDebugB.Text = "Debug B = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B
+            LabelDebugC.Text = "Debug C = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_C
+            LabelDebugD.Text = "Debug D = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D
+            LabelDebugE.Text = "Debug E = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
+            LabelDebugF.Text = "Debug F = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
 
 
             'Heater Mag Specific Data
 
             If (board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET) Then
-                CheckBoxStatusBit0.Text = "MAG OFF"
-                CheckBoxStatusBit1.Text = "HTR OFF"
-                CheckBoxStatusBit2.Text = "Relay Open"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
-
-                CheckBoxFaultBit0.Text = "HTR OC ABS"
-                CheckBoxFaultBit1.Text = "HTR UC ABS"
-                CheckBoxFaultBit2.Text = "HTR OC REL"
-                CheckBoxFaultBit3.Text = "HTR UC REL"
-                CheckBoxFaultBit4.Text = "HTR OV ABS"
-                CheckBoxFaultBit5.Text = "HTR UV REL"
-                CheckBoxFaultBit6.Text = "MAG OC ABS"
-                CheckBoxFaultBit7.Text = "MAG UC ABS"
-                CheckBoxFaultBit8.Text = "MAG OC REL"
-                CheckBoxFaultBit9.Text = "MAG UC REL"
-                CheckBoxFaultBitA.Text = "MAG OV ABS"
-                CheckBoxFaultBitB.Text = "MAG UV REL"
-                CheckBoxFaultBitC.Text = "HW HTR OV"
-                CheckBoxFaultBitD.Text = "HW TEMP SW"
-                CheckBoxFaultBitE.Text = "COOLANT FLT"
-                CheckBoxFaultBitF.Text = "CAN FLT"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-                update_1_cmd_index = ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT
-                ButtonUpdateInput1.Text = "Set Heater"
-
-                update_2_cmd_index = ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT
-                ButtonUpdateInput2.Text = "Set Magnet"
-
-                LabelValue1.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
-                LabelValue2.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
-                LabelValue3.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
-                LabelValue4.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
-                LabelValue5.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
-                LabelValue6.Text = "Mag Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(5)
-                LabelValue7.Text = "Heater Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(6)
-                LabelValue8.Text = "Heater Vol Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(7)
-                LabelValue9.Text = "Magnet Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(8)
-                LabelValue10.Text = "Magnet Vol Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(9)
-
-
-                TextBoxInput1.Visible = True
-                ButtonUpdateInput1.Visible = True
-                TextBoxInput2.Visible = True
-                ButtonUpdateInput2.Visible = True
-                ButtonBoardCommand.Visible = False
-
-                LabelValue1.Visible = True
-                LabelValue2.Visible = True
-                LabelValue3.Visible = True
-                LabelValue4.Visible = True
-                LabelValue5.Visible = True
-                LabelValue6.Visible = True
-                LabelValue7.Visible = True
-                LabelValue8.Visible = True
-                LabelValue9.Visible = True
-                LabelValue10.Visible = True
-
-            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
-                CheckBoxStatusBit0.Text = "AT EOC"
-                CheckBoxStatusBit1.Text = "HIGH MODE"
-                CheckBoxStatusBit2.Text = "HV OFF"
-                CheckBoxStatusBit3.Text = "STATE FLT"
-                CheckBoxStatusBit4.Text = "PWR OFF"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
-
-                CheckBoxFaultBit0.Text = "SUM FLT"
-                CheckBoxFaultBit1.Text = "Power OFF"
-                CheckBoxFaultBit2.Text = "HV OFF"
-                CheckBoxFaultBit3.Text = "Phase Loss"
-                CheckBoxFaultBit4.Text = "Over Temp"
-                CheckBoxFaultBit5.Text = "Interlock"
-                CheckBoxFaultBit6.Text = "Load FLT"
-                CheckBoxFaultBit7.Text = "PWR UP"
-                CheckBoxFaultBit8.Text = "Can FLT"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-                update_1_cmd_index = ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT
-                ButtonUpdateInput1.Text = "Set High"
-
-                update_2_cmd_index = ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT
-                ButtonUpdateInput2.Text = "Set Low"
-
-                LabelValue1.Text = "HVLambda High Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(0)
-                LabelValue2.Text = "HVLambda Low Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(1)
-                LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(2)
-                LabelValue4.Text = "Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(3)
-                LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(4)
-                LabelValue6.Text = "Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(5)
-
-                TextBoxInput1.Visible = True
-                ButtonUpdateInput1.Visible = True
-                TextBoxInput2.Visible = True
-                ButtonUpdateInput2.Visible = True
-                ButtonBoardCommand.Visible = False
-
-                LabelValue1.Visible = True
-                LabelValue2.Visible = True
-                LabelValue3.Visible = True
-                LabelValue4.Visible = True
-                LabelValue5.Visible = True
-                LabelValue6.Visible = True
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
-                LabelValue9.Visible = False
-                LabelValue10.Visible = False
-
-            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) Then
-                CheckBoxStatusBit0.Text = "Status 0"
-                CheckBoxStatusBit1.Text = "Status 1"
-                CheckBoxStatusBit2.Text = "Status 2"
-                CheckBoxStatusBit3.Text = "Status 3"
-                CheckBoxStatusBit4.Text = "Status 4"
-                CheckBoxStatusBit5.Text = "Status 5"
-                CheckBoxStatusBit6.Text = "Status 6"
-                CheckBoxStatusBit7.Text = "Status 7"
-
-                CheckBoxFaultBit0.Text = "Fault 0"
-                CheckBoxFaultBit1.Text = "Fault 1"
-                CheckBoxFaultBit2.Text = "Fault 2"
-                CheckBoxFaultBit3.Text = "Fault 3"
-                CheckBoxFaultBit4.Text = "Fault 4"
-                CheckBoxFaultBit5.Text = "Fault 5"
-                CheckBoxFaultBit6.Text = "Fault 6"
-                CheckBoxFaultBit7.Text = "Fault 7"
-                CheckBoxFaultBit8.Text = "Fault 8"
-                CheckBoxFaultBit9.Text = "Fault 9"
-                CheckBoxFaultBitA.Text = "Fault A"
-                CheckBoxFaultBitB.Text = "Fault B"
-                CheckBoxFaultBitC.Text = "Fault C"
-                CheckBoxFaultBitD.Text = "Fault D"
-                CheckBoxFaultBitE.Text = "Fault E"
-                CheckBoxFaultBitF.Text = "Fault F"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-                ButtonBoardCommand.Text = "Send Config"
-                board_command_index = PULSE_SYNC_SEND_DEFAULT_CMD
-
-                TextBoxInput1.Visible = False
-                ButtonUpdateInput1.Visible = False
-                TextBoxInput2.Visible = False
-                ButtonUpdateInput2.Visible = False
-                ButtonBoardCommand.Visible = True
-
-                LabelValue1.Visible = False
-                LabelValue2.Visible = False
-                LabelValue3.Visible = False
-                LabelValue4.Visible = False
-                LabelValue5.Visible = False
-                LabelValue6.Visible = False
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
-                LabelValue9.Visible = False
-                LabelValue10.Visible = False
-
+                LabelHtrMagHtrSetPoint.Visible = True
+                LabelHtrMagMagSetPoint.Visible = True
+                LabelHtrMagHtrImon.Visible = True
+                LabelHtrMagHtrVmon.Visible = True
+                LabelHtrMagMagImon.Visible = True
+                LabelHtrMagMagVmon.Visible = True
+                LabelHtrMagHtrSetPointRback.Visible = True
+                LabelHtrMagHtrVolSetPointRback.Visible = True
+                LabelHtrMagMagSetPointRback.Visible = True
+                LabelHtrMagMagVolSetPointRback.Visible = True
+                ButtonHtrMagOn.Visible = True
+                ButtonHtrMagOff.Visible = True
+                TextBoxHtrCurrent.Visible = True
+                TextBoxMagCurrent.Visible = True
+                ButtonHtrMagSetHtr.Visible = True
+                ButtonHtrMagSetMag.Visible = True
             Else
-                CheckBoxStatusBit0.Text = "Status 0"
-                CheckBoxStatusBit1.Text = "Status 1"
-                CheckBoxStatusBit2.Text = "Status 2"
-                CheckBoxStatusBit3.Text = "Status 3"
-                CheckBoxStatusBit4.Text = "Status 4"
-                CheckBoxStatusBit5.Text = "Status 5"
-                CheckBoxStatusBit6.Text = "Status 6"
-                CheckBoxStatusBit7.Text = "Status 7"
-
-                CheckBoxFaultBit0.Text = "Fault 0"
-                CheckBoxFaultBit1.Text = "Fault 1"
-                CheckBoxFaultBit2.Text = "Fault 2"
-                CheckBoxFaultBit3.Text = "Fault 3"
-                CheckBoxFaultBit4.Text = "Fault 4"
-                CheckBoxFaultBit5.Text = "Fault 5"
-                CheckBoxFaultBit6.Text = "Fault 6"
-                CheckBoxFaultBit7.Text = "Fault 7"
-                CheckBoxFaultBit8.Text = "Fault 8"
-                CheckBoxFaultBit9.Text = "Fault 9"
-                CheckBoxFaultBitA.Text = "Fault A"
-                CheckBoxFaultBitB.Text = "Fault B"
-                CheckBoxFaultBitC.Text = "Fault C"
-                CheckBoxFaultBitD.Text = "Fault D"
-                CheckBoxFaultBitE.Text = "Fault E"
-                CheckBoxFaultBitF.Text = "Fault F"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-                TextBoxInput1.Visible = False
-                ButtonUpdateInput1.Visible = False
-                TextBoxInput2.Visible = False
-                ButtonUpdateInput2.Visible = False
-                ButtonBoardCommand.Visible = False
-
-                LabelValue1.Visible = False
-                LabelValue2.Visible = False
-                LabelValue3.Visible = False
-                LabelValue4.Visible = False
-                LabelValue5.Visible = False
-                LabelValue6.Visible = False
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
-                LabelValue9.Visible = False
-                LabelValue10.Visible = False
-
-
+                LabelHtrMagHtrSetPoint.Visible = False
+                LabelHtrMagMagSetPoint.Visible = False
+                LabelHtrMagHtrImon.Visible = False
+                LabelHtrMagHtrVmon.Visible = False
+                LabelHtrMagMagImon.Visible = False
+                LabelHtrMagMagVmon.Visible = False
+                LabelHtrMagHtrSetPointRback.Visible = False
+                LabelHtrMagHtrVolSetPointRback.Visible = False
+                LabelHtrMagMagSetPointRback.Visible = False
+                LabelHtrMagMagVolSetPointRback.Visible = False
+                ButtonHtrMagOn.Visible = False
+                ButtonHtrMagOff.Visible = False
+                TextBoxHtrCurrent.Visible = False
+                TextBoxMagCurrent.Visible = False
+                ButtonHtrMagSetHtr.Visible = False
+                ButtonHtrMagSetMag.Visible = False
             End If
+
+            LabelHtrMagMagSetPoint.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
+            LabelHtrMagHtrSetPoint.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
+            LabelHtrMagHtrImon.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
+            LabelHtrMagHtrVmon.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
+            LabelHtrMagMagImon.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
+            LabelHtrMagMagVmon.Text = "Mag Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(5)
+            LabelHtrMagHtrSetPointRback.Text = "Heater Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(6)
+            LabelHtrMagHtrVolSetPointRback.Text = "Heater Vol Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(7)
+            LabelHtrMagMagSetPointRback.Text = "Magnet Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(8)
+            LabelHtrMagMagVolSetPointRback.Text = "Magnet Vol Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(9)
+
+
+
+
+            ' HV Lambda Specific Data
+            If (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
+                LabelHVSetHigh.Visible = True
+                LabelHVSetLow.Visible = True
+                LabelHVEOCNotReached.Visible = True
+                LabelHVVmon.Visible = True
+                LabelHVImon.Visible = True
+                LabelHVBasePlateTemp.Visible = True
+                ButtonSetLambdaLow.Visible = True
+                ButtonSetLamdbaHigh.Visible = True
+                TextBoxLambdaHigh.Visible = True
+                TextBoxLambdaLow.Visible = True
+                ButtonLambdaOn.Visible = True
+                ButtonLambdaoff.Visible = True
+            Else
+                LabelHVSetHigh.Visible = False
+                LabelHVSetLow.Visible = False
+                LabelHVEOCNotReached.Visible = False
+                LabelHVVmon.Visible = False
+                LabelHVImon.Visible = False
+                LabelHVBasePlateTemp.Visible = False
+                ButtonSetLambdaLow.Visible = False
+                ButtonSetLamdbaHigh.Visible = False
+                TextBoxLambdaHigh.Visible = False
+                TextBoxLambdaLow.Visible = False
+                ButtonLambdaOn.Visible = False
+                ButtonLambdaoff.Visible = False
+            End If
+            LabelHVSetHigh.Text = "HVLambda High Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(0)
+            LabelHVSetLow.Text = "HVLambda Low Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(1)
+            LabelHVEOCNotReached.Text = "EOC Error Count = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(2)
+            LabelHVVmon.Text = "Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(3)
+            LabelHVImon.Text = "Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(4)
+            LabelHVBasePlateTemp.Text = "Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(5)
+
+
+            If (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
+                ButtonSF6PulseLimitOverride.Visible = True
+                ButtonSF6LeakLimitOverride.Visible = True
+                ButtonSF6BottleReset.Visible = True
+                LabelCoolingCabinetTemp.Visible = True
+                LabelCoolingCirculatorFlow.Visible = True
+                LabelCoolingCoolantTemp.Visible = True
+                LabelCoolingLinacFlow.Visible = True
+                LabelCoolingMagnetronFlow.Visible = True
+                LabelCoolingSF6Pressure.Visible = True
+            Else
+                ButtonSF6PulseLimitOverride.Visible = False
+                ButtonSF6LeakLimitOverride.Visible = False
+                ButtonSF6BottleReset.Visible = False
+                LabelCoolingCabinetTemp.Visible = False
+                LabelCoolingCirculatorFlow.Visible = False
+                LabelCoolingCoolantTemp.Visible = False
+                LabelCoolingLinacFlow.Visible = False
+                LabelCoolingMagnetronFlow.Visible = False
+                LabelCoolingSF6Pressure.Visible = False
+            End If
+
+            LabelCoolingCabinetTemp.Text = "Cabinet Temperature = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(10) / 100 - 273
+            LabelCoolingCirculatorFlow.Text = "Circulator Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(3) / 100
+            LabelCoolingCoolantTemp.Text = "Coolant Temperature = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(8) / 100 - 273
+            LabelCoolingLinacFlow.Text = "Linac Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(0) / 100
+            LabelCoolingMagnetronFlow.Text = "Magnetron Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(1) / 1000
+            LabelCoolingSF6Pressure.Text = "SF6 Pressure = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(9) / 100
+
+
 
         End If ' connected
 
@@ -486,13 +301,88 @@
 
     Public command_count As UInt16
 
-
-
-
-    Private Sub ButtonHtrMagSetMag_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub ButtonSetLamdbaHigh_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLamdbaHigh.Click
         Dim program_word As UInt16
         Try
-            program_word = TextBoxInput2.Text
+            program_word = TextBoxLambdaHigh.Text
+            ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+
+    End Sub
+
+    Private Sub ButtonSetLambdaLow_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLambdaLow.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxLambdaLow.Text
+            ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+    End Sub
+
+    Private Sub ButtonLambdaOn_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLambdaOn.Click
+        ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_ON
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonLambdaoff_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLambdaoff.Click
+        ServerSettings.command_index = ETHERNET_CMD_HV_LAMBDA_OFF
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonResetAllFaults_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetAllFaults.Click
+        ServerSettings.command_index = ETHERNET_CMD_RESET_FAULTS
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagOn_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagOn.Click
+        ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_ON
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagOff_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagOff.Click
+        ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_OFF
+        ServerSettings.command_data = 0
+        command_count = command_count + 1
+        ServerSettings.command_ready = command_count
+    End Sub
+
+    Private Sub ButtonHtrMagSetHtr_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagSetHtr.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxHtrCurrent.Text
+            ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT
+            ServerSettings.command_data = program_word
+            command_count = command_count + 1
+            ServerSettings.command_ready = command_count
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+    End Sub
+
+    Private Sub ButtonHtrMagSetMag_Click(sender As System.Object, e As System.EventArgs) Handles ButtonHtrMagSetMag.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxMagCurrent.Text
             ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT
             ServerSettings.command_data = program_word
             command_count = command_count + 1
@@ -503,75 +393,23 @@
         End Try
     End Sub
 
-
-    Private Sub ButtonUpdateInput1_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput1.Click
-        Dim program_word As UInt16
-        Try
-            program_word = TextBoxInput1.Text
-            ServerSettings.command_index = update_1_cmd_index
-            ServerSettings.command_data = program_word
-            command_count = command_count + 1
-            ServerSettings.command_ready = command_count
-        Catch ex As Exception
-            MsgBox("You must enter valid Integer data")
-
-        End Try
-    End Sub
-
-    Private Sub ButtonUpdateInput2_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput2.Click
-        Dim program_word As UInt16
-        Try
-            program_word = TextBoxInput2.Text
-            ServerSettings.command_index = update_2_cmd_index
-            ServerSettings.command_data = program_word
-            command_count = command_count + 1
-            ServerSettings.command_ready = command_count
-        Catch ex As Exception
-            MsgBox("You must enter valid Integer data")
-
-        End Try
-    End Sub
-
-
-
-    Private Sub ButtonToggleReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleReset.Click
-        ServerSettings.command_index = ETHERNET_TOGGLE_RESET
+    Private Sub ButtonSF6Open_Click(sender As System.Object, e As EventArgs) Handles ButtonSF6LeakLimitOverride.Click
+        ServerSettings.command_index = ETHERNET_CMD_COOLING_SF6_LEAK_LIMIT_OVERRIDE
         ServerSettings.command_data = 0
         command_count = command_count + 1
         ServerSettings.command_ready = command_count
     End Sub
 
-    Private Sub ButtonToggleHighSpeedDataLogging_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleHighSpeedDataLogging.Click
-        ServerSettings.command_index = ETHERNET_TOGGLE_HIGH_SPEED_LOGGING
+    Private Sub ButtonSF6Close_Click(sender As System.Object, e As EventArgs) Handles ButtonSF6PulseLimitOverride.Click
+        ServerSettings.command_index = ETHERNET_CMD_COOLING_SF6_PULSE_LIMIT_OVERRIDE
         ServerSettings.command_data = 0
         command_count = command_count + 1
         ServerSettings.command_ready = command_count
     End Sub
 
 
-    Private Sub ButtonTogglePulseSyncHV_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTogglePulseSyncHV.Click
-        ServerSettings.command_index = PULSE_SYNC_TOGGLE_HV_ENABLE
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
-    End Sub
-
-    Private Sub ButtonTogglePulseSyncXray_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTogglePulseSyncXray.Click
-        ServerSettings.command_index = PULSE_SYNC_TOGGLE_XRAY_ENABLE
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
-    End Sub
-
-    Private Sub ButtonToggleCoolantFault_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleCoolantFault.Click
-        ServerSettings.command_index = ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
-    End Sub
-
-    Private Sub ButtonBoardCommand_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBoardCommand.Click
-        ServerSettings.command_index = board_command_index
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonSF6BottleReset.Click
+        ServerSettings.command_index = ETHERNET_CMD_COOLING_RESET_BOTTLE_COUNT
         ServerSettings.command_data = 0
         command_count = command_count + 1
         ServerSettings.command_ready = command_count

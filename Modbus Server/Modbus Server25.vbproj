@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\COSORIO.ETM-INC\Documents\P1395\P1395-GUI-Rev2\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,6 +28,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Linac Remote GUI</ProductName>
     <PublisherName>Rapiscan</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>

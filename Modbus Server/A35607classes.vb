@@ -173,7 +173,7 @@ Public Class ETM_CAN_AGILE_CONFIG
     Public agile_dash As UInt16
     Public agile_rev_ascii As UInt16
 
-    ' Configuarion 1
+    ' Configuration 1
     Public serial_number As UInt16
     Public firmware_branch As UInt16
     Public firmware_major_rev As UInt16
