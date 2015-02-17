@@ -1,21 +1,53 @@
 ﻿Public Class frmMain
 
 
+    Public Const REGISTER_HEATER_CURRENT_AT_STANDBY As UInt16 = &H0
+    Public Const REGISTER_ELECTROMAGNET_CURRENT As UInt16 = &H1
+    Public Const REGISTER_HOME_POSITION As UInt16 = &H5
+    Public Const REGISTER_AFC_OFFSET As UInt16 = &H9
+    Public Const REGISTER_HIGH_ENERGY_SET_POINT As UInt16 = &H10
+    Public Const REGISTER_LOW_ENERGY_SET_POINT As UInt16 = &H11
+    Public Const REGISTER_GUN_DRIVER_HEATER_VOLTAGE As UInt16 = &H20
+    Public Const REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H21
+    Public Const REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H22
+    Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE As UInt16 = &H23
+    Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_25_MORE_SF6_PULSES As UInt16 = &H6082
+    Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_SF6_PULSES_WHEN_PRESSURE_BELOW_LIMIT As UInt16 = &H6083
+    Public Const REGISTER_CMD_COOLANT_INTERFACE_SET_SF6_PULSES_IN_BOTTLE As UInt16 = &H6084
+    Public Const REGISTER_SPECIAL_ECB_LOAD_DEFAULT_SETTINGS_TO_EEPROM_AND_REBOOT As UInt16 = &HE080
+    Public Const REGISTER_SPECIAL_ECB_REST_ARC_AND_PULSE_COUNT As UInt16 = &HE081
+    Public Const REGISTER_SPECIAL_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON As UInt16 = &HE082
+    Public Const REGISTER_DEBUG_TOGGLE_RESET As UInt16 = &HEF00
+    Public Const REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = &HEF01
+    Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
+    Public Const REGISTER_DEBUG_TOGGLE_XRAY_ENABLE As UInt16 = &HEF03
+    Public Const REGISTER_DEBUG_TOGGLE_COOLING_FAULT As UInt16 = &HEF04
 
-    Public Const ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT As UInt16 = 0
-    Public Const ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT As UInt16 = 1
-    Public Const ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT As UInt16 = 2
-    Public Const ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT As UInt16 = 3
-    Public Const PULSE_SYNC_SEND_DEFAULT_CMD As UInt16 = 4
 
 
-    Public Const ETHERNET_TOGGLE_RESET As UInt16 = 20
-    Public Const ETHERNET_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = 21
-    Public Const PULSE_SYNC_TOGGLE_HV_ENABLE As UInt16 = 22
-    Public Const PULSE_SYNC_TOGGLE_XRAY_ENABLE As UInt16 = 23
-    Public Const ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT As UInt16 = 24
 
-    Public Const ETHERNET_CMD_UNKNOWN As UInt16 = 255
+
+
+
+
+
+
+
+
+    ' Public Const ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT As UInt16 = 0
+    ' Public Const ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT As UInt16 = 1
+    ' Public Const ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT As UInt16 = 2
+    '  Public Const ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT As UInt16 = 3
+    '  Public Const PULSE_SYNC_SEND_DEFAULT_CMD As UInt16 = 4
+
+
+    '  Public Const ETHERNET_TOGGLE_RESET As UInt16 = 20
+    '  Public Const ETHERNET_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = 21
+    ' Public Const PULSE_SYNC_TOGGLE_HV_ENABLE As UInt16 = 22
+    '   Public Const PULSE_SYNC_TOGGLE_XRAY_ENABLE As UInt16 = 23
+    '  Public Const ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT As UInt16 = 24
+
+    ' Public Const ETHERNET_CMD_UNKNOWN As UInt16 = 255
 
     Public update_1_cmd_index As UInt16
     Public update_2_cmd_index As UInt16
@@ -285,10 +317,10 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                update_1_cmd_index = ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT
+                update_1_cmd_index = REGISTER_HEATER_CURRENT_AT_STANDBY
                 ButtonUpdateInput1.Text = "Set Heater"
 
-                update_2_cmd_index = ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT
+                update_2_cmd_index = REGISTER_ELECTROMAGNET_CURRENT
                 ButtonUpdateInput2.Text = "Set Magnet"
 
                 LabelValue1.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
@@ -436,10 +468,10 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                update_1_cmd_index = ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT
+                update_1_cmd_index = REGISTER_HIGH_ENERGY_SET_POINT
                 ButtonUpdateInput1.Text = "Set High"
 
-                update_2_cmd_index = ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT
+                update_2_cmd_index = REGISTER_LOW_ENERGY_SET_POINT
                 ButtonUpdateInput2.Text = "Set Low"
 
                 LabelValue1.Text = "HVLambda High Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(0)
@@ -512,14 +544,13 @@
 
                 LabelValue1.Text = "LEDs = 0x" & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(12).ToString("x")
 
-                ButtonBoardCommand.Text = "Send Config"
-                board_command_index = PULSE_SYNC_SEND_DEFAULT_CMD
+
 
                 TextBoxInput1.Visible = False
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
-                ButtonBoardCommand.Visible = True
+                ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
                 LabelValue2.Visible = False
@@ -692,45 +723,23 @@
     Public command_count As UInt16
 
 
-
-
-    Private Sub ButtonHtrMagSetMag_Click(sender As System.Object, e As System.EventArgs)
-        Dim program_word As UInt16
-        Try
-            program_word = TextBoxInput2.Text
-            ServerSettings.command_index = ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT
-            ServerSettings.command_data = program_word
-            command_count = command_count + 1
-            ServerSettings.command_ready = command_count
-        Catch ex As Exception
-            MsgBox("You must enter valid Integer data")
-
-        End Try
-    End Sub
-
-
     Private Sub ButtonUpdateInput1_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput1.Click
         Dim program_word As UInt16
         Try
             program_word = TextBoxInput1.Text
-            ServerSettings.command_index = update_1_cmd_index
-            ServerSettings.command_data = program_word
-            command_count = command_count + 1
-            ServerSettings.command_ready = command_count
+            ServerSettings.put_modbus_commands(update_1_cmd_index, program_word, 0, 0)
         Catch ex As Exception
             MsgBox("You must enter valid Integer data")
 
         End Try
     End Sub
+
 
     Private Sub ButtonUpdateInput2_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput2.Click
         Dim program_word As UInt16
         Try
             program_word = TextBoxInput2.Text
-            ServerSettings.command_index = update_2_cmd_index
-            ServerSettings.command_data = program_word
-            command_count = command_count + 1
-            ServerSettings.command_ready = command_count
+            ServerSettings.put_modbus_commands(update_2_cmd_index, program_word, 0, 0)
         Catch ex As Exception
             MsgBox("You must enter valid Integer data")
 
@@ -738,62 +747,46 @@
     End Sub
 
 
-
     Private Sub ButtonToggleReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleReset.Click
-        ServerSettings.command_index = ETHERNET_TOGGLE_RESET
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_RESET, 0, 0, 0)
     End Sub
 
+
     Private Sub ButtonToggleHighSpeedDataLogging_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleHighSpeedDataLogging.Click
-        ServerSettings.command_index = ETHERNET_TOGGLE_HIGH_SPEED_LOGGING
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING, 0, 0, 0)
     End Sub
 
 
     Private Sub ButtonTogglePulseSyncHV_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTogglePulseSyncHV.Click
-        ServerSettings.command_index = PULSE_SYNC_TOGGLE_HV_ENABLE
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_HV_ENABLE, 0, 0, 0)
     End Sub
+
 
     Private Sub ButtonTogglePulseSyncXray_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTogglePulseSyncXray.Click
-        ServerSettings.command_index = PULSE_SYNC_TOGGLE_XRAY_ENABLE
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_XRAY_ENABLE, 0, 0, 0)
     End Sub
 
+
     Private Sub ButtonToggleCoolantFault_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleCoolantFault.Click
-        ServerSettings.command_index = ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_COOLING_FAULT, 0, 0, 0)
     End Sub
 
     Private Sub ButtonBoardCommand_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBoardCommand.Click
-        ServerSettings.command_index = board_command_index
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        ServerSettings.put_modbus_commands(board_command_index, 0, 0, 0)
     End Sub
 
     Private Sub ButtonEEPROMTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEPROMTest.Click
-        ServerSettings.command_index = 5
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        'ServerSettings.command_index = 5
+        'ServerSettings.command_data = 0
+        'command_count = command_count + 1
+        'ServerSettings.command_ready = command_count
     End Sub
 
     Private Sub ButtonEEpromReadTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEpromReadTest.Click
-        ServerSettings.command_index = 6
-        ServerSettings.command_data = 0
-        command_count = command_count + 1
-        ServerSettings.command_ready = command_count
+        'ServerSettings.command_index = 6
+        'ServerSettings.command_data = 0
+        'command_count = command_count + 1
+        'ServerSettings.command_ready = command_count
     End Sub
 
 End Class

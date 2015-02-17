@@ -8,7 +8,11 @@
     MODBUS_WR_MAGNETRON_CURRENT
     MODBUS_WR_PULSE_SYNC
     MODBUS_WR_ETHERNET
-    MODBUS_RD_COMMAND
+    MODBUS_WR_EVENTS
+
+    MODBUS_WR_ONE_CAL_ENTRY
+    MODBUS_WR_PULSE_LOG
+    MODBUS_RD_COMMAND_DETAIL
 
 End Enum
 
@@ -244,3 +248,22 @@ Public Class ETM_ETHERNET_TX_DATA_STRUCTURE
 
 
 End Class
+Public Structure ETM_ETHERNET_CAL_STRUCTURE
+    Public scale As UInt16
+    Public offset As UInt16
+    ' constructor
+
+End Structure
+Public Class ETM_ETHERNET_COMMAND_STRUCTURE
+    Public command_index As UInt16
+    Public data(3) As Int16
+
+    ' constructor
+    Sub New(ByVal index As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
+        command_index = index
+        data(0) = word0
+        data(1) = word1
+        data(2) = word2
+    End Sub
+End Class
+
