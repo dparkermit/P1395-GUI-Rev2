@@ -144,8 +144,6 @@ Partial Class frmMain
         Me.ButtonToggleHighSpeedDataLogging = New System.Windows.Forms.Button()
         Me.ButtonTogglePulseSyncHV = New System.Windows.Forms.Button()
         Me.ButtonTogglePulseSyncXray = New System.Windows.Forms.Button()
-        Me.ButtonEEPROMTest = New System.Windows.Forms.Button()
-        Me.ButtonEEpromReadTest = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBit5 = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSyncBit8 = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSyncBit7 = New System.Windows.Forms.CheckBox()
@@ -179,6 +177,15 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CheckBoxOperateEthernet = New System.Windows.Forms.CheckBox()
         Me.LabelECBState = New System.Windows.Forms.Label()
+        Me.ButtonReadEEprom = New System.Windows.Forms.Button()
+        Me.ButtonWriteEEprom = New System.Windows.Forms.Button()
+        Me.TextBoxEEpromScale = New System.Windows.Forms.TextBox()
+        Me.TextBoxEEpromOffSet = New System.Windows.Forms.TextBox()
+        Me.ComboBoxEEpromRegister = New System.Windows.Forms.ComboBox()
+        Me.LabelEEpromIndex = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -189,6 +196,15 @@ Partial Class frmMain
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.LabelEEpromIndex)
+        Me.GroupBox1.Controls.Add(Me.ComboBoxEEpromRegister)
+        Me.GroupBox1.Controls.Add(Me.TextBoxEEpromOffSet)
+        Me.GroupBox1.Controls.Add(Me.TextBoxEEpromScale)
+        Me.GroupBox1.Controls.Add(Me.ButtonWriteEEprom)
+        Me.GroupBox1.Controls.Add(Me.ButtonReadEEprom)
         Me.GroupBox1.Controls.Add(Me.LabelValueDebugF)
         Me.GroupBox1.Controls.Add(Me.LabelValueDebugE)
         Me.GroupBox1.Controls.Add(Me.LabelValueDebugD)
@@ -294,7 +310,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit2)
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit1)
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit0)
-        Me.GroupBox1.Location = New System.Drawing.Point(2, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, -26)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(765, 620)
         Me.GroupBox1.TabIndex = 1
@@ -1567,24 +1583,6 @@ Partial Class frmMain
         Me.ButtonTogglePulseSyncXray.Text = "Toggle Pulse Sync XRAY bit"
         Me.ButtonTogglePulseSyncXray.UseVisualStyleBackColor = True
         '
-        'ButtonEEPROMTest
-        '
-        Me.ButtonEEPROMTest.Location = New System.Drawing.Point(329, 633)
-        Me.ButtonEEPROMTest.Name = "ButtonEEPROMTest"
-        Me.ButtonEEPROMTest.Size = New System.Drawing.Size(116, 23)
-        Me.ButtonEEPROMTest.TabIndex = 241
-        Me.ButtonEEPROMTest.Text = "EEProm Set Test"
-        Me.ButtonEEPROMTest.UseVisualStyleBackColor = True
-        '
-        'ButtonEEpromReadTest
-        '
-        Me.ButtonEEpromReadTest.Location = New System.Drawing.Point(329, 664)
-        Me.ButtonEEpromReadTest.Name = "ButtonEEpromReadTest"
-        Me.ButtonEEpromReadTest.Size = New System.Drawing.Size(116, 23)
-        Me.ButtonEEpromReadTest.TabIndex = 242
-        Me.ButtonEEpromReadTest.Text = "EEProm Read Test"
-        Me.ButtonEEpromReadTest.UseVisualStyleBackColor = True
-        '
         'CheckBoxSyncBit5
         '
         Me.CheckBoxSyncBit5.AutoSize = True
@@ -1940,11 +1938,94 @@ Partial Class frmMain
         Me.LabelECBState.TabIndex = 294
         Me.LabelECBState.Text = "ECB State"
         '
+        'ButtonReadEEprom
+        '
+        Me.ButtonReadEEprom.Location = New System.Drawing.Point(161, 564)
+        Me.ButtonReadEEprom.Name = "ButtonReadEEprom"
+        Me.ButtonReadEEprom.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonReadEEprom.TabIndex = 257
+        Me.ButtonReadEEprom.Text = "Read EEProm"
+        Me.ButtonReadEEprom.UseVisualStyleBackColor = True
+        '
+        'ButtonWriteEEprom
+        '
+        Me.ButtonWriteEEprom.Location = New System.Drawing.Point(161, 593)
+        Me.ButtonWriteEEprom.Name = "ButtonWriteEEprom"
+        Me.ButtonWriteEEprom.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonWriteEEprom.TabIndex = 258
+        Me.ButtonWriteEEprom.Text = "Write EEProm"
+        Me.ButtonWriteEEprom.UseVisualStyleBackColor = True
+        '
+        'TextBoxEEpromScale
+        '
+        Me.TextBoxEEpromScale.Location = New System.Drawing.Point(6, 563)
+        Me.TextBoxEEpromScale.MaxLength = 7
+        Me.TextBoxEEpromScale.Name = "TextBoxEEpromScale"
+        Me.TextBoxEEpromScale.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxEEpromScale.TabIndex = 259
+        '
+        'TextBoxEEpromOffSet
+        '
+        Me.TextBoxEEpromOffSet.Location = New System.Drawing.Point(6, 592)
+        Me.TextBoxEEpromOffSet.MaxLength = 7
+        Me.TextBoxEEpromOffSet.Name = "TextBoxEEpromOffSet"
+        Me.TextBoxEEpromOffSet.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxEEpromOffSet.TabIndex = 260
+        '
+        'ComboBoxEEpromRegister
+        '
+        Me.ComboBoxEEpromRegister.FormattingEnabled = True
+        Me.ComboBoxEEpromRegister.Items.AddRange(New Object() {"ADC AN0 ", "ADC AN0 - External", "ADC AN1 ", "ADC AN1 - External", "ADC AN2 ", "ADC AN2 - External", "ADC AN3 ", "ADC AN3 - External", "ADC AN4 ", "ADC AN4 - External", "ADC AN5 ", "ADC AN5 - External", "ADC AN6 ", "ADC AN6 - External", "ADC AN7 ", "ADC AN7 - External", "ADC AN8 ", "ADC AN8 - External", "ADC AN9 ", "ADC AN9 - External", "ADC AN10 ", "ADC AN10 - External", "ADC AN11 ", "ADC AN11 - External", "ADC AN12 ", "ADC AN12 - External", "ADC AN13 ", "ADC AN13 - External", "ADC AN14 ", "ADC AN14 - External", "ADC AN15 ", "ADC AN15 - External", "DAC CH0", "DAC CH0 - External", "DAC CH1", "DAC CH1 - External", "DAC CH2", "DAC CH2 - External", "DAC CH3", "DAC CH3 - External", "DAC CH4", "DAC CH4 - External", "DAC CH5", "DAC CH5 - External", "DAC CH6", "DAC CH6 - External", "DAC CH7", "DAC CH7 - External"})
+        Me.ComboBoxEEpromRegister.Location = New System.Drawing.Point(6, 526)
+        Me.ComboBoxEEpromRegister.Name = "ComboBoxEEpromRegister"
+        Me.ComboBoxEEpromRegister.Size = New System.Drawing.Size(171, 21)
+        Me.ComboBoxEEpromRegister.TabIndex = 261
+        Me.ComboBoxEEpromRegister.Text = "Select Register"
+        '
+        'LabelEEpromIndex
+        '
+        Me.LabelEEpromIndex.AutoSize = True
+        Me.LabelEEpromIndex.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelEEpromIndex.Location = New System.Drawing.Point(183, 531)
+        Me.LabelEEpromIndex.Name = "LabelEEpromIndex"
+        Me.LabelEEpromIndex.Size = New System.Drawing.Size(53, 16)
+        Me.LabelEEpromIndex.TabIndex = 262
+        Me.LabelEEpromIndex.Text = "Index = "
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(112, 596)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(42, 16)
+        Me.Label14.TabIndex = 263
+        Me.Label14.Text = "Offset"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(112, 567)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(43, 16)
+        Me.Label15.TabIndex = 264
+        Me.Label15.Text = "Scale"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(283, 564)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(103, 23)
+        Me.Button1.TabIndex = 265
+        Me.Button1.Text = "Reload Defaults"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1140, 794)
+        Me.ClientSize = New System.Drawing.Size(1140, 742)
         Me.Controls.Add(Me.LabelECBState)
         Me.Controls.Add(Me.CheckBoxOperateEthernet)
         Me.Controls.Add(Me.Label13)
@@ -1969,11 +2050,9 @@ Partial Class frmMain
         Me.Controls.Add(Me.CheckBoxPulseSyncConnected)
         Me.Controls.Add(Me.CheckBoxSyncBit8)
         Me.Controls.Add(Me.CheckBoxPulseCurrentMonitorConnected)
-        Me.Controls.Add(Me.ButtonEEpromReadTest)
         Me.Controls.Add(Me.CheckBoxGunDriverConnected)
         Me.Controls.Add(Me.CheckBoxSyncBit7)
         Me.Controls.Add(Me.CheckBoxHtrMagConnected)
-        Me.Controls.Add(Me.ButtonEEPROMTest)
         Me.Controls.Add(Me.CheckBoxCoolingConnected)
         Me.Controls.Add(Me.CheckBoxSyncBit6)
         Me.Controls.Add(Me.CheckBoxAFCConnected)
@@ -2119,8 +2198,6 @@ Partial Class frmMain
     Friend WithEvents LabelValueDebug2 As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebug1 As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebug0 As System.Windows.Forms.Label
-    Friend WithEvents ButtonEEPROMTest As System.Windows.Forms.Button
-    Friend WithEvents ButtonEEpromReadTest As System.Windows.Forms.Button
     Friend WithEvents CheckBoxSyncBit4 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxSyncBit3 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxSyncBit2 As System.Windows.Forms.CheckBox
@@ -2159,4 +2236,13 @@ Partial Class frmMain
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents CheckBoxOperateEthernet As System.Windows.Forms.CheckBox
     Friend WithEvents LabelECBState As System.Windows.Forms.Label
+    Friend WithEvents TextBoxEEpromOffSet As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxEEpromScale As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonWriteEEprom As System.Windows.Forms.Button
+    Friend WithEvents ButtonReadEEprom As System.Windows.Forms.Button
+    Friend WithEvents ComboBoxEEpromRegister As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelEEpromIndex As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

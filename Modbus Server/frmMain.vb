@@ -54,6 +54,7 @@
 
     Public board_command_index As UInt16
 
+    Public EEProm_index As UInt16
 
 
     Dim board_index As Byte = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA
@@ -355,7 +356,7 @@
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
                 CheckBoxStatusBit0.Text = "X-Ray Dis"
-                CheckBoxStatusBit1.Text = "Unused"
+                CheckBoxStatusBit1.Text = "Personality Set"
                 CheckBoxStatusBit2.Text = "Unused"
                 CheckBoxStatusBit3.Text = "Unused"
                 CheckBoxStatusBit4.Text = "Unused"
@@ -399,12 +400,13 @@
 
 
 
-                LabelValue1.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
-                LabelValue2.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(1)
-                LabelValue3.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(2)
-                LabelValue4.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(3)
-                LabelValue5.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
-                LabelValue6.Text = " = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(5)
+                LabelValue1.Text = "Seconds Powered = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(3) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(2)
+                LabelValue2.Text = "Seconds HV On = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(5) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
+                LabelValue3.Text = "Seconds Xray On = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(7) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(6)
+                LabelValue4.Text = "Magnetron Pwr = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(10)
+                LabelValue5.Text = "Thyratron Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(11)
+                LabelValue6.Text = "Magnetron Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(12)
+                LabelValue7.Text = "Gun Driver Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(13)
 
                 TextBoxInput1.Visible = False
                 ButtonUpdateInput1.Visible = False
@@ -412,13 +414,13 @@
                 ButtonUpdateInput2.Visible = False
                 ButtonBoardCommand.Visible = False
 
-                LabelValue1.Visible = False
-                LabelValue2.Visible = False
-                LabelValue3.Visible = False
-                LabelValue4.Visible = False
-                LabelValue5.Visible = False
-                LabelValue6.Visible = False
-                LabelValue7.Visible = False
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = True
+                LabelValue7.Visible = True
                 LabelValue8.Visible = False
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
@@ -479,7 +481,9 @@
                 LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(2)
                 LabelValue4.Text = "Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(3)
                 LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(4)
-                LabelValue6.Text = "Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(5)
+                LabelValue6.Text = "Lambda Temperature = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(5)
+                LabelValue7.Text = "Readback High Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(6)
+                LabelValue8.Text = "Readback Low Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(7)
 
                 TextBoxInput1.Visible = True
                 ButtonUpdateInput1.Visible = True
@@ -493,8 +497,8 @@
                 LabelValue4.Visible = True
                 LabelValue5.Visible = True
                 LabelValue6.Visible = True
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
+                LabelValue7.Visible = True
+                LabelValue8.Visible = True
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
 
@@ -631,6 +635,79 @@
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
 
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
+                CheckBoxStatusBit0.Text = "SF6 Relay Closed"
+                CheckBoxStatusBit1.Text = "Unused"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit6.Text = "Unused"
+                CheckBoxStatusBit7.Text = "Unused"
+
+                CheckBoxFaultBit0.Text = "Unused"
+                CheckBoxFaultBit1.Text = "Magnetron Flow"
+                CheckBoxFaultBit2.Text = "HVPS Flow"
+                CheckBoxFaultBit3.Text = "Circulator Flow"
+                CheckBoxFaultBit4.Text = "Linac FLow"
+                CheckBoxFaultBit5.Text = "HX Flow"
+                CheckBoxFaultBit6.Text = "Cabinet SW"
+                CheckBoxFaultBit7.Text = "Cabient Temp"
+                CheckBoxFaultBit8.Text = "Coolant Ovr Temp"
+                CheckBoxFaultBit9.Text = "Coolant Under Temp"
+                CheckBoxFaultBitA.Text = "Linac Temp"
+                CheckBoxFaultBitB.Text = "SF6 SW"
+                CheckBoxFaultBitC.Text = "SF6 Pressure"
+                CheckBoxFaultBitD.Text = "Unused"
+                CheckBoxFaultBitE.Text = "Unused"
+                CheckBoxFaultBitF.Text = "Unused"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
+                LabelValue1.Text = "HVPS Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(0)
+                LabelValue2.Text = "Magnetron Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(1)
+                LabelValue3.Text = "Linac Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(2)
+                LabelValue4.Text = "Circulator Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(3)
+                LabelValue5.Text = "HX Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(4)
+                LabelValue6.Text = "Spare Flow = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(5)
+                LabelValue7.Text = "Coolant Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(6)
+                LabelValue8.Text = "SF6 Pressure = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(7)
+                LabelValue9.Text = "Cabinent Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(8)
+                LabelValue10.Text = "Linac Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(9)
+
+
+
+                TextBoxInput1.Visible = False
+                ButtonUpdateInput1.Visible = False
+                TextBoxInput2.Visible = False
+                ButtonUpdateInput2.Visible = False
+                ButtonBoardCommand.Visible = False
+
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = True
+                LabelValue7.Visible = True
+                LabelValue8.Visible = True
+                LabelValue9.Visible = True
+                LabelValue10.Visible = True
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
                 CheckBoxStatusBit1.Text = "Status 1"
@@ -717,6 +794,8 @@
 
     Private Sub cboIndex_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboIndex.SelectedIndexChanged
         board_index = cboIndex.SelectedIndex + 1
+        TextBoxInput1.Text = ""
+        TextBoxInput2.Text = ""
     End Sub
 
 
@@ -775,18 +854,107 @@
         ServerSettings.put_modbus_commands(board_command_index, 0, 0, 0)
     End Sub
 
-    Private Sub ButtonEEPROMTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEPROMTest.Click
-        'ServerSettings.command_index = 5
-        'ServerSettings.command_data = 0
-        'command_count = command_count + 1
-        'ServerSettings.command_ready = command_count
+
+    Public selected_board_index As UInt16
+
+    Private Sub ComboBoxEEpromRegister_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxEEpromRegister.SelectedIndexChanged
+        Dim command_index As UInt16
+        If board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET Then
+            command_index = ETM_CAN_ADDR_ETHERNET_BOARD
+            selected_board_index = ETM_CAN_ADDR_ETHERNET_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP Then
+            command_index = ETM_CAN_ADDR_ION_PUMP_BOARD
+            selected_board_index = ETM_CAN_ADDR_ION_PUMP_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
+            command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
+            selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC Then
+            command_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
+            selected_board_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
+            command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
+            selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_AFC Then
+            command_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
+            selected_board_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING Then
+            command_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
+            selected_board_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET Then
+            command_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
+            selected_board_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
+        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER Then
+            command_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
+            selected_board_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
+        End If
+
+        EEProm_index = ComboBoxEEpromRegister.SelectedIndex * 2
+        command_index = command_index * 2 ^ 12
+        EEProm_index = command_index + EEProm_index + &H100
+        LabelEEpromIndex.Text = "Index = " & EEProm_index.ToString("x")
     End Sub
 
-    Private Sub ButtonEEpromReadTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEEpromReadTest.Click
-        'ServerSettings.command_index = 6
-        'ServerSettings.command_data = 0
-        'command_count = command_count + 1
-        'ServerSettings.command_ready = command_count
+    Private Sub ButtonReadEEprom_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReadEEprom.Click
+        Dim offset As Double
+        TextBoxEEpromScale.Text = Math.Round((ServerSettings.ETMEthernetCalStructure(EEProm_index).scale / 2 ^ 15), 5)
+        offset = ServerSettings.ETMEthernetCalStructure(EEProm_index).offset
+        If offset > 32767 Then
+            offset = offset - 2 ^ 16
+        End If
+        TextBoxEEpromOffSet.Text = offset
+        ServerSettings.put_modbus_commands((&H800 + EEProm_index), 0, 0, 0)
     End Sub
 
+
+
+    Public Const ETM_CAN_ADDR_ETHERNET_BOARD = 14
+    Public Const ETM_CAN_ADDR_ION_PUMP_BOARD = 1
+    Public Const ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD = 2
+    Public Const ETM_CAN_ADDR_PULSE_SYNC_BOARD = 3
+    Public Const ETM_CAN_ADDR_HV_LAMBDA_BOARD = 4
+    Public Const ETM_CAN_ADDR_AFC_CONTROL_BOARD = 5
+    Public Const ETM_CAN_ADDR_COOLING_INTERFACE_BOARD = 6
+    Public Const ETM_CAN_ADDR_HEATER_MAGNET_BOARD = 7
+    Public Const ETM_CAN_ADDR_GUN_DRIVER_BOARD = 8
+
+
+    Private Sub ButtonWriteEEprom_Click(sender As System.Object, e As System.EventArgs) Handles ButtonWriteEEprom.Click
+        Dim eeprom_scale_float As Double
+        Dim eeprom_offset_float As Double
+        Dim eeprom_scale As UInt16
+        Dim eeprom_offset As UInt16
+
+        eeprom_scale_float = TextBoxEEpromScale.Text
+        eeprom_scale_float = eeprom_scale_float * 2 ^ 15
+        If eeprom_scale_float < 0 Then
+            eeprom_scale_float = 0
+        End If
+        If eeprom_scale_float > 65535 Then
+            eeprom_scale_float = 65535
+        End If
+
+        eeprom_offset_float = TextBoxEEpromOffSet.Text
+        If eeprom_offset_float > 32767 Then
+            eeprom_offset_float = 32767
+        End If
+        If eeprom_offset_float < -32768 Then
+            eeprom_offset_float = -32768
+        End If
+        If eeprom_offset_float < 0 Then
+            eeprom_offset_float = eeprom_offset_float + 2 ^ 16
+        End If
+
+
+        eeprom_scale = CUShort(eeprom_scale_float)
+        eeprom_offset = CUShort(eeprom_offset_float)
+
+
+        'eeprom_scale = eeprom_scale_float
+        'eeprom_offset = eeprom_offset_float
+        ServerSettings.put_modbus_commands(EEProm_index, 0, eeprom_scale, eeprom_offset)
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_LOAD_DEFAULT_SETTINGS_TO_EEPROM_AND_REBOOT, selected_board_index, 0, 0)
+    End Sub
 End Class

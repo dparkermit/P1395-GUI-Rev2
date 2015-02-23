@@ -256,7 +256,7 @@ Public Structure ETM_ETHERNET_CAL_STRUCTURE
 End Structure
 Public Class ETM_ETHERNET_COMMAND_STRUCTURE
     Public command_index As UInt16
-    Public data(3) As Int16
+    Public data(3) As UInt16
 
     ' constructor
     Sub New(ByVal index As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
