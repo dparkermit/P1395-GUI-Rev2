@@ -25,6 +25,15 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.LabelEEpromIndex = New System.Windows.Forms.Label()
+        Me.ComboBoxEEpromRegister = New System.Windows.Forms.ComboBox()
+        Me.TextBoxEEpromOffSet = New System.Windows.Forms.TextBox()
+        Me.TextBoxEEpromScale = New System.Windows.Forms.TextBox()
+        Me.ButtonWriteEEprom = New System.Windows.Forms.Button()
+        Me.ButtonReadEEprom = New System.Windows.Forms.Button()
         Me.LabelValueDebugF = New System.Windows.Forms.Label()
         Me.LabelValueDebugE = New System.Windows.Forms.Label()
         Me.LabelValueDebugD = New System.Windows.Forms.Label()
@@ -177,15 +186,7 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CheckBoxOperateEthernet = New System.Windows.Forms.CheckBox()
         Me.LabelECBState = New System.Windows.Forms.Label()
-        Me.ButtonReadEEprom = New System.Windows.Forms.Button()
-        Me.ButtonWriteEEprom = New System.Windows.Forms.Button()
-        Me.TextBoxEEpromScale = New System.Windows.Forms.TextBox()
-        Me.TextBoxEEpromOffSet = New System.Windows.Forms.TextBox()
-        Me.ComboBoxEEpromRegister = New System.Windows.Forms.ComboBox()
-        Me.LabelEEpromIndex = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonResetSlave = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -196,6 +197,7 @@ Partial Class frmMain
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.GroupBox1.Controls.Add(Me.ButtonResetSlave)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.Label14)
@@ -316,6 +318,89 @@ Partial Class frmMain
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(283, 564)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(103, 23)
+        Me.Button1.TabIndex = 265
+        Me.Button1.Text = "Reload Defaults"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(112, 567)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(43, 16)
+        Me.Label15.TabIndex = 264
+        Me.Label15.Text = "Scale"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(112, 596)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(42, 16)
+        Me.Label14.TabIndex = 263
+        Me.Label14.Text = "Offset"
+        '
+        'LabelEEpromIndex
+        '
+        Me.LabelEEpromIndex.AutoSize = True
+        Me.LabelEEpromIndex.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelEEpromIndex.Location = New System.Drawing.Point(183, 531)
+        Me.LabelEEpromIndex.Name = "LabelEEpromIndex"
+        Me.LabelEEpromIndex.Size = New System.Drawing.Size(53, 16)
+        Me.LabelEEpromIndex.TabIndex = 262
+        Me.LabelEEpromIndex.Text = "Index = "
+        '
+        'ComboBoxEEpromRegister
+        '
+        Me.ComboBoxEEpromRegister.FormattingEnabled = True
+        Me.ComboBoxEEpromRegister.Items.AddRange(New Object() {"ADC AN0 ", "ADC AN0 - External", "ADC AN1 ", "ADC AN1 - External", "ADC AN2 ", "ADC AN2 - External", "ADC AN3 ", "ADC AN3 - External", "ADC AN4 ", "ADC AN4 - External", "ADC AN5 ", "ADC AN5 - External", "ADC AN6 ", "ADC AN6 - External", "ADC AN7 ", "ADC AN7 - External", "ADC AN8 ", "ADC AN8 - External", "ADC AN9 ", "ADC AN9 - External", "ADC AN10 ", "ADC AN10 - External", "ADC AN11 ", "ADC AN11 - External", "ADC AN12 ", "ADC AN12 - External", "ADC AN13 ", "ADC AN13 - External", "ADC AN14 ", "ADC AN14 - External", "ADC AN15 ", "ADC AN15 - External", "DAC CH0", "DAC CH0 - External", "DAC CH1", "DAC CH1 - External", "DAC CH2", "DAC CH2 - External", "DAC CH3", "DAC CH3 - External", "DAC CH4", "DAC CH4 - External", "DAC CH5", "DAC CH5 - External", "DAC CH6", "DAC CH6 - External", "DAC CH7", "DAC CH7 - External"})
+        Me.ComboBoxEEpromRegister.Location = New System.Drawing.Point(6, 526)
+        Me.ComboBoxEEpromRegister.Name = "ComboBoxEEpromRegister"
+        Me.ComboBoxEEpromRegister.Size = New System.Drawing.Size(171, 21)
+        Me.ComboBoxEEpromRegister.TabIndex = 261
+        Me.ComboBoxEEpromRegister.Text = "Select Register"
+        '
+        'TextBoxEEpromOffSet
+        '
+        Me.TextBoxEEpromOffSet.Location = New System.Drawing.Point(6, 592)
+        Me.TextBoxEEpromOffSet.MaxLength = 7
+        Me.TextBoxEEpromOffSet.Name = "TextBoxEEpromOffSet"
+        Me.TextBoxEEpromOffSet.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxEEpromOffSet.TabIndex = 260
+        '
+        'TextBoxEEpromScale
+        '
+        Me.TextBoxEEpromScale.Location = New System.Drawing.Point(6, 563)
+        Me.TextBoxEEpromScale.MaxLength = 7
+        Me.TextBoxEEpromScale.Name = "TextBoxEEpromScale"
+        Me.TextBoxEEpromScale.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxEEpromScale.TabIndex = 259
+        '
+        'ButtonWriteEEprom
+        '
+        Me.ButtonWriteEEprom.Location = New System.Drawing.Point(161, 593)
+        Me.ButtonWriteEEprom.Name = "ButtonWriteEEprom"
+        Me.ButtonWriteEEprom.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonWriteEEprom.TabIndex = 258
+        Me.ButtonWriteEEprom.Text = "Write EEProm"
+        Me.ButtonWriteEEprom.UseVisualStyleBackColor = True
+        '
+        'ButtonReadEEprom
+        '
+        Me.ButtonReadEEprom.Location = New System.Drawing.Point(161, 564)
+        Me.ButtonReadEEprom.Name = "ButtonReadEEprom"
+        Me.ButtonReadEEprom.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonReadEEprom.TabIndex = 257
+        Me.ButtonReadEEprom.Text = "Read EEProm"
+        Me.ButtonReadEEprom.UseVisualStyleBackColor = True
         '
         'LabelValueDebugF
         '
@@ -1938,88 +2023,14 @@ Partial Class frmMain
         Me.LabelECBState.TabIndex = 294
         Me.LabelECBState.Text = "ECB State"
         '
-        'ButtonReadEEprom
+        'ButtonResetSlave
         '
-        Me.ButtonReadEEprom.Location = New System.Drawing.Point(161, 564)
-        Me.ButtonReadEEprom.Name = "ButtonReadEEprom"
-        Me.ButtonReadEEprom.Size = New System.Drawing.Size(103, 23)
-        Me.ButtonReadEEprom.TabIndex = 257
-        Me.ButtonReadEEprom.Text = "Read EEProm"
-        Me.ButtonReadEEprom.UseVisualStyleBackColor = True
-        '
-        'ButtonWriteEEprom
-        '
-        Me.ButtonWriteEEprom.Location = New System.Drawing.Point(161, 593)
-        Me.ButtonWriteEEprom.Name = "ButtonWriteEEprom"
-        Me.ButtonWriteEEprom.Size = New System.Drawing.Size(103, 23)
-        Me.ButtonWriteEEprom.TabIndex = 258
-        Me.ButtonWriteEEprom.Text = "Write EEProm"
-        Me.ButtonWriteEEprom.UseVisualStyleBackColor = True
-        '
-        'TextBoxEEpromScale
-        '
-        Me.TextBoxEEpromScale.Location = New System.Drawing.Point(6, 563)
-        Me.TextBoxEEpromScale.MaxLength = 7
-        Me.TextBoxEEpromScale.Name = "TextBoxEEpromScale"
-        Me.TextBoxEEpromScale.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxEEpromScale.TabIndex = 259
-        '
-        'TextBoxEEpromOffSet
-        '
-        Me.TextBoxEEpromOffSet.Location = New System.Drawing.Point(6, 592)
-        Me.TextBoxEEpromOffSet.MaxLength = 7
-        Me.TextBoxEEpromOffSet.Name = "TextBoxEEpromOffSet"
-        Me.TextBoxEEpromOffSet.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxEEpromOffSet.TabIndex = 260
-        '
-        'ComboBoxEEpromRegister
-        '
-        Me.ComboBoxEEpromRegister.FormattingEnabled = True
-        Me.ComboBoxEEpromRegister.Items.AddRange(New Object() {"ADC AN0 ", "ADC AN0 - External", "ADC AN1 ", "ADC AN1 - External", "ADC AN2 ", "ADC AN2 - External", "ADC AN3 ", "ADC AN3 - External", "ADC AN4 ", "ADC AN4 - External", "ADC AN5 ", "ADC AN5 - External", "ADC AN6 ", "ADC AN6 - External", "ADC AN7 ", "ADC AN7 - External", "ADC AN8 ", "ADC AN8 - External", "ADC AN9 ", "ADC AN9 - External", "ADC AN10 ", "ADC AN10 - External", "ADC AN11 ", "ADC AN11 - External", "ADC AN12 ", "ADC AN12 - External", "ADC AN13 ", "ADC AN13 - External", "ADC AN14 ", "ADC AN14 - External", "ADC AN15 ", "ADC AN15 - External", "DAC CH0", "DAC CH0 - External", "DAC CH1", "DAC CH1 - External", "DAC CH2", "DAC CH2 - External", "DAC CH3", "DAC CH3 - External", "DAC CH4", "DAC CH4 - External", "DAC CH5", "DAC CH5 - External", "DAC CH6", "DAC CH6 - External", "DAC CH7", "DAC CH7 - External"})
-        Me.ComboBoxEEpromRegister.Location = New System.Drawing.Point(6, 526)
-        Me.ComboBoxEEpromRegister.Name = "ComboBoxEEpromRegister"
-        Me.ComboBoxEEpromRegister.Size = New System.Drawing.Size(171, 21)
-        Me.ComboBoxEEpromRegister.TabIndex = 261
-        Me.ComboBoxEEpromRegister.Text = "Select Register"
-        '
-        'LabelEEpromIndex
-        '
-        Me.LabelEEpromIndex.AutoSize = True
-        Me.LabelEEpromIndex.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelEEpromIndex.Location = New System.Drawing.Point(183, 531)
-        Me.LabelEEpromIndex.Name = "LabelEEpromIndex"
-        Me.LabelEEpromIndex.Size = New System.Drawing.Size(53, 16)
-        Me.LabelEEpromIndex.TabIndex = 262
-        Me.LabelEEpromIndex.Text = "Index = "
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(112, 596)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(42, 16)
-        Me.Label14.TabIndex = 263
-        Me.Label14.Text = "Offset"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(112, 567)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(43, 16)
-        Me.Label15.TabIndex = 264
-        Me.Label15.Text = "Scale"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(283, 564)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 23)
-        Me.Button1.TabIndex = 265
-        Me.Button1.Text = "Reload Defaults"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonResetSlave.Location = New System.Drawing.Point(283, 593)
+        Me.ButtonResetSlave.Name = "ButtonResetSlave"
+        Me.ButtonResetSlave.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonResetSlave.TabIndex = 266
+        Me.ButtonResetSlave.Text = "Reset Slave"
+        Me.ButtonResetSlave.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -2245,4 +2256,5 @@ Partial Class frmMain
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ButtonResetSlave As System.Windows.Forms.Button
 End Class
