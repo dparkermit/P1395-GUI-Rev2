@@ -23,7 +23,7 @@
     Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
     Public Const REGISTER_DEBUG_TOGGLE_XRAY_ENABLE As UInt16 = &HEF03
     Public Const REGISTER_DEBUG_TOGGLE_COOLING_FAULT As UInt16 = &HEF04
-
+    Public Const REGISTER_DEBUG_TOGGLE_RESET_DEBUG As UInt16 = &HEF05
 
 
 
@@ -209,7 +209,7 @@
             LabelValueDebugF.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
 
             ' Update the current Sync Bits
-            Dim Sync_data As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).debug_data.debug_F
+            Dim Sync_data As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(14)
             CheckBoxSyncBit0.Checked = Sync_data And &H1
             CheckBoxSyncBit1.Checked = Sync_data And &H2
             CheckBoxSyncBit2.Checked = Sync_data And &H4
@@ -218,6 +218,7 @@
             CheckBoxSyncBit5.Checked = Sync_data And &H20
             CheckBoxSyncBit6.Checked = Sync_data And &H40
             CheckBoxSyncBit7.Checked = Sync_data And &H80
+            CheckBoxSyncBitF.Checked = Sync_data And &H8000
 
             ' Update the connected Boards
             'Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
@@ -326,15 +327,20 @@
                 ButtonUpdateInput2.Text = "Set Magnet"
 
                 LabelValue1.Text = "Magnet Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(0)
-                LabelValue2.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
-                LabelValue3.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
-                LabelValue4.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
-                LabelValue5.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
-                LabelValue6.Text = "Mag Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(5)
-                LabelValue7.Text = "Heater Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(6)
-                LabelValue8.Text = "Heater Vol Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(7)
-                LabelValue9.Text = "Magnet Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(8)
-                LabelValue10.Text = "Magnet Vol Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(9)
+                LabelValue2.Text = "Magnet Set Readback= " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(8)
+                LabelValue3.Text = "Mag Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(4)
+                LabelValue4.Text = "Mag Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(5)
+
+                LabelValue6.Text = "Heater Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(1)
+                LabelValue7.Text = "Heater Scaled Set = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(10)
+                LabelValue8.Text = "Heater Set Readback = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(6)
+                LabelValue9.Text = "Htr Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(2)
+                LabelValue10.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
+
+
+                
+
+
 
 
                 TextBoxInput1.Visible = True
@@ -347,7 +353,7 @@
                 LabelValue2.Visible = True
                 LabelValue3.Visible = True
                 LabelValue4.Visible = True
-                LabelValue5.Visible = True
+                LabelValue5.Visible = False
                 LabelValue6.Visible = True
                 LabelValue7.Visible = True
                 LabelValue8.Visible = True
@@ -382,18 +388,18 @@
                 CheckBoxFaultBitE.Text = "I pulse"
                 CheckBoxFaultBitF.Text = "Pulse Sync"
 
-                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug0.Text = "State = "
                 LabelDebug1.Text = "Debug 1 = "
                 LabelDebug2.Text = "Debug 2 = "
                 LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
+                LabelDebug4.Text = "Ion Pump = "
+                LabelDebug5.Text = "Mag Current = "
+                LabelDebug6.Text = "Pulse Sync = "
+                LabelDebug7.Text = "HV Lambda = "
+                LabelDebug8.Text = "AFC = "
+                LabelDebug9.Text = "Cooling = "
+                LabelDebugA.Text = "Htr Mag = "
+                LabelDebugB.Text = "Gun Drv = "
                 LabelDebugC.Text = "Debug C = "
                 LabelDebugD.Text = "Debug D = "
                 LabelDebugE.Text = "Debug E = "
@@ -851,6 +857,11 @@
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_COOLING_FAULT, 0, 0, 0)
     End Sub
 
+    Private Sub ButtonToggleResetDebug_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleResetDebug.Click
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_RESET_DEBUG, 0, 0, 0)
+    End Sub
+
+
     Private Sub ButtonBoardCommand_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBoardCommand.Click
         ServerSettings.put_modbus_commands(board_command_index, 0, 0, 0)
     End Sub
@@ -962,4 +973,6 @@
     Private Sub ButtonResetSlave_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetSlave.Click
         ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_RESET_SLAVE, selected_board_index, 0, 0)
     End Sub
+
+
 End Class

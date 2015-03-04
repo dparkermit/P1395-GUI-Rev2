@@ -25,6 +25,7 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ButtonResetSlave = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -186,7 +187,8 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CheckBoxOperateEthernet = New System.Windows.Forms.CheckBox()
         Me.LabelECBState = New System.Windows.Forms.Label()
-        Me.ButtonResetSlave = New System.Windows.Forms.Button()
+        Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
+        Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -312,12 +314,21 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit2)
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit1)
         Me.GroupBox1.Controls.Add(Me.CheckBoxControlBit0)
-        Me.GroupBox1.Location = New System.Drawing.Point(2, -26)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 22)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(765, 620)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
+        '
+        'ButtonResetSlave
+        '
+        Me.ButtonResetSlave.Location = New System.Drawing.Point(283, 593)
+        Me.ButtonResetSlave.Name = "ButtonResetSlave"
+        Me.ButtonResetSlave.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonResetSlave.TabIndex = 266
+        Me.ButtonResetSlave.Text = "Reset Slave"
+        Me.ButtonResetSlave.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -1528,7 +1539,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit4.AutoSize = True
         Me.CheckBoxSyncBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit4.Location = New System.Drawing.Point(187, 697)
+        Me.CheckBoxSyncBit4.Location = New System.Drawing.Point(185, 770)
         Me.CheckBoxSyncBit4.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit4.Name = "CheckBoxSyncBit4"
         Me.CheckBoxSyncBit4.Size = New System.Drawing.Size(100, 20)
@@ -1540,7 +1551,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit3.AutoSize = True
         Me.CheckBoxSyncBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit3.Location = New System.Drawing.Point(187, 681)
+        Me.CheckBoxSyncBit3.Location = New System.Drawing.Point(185, 741)
         Me.CheckBoxSyncBit3.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit3.Name = "CheckBoxSyncBit3"
         Me.CheckBoxSyncBit3.Size = New System.Drawing.Size(110, 20)
@@ -1552,7 +1563,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit2.AutoSize = True
         Me.CheckBoxSyncBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit2.Location = New System.Drawing.Point(187, 665)
+        Me.CheckBoxSyncBit2.Location = New System.Drawing.Point(185, 713)
         Me.CheckBoxSyncBit2.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit2.Name = "CheckBoxSyncBit2"
         Me.CheckBoxSyncBit2.Size = New System.Drawing.Size(93, 20)
@@ -1564,7 +1575,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit1.AutoSize = True
         Me.CheckBoxSyncBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit1.Location = New System.Drawing.Point(187, 649)
+        Me.CheckBoxSyncBit1.Location = New System.Drawing.Point(185, 684)
         Me.CheckBoxSyncBit1.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit1.Name = "CheckBoxSyncBit1"
         Me.CheckBoxSyncBit1.Size = New System.Drawing.Size(90, 20)
@@ -1576,7 +1587,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit0.AutoSize = True
         Me.CheckBoxSyncBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit0.Location = New System.Drawing.Point(187, 633)
+        Me.CheckBoxSyncBit0.Location = New System.Drawing.Point(185, 655)
         Me.CheckBoxSyncBit0.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit0.Name = "CheckBoxSyncBit0"
         Me.CheckBoxSyncBit0.Size = New System.Drawing.Size(81, 20)
@@ -1672,7 +1683,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit5.AutoSize = True
         Me.CheckBoxSyncBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit5.Location = New System.Drawing.Point(187, 713)
+        Me.CheckBoxSyncBit5.Location = New System.Drawing.Point(314, 655)
         Me.CheckBoxSyncBit5.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit5.Name = "CheckBoxSyncBit5"
         Me.CheckBoxSyncBit5.Size = New System.Drawing.Size(74, 20)
@@ -1684,7 +1695,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit8.AutoSize = True
         Me.CheckBoxSyncBit8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit8.Location = New System.Drawing.Point(187, 761)
+        Me.CheckBoxSyncBit8.Location = New System.Drawing.Point(314, 703)
         Me.CheckBoxSyncBit8.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit8.Name = "CheckBoxSyncBit8"
         Me.CheckBoxSyncBit8.Size = New System.Drawing.Size(74, 20)
@@ -1696,7 +1707,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit7.AutoSize = True
         Me.CheckBoxSyncBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit7.Location = New System.Drawing.Point(187, 745)
+        Me.CheckBoxSyncBit7.Location = New System.Drawing.Point(314, 687)
         Me.CheckBoxSyncBit7.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit7.Name = "CheckBoxSyncBit7"
         Me.CheckBoxSyncBit7.Size = New System.Drawing.Size(88, 20)
@@ -1708,7 +1719,7 @@ Partial Class frmMain
         '
         Me.CheckBoxSyncBit6.AutoSize = True
         Me.CheckBoxSyncBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBit6.Location = New System.Drawing.Point(187, 729)
+        Me.CheckBoxSyncBit6.Location = New System.Drawing.Point(314, 671)
         Me.CheckBoxSyncBit6.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxSyncBit6.Name = "CheckBoxSyncBit6"
         Me.CheckBoxSyncBit6.Size = New System.Drawing.Size(74, 20)
@@ -2023,20 +2034,34 @@ Partial Class frmMain
         Me.LabelECBState.TabIndex = 294
         Me.LabelECBState.Text = "ECB State"
         '
-        'ButtonResetSlave
+        'ButtonToggleResetDebug
         '
-        Me.ButtonResetSlave.Location = New System.Drawing.Point(283, 593)
-        Me.ButtonResetSlave.Name = "ButtonResetSlave"
-        Me.ButtonResetSlave.Size = New System.Drawing.Size(103, 23)
-        Me.ButtonResetSlave.TabIndex = 266
-        Me.ButtonResetSlave.Text = "Reset Slave"
-        Me.ButtonResetSlave.UseVisualStyleBackColor = True
+        Me.ButtonToggleResetDebug.Location = New System.Drawing.Point(12, 797)
+        Me.ButtonToggleResetDebug.Name = "ButtonToggleResetDebug"
+        Me.ButtonToggleResetDebug.Size = New System.Drawing.Size(152, 23)
+        Me.ButtonToggleResetDebug.TabIndex = 295
+        Me.ButtonToggleResetDebug.Text = "Toggle Reset Debug"
+        Me.ButtonToggleResetDebug.UseVisualStyleBackColor = True
+        '
+        'CheckBoxSyncBitF
+        '
+        Me.CheckBoxSyncBitF.AutoSize = True
+        Me.CheckBoxSyncBitF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxSyncBitF.Location = New System.Drawing.Point(185, 799)
+        Me.CheckBoxSyncBitF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxSyncBitF.Name = "CheckBoxSyncBitF"
+        Me.CheckBoxSyncBitF.Size = New System.Drawing.Size(121, 20)
+        Me.CheckBoxSyncBitF.TabIndex = 296
+        Me.CheckBoxSyncBitF.Text = "Clear Debug Bit"
+        Me.CheckBoxSyncBitF.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1140, 742)
+        Me.ClientSize = New System.Drawing.Size(1140, 838)
+        Me.Controls.Add(Me.CheckBoxSyncBitF)
+        Me.Controls.Add(Me.ButtonToggleResetDebug)
         Me.Controls.Add(Me.LabelECBState)
         Me.Controls.Add(Me.CheckBoxOperateEthernet)
         Me.Controls.Add(Me.Label13)
@@ -2257,4 +2282,6 @@ Partial Class frmMain
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents ButtonResetSlave As System.Windows.Forms.Button
+    Friend WithEvents ButtonToggleResetDebug As System.Windows.Forms.Button
+    Friend WithEvents CheckBoxSyncBitF As System.Windows.Forms.CheckBox
 End Class
