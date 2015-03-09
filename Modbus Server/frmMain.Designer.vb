@@ -25,6 +25,15 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CheckBoxResetBOR = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetIdle = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetSleep = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetWDT = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetSoftware = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetExt = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetIllegal = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetTrap = New System.Windows.Forms.CheckBox()
+        Me.LabelRCON = New System.Windows.Forms.Label()
         Me.ButtonResetSlave = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -189,6 +198,7 @@ Partial Class frmMain
         Me.LabelECBState = New System.Windows.Forms.Label()
         Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxResetPOR = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -199,6 +209,16 @@ Partial Class frmMain
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetPOR)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetBOR)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetIdle)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetSleep)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetWDT)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetSoftware)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetExt)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetIllegal)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxResetTrap)
+        Me.GroupBox1.Controls.Add(Me.LabelRCON)
         Me.GroupBox1.Controls.Add(Me.ButtonResetSlave)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label15)
@@ -320,6 +340,112 @@ Partial Class frmMain
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
+        '
+        'CheckBoxResetBOR
+        '
+        Me.CheckBoxResetBOR.AutoSize = True
+        Me.CheckBoxResetBOR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetBOR.Location = New System.Drawing.Point(337, 439)
+        Me.CheckBoxResetBOR.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetBOR.Name = "CheckBoxResetBOR"
+        Me.CheckBoxResetBOR.Size = New System.Drawing.Size(56, 20)
+        Me.CheckBoxResetBOR.TabIndex = 275
+        Me.CheckBoxResetBOR.Text = "BOR"
+        Me.CheckBoxResetBOR.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetIdle
+        '
+        Me.CheckBoxResetIdle.AutoSize = True
+        Me.CheckBoxResetIdle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetIdle.Location = New System.Drawing.Point(337, 419)
+        Me.CheckBoxResetIdle.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetIdle.Name = "CheckBoxResetIdle"
+        Me.CheckBoxResetIdle.Size = New System.Drawing.Size(49, 20)
+        Me.CheckBoxResetIdle.TabIndex = 274
+        Me.CheckBoxResetIdle.Text = "Idle"
+        Me.CheckBoxResetIdle.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetSleep
+        '
+        Me.CheckBoxResetSleep.AutoSize = True
+        Me.CheckBoxResetSleep.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetSleep.Location = New System.Drawing.Point(337, 399)
+        Me.CheckBoxResetSleep.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetSleep.Name = "CheckBoxResetSleep"
+        Me.CheckBoxResetSleep.Size = New System.Drawing.Size(63, 20)
+        Me.CheckBoxResetSleep.TabIndex = 273
+        Me.CheckBoxResetSleep.Text = "Sleep"
+        Me.CheckBoxResetSleep.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetWDT
+        '
+        Me.CheckBoxResetWDT.AutoSize = True
+        Me.CheckBoxResetWDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetWDT.Location = New System.Drawing.Point(266, 479)
+        Me.CheckBoxResetWDT.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetWDT.Name = "CheckBoxResetWDT"
+        Me.CheckBoxResetWDT.Size = New System.Drawing.Size(59, 20)
+        Me.CheckBoxResetWDT.TabIndex = 272
+        Me.CheckBoxResetWDT.Text = "WDT"
+        Me.CheckBoxResetWDT.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetSoftware
+        '
+        Me.CheckBoxResetSoftware.AutoSize = True
+        Me.CheckBoxResetSoftware.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetSoftware.Location = New System.Drawing.Point(266, 459)
+        Me.CheckBoxResetSoftware.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetSoftware.Name = "CheckBoxResetSoftware"
+        Me.CheckBoxResetSoftware.Size = New System.Drawing.Size(49, 20)
+        Me.CheckBoxResetSoftware.TabIndex = 271
+        Me.CheckBoxResetSoftware.Text = "SW"
+        Me.CheckBoxResetSoftware.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetExt
+        '
+        Me.CheckBoxResetExt.AutoSize = True
+        Me.CheckBoxResetExt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetExt.Location = New System.Drawing.Point(266, 439)
+        Me.CheckBoxResetExt.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetExt.Name = "CheckBoxResetExt"
+        Me.CheckBoxResetExt.Size = New System.Drawing.Size(45, 20)
+        Me.CheckBoxResetExt.TabIndex = 270
+        Me.CheckBoxResetExt.Text = "Ext"
+        Me.CheckBoxResetExt.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetIllegal
+        '
+        Me.CheckBoxResetIllegal.AutoSize = True
+        Me.CheckBoxResetIllegal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetIllegal.Location = New System.Drawing.Point(266, 419)
+        Me.CheckBoxResetIllegal.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetIllegal.Name = "CheckBoxResetIllegal"
+        Me.CheckBoxResetIllegal.Size = New System.Drawing.Size(63, 20)
+        Me.CheckBoxResetIllegal.TabIndex = 269
+        Me.CheckBoxResetIllegal.Text = "Illegal"
+        Me.CheckBoxResetIllegal.UseVisualStyleBackColor = True
+        '
+        'CheckBoxResetTrap
+        '
+        Me.CheckBoxResetTrap.AutoSize = True
+        Me.CheckBoxResetTrap.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetTrap.Location = New System.Drawing.Point(266, 399)
+        Me.CheckBoxResetTrap.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetTrap.Name = "CheckBoxResetTrap"
+        Me.CheckBoxResetTrap.Size = New System.Drawing.Size(56, 20)
+        Me.CheckBoxResetTrap.TabIndex = 268
+        Me.CheckBoxResetTrap.Text = "Trap"
+        Me.CheckBoxResetTrap.UseVisualStyleBackColor = True
+        '
+        'LabelRCON
+        '
+        Me.LabelRCON.AutoSize = True
+        Me.LabelRCON.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRCON.Location = New System.Drawing.Point(6, 483)
+        Me.LabelRCON.Name = "LabelRCON"
+        Me.LabelRCON.Size = New System.Drawing.Size(71, 16)
+        Me.LabelRCON.TabIndex = 267
+        Me.LabelRCON.Text = "LabelError"
         '
         'ButtonResetSlave
         '
@@ -2055,6 +2181,18 @@ Partial Class frmMain
         Me.CheckBoxSyncBitF.Text = "Clear Debug Bit"
         Me.CheckBoxSyncBitF.UseVisualStyleBackColor = True
         '
+        'CheckBoxResetPOR
+        '
+        Me.CheckBoxResetPOR.AutoSize = True
+        Me.CheckBoxResetPOR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxResetPOR.Location = New System.Drawing.Point(337, 459)
+        Me.CheckBoxResetPOR.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxResetPOR.Name = "CheckBoxResetPOR"
+        Me.CheckBoxResetPOR.Size = New System.Drawing.Size(56, 20)
+        Me.CheckBoxResetPOR.TabIndex = 276
+        Me.CheckBoxResetPOR.Text = "POR"
+        Me.CheckBoxResetPOR.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2284,4 +2422,14 @@ Partial Class frmMain
     Friend WithEvents ButtonResetSlave As System.Windows.Forms.Button
     Friend WithEvents ButtonToggleResetDebug As System.Windows.Forms.Button
     Friend WithEvents CheckBoxSyncBitF As System.Windows.Forms.CheckBox
+    Friend WithEvents LabelRCON As System.Windows.Forms.Label
+    Friend WithEvents CheckBoxResetBOR As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetIdle As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetSleep As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetWDT As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetSoftware As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetExt As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetIllegal As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetTrap As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxResetPOR As System.Windows.Forms.CheckBox
 End Class

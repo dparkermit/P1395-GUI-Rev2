@@ -168,7 +168,7 @@
             LabelCanRX0Filt0Count.Text = "RX0 Filt 0 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_0_filt_0
             LabelCanRX0Filt1Count.Text = "RX0 Filt 1 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_0_filt_1
             LabelCanRX1Filt2Count.Text = "RX1 Filt 2 Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_rx_1_filt_2
-            LabelCanISREnteredCount.Text = "ISR Entered Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_isr_entered
+            LabelCanISREnteredCount.Text = "CXINTF = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_isr_entered.ToString("X")
             LabelCanUnknownIdentifierCount.Text = "Unknown ID Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_unknown_message_identifier
             LabelCanInvalidIndexCount.Text = "Invalid Index Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_invalid_index
             LabelCanAddressErrorCount.Text = "Address Error Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_address_error
@@ -187,7 +187,19 @@
             LabelErrorSelfTestResultRegister.Text = "Self Test = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.self_test_result_register.ToString("x")
             LabelErrorStatusDataA.Text = "Data A = " & ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_A
             LabelErrorStatusDataB.Text = "Data B = " & ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.data_word_B
+            LabelRCON.Text = "RCON = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.i2c_bus_error_count.ToString("X")
 
+            Dim rcon_value As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.i2c_bus_error_count
+
+            CheckBoxResetTrap.Checked = rcon_value And &H8000
+            CheckBoxResetIllegal.Checked = rcon_value And &H4000
+            CheckBoxResetExt.Checked = rcon_value And &H80
+            CheckBoxResetSoftware.Checked = rcon_value And &H40
+            CheckBoxResetWDT.Checked = rcon_value And &H10
+            CheckBoxResetSleep.Checked = rcon_value And &H8
+            CheckBoxResetIdle.Checked = rcon_value And &H4
+            CheckBoxResetBOR.Checked = rcon_value And &H2
+            CheckBoxResetPOR.Checked = rcon_value And &H1
 
 
 
@@ -389,8 +401,9 @@
                 CheckBoxFaultBitF.Text = "Pulse Sync"
 
                 LabelDebug0.Text = "State = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug1.Text = "Max TX Err = "
+                LabelValueDebug1.Text = LabelValueDebug1.Text / 256
+                LabelDebug2.Text = "Max RX Err = "
                 LabelDebug3.Text = "Debug 3 = "
                 LabelDebug4.Text = "Ion Pump = "
                 LabelDebug5.Text = "Mag Current = "
