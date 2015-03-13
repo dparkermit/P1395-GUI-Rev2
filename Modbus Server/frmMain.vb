@@ -11,6 +11,12 @@
     Public Const REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H21
     Public Const REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H22
     Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE As UInt16 = &H23
+
+    Public Const REGISTER_CMD_AFC_SELECT_AFC_MODE As UInt16 = &H5081
+    Public Const REGISTER_CMD_AFC_SELECT_MANUAL_MODE As UInt16 = &H5082
+    Public Const REGISTER_CMD_AFC_MANUAL_TARGET_POSITION As UInt16 = &H5083
+    Public Const REGISTER_CMD_AFC_MANUAL_MOVE As UInt16 = &H5084
+
     Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_25_MORE_SF6_PULSES As UInt16 = &H6082
     Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_SF6_PULSES_WHEN_PRESSURE_BELOW_LIMIT As UInt16 = &H6083
     Public Const REGISTER_CMD_COOLANT_INTERFACE_SET_SF6_PULSES_IN_BOTTLE As UInt16 = &H6084
@@ -728,6 +734,151 @@
                 LabelValue8.Visible = True
                 LabelValue9.Visible = True
                 LabelValue10.Visible = True
+
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_AFC) Then
+                CheckBoxStatusBit0.Text = "Startup"
+                CheckBoxStatusBit1.Text = "Manual"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit6.Text = "Unused"
+                CheckBoxStatusBit7.Text = "Unused"
+
+                CheckBoxFaultBit0.Text = "Can FLT"
+                CheckBoxFaultBit1.Text = "Unused"
+                CheckBoxFaultBit2.Text = "Unused"
+                CheckBoxFaultBit3.Text = "Unused"
+                CheckBoxFaultBit4.Text = "Unused"
+                CheckBoxFaultBit5.Text = "Unused"
+                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit7.Text = "Unused"
+                CheckBoxFaultBit8.Text = "Unused"
+                CheckBoxFaultBit9.Text = "Unused"
+                CheckBoxFaultBitA.Text = "Unused"
+                CheckBoxFaultBitB.Text = "Unused"
+                CheckBoxFaultBitC.Text = "Unused"
+                CheckBoxFaultBitD.Text = "Unused"
+                CheckBoxFaultBitE.Text = "Unused"
+                CheckBoxFaultBitF.Text = "Unused"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
+                update_1_cmd_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
+                ButtonUpdateInput1.Text = "Manual Position"
+
+                'update_2_cmd_index = REGISTER_LOW_ENERGY_SET_POINT
+                ButtonUpdateInput2.Text = "Set Low"
+
+                LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(0)
+                LabelValue2.Text = "AFC Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(1)
+                LabelValue3.Text = "Readback Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(2)
+                LabelValue4.Text = "Readback Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(3)
+                LabelValue5.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(4)
+        
+                TextBoxInput1.Visible = True
+                ButtonUpdateInput1.Visible = True
+                TextBoxInput2.Visible = False
+                ButtonUpdateInput2.Visible = False
+                ButtonBoardCommand.Visible = False
+
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = False
+                LabelValue7.Visible = False
+                LabelValue8.Visible = False
+                LabelValue9.Visible = False
+                LabelValue10.Visible = False
+
+
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
+                CheckBoxStatusBit0.Text = "Unused"
+                CheckBoxStatusBit1.Text = "Unused"
+                CheckBoxStatusBit2.Text = "Unused"
+                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit4.Text = "Unused"
+                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit6.Text = "Unused"
+                CheckBoxStatusBit7.Text = "Unused"
+
+                CheckBoxFaultBit0.Text = "Unused"
+                CheckBoxFaultBit1.Text = "Unused"
+                CheckBoxFaultBit2.Text = "Unused"
+                CheckBoxFaultBit3.Text = "Unused"
+                CheckBoxFaultBit4.Text = "Unused"
+                CheckBoxFaultBit5.Text = "Unused"
+                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit7.Text = "Unused"
+                CheckBoxFaultBit8.Text = "Unused"
+                CheckBoxFaultBit9.Text = "Unused"
+                CheckBoxFaultBitA.Text = "Unused"
+                CheckBoxFaultBitB.Text = "Unused"
+                CheckBoxFaultBitC.Text = "Unused"
+                CheckBoxFaultBitD.Text = "Unused"
+                CheckBoxFaultBitE.Text = "Unused"
+                CheckBoxFaultBitF.Text = "Unused"
+
+                LabelDebug0.Text = "Debug 0 = "
+                LabelDebug1.Text = "Debug 1 = "
+                LabelDebug2.Text = "Debug 2 = "
+                LabelDebug3.Text = "Debug 3 = "
+                LabelDebug4.Text = "Debug 4 = "
+                LabelDebug5.Text = "Debug 5 = "
+                LabelDebug6.Text = "Debug 6 = "
+                LabelDebug7.Text = "Debug 7 = "
+                LabelDebug8.Text = "Debug 8 = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Debug D = "
+                LabelDebugE.Text = "Debug E = "
+                LabelDebugF.Text = "Debug F = "
+
+                'update_1_cmd_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
+                'ButtonUpdateInput1.Text = "Manual Position"
+
+                'update_2_cmd_index = REGISTER_LOW_ENERGY_SET_POINT
+                'ButtonUpdateInput2.Text = "Set Low"
+
+                LabelValue1.Text = "Ion Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(0)
+                LabelValue2.Text = "Ion Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(1)
+               
+                TextBoxInput1.Visible = False
+                ButtonUpdateInput1.Visible = False
+                TextBoxInput2.Visible = False
+                ButtonUpdateInput2.Visible = False
+                ButtonBoardCommand.Visible = False
+
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = False
+                LabelValue4.Visible = False
+                LabelValue5.Visible = False
+                LabelValue6.Visible = False
+                LabelValue7.Visible = False
+                LabelValue8.Visible = False
+                LabelValue9.Visible = False
+                LabelValue10.Visible = False
+
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
                 CheckBoxStatusBit1.Text = "Status 1"
