@@ -5,6 +5,7 @@
     Public Const REGISTER_ELECTROMAGNET_CURRENT As UInt16 = &H1
     Public Const REGISTER_HOME_POSITION As UInt16 = &H5
     Public Const REGISTER_AFC_OFFSET As UInt16 = &H9
+    Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE As UInt16 = &HA
     Public Const REGISTER_HIGH_ENERGY_SET_POINT As UInt16 = &H10
     Public Const REGISTER_LOW_ENERGY_SET_POINT As UInt16 = &H11
     Public Const REGISTER_GUN_DRIVER_HEATER_VOLTAGE As UInt16 = &H20
@@ -782,19 +783,25 @@
                 update_1_cmd_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
                 ButtonUpdateInput1.Text = "Manual Position"
 
-                'update_2_cmd_index = REGISTER_LOW_ENERGY_SET_POINT
-                ButtonUpdateInput2.Text = "Set Low"
+                update_2_cmd_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE
+                ButtonUpdateInput2.Text = "AFT Control Voltage"
 
                 LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(0)
                 LabelValue2.Text = "AFC Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(1)
                 LabelValue3.Text = "Readback Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(2)
                 LabelValue4.Text = "Readback Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(3)
                 LabelValue5.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(4)
-        
+                LabelValue6.Text = "Previous Error = " & (CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A) - CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B))
+                LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(5)
+                LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(6)
+                LabelValue9.Text = "AFT Control Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(9)
+                LabelValue10.Text = "Readback AFT Control Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(10)
+
+
                 TextBoxInput1.Visible = True
                 ButtonUpdateInput1.Visible = True
-                TextBoxInput2.Visible = False
-                ButtonUpdateInput2.Visible = False
+                TextBoxInput2.Visible = True
+                ButtonUpdateInput2.Visible = True
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -802,11 +809,11 @@
                 LabelValue3.Visible = True
                 LabelValue4.Visible = True
                 LabelValue5.Visible = True
-                LabelValue6.Visible = False
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
-                LabelValue9.Visible = False
-                LabelValue10.Visible = False
+                LabelValue6.Visible = True
+                LabelValue7.Visible = True
+                LabelValue8.Visible = True
+                LabelValue9.Visible = True
+                LabelValue10.Visible = True
 
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
