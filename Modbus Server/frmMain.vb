@@ -791,7 +791,7 @@
                 LabelValue3.Text = "Readback Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(2)
                 LabelValue4.Text = "Readback Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(3)
                 LabelValue5.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(4)
-                LabelValue6.Text = "Previous Error = " & (CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_A) - CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_B))
+                LabelValue6.Text = "Previous Error = " & (CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D) - CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E))
                 LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(5)
                 LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(6)
                 LabelValue9.Text = "AFT Control Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(9)
