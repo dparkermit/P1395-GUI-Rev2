@@ -43,7 +43,9 @@ Public Class ServerSettings
 
     Public Const MAX_CAL_INDEX = 65536
     Public Const MAX_EVENTS_SIZE = 200
-    Public Const MAX_PULSE_SIZE = 1000
+    Public Const MAX_PULSE_SIZE_ROW = 5000
+    Public Const MAX_PULSE_SIZE_DATA = 620
+
 
     Public Const MODBUS_COMMAND_REFRESH_TOTAL = 2
     Public ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET + 1) As ETM_ETHERNET_TX_DATA_STRUCTURE
@@ -52,7 +54,7 @@ Public Class ServerSettings
 
     Public ETMEthernetEventsByte(MAX_EVENTS_SIZE + 1) As Byte
 
-    Public ETMEthernetPulseData(MAX_PULSE_SIZE, 200) As Byte
+    Public ETMEthernetPulseData(MAX_PULSE_SIZE_ROW, MAX_PULSE_SIZE_DATA) As Byte
     Public pulse_index As UInt16
 
 
@@ -258,6 +260,23 @@ Public Class ServerSettings
     End Sub
 
     Private Sub save_pulse_data(ByRef bytes As Byte())
+#If False Then
+        Static file_index As UInt16 = 0
+        Static file_name As String = "c:\pulse_log0.txt"
+        Static file_opened As Boolean = False
+        Static sw As StreamWriter = File.AppendText(file_name)
+
+        Dim sb As StringBuilder = New StringBuilder
+
+
+        sb.Append((bytes(0) * 256 + bytes(1)) & ",")
+        For i = 2 To (MAX_PULSE_SIZE_DATA - 1)
+            '   sb.Append(" " & bytes(i).ToString("d3"))
+            sb.Append(" " & bytes(i))
+        Next
+
+        sw.WriteLine(sb.ToString)
+#Else
         Static file_index As UInt16 = 0
         Static file_name As String = "c:\pulse_log0.txt"
         Static file_opened As Boolean = False
@@ -266,7 +285,7 @@ Public Class ServerSettings
 
 
         If My.Computer.FileSystem.FileExists(file_name) Then
-            If (FileLen(file_name) >= 65535) Then
+            If (FileLen(file_name) >= 10000000) Then
                 sw.Close()
                 If (file_index >= 65535) Then
                     file_index = 0
@@ -279,11 +298,13 @@ Public Class ServerSettings
         End If
 
         sb.Append((bytes(0) * 256 + bytes(1)) & ",")
-        For i = 2 To 127
+        For i = 2 To (MAX_PULSE_SIZE_DATA - 1)
             sb.Append(" " & bytes(i).ToString("d3"))
         Next
 
         sw.WriteLine(sb.ToString)
+
+#End If
 
 
 
@@ -293,7 +314,7 @@ Public Class ServerSettings
         Dim msglen As Integer, datalen As Integer
         Dim data(30) As Byte  ' max data length 30
         Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
-        Dim pulse_data(128) As Byte
+        Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
 
         If (function_code = WRITE_FUNCTION) Then
             For i = 0 To 11
@@ -331,10 +352,10 @@ Public Class ServerSettings
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
                 For i = 0 To CUShort((word_count * 2 - 1))
                     ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)
-                    If (i < 128) Then pulse_data(i) = recvBuffer(13 + i)
+                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
                 Next
                 pulse_index = CUShort(pulse_index + 1)
-                If (pulse_index >= MAX_PULSE_SIZE) Then pulse_index = 0
+                If (pulse_index >= MAX_PULSE_SIZE_ROW) Then pulse_index = 0
                 Call save_pulse_data(pulse_data)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
