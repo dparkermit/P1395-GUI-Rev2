@@ -83,6 +83,8 @@
             MessageBox.Show("Exception caught in FormMain.FormMainLoad  " + ex.ToString)
         End Try
 
+
+        ServerSettings.OpenPulseLogFile()
     End Sub
 
     Private Sub TimerUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUpdate.Tick
@@ -1137,4 +1139,6 @@
     Private Sub ButtonResetSlave_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetSlave.Click
         ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_RESET_SLAVE, selected_board_index, 0, 0)
     End Sub
+
+
 End Class
