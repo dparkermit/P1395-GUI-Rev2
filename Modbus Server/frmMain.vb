@@ -84,7 +84,7 @@
         End Try
 
 
-        ServerSettings.OpenPulseLogFile()
+
     End Sub
 
     Private Sub TimerUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUpdate.Tick
@@ -1141,4 +1141,11 @@
     End Sub
 
 
+    Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
+        ServerSettings.OpenPulseLogFile()
+    End Sub
+
+    Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
+        ServerSettings.ClosePulseLogFile()
+    End Sub
 End Class

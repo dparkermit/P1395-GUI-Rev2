@@ -259,6 +259,7 @@ Public Class ServerSettings
         main_screen.Show()
     End Sub
 
+    Public pulse_log_enabled As Boolean
     Public pulse_log_file_name As String
     Public pulse_log_file_path As String
     Public pulse_log_file As System.IO.StreamWriter
@@ -267,6 +268,7 @@ Public Class ServerSettings
         pulse_log_file_name = "Pulse_log_" & DateTime.Now.ToString("yyyy_MM_dd_HH_mm") & ".csv"
         pulse_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pulse_log_file_name)
         pulse_log_file = My.Computer.FileSystem.OpenTextFileWriter(pulse_log_file_path, True)
+        pulse_log_enabled = True
 
         pulse_log_file.Write("Pulse Count, ")
         pulse_log_file.Write("Status Bits, ")
@@ -293,6 +295,7 @@ Public Class ServerSettings
 
 
     Public Sub ClosePulseLogFile()
+        pulse_log_enabled = False
         pulse_log_file.Close()
     End Sub
 
@@ -302,18 +305,21 @@ Public Class ServerSettings
         Dim data_word As Integer
         Dim mem_location As Integer
 
-        For data_row = 0 To 15
-            For data_column = 0 To 18
-                mem_location = data_row * 38 + data_column * 2 + 2
-                data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
-                pulse_log_file.Write(data_word & ",")
+        If pulse_log_enabled Then
+            For data_row = 0 To 15
+                For data_column = 0 To 18
+                    mem_location = data_row * 38 + data_column * 2 + 2
+                    data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
+                    pulse_log_file.Write(data_word & ",")
+                Next
+                data_word = bytes(0) * 256 + bytes(1)
+                pulse_log_file.Write(data_word)
+                pulse_log_file.WriteLine("")
             Next
-            data_word = bytes(0) * 256 + bytes(1)
-            pulse_log_file.Write(data_word)
             pulse_log_file.WriteLine("")
-        Next
-        pulse_log_file.WriteLine("")
-        pulse_log_file.WriteLine("")
+            pulse_log_file.WriteLine("")
+
+        End If
 
     End Sub
     Public Sub modbus_reply()
