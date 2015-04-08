@@ -43,7 +43,9 @@ Public Class ServerSettings
 
     Public Const MAX_CAL_INDEX = 65536
     Public Const MAX_EVENTS_SIZE = 200
-    Public Const MAX_PULSE_SIZE = 1000
+    Public Const MAX_PULSE_SIZE_ROW = 5000
+    Public Const MAX_PULSE_SIZE_DATA = 620
+
 
     Public Const MODBUS_COMMAND_REFRESH_TOTAL = 2
     Public ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET + 1) As ETM_ETHERNET_TX_DATA_STRUCTURE
@@ -52,7 +54,7 @@ Public Class ServerSettings
 
     Public ETMEthernetEventsByte(MAX_EVENTS_SIZE + 1) As Byte
 
-    Public ETMEthernetPulseData(MAX_PULSE_SIZE, 200) As Byte
+    Public ETMEthernetPulseData(MAX_PULSE_SIZE_ROW, MAX_PULSE_SIZE_DATA) As Byte
     Public pulse_index As UInt16
 
 
@@ -257,35 +259,67 @@ Public Class ServerSettings
         main_screen.Show()
     End Sub
 
+    Public pulse_log_enabled As Boolean
+    Public pulse_log_file_name As String
+    Public pulse_log_file_path As String
+    Public pulse_log_file As System.IO.StreamWriter
+
+    Public Sub OpenPulseLogFile()
+        pulse_log_file_name = "Pulse_log_" & DateTime.Now.ToString("yyyy_MM_dd_HH_mm") & ".csv"
+        pulse_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pulse_log_file_name)
+        pulse_log_file = My.Computer.FileSystem.OpenTextFileWriter(pulse_log_file_path, True)
+        pulse_log_enabled = True
+
+        pulse_log_file.Write("Pulse Count, ")
+        pulse_log_file.Write("Status Bits, ")
+        pulse_log_file.Write("Pulse Seconds, ")
+        pulse_log_file.Write("Pulse Milliseconds, ")
+        pulse_log_file.Write("Lambda Readback High Vprog, ")
+        pulse_log_file.Write("Lambda Readback Low Vprog, ")
+        pulse_log_file.Write("Lambda Vpeak, ")
+        pulse_log_file.Write("AFC Current Position, ")
+        pulse_log_file.Write("AFC Target Position, ")
+        pulse_log_file.Write("AFC Readback A, ")
+        pulse_log_file.Write("AFC Readback B, ")
+        pulse_log_file.Write("AFC Readback Error Filtered, ")
+        pulse_log_file.Write("Ion Pump High Target Current, ")
+        pulse_log_file.Write("Ion Pump Low Target Current, ")
+        pulse_log_file.Write("Magnetron Current High Energy, ")
+        pulse_log_file.Write("Magnetron Current Low Energy, ")
+        pulse_log_file.Write("Pulse Sync Trigger Width, ")
+        pulse_log_file.Write("Pulse Sync High Energy, ")
+        pulse_log_file.Write("Pulse Sync Low Energy, ")
+        pulse_log_file.Write("ECB Message Count")
+        pulse_log_file.WriteLine("")
+    End Sub
+
+
+    Public Sub ClosePulseLogFile()
+        pulse_log_enabled = False
+        pulse_log_file.Close()
+    End Sub
+
     Private Sub save_pulse_data(ByRef bytes As Byte())
         Static file_index As UInt16 = 0
-        Static file_name As String = "c:\pulse_log0.txt"
         Static file_opened As Boolean = False
-        Static sw As StreamWriter = File.AppendText(file_name)
-        Dim sb As StringBuilder = New StringBuilder
+        Dim data_word As Integer
+        Dim mem_location As Integer
 
+        If pulse_log_enabled Then
+            For data_row = 0 To 15
+                For data_column = 0 To 18
+                    mem_location = data_row * 38 + data_column * 2 + 2
+                    data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
+                    pulse_log_file.Write(data_word & ",")
+                Next
+                data_word = bytes(0) * 256 + bytes(1)
+                pulse_log_file.Write(data_word)
+                pulse_log_file.WriteLine("")
+            Next
+            pulse_log_file.WriteLine("")
+            pulse_log_file.WriteLine("")
 
-        If My.Computer.FileSystem.FileExists(file_name) Then
-            If (FileLen(file_name) >= 65535) Then
-                sw.Close()
-                If (file_index >= 65535) Then
-                    file_index = 0
-                Else
-                    file_index = CUShort(file_index + 1)
-                End If
-                file_name = "c:\pulse_log" & Trim(CStr(file_index)) & ".txt"
-                sw = File.AppendText(file_name)
-            End If
         End If
-
-        sb.Append((bytes(0) * 256 + bytes(1)) & ",")
-        For i = 2 To 127
-            sb.Append(" " & bytes(i).ToString("d3"))
-        Next
-
-        sw.WriteLine(sb.ToString)
-
-
 
     End Sub
     Public Sub modbus_reply()
@@ -293,7 +327,7 @@ Public Class ServerSettings
         Dim msglen As Integer, datalen As Integer
         Dim data(30) As Byte  ' max data length 30
         Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
-        Dim pulse_data(128) As Byte
+        Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
 
         If (function_code = WRITE_FUNCTION) Then
             For i = 0 To 11
@@ -331,10 +365,10 @@ Public Class ServerSettings
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
                 For i = 0 To CUShort((word_count * 2 - 1))
                     ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)
-                    If (i < 128) Then pulse_data(i) = recvBuffer(13 + i)
+                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
                 Next
                 pulse_index = CUShort(pulse_index + 1)
-                If (pulse_index >= MAX_PULSE_SIZE) Then pulse_index = 0
+                If (pulse_index >= MAX_PULSE_SIZE_ROW) Then pulse_index = 0
                 Call save_pulse_data(pulse_data)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 

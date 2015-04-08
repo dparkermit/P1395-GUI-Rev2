@@ -31,6 +31,8 @@
     Public Const REGISTER_DEBUG_TOGGLE_XRAY_ENABLE As UInt16 = &HEF03
     Public Const REGISTER_DEBUG_TOGGLE_COOLING_FAULT As UInt16 = &HEF04
     Public Const REGISTER_DEBUG_TOGGLE_RESET_DEBUG As UInt16 = &HEF05
+    Public Const REGISTER_DEBUG_ENABLE_HIGH_SPEED_LOGGING As UInt16 = &HEF06
+    Public Const REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING As UInt16 = &HEF07
 
 
 
@@ -59,11 +61,17 @@
 
     Public update_1_cmd_index As UInt16
     Public update_2_cmd_index As UInt16
+    Public update_3_cmd_index As UInt16
 
     Public board_command_index As UInt16
 
     Public EEProm_index As UInt16
 
+#If DEBUG_MODBUS Then
+    Public modbus_recv_buffer(255, 1024) As Byte
+    Public modbus_recv_bytecount(255) As UInt16
+    Public modbus_recv_index As Byte
+#End If
 
     Dim board_index As Byte = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA
 
@@ -83,6 +91,8 @@
         Catch ex As Exception
             MessageBox.Show("Exception caught in FormMain.FormMainLoad  " + ex.ToString)
         End Try
+
+
 
     End Sub
 
@@ -366,6 +376,8 @@
                 ButtonUpdateInput1.Visible = True
                 TextBoxInput2.Visible = True
                 ButtonUpdateInput2.Visible = True
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -378,6 +390,13 @@
                 LabelValue8.Visible = True
                 LabelValue9.Visible = True
                 LabelValue10.Visible = True
+
+
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
@@ -439,6 +458,8 @@
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -452,6 +473,11 @@
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
 
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
                 CheckBoxStatusBit0.Text = "AT EOC"
@@ -516,6 +542,8 @@
                 ButtonUpdateInput1.Visible = True
                 TextBoxInput2.Visible = True
                 ButtonUpdateInput2.Visible = True
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -528,6 +556,12 @@
                 LabelValue8.Visible = True
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
+
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) Then
                 CheckBoxStatusBit0.Text = "Cust HV OFF"
@@ -581,6 +615,8 @@
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -593,6 +629,12 @@
                 LabelValue8.Visible = False
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
+
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) Then
                 CheckBoxStatusBit0.Text = "HIGH MODE"
@@ -649,6 +691,8 @@
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -661,6 +705,12 @@
                 LabelValue8.Visible = False
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
+
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
                 CheckBoxStatusBit0.Text = "SF6 Relay Closed"
@@ -723,6 +773,8 @@
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -735,6 +787,12 @@
                 LabelValue8.Visible = True
                 LabelValue9.Visible = True
                 LabelValue10.Visible = True
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
+
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_AFC) Then
                 CheckBoxStatusBit0.Text = "Startup"
@@ -802,6 +860,110 @@
                 ButtonUpdateInput1.Visible = True
                 TextBoxInput2.Visible = True
                 ButtonUpdateInput2.Visible = True
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
+                ButtonBoardCommand.Visible = False
+
+
+                LabelValue1.Visible = True
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = True
+                LabelValue7.Visible = True
+                LabelValue8.Visible = True
+                LabelValue9.Visible = True
+                LabelValue10.Visible = True
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
+
+
+            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) Then
+                CheckBoxStatusBit0.Text = "HV Disabled"
+                CheckBoxStatusBit1.Text = "HTR Off"
+                CheckBoxStatusBit2.Text = "Trig Off"
+                CheckBoxStatusBit3.Text = "Top Off"
+                CheckBoxStatusBit4.Text = "HV Off"
+                CheckBoxStatusBit5.Text = "NA"
+                CheckBoxStatusBit6.Text = "NA"
+                CheckBoxStatusBit7.Text = "NA"
+
+                CheckBoxFaultBit0.Text = "Sum Fault"
+                CheckBoxFaultBit1.Text = "FPGA Comm Lost"
+                CheckBoxFaultBit2.Text = "SW Htr OV/OC"
+                CheckBoxFaultBit3.Text = "SW Bias UV"
+                CheckBoxFaultBit4.Text = "SW Cath OV"
+                CheckBoxFaultBit5.Text = "SW Cath UV"
+                CheckBoxFaultBit6.Text = "SW Grid OV"
+                CheckBoxFaultBit7.Text = "FPGA T>75C"
+
+                CheckBoxFaultBit8.Text = "CAN COMM Fault"
+                CheckBoxFaultBit9.Text = "FPGA ARC Fault"
+                CheckBoxFaultBitA.Text = "FPGA Pulse Fault"
+                CheckBoxFaultBitB.Text = "FPGA Grid Fault"
+                CheckBoxFaultBitC.Text = "SW Htr UV"
+                CheckBoxFaultBitD.Text = "SW 24V Fault"
+                CheckBoxFaultBitE.Text = "System Fault"
+                CheckBoxFaultBitF.Text = "NA"
+
+                LabelDebug0.Text = "Ek = "
+                LabelDebug1.Text = "Ika = "
+                LabelDebug2.Text = "Ikp = "
+                LabelDebug3.Text = "Ef = "
+                LabelDebug4.Text = "If = "
+                LabelDebug5.Text = "Eg = "
+                LabelDebug6.Text = "Ec = "
+                LabelDebug7.Text = "Temp = "
+
+                LabelDebug8.Text = "State = "
+                LabelDebug9.Text = "Debug 9 = "
+                LabelDebugA.Text = "Debug A = "
+                LabelDebugB.Text = "Debug B = "
+                LabelDebugC.Text = "Debug C = "
+                LabelDebugD.Text = "Ek Set = "
+                LabelDebugE.Text = "Ef Set = "
+                LabelDebugF.Text = "Eg Set = "
+
+                update_1_cmd_index = REGISTER_GUN_DRIVER_CATHODE_VOLTAGE
+                ButtonUpdateInput1.Text = "Set Ek (0,-20V)"
+
+                update_2_cmd_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
+                ButtonUpdateInput2.Text = "Set Ef (0,-7V)"
+
+                update_3_cmd_index = REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE
+                ButtonUpdateInput3.Text = "Set Eg (-80,140)"
+
+                ' LabelValue2.Text = "NA(Eg Set Lo) = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(1)) * 0.1 'GUN_DRIVER_EG_SET_CAL
+                LabelValue1.Text = "Ek Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(3)) * (-0.001), "0.00kV") 'ekset
+                LabelValue2.Text = "Ef Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(2)) * (-0.001), "0.00V") 'efset
+                LabelValue3.Text = "Eg Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(0)) * 0.1 - 80, "0.0V")  ' egset
+                LabelValue4.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(6)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
+                LabelValue5.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(7)) * 0.1, "0.0V") ' GUN_DRIVER_IKP_RD_CAL
+                LabelValue6.Text = "Ef = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(8)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_RD_CAL
+                LabelValue7.Text = "If = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(9)) * 0.001, "0.00A") 'GUN_DRIVER_IF_RD_CAL
+                LabelValue8.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(4)) * 0.1 - 80, "0.0V") ' eg rd
+
+                LabelValue9.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(19)) * 0.1, "0.0V") ' GUN_DRIVER_EC_RD_CAL
+                LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(11)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
+                LabelValue11.Text = "Ek SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(15)) * (-0.001), "0.00kV") 'GUN_DRIVER_EK_SET_CAL
+                LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(14)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
+                LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(12)) * 0.1 - 80, "0.0V") 'GUN_DRIVER_EG_SET_CAL
+
+                LabelValue14.Text = "Ana Flt = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(17) & _
+                     ", state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(18)
+                LabelValue15.Text = "FPGA ASDR = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(16).ToString("x")
+
+
+                TextBoxInput1.Visible = True
+                ButtonUpdateInput1.Visible = True
+                TextBoxInput2.Visible = True
+                ButtonUpdateInput2.Visible = True
+                TextBoxInput3.Visible = True
+                ButtonUpdateInput3.Visible = True
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
@@ -814,7 +976,11 @@
                 LabelValue8.Visible = True
                 LabelValue9.Visible = True
                 LabelValue10.Visible = True
-
+                LabelValue11.Visible = True
+                LabelValue12.Visible = True
+                LabelValue13.Visible = True
+                LabelValue14.Visible = True
+                LabelValue15.Visible = True
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
                 CheckBoxStatusBit0.Text = "Unused"
@@ -885,6 +1051,11 @@
                 LabelValue8.Visible = False
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
@@ -934,6 +1105,8 @@
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
                 ButtonUpdateInput2.Visible = False
+                TextBoxInput3.Visible = False
+                ButtonUpdateInput3.Visible = False
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = False
@@ -947,6 +1120,11 @@
                 LabelValue9.Visible = False
                 LabelValue10.Visible = False
 
+                LabelValue11.Visible = False
+                LabelValue12.Visible = False
+                LabelValue13.Visible = False
+                LabelValue14.Visible = False
+                LabelValue15.Visible = False
 
             End If
 
@@ -1003,6 +1181,16 @@
         End Try
     End Sub
 
+    Private Sub ButtonUpdateInput3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonUpdateInput3.Click
+        Dim program_word As UInt16
+        Try
+            program_word = TextBoxInput3.Text
+            ServerSettings.put_modbus_commands(update_3_cmd_index, program_word, 0, 0)
+        Catch ex As Exception
+            MsgBox("You must enter valid Integer data")
+
+        End Try
+    End Sub
 
     Private Sub ButtonToggleReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleReset.Click
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_RESET, 0, 0, 0)
@@ -1145,5 +1333,16 @@
         ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_RESET_SLAVE, selected_board_index, 0, 0)
     End Sub
 
+
+
+    Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
+        ServerSettings.OpenPulseLogFile()
+    End Sub
+
+    Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
+        ServerSettings.ClosePulseLogFile()
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
+    End Sub
 
 End Class

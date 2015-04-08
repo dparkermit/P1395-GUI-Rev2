@@ -199,6 +199,15 @@ Partial Class frmMain
         Me.LabelECBState = New System.Windows.Forms.Label()
         Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
+        Me.LabelValue11 = New System.Windows.Forms.Label()
+        Me.LabelValue12 = New System.Windows.Forms.Label()
+        Me.LabelValue13 = New System.Windows.Forms.Label()
+        Me.LabelValue14 = New System.Windows.Forms.Label()
+        Me.LabelValue15 = New System.Windows.Forms.Label()
+        Me.ButtonUpdateInput3 = New System.Windows.Forms.Button()
+        Me.TextBoxInput3 = New System.Windows.Forms.TextBox()
+        Me.ButtonStartLog = New System.Windows.Forms.Button()
+        Me.ButtonStopLog = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -211,12 +220,19 @@ Partial Class frmMain
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetPOR)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetBOR)
+        Me.GroupBox1.Controls.Add(Me.ButtonUpdateInput3)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetIdle)
+        Me.GroupBox1.Controls.Add(Me.TextBoxInput3)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetSleep)
+        Me.GroupBox1.Controls.Add(Me.LabelValue15)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetWDT)
+        Me.GroupBox1.Controls.Add(Me.LabelValue14)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetSoftware)
+        Me.GroupBox1.Controls.Add(Me.LabelValue13)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetExt)
+        Me.GroupBox1.Controls.Add(Me.LabelValue12)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetIllegal)
+        Me.GroupBox1.Controls.Add(Me.LabelValue11)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetTrap)
         Me.GroupBox1.Controls.Add(Me.LabelRCON)
         Me.GroupBox1.Controls.Add(Me.ButtonResetSlave)
@@ -713,7 +729,7 @@ Partial Class frmMain
         '
         'ButtonBoardCommand
         '
-        Me.ButtonBoardCommand.Location = New System.Drawing.Point(639, 403)
+        Me.ButtonBoardCommand.Location = New System.Drawing.Point(432, 331)
         Me.ButtonBoardCommand.Name = "ButtonBoardCommand"
         Me.ButtonBoardCommand.Size = New System.Drawing.Size(103, 23)
         Me.ButtonBoardCommand.TabIndex = 240
@@ -724,7 +740,7 @@ Partial Class frmMain
         '
         Me.LabelValue10.AutoSize = True
         Me.LabelValue10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue10.Location = New System.Drawing.Point(530, 547)
+        Me.LabelValue10.Location = New System.Drawing.Point(469, 515)
         Me.LabelValue10.Name = "LabelValue10"
         Me.LabelValue10.Size = New System.Drawing.Size(97, 16)
         Me.LabelValue10.TabIndex = 234
@@ -734,7 +750,7 @@ Partial Class frmMain
         '
         Me.LabelValue9.AutoSize = True
         Me.LabelValue9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue9.Location = New System.Drawing.Point(530, 531)
+        Me.LabelValue9.Location = New System.Drawing.Point(469, 499)
         Me.LabelValue9.Name = "LabelValue9"
         Me.LabelValue9.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue9.TabIndex = 233
@@ -753,7 +769,7 @@ Partial Class frmMain
         '
         Me.LabelValue8.AutoSize = True
         Me.LabelValue8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue8.Location = New System.Drawing.Point(530, 515)
+        Me.LabelValue8.Location = New System.Drawing.Point(469, 484)
         Me.LabelValue8.Name = "LabelValue8"
         Me.LabelValue8.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue8.TabIndex = 232
@@ -772,7 +788,7 @@ Partial Class frmMain
         '
         Me.LabelValue7.AutoSize = True
         Me.LabelValue7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue7.Location = New System.Drawing.Point(530, 499)
+        Me.LabelValue7.Location = New System.Drawing.Point(469, 468)
         Me.LabelValue7.Name = "LabelValue7"
         Me.LabelValue7.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue7.TabIndex = 231
@@ -792,7 +808,7 @@ Partial Class frmMain
         '
         Me.LabelValue6.AutoSize = True
         Me.LabelValue6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue6.Location = New System.Drawing.Point(530, 483)
+        Me.LabelValue6.Location = New System.Drawing.Point(469, 452)
         Me.LabelValue6.Name = "LabelValue6"
         Me.LabelValue6.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue6.TabIndex = 230
@@ -812,7 +828,7 @@ Partial Class frmMain
         '
         Me.LabelValue5.AutoSize = True
         Me.LabelValue5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue5.Location = New System.Drawing.Point(530, 467)
+        Me.LabelValue5.Location = New System.Drawing.Point(469, 436)
         Me.LabelValue5.Name = "LabelValue5"
         Me.LabelValue5.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue5.TabIndex = 229
@@ -832,7 +848,7 @@ Partial Class frmMain
         '
         Me.LabelValue4.AutoSize = True
         Me.LabelValue4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue4.Location = New System.Drawing.Point(530, 451)
+        Me.LabelValue4.Location = New System.Drawing.Point(469, 420)
         Me.LabelValue4.Name = "LabelValue4"
         Me.LabelValue4.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue4.TabIndex = 228
@@ -852,7 +868,7 @@ Partial Class frmMain
         '
         Me.LabelValue3.AutoSize = True
         Me.LabelValue3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue3.Location = New System.Drawing.Point(530, 435)
+        Me.LabelValue3.Location = New System.Drawing.Point(469, 404)
         Me.LabelValue3.Name = "LabelValue3"
         Me.LabelValue3.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue3.TabIndex = 227
@@ -872,7 +888,7 @@ Partial Class frmMain
         '
         Me.LabelValue2.AutoSize = True
         Me.LabelValue2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue2.Location = New System.Drawing.Point(530, 419)
+        Me.LabelValue2.Location = New System.Drawing.Point(469, 388)
         Me.LabelValue2.Name = "LabelValue2"
         Me.LabelValue2.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue2.TabIndex = 226
@@ -892,7 +908,7 @@ Partial Class frmMain
         '
         Me.LabelValue1.AutoSize = True
         Me.LabelValue1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue1.Location = New System.Drawing.Point(530, 403)
+        Me.LabelValue1.Location = New System.Drawing.Point(469, 372)
         Me.LabelValue1.Name = "LabelValue1"
         Me.LabelValue1.Size = New System.Drawing.Size(90, 16)
         Me.LabelValue1.TabIndex = 222
@@ -910,7 +926,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput2
         '
-        Me.ButtonUpdateInput2.Location = New System.Drawing.Point(639, 365)
+        Me.ButtonUpdateInput2.Location = New System.Drawing.Point(659, 306)
         Me.ButtonUpdateInput2.Name = "ButtonUpdateInput2"
         Me.ButtonUpdateInput2.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput2.TabIndex = 225
@@ -929,7 +945,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput1
         '
-        Me.ButtonUpdateInput1.Location = New System.Drawing.Point(639, 320)
+        Me.ButtonUpdateInput1.Location = New System.Drawing.Point(659, 280)
         Me.ButtonUpdateInput1.Name = "ButtonUpdateInput1"
         Me.ButtonUpdateInput1.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput1.TabIndex = 224
@@ -1004,7 +1020,7 @@ Partial Class frmMain
         '
         'TextBoxInput1
         '
-        Me.TextBoxInput1.Location = New System.Drawing.Point(533, 322)
+        Me.TextBoxInput1.Location = New System.Drawing.Point(553, 282)
         Me.TextBoxInput1.MaxLength = 5
         Me.TextBoxInput1.Name = "TextBoxInput1"
         Me.TextBoxInput1.Size = New System.Drawing.Size(100, 20)
@@ -1023,7 +1039,7 @@ Partial Class frmMain
         '
         'TextBoxInput2
         '
-        Me.TextBoxInput2.Location = New System.Drawing.Point(533, 367)
+        Me.TextBoxInput2.Location = New System.Drawing.Point(553, 308)
         Me.TextBoxInput2.MaxLength = 5
         Me.TextBoxInput2.Name = "TextBoxInput2"
         Me.TextBoxInput2.Size = New System.Drawing.Size(100, 20)
@@ -2193,11 +2209,98 @@ Partial Class frmMain
         Me.CheckBoxSyncBitF.Text = "Clear Debug Bit"
         Me.CheckBoxSyncBitF.UseVisualStyleBackColor = True
         '
+        'LabelValue11
+        '
+        Me.LabelValue11.AutoSize = True
+        Me.LabelValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue11.Location = New System.Drawing.Point(469, 532)
+        Me.LabelValue11.Name = "LabelValue11"
+        Me.LabelValue11.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue11.TabIndex = 277
+        Me.LabelValue11.Text = "Label Value 11"
+        '
+        'LabelValue12
+        '
+        Me.LabelValue12.AutoSize = True
+        Me.LabelValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue12.Location = New System.Drawing.Point(469, 548)
+        Me.LabelValue12.Name = "LabelValue12"
+        Me.LabelValue12.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue12.TabIndex = 297
+        Me.LabelValue12.Text = "Label Value 12"
+        '
+        'LabelValue13
+        '
+        Me.LabelValue13.AutoSize = True
+        Me.LabelValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue13.Location = New System.Drawing.Point(469, 564)
+        Me.LabelValue13.Name = "LabelValue13"
+        Me.LabelValue13.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue13.TabIndex = 298
+        Me.LabelValue13.Text = "Label Value 13"
+        '
+        'LabelValue14
+        '
+        Me.LabelValue14.AutoSize = True
+        Me.LabelValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue14.Location = New System.Drawing.Point(469, 580)
+        Me.LabelValue14.Name = "LabelValue14"
+        Me.LabelValue14.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue14.TabIndex = 299
+        Me.LabelValue14.Text = "Label Value 14"
+        '
+        'LabelValue15
+        '
+        Me.LabelValue15.AutoSize = True
+        Me.LabelValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue15.Location = New System.Drawing.Point(469, 596)
+        Me.LabelValue15.Name = "LabelValue15"
+        Me.LabelValue15.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue15.TabIndex = 300
+        Me.LabelValue15.Text = "Label Value 15"
+        '
+        'ButtonUpdateInput3
+        '
+        Me.ButtonUpdateInput3.Location = New System.Drawing.Point(659, 332)
+        Me.ButtonUpdateInput3.Name = "ButtonUpdateInput3"
+        Me.ButtonUpdateInput3.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonUpdateInput3.TabIndex = 302
+        Me.ButtonUpdateInput3.Text = "Update Input 3"
+        Me.ButtonUpdateInput3.UseVisualStyleBackColor = True
+        '
+        'TextBoxInput3
+        '
+        Me.TextBoxInput3.Location = New System.Drawing.Point(553, 334)
+        Me.TextBoxInput3.MaxLength = 5
+        Me.TextBoxInput3.Name = "TextBoxInput3"
+        Me.TextBoxInput3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxInput3.TabIndex = 301
+        '
+        'ButtonStartLog
+        '
+        Me.ButtonStartLog.Location = New System.Drawing.Point(973, 206)
+        Me.ButtonStartLog.Name = "ButtonStartLog"
+        Me.ButtonStartLog.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonStartLog.TabIndex = 303
+        Me.ButtonStartLog.Text = "Start Logging"
+        Me.ButtonStartLog.UseVisualStyleBackColor = True
+        '
+        'ButtonStopLog
+        '
+        Me.ButtonStopLog.Location = New System.Drawing.Point(973, 236)
+        Me.ButtonStopLog.Name = "ButtonStopLog"
+        Me.ButtonStopLog.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonStopLog.TabIndex = 304
+        Me.ButtonStopLog.Text = "Stop Logging"
+        Me.ButtonStopLog.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1136, 700)
+        Me.Controls.Add(Me.ButtonStopLog)
+        Me.Controls.Add(Me.ButtonStartLog)
         Me.Controls.Add(Me.CheckBoxSyncBitF)
         Me.Controls.Add(Me.ButtonToggleResetDebug)
         Me.Controls.Add(Me.LabelECBState)
@@ -2432,4 +2535,13 @@ Partial Class frmMain
     Friend WithEvents CheckBoxResetIllegal As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxResetTrap As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxResetPOR As System.Windows.Forms.CheckBox
+    Friend WithEvents LabelValue11 As System.Windows.Forms.Label
+    Friend WithEvents LabelValue12 As System.Windows.Forms.Label
+    Friend WithEvents LabelValue13 As System.Windows.Forms.Label
+    Friend WithEvents LabelValue14 As System.Windows.Forms.Label
+    Friend WithEvents LabelValue15 As System.Windows.Forms.Label
+    Friend WithEvents ButtonUpdateInput3 As System.Windows.Forms.Button
+    Friend WithEvents TextBoxInput3 As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonStartLog As System.Windows.Forms.Button
+    Friend WithEvents ButtonStopLog As System.Windows.Forms.Button
 End Class
