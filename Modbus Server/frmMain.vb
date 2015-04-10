@@ -12,6 +12,19 @@
     Public Const REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H21
     Public Const REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H22
     Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE As UInt16 = &H23
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_A_B As UInt16 = &H30
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_C_D As UInt16 = &H31
+    Public Const REGISTER_PULSE_SYNC_RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_HIGH_ENERGY As UInt16 = &H32
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_A_B As UInt16 = &H33
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_C_D As UInt16 = &H34
+    Public Const REGISTER_PULSE_SYNC_AFC_AND_SPARE_PULSE_DELAY_HIGH_ENERGY As UInt16 = &H35
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_A_B As UInt16 = &H36
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_C_D As UInt16 = &H37
+    Public Const REGISTER_PULSE_SYNC_RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_LOW_ENERGY As UInt16 = &H38
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_A_B As UInt16 = &H39
+    Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_C_D As UInt16 = &H3A
+    Public Const REGISTER_PULSE_SYNC_AFC_AND_SPARE_PULSE_DELAY_LOW_ENERGY As UInt16 = &H3B
+
 
     Public Const REGISTER_CMD_AFC_SELECT_AFC_MODE As UInt16 = &H5081
     Public Const REGISTER_CMD_AFC_SELECT_MANUAL_MODE As UInt16 = &H5082
@@ -367,7 +380,7 @@
                 LabelValue10.Text = "Htr Vmon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(3)
 
 
-                
+
 
 
 
@@ -397,6 +410,11 @@
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
@@ -478,6 +496,11 @@
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
                 CheckBoxStatusBit0.Text = "AT EOC"
@@ -563,6 +586,11 @@
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
 
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
+
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) Then
                 CheckBoxStatusBit0.Text = "Cust HV OFF"
                 CheckBoxStatusBit1.Text = "Cust X-Ray OFF"
@@ -607,8 +635,25 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                LabelValue1.Text = "LEDs = 0x" & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(12).ToString("x")
+                LabelValue1.Text = "Grid Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(0) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(0) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(1) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(1) And &HFF)
+                LabelValue2.Text = "PFN Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(2) / 256)
+                LabelValue3.Text = "RF Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(2) And &HFF)
 
+                LabelValue4.Text = "Grid Width High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(3) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(3) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(4) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(4) And &HFF)
+                LabelValue5.Text = "AFC Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(5) / 256)
+                LabelValue6.Text = "Spare Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(5) And &HFF)
+
+                LabelValue7.Text = "Grid Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(6) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(6) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) And &HFF)
+                LabelValue8.Text = "PFN Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) / 256)
+                LabelValue9.Text = "RF Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) And &HFF)
+
+                LabelValue10.Text = "Grid Width Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) And &HFF)
+                LabelValue11.Text = "AFC Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) / 256)
+                LabelValue12.Text = "Spare Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) And &HFF)
+
+
+
+              
 
 
                 TextBoxInput1.Visible = False
@@ -620,21 +665,27 @@
                 ButtonBoardCommand.Visible = False
 
                 LabelValue1.Visible = True
-                LabelValue2.Visible = False
-                LabelValue3.Visible = False
-                LabelValue4.Visible = False
-                LabelValue5.Visible = False
-                LabelValue6.Visible = False
-                LabelValue7.Visible = False
-                LabelValue8.Visible = False
-                LabelValue9.Visible = False
-                LabelValue10.Visible = False
+                LabelValue2.Visible = True
+                LabelValue3.Visible = True
+                LabelValue4.Visible = True
+                LabelValue5.Visible = True
+                LabelValue6.Visible = True
+                LabelValue7.Visible = True
+                LabelValue8.Visible = True
+                LabelValue9.Visible = True
+                LabelValue10.Visible = True
 
-                LabelValue11.Visible = False
-                LabelValue12.Visible = False
+                LabelValue11.Visible = True
+                LabelValue12.Visible = True
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+                ComboBoxSelectPulseSyncRegister.Visible = True
+                TextBoxPulseSyncValueHighByte.Visible = True
+                TextBoxPulseSyncValueLowByte.Visible = True
+                ButtonSetPulseSyncRegister.Visible = True
+
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) Then
                 CheckBoxStatusBit0.Text = "HIGH MODE"
@@ -711,6 +762,12 @@
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
                 CheckBoxStatusBit0.Text = "SF6 Relay Closed"
@@ -793,6 +850,10 @@
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
 
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_AFC) Then
                 CheckBoxStatusBit0.Text = "Startup"
@@ -881,6 +942,10 @@
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
 
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) Then
                 CheckBoxStatusBit0.Text = "HV Disabled"
@@ -982,6 +1047,11 @@
                 LabelValue14.Visible = True
                 LabelValue15.Visible = True
 
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
+
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
                 CheckBoxStatusBit0.Text = "Unused"
                 CheckBoxStatusBit1.Text = "Unused"
@@ -1034,7 +1104,7 @@
 
                 LabelValue1.Text = "Ion Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(0)
                 LabelValue2.Text = "Ion Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(1)
-               
+
                 TextBoxInput1.Visible = False
                 ButtonUpdateInput1.Visible = False
                 TextBoxInput2.Visible = False
@@ -1056,6 +1126,11 @@
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             Else
                 CheckBoxStatusBit0.Text = "Status 0"
@@ -1125,6 +1200,11 @@
                 LabelValue13.Visible = False
                 LabelValue14.Visible = False
                 LabelValue15.Visible = False
+
+                ComboBoxSelectPulseSyncRegister.Visible = False
+                TextBoxPulseSyncValueHighByte.Visible = False
+                TextBoxPulseSyncValueLowByte.Visible = False
+                ButtonSetPulseSyncRegister.Visible = False
 
             End If
 
@@ -1345,4 +1425,20 @@
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
     End Sub
 
+    Private Sub ButtonSetPulseSyncRegister_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetPulseSyncRegister.Click
+        Dim program_word As UInt16
+        Dim byte_input As Byte
+        Try
+            byte_input = TextBoxPulseSyncValueLowByte.Text
+            program_word = byte_input
+            program_word *= 256
+            byte_input = TextBoxPulseSyncValueHighByte.Text
+            program_word += byte_input
+
+            ServerSettings.put_modbus_commands((ComboBoxSelectPulseSyncRegister.SelectedIndex + REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_A_B), program_word, 0, 0)
+        Catch ex As Exception
+            MsgBox("You must enter valid Byte data")
+
+        End Try
+    End Sub
 End Class

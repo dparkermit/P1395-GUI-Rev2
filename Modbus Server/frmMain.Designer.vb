@@ -25,14 +25,25 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ButtonSetPulseSyncRegister = New System.Windows.Forms.Button()
+        Me.ComboBoxSelectPulseSyncRegister = New System.Windows.Forms.ComboBox()
+        Me.TextBoxPulseSyncValueLowByte = New System.Windows.Forms.TextBox()
+        Me.TextBoxPulseSyncValueHighByte = New System.Windows.Forms.TextBox()
         Me.CheckBoxResetPOR = New System.Windows.Forms.CheckBox()
         Me.CheckBoxResetBOR = New System.Windows.Forms.CheckBox()
+        Me.ButtonUpdateInput3 = New System.Windows.Forms.Button()
         Me.CheckBoxResetIdle = New System.Windows.Forms.CheckBox()
+        Me.TextBoxInput3 = New System.Windows.Forms.TextBox()
         Me.CheckBoxResetSleep = New System.Windows.Forms.CheckBox()
+        Me.LabelValue15 = New System.Windows.Forms.Label()
         Me.CheckBoxResetWDT = New System.Windows.Forms.CheckBox()
+        Me.LabelValue14 = New System.Windows.Forms.Label()
         Me.CheckBoxResetSoftware = New System.Windows.Forms.CheckBox()
+        Me.LabelValue13 = New System.Windows.Forms.Label()
         Me.CheckBoxResetExt = New System.Windows.Forms.CheckBox()
+        Me.LabelValue12 = New System.Windows.Forms.Label()
         Me.CheckBoxResetIllegal = New System.Windows.Forms.CheckBox()
+        Me.LabelValue11 = New System.Windows.Forms.Label()
         Me.CheckBoxResetTrap = New System.Windows.Forms.CheckBox()
         Me.LabelRCON = New System.Windows.Forms.Label()
         Me.ButtonResetSlave = New System.Windows.Forms.Button()
@@ -199,13 +210,6 @@ Partial Class frmMain
         Me.LabelECBState = New System.Windows.Forms.Label()
         Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
-        Me.LabelValue11 = New System.Windows.Forms.Label()
-        Me.LabelValue12 = New System.Windows.Forms.Label()
-        Me.LabelValue13 = New System.Windows.Forms.Label()
-        Me.LabelValue14 = New System.Windows.Forms.Label()
-        Me.LabelValue15 = New System.Windows.Forms.Label()
-        Me.ButtonUpdateInput3 = New System.Windows.Forms.Button()
-        Me.TextBoxInput3 = New System.Windows.Forms.TextBox()
         Me.ButtonStartLog = New System.Windows.Forms.Button()
         Me.ButtonStopLog = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -218,6 +222,10 @@ Partial Class frmMain
         'GroupBox1
         '
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.GroupBox1.Controls.Add(Me.ButtonSetPulseSyncRegister)
+        Me.GroupBox1.Controls.Add(Me.ComboBoxSelectPulseSyncRegister)
+        Me.GroupBox1.Controls.Add(Me.TextBoxPulseSyncValueLowByte)
+        Me.GroupBox1.Controls.Add(Me.TextBoxPulseSyncValueHighByte)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetPOR)
         Me.GroupBox1.Controls.Add(Me.CheckBoxResetBOR)
         Me.GroupBox1.Controls.Add(Me.ButtonUpdateInput3)
@@ -357,6 +365,41 @@ Partial Class frmMain
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Status Data"
         '
+        'ButtonSetPulseSyncRegister
+        '
+        Me.ButtonSetPulseSyncRegister.Location = New System.Drawing.Point(632, 358)
+        Me.ButtonSetPulseSyncRegister.Name = "ButtonSetPulseSyncRegister"
+        Me.ButtonSetPulseSyncRegister.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonSetPulseSyncRegister.TabIndex = 306
+        Me.ButtonSetPulseSyncRegister.Text = "Set Pulse Sync"
+        Me.ButtonSetPulseSyncRegister.UseVisualStyleBackColor = True
+        '
+        'ComboBoxSelectPulseSyncRegister
+        '
+        Me.ComboBoxSelectPulseSyncRegister.FormattingEnabled = True
+        Me.ComboBoxSelectPulseSyncRegister.Items.AddRange(New Object() {"GRID_PULSE_DELAY_HIGH_ENERGY_A_B", "GRID_PULSE_DELAY_HIGH_ENERGY_C_D", "RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_HIGH_ENERGY", "GRID_PULSE_WIDTH_HIGH_ENERGY_A_B", "GRID_PULSE_WIDTH_HIGH_ENERGY_C_D", "AFC_AND_SPARE_PULSE_DELAY_HIGH_ENERGY", "GRID_PULSE_DELAY_LOW_ENERGY_A_B", "GRID_PULSE_DELAY_LOW_ENERGY_C_D", "RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_LOW_ENERGY", "GRID_PULSE_WIDTH_LOW_ENERGY_A_B", "GRID_PULSE_WIDTH_LOW_ENERGY_C_D", "AFC_AND_SPARE_PULSE_DELAY_LOW_ENERGY"})
+        Me.ComboBoxSelectPulseSyncRegister.Location = New System.Drawing.Point(462, 282)
+        Me.ComboBoxSelectPulseSyncRegister.Name = "ComboBoxSelectPulseSyncRegister"
+        Me.ComboBoxSelectPulseSyncRegister.Size = New System.Drawing.Size(270, 21)
+        Me.ComboBoxSelectPulseSyncRegister.TabIndex = 305
+        Me.ComboBoxSelectPulseSyncRegister.Text = "Select Register"
+        '
+        'TextBoxPulseSyncValueLowByte
+        '
+        Me.TextBoxPulseSyncValueLowByte.Location = New System.Drawing.Point(659, 309)
+        Me.TextBoxPulseSyncValueLowByte.MaxLength = 5
+        Me.TextBoxPulseSyncValueLowByte.Name = "TextBoxPulseSyncValueLowByte"
+        Me.TextBoxPulseSyncValueLowByte.Size = New System.Drawing.Size(73, 20)
+        Me.TextBoxPulseSyncValueLowByte.TabIndex = 304
+        '
+        'TextBoxPulseSyncValueHighByte
+        '
+        Me.TextBoxPulseSyncValueHighByte.Location = New System.Drawing.Point(659, 332)
+        Me.TextBoxPulseSyncValueHighByte.MaxLength = 5
+        Me.TextBoxPulseSyncValueHighByte.Name = "TextBoxPulseSyncValueHighByte"
+        Me.TextBoxPulseSyncValueHighByte.Size = New System.Drawing.Size(73, 20)
+        Me.TextBoxPulseSyncValueHighByte.TabIndex = 303
+        '
         'CheckBoxResetPOR
         '
         Me.CheckBoxResetPOR.AutoSize = True
@@ -381,6 +424,15 @@ Partial Class frmMain
         Me.CheckBoxResetBOR.Text = "BOR"
         Me.CheckBoxResetBOR.UseVisualStyleBackColor = True
         '
+        'ButtonUpdateInput3
+        '
+        Me.ButtonUpdateInput3.Location = New System.Drawing.Point(659, 332)
+        Me.ButtonUpdateInput3.Name = "ButtonUpdateInput3"
+        Me.ButtonUpdateInput3.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonUpdateInput3.TabIndex = 302
+        Me.ButtonUpdateInput3.Text = "Update Input 3"
+        Me.ButtonUpdateInput3.UseVisualStyleBackColor = True
+        '
         'CheckBoxResetIdle
         '
         Me.CheckBoxResetIdle.AutoSize = True
@@ -392,6 +444,14 @@ Partial Class frmMain
         Me.CheckBoxResetIdle.TabIndex = 274
         Me.CheckBoxResetIdle.Text = "Idle"
         Me.CheckBoxResetIdle.UseVisualStyleBackColor = True
+        '
+        'TextBoxInput3
+        '
+        Me.TextBoxInput3.Location = New System.Drawing.Point(553, 334)
+        Me.TextBoxInput3.MaxLength = 5
+        Me.TextBoxInput3.Name = "TextBoxInput3"
+        Me.TextBoxInput3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxInput3.TabIndex = 301
         '
         'CheckBoxResetSleep
         '
@@ -405,6 +465,16 @@ Partial Class frmMain
         Me.CheckBoxResetSleep.Text = "Sleep"
         Me.CheckBoxResetSleep.UseVisualStyleBackColor = True
         '
+        'LabelValue15
+        '
+        Me.LabelValue15.AutoSize = True
+        Me.LabelValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue15.Location = New System.Drawing.Point(469, 596)
+        Me.LabelValue15.Name = "LabelValue15"
+        Me.LabelValue15.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue15.TabIndex = 300
+        Me.LabelValue15.Text = "Label Value 15"
+        '
         'CheckBoxResetWDT
         '
         Me.CheckBoxResetWDT.AutoSize = True
@@ -416,6 +486,16 @@ Partial Class frmMain
         Me.CheckBoxResetWDT.TabIndex = 272
         Me.CheckBoxResetWDT.Text = "WDT"
         Me.CheckBoxResetWDT.UseVisualStyleBackColor = True
+        '
+        'LabelValue14
+        '
+        Me.LabelValue14.AutoSize = True
+        Me.LabelValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue14.Location = New System.Drawing.Point(469, 580)
+        Me.LabelValue14.Name = "LabelValue14"
+        Me.LabelValue14.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue14.TabIndex = 299
+        Me.LabelValue14.Text = "Label Value 14"
         '
         'CheckBoxResetSoftware
         '
@@ -429,6 +509,16 @@ Partial Class frmMain
         Me.CheckBoxResetSoftware.Text = "SW"
         Me.CheckBoxResetSoftware.UseVisualStyleBackColor = True
         '
+        'LabelValue13
+        '
+        Me.LabelValue13.AutoSize = True
+        Me.LabelValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue13.Location = New System.Drawing.Point(469, 564)
+        Me.LabelValue13.Name = "LabelValue13"
+        Me.LabelValue13.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue13.TabIndex = 298
+        Me.LabelValue13.Text = "Label Value 13"
+        '
         'CheckBoxResetExt
         '
         Me.CheckBoxResetExt.AutoSize = True
@@ -441,6 +531,16 @@ Partial Class frmMain
         Me.CheckBoxResetExt.Text = "Ext"
         Me.CheckBoxResetExt.UseVisualStyleBackColor = True
         '
+        'LabelValue12
+        '
+        Me.LabelValue12.AutoSize = True
+        Me.LabelValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue12.Location = New System.Drawing.Point(469, 548)
+        Me.LabelValue12.Name = "LabelValue12"
+        Me.LabelValue12.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue12.TabIndex = 297
+        Me.LabelValue12.Text = "Label Value 12"
+        '
         'CheckBoxResetIllegal
         '
         Me.CheckBoxResetIllegal.AutoSize = True
@@ -452,6 +552,16 @@ Partial Class frmMain
         Me.CheckBoxResetIllegal.TabIndex = 269
         Me.CheckBoxResetIllegal.Text = "Illegal"
         Me.CheckBoxResetIllegal.UseVisualStyleBackColor = True
+        '
+        'LabelValue11
+        '
+        Me.LabelValue11.AutoSize = True
+        Me.LabelValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelValue11.Location = New System.Drawing.Point(469, 532)
+        Me.LabelValue11.Name = "LabelValue11"
+        Me.LabelValue11.Size = New System.Drawing.Size(97, 16)
+        Me.LabelValue11.TabIndex = 277
+        Me.LabelValue11.Text = "Label Value 11"
         '
         'CheckBoxResetTrap
         '
@@ -729,9 +839,9 @@ Partial Class frmMain
         '
         'ButtonBoardCommand
         '
-        Me.ButtonBoardCommand.Location = New System.Drawing.Point(432, 331)
+        Me.ButtonBoardCommand.Location = New System.Drawing.Point(659, 358)
         Me.ButtonBoardCommand.Name = "ButtonBoardCommand"
-        Me.ButtonBoardCommand.Size = New System.Drawing.Size(103, 23)
+        Me.ButtonBoardCommand.Size = New System.Drawing.Size(100, 23)
         Me.ButtonBoardCommand.TabIndex = 240
         Me.ButtonBoardCommand.Text = "Board Command"
         Me.ButtonBoardCommand.UseVisualStyleBackColor = True
@@ -2209,73 +2319,6 @@ Partial Class frmMain
         Me.CheckBoxSyncBitF.Text = "Clear Debug Bit"
         Me.CheckBoxSyncBitF.UseVisualStyleBackColor = True
         '
-        'LabelValue11
-        '
-        Me.LabelValue11.AutoSize = True
-        Me.LabelValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue11.Location = New System.Drawing.Point(469, 532)
-        Me.LabelValue11.Name = "LabelValue11"
-        Me.LabelValue11.Size = New System.Drawing.Size(97, 16)
-        Me.LabelValue11.TabIndex = 277
-        Me.LabelValue11.Text = "Label Value 11"
-        '
-        'LabelValue12
-        '
-        Me.LabelValue12.AutoSize = True
-        Me.LabelValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue12.Location = New System.Drawing.Point(469, 548)
-        Me.LabelValue12.Name = "LabelValue12"
-        Me.LabelValue12.Size = New System.Drawing.Size(97, 16)
-        Me.LabelValue12.TabIndex = 297
-        Me.LabelValue12.Text = "Label Value 12"
-        '
-        'LabelValue13
-        '
-        Me.LabelValue13.AutoSize = True
-        Me.LabelValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue13.Location = New System.Drawing.Point(469, 564)
-        Me.LabelValue13.Name = "LabelValue13"
-        Me.LabelValue13.Size = New System.Drawing.Size(97, 16)
-        Me.LabelValue13.TabIndex = 298
-        Me.LabelValue13.Text = "Label Value 13"
-        '
-        'LabelValue14
-        '
-        Me.LabelValue14.AutoSize = True
-        Me.LabelValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue14.Location = New System.Drawing.Point(469, 580)
-        Me.LabelValue14.Name = "LabelValue14"
-        Me.LabelValue14.Size = New System.Drawing.Size(97, 16)
-        Me.LabelValue14.TabIndex = 299
-        Me.LabelValue14.Text = "Label Value 14"
-        '
-        'LabelValue15
-        '
-        Me.LabelValue15.AutoSize = True
-        Me.LabelValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue15.Location = New System.Drawing.Point(469, 596)
-        Me.LabelValue15.Name = "LabelValue15"
-        Me.LabelValue15.Size = New System.Drawing.Size(97, 16)
-        Me.LabelValue15.TabIndex = 300
-        Me.LabelValue15.Text = "Label Value 15"
-        '
-        'ButtonUpdateInput3
-        '
-        Me.ButtonUpdateInput3.Location = New System.Drawing.Point(659, 332)
-        Me.ButtonUpdateInput3.Name = "ButtonUpdateInput3"
-        Me.ButtonUpdateInput3.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonUpdateInput3.TabIndex = 302
-        Me.ButtonUpdateInput3.Text = "Update Input 3"
-        Me.ButtonUpdateInput3.UseVisualStyleBackColor = True
-        '
-        'TextBoxInput3
-        '
-        Me.TextBoxInput3.Location = New System.Drawing.Point(553, 334)
-        Me.TextBoxInput3.MaxLength = 5
-        Me.TextBoxInput3.Name = "TextBoxInput3"
-        Me.TextBoxInput3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxInput3.TabIndex = 301
-        '
         'ButtonStartLog
         '
         Me.ButtonStartLog.Location = New System.Drawing.Point(973, 206)
@@ -2544,4 +2587,8 @@ Partial Class frmMain
     Friend WithEvents TextBoxInput3 As System.Windows.Forms.TextBox
     Friend WithEvents ButtonStartLog As System.Windows.Forms.Button
     Friend WithEvents ButtonStopLog As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetPulseSyncRegister As System.Windows.Forms.Button
+    Friend WithEvents ComboBoxSelectPulseSyncRegister As System.Windows.Forms.ComboBox
+    Friend WithEvents TextBoxPulseSyncValueLowByte As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPulseSyncValueHighByte As System.Windows.Forms.TextBox
 End Class
