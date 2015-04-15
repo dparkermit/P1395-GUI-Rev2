@@ -377,7 +377,7 @@ Partial Class frmMain
         'ComboBoxSelectPulseSyncRegister
         '
         Me.ComboBoxSelectPulseSyncRegister.FormattingEnabled = True
-        Me.ComboBoxSelectPulseSyncRegister.Items.AddRange(New Object() {"GRID_PULSE_DELAY_HIGH_ENERGY_A_B", "GRID_PULSE_DELAY_HIGH_ENERGY_C_D", "RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_HIGH_ENERGY", "GRID_PULSE_WIDTH_HIGH_ENERGY_A_B", "GRID_PULSE_WIDTH_HIGH_ENERGY_C_D", "AFC_AND_SPARE_PULSE_DELAY_HIGH_ENERGY", "GRID_PULSE_DELAY_LOW_ENERGY_A_B", "GRID_PULSE_DELAY_LOW_ENERGY_C_D", "RF_TRIGGER_AND_THYRATRON_PULSE_DELAY_LOW_ENERGY", "GRID_PULSE_WIDTH_LOW_ENERGY_A_B", "GRID_PULSE_WIDTH_LOW_ENERGY_C_D", "AFC_AND_SPARE_PULSE_DELAY_LOW_ENERGY"})
+        Me.ComboBoxSelectPulseSyncRegister.Items.AddRange(New Object() {"GRID_PULSE_DELAY_HIGH_ENERGY_A_B", "GRID_PULSE_DELAY_HIGH_ENERGY_C_D", "PFN Trigger & Dose Sample Delay High", "GRID_PULSE_WIDTH_HIGH_ENERGY_A_B", "GRID_PULSE_WIDTH_HIGH_ENERGY_C_D", "AFC & Magnetron Sample Delay High", "GRID_PULSE_DELAY_LOW_ENERGY_A_B", "GRID_PULSE_DELAY_LOW_ENERGY_C_D", "PFN Trigger & Dose Sample Delay Low", "GRID_PULSE_WIDTH_LOW_ENERGY_A_B", "GRID_PULSE_WIDTH_LOW_ENERGY_C_D", "AFC & Magnetron Sample Delay Low"})
         Me.ComboBoxSelectPulseSyncRegister.Location = New System.Drawing.Point(462, 282)
         Me.ComboBoxSelectPulseSyncRegister.Name = "ComboBoxSelectPulseSyncRegister"
         Me.ComboBoxSelectPulseSyncRegister.Size = New System.Drawing.Size(270, 21)
