@@ -1003,24 +1003,24 @@
                 ButtonUpdateInput3.Text = "Set Eg (-80,140)"
 
                 ' LabelValue2.Text = "NA(Eg Set Lo) = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(1)) * 0.1 'GUN_DRIVER_EG_SET_CAL
-                LabelValue1.Text = "Ek Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(3)) * (-0.001), "0.00kV") 'ekset
-                LabelValue2.Text = "Ef Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(2)) * (-0.001), "0.00V") 'efset
-                LabelValue3.Text = "Eg Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(0)) * 0.1 - 80, "0.0V")  ' egset
-                LabelValue4.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(6)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
-                LabelValue5.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(7)) * 0.1, "0.0V") ' GUN_DRIVER_IKP_RD_CAL
-                LabelValue6.Text = "Ef = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(8)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_RD_CAL
-                LabelValue7.Text = "If = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(9)) * 0.001, "0.00A") 'GUN_DRIVER_IF_RD_CAL
-                LabelValue8.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(4)) * 0.1 - 80, "0.0V") ' eg rd
+                LabelValue1.Text = "Ek Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.CATHODE_VOLTAGE_SET_POINT)) * (-0.001), "0.00kV") 'ekset
+                LabelValue2.Text = "Ef Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.HEATER_VOLTAGE_SET_POINT)) * (-0.001), "0.00V") 'efset
+                LabelValue3.Text = "Eg Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.HIGH_ENERGY_PULSE_TOP_VOLTAGE_SET_POINT)) * 0.1 - 80, "0.0V")  ' egset
+                LabelValue4.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_CATHODE_VOLTAGE_MONITOR)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
+                LabelValue5.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_PEAK_BEAM_CURRENT)) * 0.1, "0.0V") ' GUN_DRIVER_IKP_RD_CAL
+                LabelValue6.Text = "Ef = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HEATER_VOLTAGE_MONITOR)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_RD_CAL
+                LabelValue7.Text = "If = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HEATER_CURRENT_MONITOR)) * 0.001, "0.00A") 'GUN_DRIVER_IF_RD_CAL
+                LabelValue8.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HIGH_ENERGY_PULSE_TOP_VOLTAGE_MONITOR)) * 0.1 - 80, "0.0V") ' eg rd
 
-                LabelValue9.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(19)) * 0.1, "0.0V") ' GUN_DRIVER_EC_RD_CAL
-                LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(11)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
-                LabelValue11.Text = "Ek SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(15)) * (-0.001), "0.00kV") 'GUN_DRIVER_EK_SET_CAL
-                LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(14)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
-                LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(12)) * 0.1 - 80, "0.0V") 'GUN_DRIVER_EG_SET_CAL
+                LabelValue9.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_BIAS_VOLTAGE_MON)) * 0.1, "0.0V") ' GUN_DRIVER_EC_RD_CAL
+                LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_DRIVER_TEMPERATURE)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
+                LabelValue11.Text = "Ek SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_CATHODE_VOLTAGE_SET_POINT)) * (-0.001), "0.00kV") 'GUN_DRIVER_EK_SET_CAL
+                LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HEATER_VOLTAGE_SET_POINT)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
+                LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_LOW_ENERGY_PULSE_TOP_SET_POINT)) * 0.1 - 80, "0.0V") 'GUN_DRIVER_EG_SET_CAL
 
-                LabelValue14.Text = "Ana Flt = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(17) & _
-                     ", state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(18)
-                LabelValue15.Text = "FPGA ASDR = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(16).ToString("x")
+                LabelValue14.Text = "Ana Flt = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_ANALOG_FAULT_STATUS) & _
+                     ", state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_SYSTEM_LOGIC_STATE)
+                LabelValue15.Text = "FPGA ASDR = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_FPGA_ASDR_REGISTER).ToString("x")
 
 
                 TextBoxInput1.Visible = True
