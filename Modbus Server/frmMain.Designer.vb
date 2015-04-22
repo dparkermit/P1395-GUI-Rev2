@@ -212,6 +212,8 @@ Partial Class frmMain
         Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
         Me.ButtonStartLog = New System.Windows.Forms.Button()
         Me.ButtonStopLog = New System.Windows.Forms.Button()
+        Me.ButtonSetTime = New System.Windows.Forms.Button()
+        Me.LabelTimeSet = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2337,11 +2339,32 @@ Partial Class frmMain
         Me.ButtonStopLog.Text = "Stop Logging"
         Me.ButtonStopLog.UseVisualStyleBackColor = True
         '
+        'ButtonSetTime
+        '
+        Me.ButtonSetTime.Location = New System.Drawing.Point(973, 140)
+        Me.ButtonSetTime.Name = "ButtonSetTime"
+        Me.ButtonSetTime.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonSetTime.TabIndex = 305
+        Me.ButtonSetTime.Text = "SetTime"
+        Me.ButtonSetTime.UseVisualStyleBackColor = True
+        '
+        'LabelTimeSet
+        '
+        Me.LabelTimeSet.AutoSize = True
+        Me.LabelTimeSet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTimeSet.Location = New System.Drawing.Point(973, 166)
+        Me.LabelTimeSet.Name = "LabelTimeSet"
+        Me.LabelTimeSet.Size = New System.Drawing.Size(31, 16)
+        Me.LabelTimeSet.TabIndex = 306
+        Me.LabelTimeSet.Text = "N/A"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1136, 700)
+        Me.Controls.Add(Me.LabelTimeSet)
+        Me.Controls.Add(Me.ButtonSetTime)
         Me.Controls.Add(Me.ButtonStopLog)
         Me.Controls.Add(Me.ButtonStartLog)
         Me.Controls.Add(Me.CheckBoxSyncBitF)
@@ -2591,4 +2614,6 @@ Partial Class frmMain
     Friend WithEvents ComboBoxSelectPulseSyncRegister As System.Windows.Forms.ComboBox
     Friend WithEvents TextBoxPulseSyncValueLowByte As System.Windows.Forms.TextBox
     Friend WithEvents TextBoxPulseSyncValueHighByte As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetTime As System.Windows.Forms.Button
+    Friend WithEvents LabelTimeSet As System.Windows.Forms.Label
 End Class

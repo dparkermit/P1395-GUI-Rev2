@@ -47,6 +47,8 @@
     Public Const REGISTER_DEBUG_ENABLE_HIGH_SPEED_LOGGING As UInt16 = &HEF06
     Public Const REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING As UInt16 = &HEF07
 
+    Public Const REGISTER_SPECIAL_SET_TIME As UInt16 = &HEF08
+
 
 
 
@@ -445,8 +447,7 @@
                 CheckBoxFaultBitF.Text = "Pulse Sync"
 
                 LabelDebug0.Text = "State = "
-                LabelDebug1.Text = "Max TX Err = "
-                LabelValueDebug1.Text = LabelValueDebug1.Text / 256
+                LabelDebug1.Text = "Event Log Count = "
                 LabelDebug2.Text = "Max RX Err = "
                 LabelDebug3.Text = "Debug 3 = "
                 LabelDebug4.Text = "Ion Pump = "
@@ -1438,6 +1439,30 @@
             ServerSettings.put_modbus_commands((ComboBoxSelectPulseSyncRegister.SelectedIndex + REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_A_B), program_word, 0, 0)
         Catch ex As Exception
             MsgBox("You must enter valid Byte data")
+
+        End Try
+    End Sub
+
+    Private Sub ButtonSetTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetTime.Click
+        Dim time_high_word As UInt16
+        Dim time_low_word As UInt16
+        Dim time_now As Date = DateTime.UtcNow
+        Dim time_seconds As UInt32
+
+        time_seconds = (time_now.Year Mod 100) * 31622400
+        time_seconds += (time_now.Month) * 2678400
+        time_seconds += (time_now.Day) * 86400
+        time_seconds += (time_now.Hour) * 3600
+        time_seconds += (time_now.Minute) * 60
+        time_seconds += (time_now.Second)
+
+        time_high_word = CUShort(time_seconds >> 16)
+        time_low_word = CUShort(time_seconds And &HFFFF)
+        LabelTimeSet.Text = Format(time_now, "yy MM dd HH mm ss")
+        Try
+            ServerSettings.put_modbus_commands(REGISTER_SPECIAL_SET_TIME, time_high_word, time_low_word, 0)
+        Catch ex As Exception
+            MsgBox("Date Time Type conversion failed")
 
         End Try
     End Sub
