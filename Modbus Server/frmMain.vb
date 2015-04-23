@@ -1419,10 +1419,12 @@
     Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
         ServerSettings.OpenPulseLogFile()
+        ServerSettings.OpenEventLogFile()
     End Sub
 
     Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
         ServerSettings.ClosePulseLogFile()
+        ServerSettings.CloseEventLogFile()
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
     End Sub
 

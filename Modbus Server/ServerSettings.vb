@@ -325,6 +325,54 @@ Public Class ServerSettings
         End If
 
     End Sub
+    Public event_log_enabled As Boolean
+    Public event_log_file_name As String
+    Public event_log_file_path As String
+    Public event_log_file As System.IO.StreamWriter
+
+    Public Sub OpenEventLogFile()
+        event_log_file_name = "Event_log_" & DateTime.Now.ToString("yyyy_MM_dd_HH_mm") & ".csv"
+        event_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, event_log_file_name)
+        event_log_file = My.Computer.FileSystem.OpenTextFileWriter(event_log_file_path, True)
+        event_log_enabled = True
+
+        event_log_file.Write("Event Number, ")
+        event_log_file.Write("Event Time, ")
+        event_log_file.Write("Event ID")
+        event_log_file.WriteLine("")
+    End Sub
+
+
+    Public Sub CloseEventLogFile()
+        event_log_enabled = False
+        event_log_file.Close()
+    End Sub
+
+    Private Sub save_event_data(ByRef bytes As Byte(), ByVal length As UInt16)
+        Dim data_word As UInt16
+        Dim time As ULong
+        Dim event_count As Integer
+
+        If event_log_enabled Then
+            If (length > MAX_EVENT_SIZE_DATA) Then length = MAX_EVENT_SIZE_DATA
+            event_count = CInt(length / 8)  ' one event is 8 bytes
+            If (event_count < 1) Then Exit Sub
+            For index = 0 To (event_count - 1)
+                data_word = CUShort(bytes(index * 8) * 256 + bytes(index * 8 + 1))
+                event_log_file.Write(data_word & ", ")  ' event #
+                time = CUShort(bytes(index * 8 + 2) * 256 + bytes(index * 8 + 3))
+                data_word = CUShort(bytes(index * 8 + 4) * 256 + bytes(index * 8 + 5))
+                time = CULng(time * 256 + data_word)
+                event_log_file.Write(time & ", ")  ' event time
+                data_word = CUShort(bytes(index * 8 + 6) * 256 + bytes(index * 8 + 7))
+                event_log_file.Write(data_word)  ' event ID
+                event_log_file.WriteLine("")
+            Next
+            event_log_file.WriteLine("")
+        End If
+
+    End Sub
+
     Public Sub modbus_reply()
         Dim i As UInt16, row As UInt16
         Dim msglen As Integer, datalen As Integer
@@ -361,7 +409,7 @@ Public Class ServerSettings
                 Next
                 event_index = CUShort(event_index + 1)
                 If (event_index >= MAX_EVENT_SIZE_ROW) Then event_index = 0
-                '    Call save_event_data(event_data)
+                Call save_event_data(event_data, CUShort(word_count * 2))
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_ONE_CAL_ENTRY) Then
                 If (word_count >= 3) Then
