@@ -772,11 +772,11 @@
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
                 CheckBoxStatusBit0.Text = "SF6 Relay Closed"
-                CheckBoxStatusBit1.Text = "Unused"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
+                CheckBoxStatusBit1.Text = "SF6 too Cold"
+                CheckBoxStatusBit2.Text = "SF6 too Low"
+                CheckBoxStatusBit3.Text = "SF6 Need Fill"
+                CheckBoxStatusBit4.Text = "SF6 Limit"
+                CheckBoxStatusBit5.Text = "SF6 Filling"
                 CheckBoxStatusBit6.Text = "Unused"
                 CheckBoxStatusBit7.Text = "Unused"
 
@@ -826,14 +826,23 @@
                 LabelValue10.Text = "Linac Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(9)
 
 
+                update_1_cmd_index = REGISTER_CMD_COOLANT_INTERFACE_ALLOW_SF6_PULSES_WHEN_PRESSURE_BELOW_LIMIT
+                ButtonUpdateInput1.Text = "Override Pulses"
 
-                TextBoxInput1.Visible = False
-                ButtonUpdateInput1.Visible = False
-                TextBoxInput2.Visible = False
-                ButtonUpdateInput2.Visible = False
+                update_2_cmd_index = REGISTER_CMD_COOLANT_INTERFACE_SET_SF6_PULSES_IN_BOTTLE
+                ButtonUpdateInput2.Text = "Set Bottle Pulses"
+
+                board_command_index = REGISTER_CMD_COOLANT_INTERFACE_ALLOW_25_MORE_SF6_PULSES
+                ButtonBoardCommand.Text = "25 SF6 Pulses"
+
+
+                TextBoxInput1.Visible = True
+                ButtonUpdateInput1.Visible = True
+                TextBoxInput2.Visible = True
+                ButtonUpdateInput2.Visible = True
                 TextBoxInput3.Visible = False
                 ButtonUpdateInput3.Visible = False
-                ButtonBoardCommand.Visible = False
+                ButtonBoardCommand.Visible = True
 
                 LabelValue1.Visible = True
                 LabelValue2.Visible = True
