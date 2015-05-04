@@ -331,10 +331,9 @@ Public Class ServerSettings
     Public event_log_file As System.IO.StreamWriter
 
     Public Sub OpenEventLogFile()
-        event_log_file_name = "Event_log_" & DateTime.Now.ToString("yyyy_MM_dd_HH_mm") & ".csv"
+        event_log_file_name = "P1395_Event_log.csv"
         event_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, event_log_file_name)
         event_log_file = My.Computer.FileSystem.OpenTextFileWriter(event_log_file_path, True)
-        event_log_enabled = True
 
         event_log_file.Write("Event Number, ")
         event_log_file.Write("Event Time, ")
@@ -349,26 +348,58 @@ Public Class ServerSettings
     End Sub
 
     Private Sub save_event_data(ByRef bytes As Byte(), ByVal length As UInt16)
-        Dim data_word As UInt16
-        Dim time As ULong
+        Dim time As UInt32
+        Dim event_id As UInt16
+        Dim event_number As UInt16
         Dim event_count As Integer
+        Dim head As Integer
+        Dim time_log As String
+        Dim year As Integer
+        Dim month As Integer
+        Dim day As Integer
+        Dim hour As Integer
+        Dim minute As Integer
+        Dim second As Integer
+
+
+
+
 
         If event_log_enabled Then
             If (length > MAX_EVENT_SIZE_DATA) Then length = MAX_EVENT_SIZE_DATA
             event_count = CInt(length / 8)  ' one event is 8 bytes
             If (event_count < 1) Then Exit Sub
             For index = 0 To (event_count - 1)
-                data_word = CUShort(bytes(index * 8) * 256 + bytes(index * 8 + 1))
-                event_log_file.Write(data_word & ", ")  ' event #
-                time = CUShort(bytes(index * 8 + 2) * 256 + bytes(index * 8 + 3))
-                data_word = CUShort(bytes(index * 8 + 4) * 256 + bytes(index * 8 + 5))
-                time = CULng(time * 256 + data_word)
-                event_log_file.Write(time & ", ")  ' event time
-                data_word = CUShort(bytes(index * 8 + 6) * 256 + bytes(index * 8 + 7))
-                event_log_file.Write(data_word)  ' event ID
-                event_log_file.WriteLine("")
+                head = index * 8
+                event_number = CUShort(bytes(head + 0)) << 8
+                event_number += CUShort(bytes(head + 1))
+                time = CUInt(bytes(head + 2)) << 24
+                time += CUInt(bytes(head + 3)) << 16
+                time += CUInt(bytes(head + 4)) << 8
+                time += CUInt(bytes(head + 5))
+
+                year = CInt(Math.Truncate(time / 31622400))
+
+                time = CUInt(time Mod 31622400)
+                month = CInt(Math.Truncate(time / 2678400))
+
+                time = CUInt(time Mod 2678400)
+                day = CInt(Math.Truncate(time / 86400))
+
+                time = CUInt(time Mod 86400)
+                hour = CInt(Math.Truncate(time / 3600))
+
+                time = CUInt(time Mod 3600)
+                minute = CInt(Math.Truncate(time / 60))
+
+                second = CInt(time Mod 60)
+
+                time_log = (year & "/" & month & "/" & day & " " & hour & ":" & minute & ":" & second)
+
+                event_id = CUShort(bytes(head + 6)) << 8
+                event_id += CUShort(bytes(head + 7))
+                event_log_file.WriteLine(event_number & "," & time_log & "," & event_id)
             Next
-            event_log_file.WriteLine("")
         End If
 
     End Sub

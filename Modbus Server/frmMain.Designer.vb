@@ -214,6 +214,7 @@ Partial Class frmMain
         Me.ButtonStopLog = New System.Windows.Forms.Button()
         Me.ButtonSetTime = New System.Windows.Forms.Button()
         Me.LabelTimeSet = New System.Windows.Forms.Label()
+        Me.LabelTimeSet2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2358,11 +2359,22 @@ Partial Class frmMain
         Me.LabelTimeSet.TabIndex = 306
         Me.LabelTimeSet.Text = "N/A"
         '
+        'LabelTimeSet2
+        '
+        Me.LabelTimeSet2.AutoSize = True
+        Me.LabelTimeSet2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTimeSet2.Location = New System.Drawing.Point(973, 182)
+        Me.LabelTimeSet2.Name = "LabelTimeSet2"
+        Me.LabelTimeSet2.Size = New System.Drawing.Size(31, 16)
+        Me.LabelTimeSet2.TabIndex = 307
+        Me.LabelTimeSet2.Text = "N/A"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1136, 700)
+        Me.Controls.Add(Me.LabelTimeSet2)
         Me.Controls.Add(Me.LabelTimeSet)
         Me.Controls.Add(Me.ButtonSetTime)
         Me.Controls.Add(Me.ButtonStopLog)
@@ -2616,4 +2628,5 @@ Partial Class frmMain
     Friend WithEvents TextBoxPulseSyncValueHighByte As System.Windows.Forms.TextBox
     Friend WithEvents ButtonSetTime As System.Windows.Forms.Button
     Friend WithEvents LabelTimeSet As System.Windows.Forms.Label
+    Friend WithEvents LabelTimeSet2 As System.Windows.Forms.Label
 End Class
