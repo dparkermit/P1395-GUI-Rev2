@@ -107,8 +107,12 @@
             MessageBox.Show("Exception caught in FormMain.FormMainLoad  " + ex.ToString)
         End Try
 
+        ServerSettings.OpenEventLogFile()
 
+    End Sub
 
+    Private Sub frmMain_close(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
+        ServerSettings.CloseEventLogFile()
     End Sub
 
     Private Sub TimerUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUpdate.Tick
@@ -136,6 +140,7 @@
         Else
             If (connected = False) Then
                 connected = True
+                ServerSettings.event_log_enabled = True
                 Me.Text = "A36507 Test GUI"
 
                 ' lstBoxEvents.Items.Insert(0, Now & " #" & Trim(Str(EVENTCONNECTED + 1)) & " " & EventNames(EVENTCONNECTED))
@@ -1468,6 +1473,7 @@
         time_high_word = CUShort(time_seconds >> 16)
         time_low_word = CUShort(time_seconds And &HFFFF)
         LabelTimeSet.Text = Format(time_now, "yy MM dd HH mm ss")
+        LabelTimeSet2.Text = time_seconds
         Try
             ServerSettings.put_modbus_commands(REGISTER_SPECIAL_SET_TIME, time_high_word, time_low_word, 0)
         Catch ex As Exception

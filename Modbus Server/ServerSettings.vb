@@ -42,20 +42,23 @@ Public Class ServerSettings
     Public Const READ_CMD = 1
 
     Public Const MAX_CAL_INDEX = 65536
-    Public Const MAX_EVENTS_SIZE = 200
-    Public Const MAX_PULSE_SIZE_ROW = 5000
-    Public Const MAX_PULSE_SIZE_DATA = 620
 
 
     Public Const MODBUS_COMMAND_REFRESH_TOTAL = 2
+
     Public ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET + 1) As ETM_ETHERNET_TX_DATA_STRUCTURE
     Public ETMEthernetCalStructure(MAX_CAL_INDEX + 1) As ETM_ETHERNET_CAL_STRUCTURE
 
 
-    Public ETMEthernetEventsByte(MAX_EVENTS_SIZE + 1) As Byte
-
-    Public ETMEthernetPulseData(MAX_PULSE_SIZE_ROW, MAX_PULSE_SIZE_DATA) As Byte
+    Public Const MAX_PULSE_SIZE_ROW = 5000
+    Public Const MAX_PULSE_SIZE_DATA = 620
+    '    Public ETMEthernetPulseData(MAX_PULSE_SIZE_ROW, MAX_PULSE_SIZE_DATA) As Byte
     Public pulse_index As UInt16
+
+    Public Const MAX_EVENT_SIZE_ROW = 5000
+    Public Const MAX_EVENT_SIZE_DATA = 512 ' 64 entries
+    '   Public ETMEthernetEventData(MAX_EVENT_SIZE_ROW, MAX_EVENT_SIZE_DATA) As Byte
+    Public event_index As UInt16
 
 
     Public QueueCommandToECB As Queue
@@ -322,12 +325,92 @@ Public Class ServerSettings
         End If
 
     End Sub
+    Public event_log_enabled As Boolean
+    Public event_log_file_name As String
+    Public event_log_file_path As String
+    Public event_log_file As System.IO.StreamWriter
+
+    Public Sub OpenEventLogFile()
+        event_log_file_name = "P1395_Event_log.csv"
+        event_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, event_log_file_name)
+        event_log_file = My.Computer.FileSystem.OpenTextFileWriter(event_log_file_path, True)
+
+        event_log_file.Write("Event Number, ")
+        event_log_file.Write("Event Time, ")
+        event_log_file.Write("Event ID")
+        event_log_file.WriteLine("")
+    End Sub
+
+
+    Public Sub CloseEventLogFile()
+        event_log_enabled = False
+        event_log_file.Close()
+    End Sub
+
+    Private Sub save_event_data(ByRef bytes As Byte(), ByVal length As UInt16)
+        Dim time As UInt32
+        Dim event_id As UInt16
+        Dim event_number As UInt16
+        Dim event_count As Integer
+        Dim head As Integer
+        Dim time_log As String
+        Dim year As Integer
+        Dim month As Integer
+        Dim day As Integer
+        Dim hour As Integer
+        Dim minute As Integer
+        Dim second As Integer
+
+
+
+
+
+        If event_log_enabled Then
+            If (length > MAX_EVENT_SIZE_DATA) Then length = MAX_EVENT_SIZE_DATA
+            event_count = CInt(length / 8)  ' one event is 8 bytes
+            If (event_count < 1) Then Exit Sub
+            For index = 0 To (event_count - 1)
+                head = index * 8
+                event_number = CUShort(bytes(head + 0)) << 8
+                event_number += CUShort(bytes(head + 1))
+                time = CUInt(bytes(head + 2)) << 24
+                time += CUInt(bytes(head + 3)) << 16
+                time += CUInt(bytes(head + 4)) << 8
+                time += CUInt(bytes(head + 5))
+
+                year = CInt(Math.Truncate(time / 31622400))
+
+                time = CUInt(time Mod 31622400)
+                month = CInt(Math.Truncate(time / 2678400))
+
+                time = CUInt(time Mod 2678400)
+                day = CInt(Math.Truncate(time / 86400))
+
+                time = CUInt(time Mod 86400)
+                hour = CInt(Math.Truncate(time / 3600))
+
+                time = CUInt(time Mod 3600)
+                minute = CInt(Math.Truncate(time / 60))
+
+                second = CInt(time Mod 60)
+
+                time_log = (year & "/" & month & "/" & day & " " & hour & ":" & minute & ":" & second)
+
+                event_id = CUShort(bytes(head + 6)) << 8
+                event_id += CUShort(bytes(head + 7))
+                event_log_file.WriteLine(event_number & "," & time_log & "," & event_id)
+            Next
+        End If
+
+    End Sub
+
     Public Sub modbus_reply()
         Dim i As UInt16, row As UInt16
         Dim msglen As Integer, datalen As Integer
         Dim data(30) As Byte  ' max data length 30
         Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
         Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
+        Dim event_data(MAX_EVENT_SIZE_DATA) As Byte
 
         If (function_code = WRITE_FUNCTION) Then
             For i = 0 To 11
@@ -352,8 +435,12 @@ Public Class ServerSettings
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
                 For i = 0 To CUShort((word_count * 2 - 1))
-                    ETMEthernetEventsByte(i) = recvBuffer(13 + i)
+                    '  ETMEthernetEventData(event_index, i) = recvBuffer(13 + i) ' for debug only
+                    If (i < MAX_EVENT_SIZE_DATA) Then event_data(i) = recvBuffer(13 + i)
                 Next
+                event_index = CUShort(event_index + 1)
+                If (event_index >= MAX_EVENT_SIZE_ROW) Then event_index = 0
+                Call save_event_data(event_data, CUShort(word_count * 2))
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_ONE_CAL_ENTRY) Then
                 If (word_count >= 3) Then
@@ -364,7 +451,7 @@ Public Class ServerSettings
                 End If
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
                 For i = 0 To CUShort((word_count * 2 - 1))
-                    ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)
+                    '    ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)  ' for debug only
                     If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
                 Next
                 pulse_index = CUShort(pulse_index + 1)
