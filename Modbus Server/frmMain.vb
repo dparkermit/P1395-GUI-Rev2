@@ -270,15 +270,15 @@
             CheckBoxSyncBitF.Checked = Sync_data And &H8000
 
             ' Update the connected Boards
-            'Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(4)
-            CheckBoxIonPumpConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).status_data.status_word_0 And &H80
-            CheckBoxPulseCurrentMonitorConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).status_data.status_word_0 And &H80
-            CheckBoxPulseSyncConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.status_word_0 And &H80
-            CheckBoxHVLambdaConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).status_data.status_word_0 And &H80
-            CheckBoxAFCConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).status_data.status_word_0 And &H80
-            CheckBoxCoolingConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).status_data.status_word_0 And &H80
-            CheckBoxHtrMagConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).status_data.status_word_0 And &H80
-            CheckBoxGunDriverConnected.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).status_data.status_word_0 And &H80
+            Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.BOARD_COM_FAULT)
+            CheckBoxIonPumpConnected.Checked = ConnectedBoards And &H2
+            CheckBoxPulseCurrentMonitorConnected.Checked = ConnectedBoards And &H4
+            CheckBoxPulseSyncConnected.Checked = ConnectedBoards And &H8
+            CheckBoxHVLambdaConnected.Checked = ConnectedBoards And &H10
+            CheckBoxAFCConnected.Checked = ConnectedBoards And &H20
+            CheckBoxCoolingConnected.Checked = ConnectedBoards And &H40
+            CheckBoxHtrMagConnected.Checked = ConnectedBoards And &H80
+            CheckBoxGunDriverConnected.Checked = ConnectedBoards And &H100
 
             ' Update the Faulted Boards
             'Dim FaultedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
@@ -435,8 +435,8 @@
                 CheckBoxStatusBit7.Text = "Unused"
 
                 CheckBoxFaultBit0.Text = "Drive Up Flt"
-                CheckBoxFaultBit1.Text = "Unused"
-                CheckBoxFaultBit2.Text = "Unused"
+                CheckBoxFaultBit1.Text = "Cool Com"
+                CheckBoxFaultBit2.Text = "Cool !Rdy"
                 CheckBoxFaultBit3.Text = "Unused"
                 CheckBoxFaultBit4.Text = "Unused"
                 CheckBoxFaultBit5.Text = "Unused"
