@@ -1022,6 +1022,9 @@
                     LabelBoardStatus.Text = "NOT CONNECTED!!!"
                     bgcolor = Color.LightCoral
                 End If
+
+                Dim afc_manual_mode As Boolean = CheckBoxStatusBit1.Checked
+
                 CheckBoxStatusBit0.Text = "Startup"
                 CheckBoxStatusBit1.Text = "Manual"
                 CheckBoxStatusBit2.Text = "Unused"
@@ -1065,15 +1068,15 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(0)
-                LabelValue2.Text = "AFC Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(1)
-                LabelValue3.Text = "Rback Home Pos = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(2)
-                LabelValue4.Text = "Readback Offset = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(3)
-                LabelValue5.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(4)
-                LabelValue6.Text = "Previous Error = " & (CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_D) - CInt(ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E))
-                LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(5)
-                LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(6)
-                LabelValue9.Text = "AFT Ctrl V = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(9)
+                LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.HOME_POSITION)
+                LabelValue2.Text = "AFT Ctrl V = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.AFT_CONTROL_VOLTAGE)
+                LabelValue3.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_CURRENT_POSITION)
+                LabelValue4.Text = ""
+                LabelValue5.Text = "Rback Home Pos = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_HOME_POSITION)
+                LabelValue6.Text = "Filtered Error = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_FILTERED_ERROR_READING)
+                LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_AFC_A_INPUT_READING)
+                LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_AFC_B_INPUT_READING)
+                LabelValue9.Text = ""
                 LabelValue10.Text = "Rback AFT Ctrl V = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(10)
                 LabelValue11.Text = ""
                 LabelValue12.Text = ""
@@ -1083,12 +1086,12 @@
 
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
-                inputbutton1.button_name = "Manual Position"
+                inputbutton1.button_name = "Home Position"
                 inputbutton1.max_value = 64000
                 inputbutton1.min_value = 0
                 inputbutton1.scale = 1
                 inputbutton1.offset = 0
-                inputbutton1.button_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
+                inputbutton1.button_index = REGISTER_HOME_POSITION
 
                 inputbutton2.enabled = True
                 inputbutton2.button_only = False
@@ -1099,8 +1102,37 @@
                 inputbutton2.offset = 0
                 inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE
 
-                inputbutton3.enabled = False
-                inputbutton4.enabled = False
+
+                If afc_manual_mode Then
+                    inputbutton3.enabled = True
+                Else
+                    inputbutton3.enabled = False
+
+                End If
+
+                inputbutton3.button_only = False
+                inputbutton3.button_name = "Manual Position"
+                inputbutton3.max_value = 64000
+                inputbutton3.min_value = 0
+                inputbutton3.scale = 1
+                inputbutton3.offset = 0
+                inputbutton3.button_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
+
+                If afc_manual_mode Then
+                    inputbutton4.button_name = "AFC Mode"
+                    inputbutton4.button_index = REGISTER_CMD_AFC_SELECT_AFC_MODE
+                Else
+                    inputbutton4.button_name = "Manual Mode"
+                    inputbutton4.button_index = REGISTER_CMD_AFC_SELECT_MANUAL_MODE
+                End If
+
+                inputbutton4.enabled = True
+                inputbutton4.button_only = True
+                inputbutton4.max_value = 64000
+                inputbutton4.min_value = 0
+                inputbutton4.scale = 1
+                inputbutton4.offset = 0
+
                 inputbutton5.enabled = False
 
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) Then
@@ -1180,173 +1212,174 @@
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
                 inputbutton1.button_name = "Set Ek (0,-20V)"
-                inputbutton1.max_value = 65000
+                inputbutton1.max_value = 20000
                 inputbutton1.min_value = 0
-                inputbutton1.scale = 1
+                inputbutton1.scale = -1000
                 inputbutton1.offset = 0
                 inputbutton1.button_index = REGISTER_GUN_DRIVER_CATHODE_VOLTAGE
 
                 inputbutton2.enabled = True
                 inputbutton2.button_only = False
                 inputbutton2.button_name = "Set Ef (0,-7V)"
-                inputbutton2.max_value = 65000
+                inputbutton2.max_value = 7000
                 inputbutton2.min_value = 0
-                inputbutton2.scale = 1
+                inputbutton2.scale = -1000
                 inputbutton2.offset = 0
                 inputbutton2.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
 
                 inputbutton3.enabled = True
-                inputbutton3.button_only = True
+
+                inputbutton3.button_only = False
                 inputbutton3.button_name = "Set Eg (-80,140)"
-                inputbutton3.max_value = 65000
+                inputbutton3.max_value = 2200
                 inputbutton3.min_value = 0
-                inputbutton3.scale = 1
-                inputbutton3.offset = 0
+                inputbutton3.scale = 10
+                inputbutton3.offset = 800
                 inputbutton3.button_index = REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE
 
                 inputbutton4.enabled = False
                 inputbutton5.enabled = False
 
-            ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
-                If (ConnectedBoards And &H2) Then
-                    LabelBoardStatus.Text = "NOT CONNECTED!!!"
-                    bgcolor = Color.LightCoral
+                ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) Then
+                    If (ConnectedBoards And &H2) Then
+                        LabelBoardStatus.Text = "NOT CONNECTED!!!"
+                        bgcolor = Color.LightCoral
+                    End If
+
+                    CheckBoxStatusBit0.Text = "Unused"
+                    CheckBoxStatusBit1.Text = "Unused"
+                    CheckBoxStatusBit2.Text = "Unused"
+                    CheckBoxStatusBit3.Text = "Unused"
+                    CheckBoxStatusBit4.Text = "Unused"
+                    CheckBoxStatusBit5.Text = "Unused"
+                    CheckBoxStatusBit6.Text = "Unused"
+                    CheckBoxStatusBit7.Text = "Unused"
+
+                    CheckBoxFaultBit0.Text = "Unused"
+                    CheckBoxFaultBit1.Text = "Unused"
+                    CheckBoxFaultBit2.Text = "Unused"
+                    CheckBoxFaultBit3.Text = "Unused"
+                    CheckBoxFaultBit4.Text = "Unused"
+                    CheckBoxFaultBit5.Text = "Unused"
+                    CheckBoxFaultBit6.Text = "Unused"
+                    CheckBoxFaultBit7.Text = "Unused"
+                    CheckBoxFaultBit8.Text = "Unused"
+                    CheckBoxFaultBit9.Text = "Unused"
+                    CheckBoxFaultBitA.Text = "Unused"
+                    CheckBoxFaultBitB.Text = "Unused"
+                    CheckBoxFaultBitC.Text = "Unused"
+                    CheckBoxFaultBitD.Text = "Unused"
+                    CheckBoxFaultBitE.Text = "Unused"
+                    CheckBoxFaultBitF.Text = "Unused"
+
+                    LabelDebug0.Text = "Debug 0 = "
+                    LabelDebug1.Text = "Debug 1 = "
+                    LabelDebug2.Text = "Debug 2 = "
+                    LabelDebug3.Text = "Debug 3 = "
+                    LabelDebug4.Text = "Debug 4 = "
+                    LabelDebug5.Text = "Debug 5 = "
+                    LabelDebug6.Text = "Debug 6 = "
+                    LabelDebug7.Text = "Debug 7 = "
+                    LabelDebug8.Text = "Debug 8 = "
+                    LabelDebug9.Text = "Debug 9 = "
+                    LabelDebugA.Text = "Debug A = "
+                    LabelDebugB.Text = "Debug B = "
+                    LabelDebugC.Text = "Debug C = "
+                    LabelDebugD.Text = "Debug D = "
+                    LabelDebugE.Text = "Debug E = "
+                    LabelDebugF.Text = "Debug F = "
+
+
+                    LabelValue1.Text = "Ion Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(0)
+                    LabelValue2.Text = "Ion Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(1)
+                    LabelValue3.Text = ""
+                    LabelValue4.Text = ""
+                    LabelValue5.Text = ""
+                    LabelValue6.Text = ""
+                    LabelValue7.Text = ""
+                    LabelValue8.Text = ""
+                    LabelValue9.Text = ""
+                    LabelValue10.Text = ""
+                    LabelValue11.Text = ""
+                    LabelValue12.Text = ""
+                    LabelValue13.Text = ""
+                    LabelValue14.Text = ""
+                    LabelValue15.Text = ""
+
+                    inputbutton1.enabled = False
+                    inputbutton2.enabled = False
+                    inputbutton3.enabled = False
+                    inputbutton4.enabled = False
+                    inputbutton5.enabled = False
+
+                Else
+                    CheckBoxStatusBit0.Text = "Status 0"
+                    CheckBoxStatusBit1.Text = "Status 1"
+                    CheckBoxStatusBit2.Text = "Status 2"
+                    CheckBoxStatusBit3.Text = "Status 3"
+                    CheckBoxStatusBit4.Text = "Status 4"
+                    CheckBoxStatusBit5.Text = "Status 5"
+                    CheckBoxStatusBit6.Text = "Status 6"
+                    CheckBoxStatusBit7.Text = "Status 7"
+
+                    CheckBoxFaultBit0.Text = "Fault 0"
+                    CheckBoxFaultBit1.Text = "Fault 1"
+                    CheckBoxFaultBit2.Text = "Fault 2"
+                    CheckBoxFaultBit3.Text = "Fault 3"
+                    CheckBoxFaultBit4.Text = "Fault 4"
+                    CheckBoxFaultBit5.Text = "Fault 5"
+                    CheckBoxFaultBit6.Text = "Fault 6"
+                    CheckBoxFaultBit7.Text = "Fault 7"
+                    CheckBoxFaultBit8.Text = "Fault 8"
+                    CheckBoxFaultBit9.Text = "Fault 9"
+                    CheckBoxFaultBitA.Text = "Fault A"
+                    CheckBoxFaultBitB.Text = "Fault B"
+                    CheckBoxFaultBitC.Text = "Fault C"
+                    CheckBoxFaultBitD.Text = "Fault D"
+                    CheckBoxFaultBitE.Text = "Fault E"
+                    CheckBoxFaultBitF.Text = "Fault F"
+
+                    LabelDebug0.Text = "Debug 0 = "
+                    LabelDebug1.Text = "Debug 1 = "
+                    LabelDebug2.Text = "Debug 2 = "
+                    LabelDebug3.Text = "Debug 3 = "
+                    LabelDebug4.Text = "Debug 4 = "
+                    LabelDebug5.Text = "Debug 5 = "
+                    LabelDebug6.Text = "Debug 6 = "
+                    LabelDebug7.Text = "Debug 7 = "
+                    LabelDebug8.Text = "Debug 8 = "
+                    LabelDebug9.Text = "Debug 9 = "
+                    LabelDebugA.Text = "Debug A = "
+                    LabelDebugB.Text = "Debug B = "
+                    LabelDebugC.Text = "Debug C = "
+                    LabelDebugD.Text = "Debug D = "
+                    LabelDebugE.Text = "Debug E = "
+                    LabelDebugF.Text = "Debug F = "
+
+                    LabelValue1.Text = ""
+                    LabelValue2.Text = ""
+                    LabelValue3.Text = ""
+                    LabelValue4.Text = ""
+                    LabelValue5.Text = ""
+                    LabelValue6.Text = ""
+                    LabelValue7.Text = ""
+                    LabelValue8.Text = ""
+                    LabelValue9.Text = ""
+                    LabelValue10.Text = ""
+                    LabelValue11.Text = ""
+                    LabelValue12.Text = ""
+                    LabelValue13.Text = ""
+                    LabelValue14.Text = ""
+                    LabelValue15.Text = ""
+
+                    inputbutton1.enabled = False
+                    inputbutton2.enabled = False
+                    inputbutton3.enabled = False
+                    inputbutton4.enabled = False
+                    inputbutton5.enabled = False
+
                 End If
-
-                CheckBoxStatusBit0.Text = "Unused"
-                CheckBoxStatusBit1.Text = "Unused"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
-
-                CheckBoxFaultBit0.Text = "Unused"
-                CheckBoxFaultBit1.Text = "Unused"
-                CheckBoxFaultBit2.Text = "Unused"
-                CheckBoxFaultBit3.Text = "Unused"
-                CheckBoxFaultBit4.Text = "Unused"
-                CheckBoxFaultBit5.Text = "Unused"
-                CheckBoxFaultBit6.Text = "Unused"
-                CheckBoxFaultBit7.Text = "Unused"
-                CheckBoxFaultBit8.Text = "Unused"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-
-                LabelValue1.Text = "Ion Voltage = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(0)
-                LabelValue2.Text = "Ion Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(1)
-                LabelValue3.Text = ""
-                LabelValue4.Text = ""
-                LabelValue5.Text = ""
-                LabelValue6.Text = ""
-                LabelValue7.Text = ""
-                LabelValue8.Text = ""
-                LabelValue9.Text = ""
-                LabelValue10.Text = ""
-                LabelValue11.Text = ""
-                LabelValue12.Text = ""
-                LabelValue13.Text = ""
-                LabelValue14.Text = ""
-                LabelValue15.Text = ""
-
-                inputbutton1.enabled = False
-                inputbutton2.enabled = False
-                inputbutton3.enabled = False
-                inputbutton4.enabled = False
-                inputbutton5.enabled = False
-
-            Else
-                CheckBoxStatusBit0.Text = "Status 0"
-                CheckBoxStatusBit1.Text = "Status 1"
-                CheckBoxStatusBit2.Text = "Status 2"
-                CheckBoxStatusBit3.Text = "Status 3"
-                CheckBoxStatusBit4.Text = "Status 4"
-                CheckBoxStatusBit5.Text = "Status 5"
-                CheckBoxStatusBit6.Text = "Status 6"
-                CheckBoxStatusBit7.Text = "Status 7"
-
-                CheckBoxFaultBit0.Text = "Fault 0"
-                CheckBoxFaultBit1.Text = "Fault 1"
-                CheckBoxFaultBit2.Text = "Fault 2"
-                CheckBoxFaultBit3.Text = "Fault 3"
-                CheckBoxFaultBit4.Text = "Fault 4"
-                CheckBoxFaultBit5.Text = "Fault 5"
-                CheckBoxFaultBit6.Text = "Fault 6"
-                CheckBoxFaultBit7.Text = "Fault 7"
-                CheckBoxFaultBit8.Text = "Fault 8"
-                CheckBoxFaultBit9.Text = "Fault 9"
-                CheckBoxFaultBitA.Text = "Fault A"
-                CheckBoxFaultBitB.Text = "Fault B"
-                CheckBoxFaultBitC.Text = "Fault C"
-                CheckBoxFaultBitD.Text = "Fault D"
-                CheckBoxFaultBitE.Text = "Fault E"
-                CheckBoxFaultBitF.Text = "Fault F"
-
-                LabelDebug0.Text = "Debug 0 = "
-                LabelDebug1.Text = "Debug 1 = "
-                LabelDebug2.Text = "Debug 2 = "
-                LabelDebug3.Text = "Debug 3 = "
-                LabelDebug4.Text = "Debug 4 = "
-                LabelDebug5.Text = "Debug 5 = "
-                LabelDebug6.Text = "Debug 6 = "
-                LabelDebug7.Text = "Debug 7 = "
-                LabelDebug8.Text = "Debug 8 = "
-                LabelDebug9.Text = "Debug 9 = "
-                LabelDebugA.Text = "Debug A = "
-                LabelDebugB.Text = "Debug B = "
-                LabelDebugC.Text = "Debug C = "
-                LabelDebugD.Text = "Debug D = "
-                LabelDebugE.Text = "Debug E = "
-                LabelDebugF.Text = "Debug F = "
-
-                LabelValue1.Text = ""
-                LabelValue2.Text = ""
-                LabelValue3.Text = ""
-                LabelValue4.Text = ""
-                LabelValue5.Text = ""
-                LabelValue6.Text = ""
-                LabelValue7.Text = ""
-                LabelValue8.Text = ""
-                LabelValue9.Text = ""
-                LabelValue10.Text = ""
-                LabelValue11.Text = ""
-                LabelValue12.Text = ""
-                LabelValue13.Text = ""
-                LabelValue14.Text = ""
-                LabelValue15.Text = ""
-
-                inputbutton1.enabled = False
-                inputbutton2.enabled = False
-                inputbutton3.enabled = False
-                inputbutton4.enabled = False
-                inputbutton5.enabled = False
-
-            End If
-            Me.BackColor = bgcolor
+                Me.BackColor = bgcolor
         End If ' connected
 
         TimerUpdate.Enabled = True
@@ -1380,7 +1413,11 @@
     Private Sub ButtonUpdateInput1_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput1.Click
         Dim program_word As UInt16
         Try
-            program_word = CUInt(TextBoxInput1.Text * inputbutton1.scale)
+            If inputbutton1.button_only Then
+                program_word = 0
+            Else
+                program_word = CUInt(TextBoxInput1.Text * inputbutton1.scale)
+            End If
             If program_word > inputbutton1.max_value Then
                 program_word = inputbutton1.max_value
             End If
@@ -1397,7 +1434,12 @@
     Private Sub ButtonUpdateInput2_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput2.Click
         Dim program_word As UInt16
         Try
-            program_word = CUInt(TextBoxInput2.Text * inputbutton2.scale)
+            If inputbutton2.button_only Then
+                program_word = 0
+            Else
+                program_word = CUInt(TextBoxInput2.Text * inputbutton2.scale)
+            End If
+
             If program_word > inputbutton2.max_value Then
                 program_word = inputbutton2.max_value
             End If
@@ -1413,7 +1455,11 @@
     Private Sub ButtonUpdateInput3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonUpdateInput3.Click
         Dim program_word As UInt16
         Try
-            program_word = CUInt(TextBoxInput3.Text * inputbutton3.scale)
+            If inputbutton3.button_only Then
+                program_word = 0
+            Else
+                program_word = CUInt(TextBoxInput3.Text * inputbutton3.scale + inputbutton3.offset)
+            End If
             If program_word > inputbutton3.max_value Then
                 program_word = inputbutton3.max_value
             End If
@@ -1429,7 +1475,12 @@
     Private Sub ButtonUpdateInput4_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput4.Click
         Dim program_word As UInt16
         Try
-            program_word = CUInt(TextBoxInput4.Text * inputbutton3.scale)
+            If inputbutton4.button_only Then
+                program_word = 0
+            Else
+                program_word = CUInt(TextBoxInput4.Text * inputbutton4.scale)
+            End If
+
             If program_word > inputbutton4.max_value Then
                 program_word = inputbutton4.max_value
             End If
@@ -1445,7 +1496,11 @@
     Private Sub ButtonUpdateInput5_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput5.Click
         Dim program_word As UInt16
         Try
-            program_word = CUInt(TextBoxInput5.Text * inputbutton3.scale)
+            If inputbutton5.button_only Then
+                program_word = 0
+            Else
+                program_word = CUInt(TextBoxInput5.Text * inputbutton5.scale)
+            End If
             If program_word > inputbutton5.max_value Then
                 program_word = inputbutton5.max_value
             End If
