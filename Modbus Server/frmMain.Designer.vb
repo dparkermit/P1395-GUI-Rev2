@@ -276,7 +276,7 @@ Partial Class frmMain
         'TextBoxInput3
         '
         Me.TextBoxInput3.Location = New System.Drawing.Point(857, 64)
-        Me.TextBoxInput3.MaxLength = 5
+        Me.TextBoxInput3.MaxLength = 7
         Me.TextBoxInput3.Name = "TextBoxInput3"
         Me.TextBoxInput3.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput3.TabIndex = 301
@@ -296,7 +296,7 @@ Partial Class frmMain
         'LabelValue15
         '
         Me.LabelValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue15.Location = New System.Drawing.Point(651, 376)
+        Me.LabelValue15.Location = New System.Drawing.Point(651, 377)
         Me.LabelValue15.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue15.Name = "LabelValue15"
         Me.LabelValue15.Size = New System.Drawing.Size(200, 16)
@@ -319,7 +319,7 @@ Partial Class frmMain
         'LabelValue14
         '
         Me.LabelValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue14.Location = New System.Drawing.Point(651, 350)
+        Me.LabelValue14.Location = New System.Drawing.Point(651, 351)
         Me.LabelValue14.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue14.Name = "LabelValue14"
         Me.LabelValue14.Size = New System.Drawing.Size(200, 16)
@@ -342,7 +342,7 @@ Partial Class frmMain
         'LabelValue13
         '
         Me.LabelValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue13.Location = New System.Drawing.Point(651, 324)
+        Me.LabelValue13.Location = New System.Drawing.Point(651, 325)
         Me.LabelValue13.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue13.Name = "LabelValue13"
         Me.LabelValue13.Size = New System.Drawing.Size(200, 16)
@@ -365,7 +365,7 @@ Partial Class frmMain
         'LabelValue12
         '
         Me.LabelValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue12.Location = New System.Drawing.Point(651, 298)
+        Me.LabelValue12.Location = New System.Drawing.Point(651, 299)
         Me.LabelValue12.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue12.Name = "LabelValue12"
         Me.LabelValue12.Size = New System.Drawing.Size(200, 16)
@@ -388,7 +388,7 @@ Partial Class frmMain
         'LabelValue11
         '
         Me.LabelValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue11.Location = New System.Drawing.Point(651, 272)
+        Me.LabelValue11.Location = New System.Drawing.Point(651, 273)
         Me.LabelValue11.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue11.Name = "LabelValue11"
         Me.LabelValue11.Size = New System.Drawing.Size(200, 16)
@@ -689,7 +689,7 @@ Partial Class frmMain
         'LabelValue10
         '
         Me.LabelValue10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue10.Location = New System.Drawing.Point(651, 246)
+        Me.LabelValue10.Location = New System.Drawing.Point(651, 247)
         Me.LabelValue10.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue10.Name = "LabelValue10"
         Me.LabelValue10.Size = New System.Drawing.Size(200, 16)
@@ -700,7 +700,7 @@ Partial Class frmMain
         'LabelValue9
         '
         Me.LabelValue9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue9.Location = New System.Drawing.Point(651, 220)
+        Me.LabelValue9.Location = New System.Drawing.Point(651, 221)
         Me.LabelValue9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue9.Name = "LabelValue9"
         Me.LabelValue9.Size = New System.Drawing.Size(200, 16)
@@ -720,7 +720,7 @@ Partial Class frmMain
         'LabelValue8
         '
         Me.LabelValue8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue8.Location = New System.Drawing.Point(651, 194)
+        Me.LabelValue8.Location = New System.Drawing.Point(651, 195)
         Me.LabelValue8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue8.Name = "LabelValue8"
         Me.LabelValue8.Size = New System.Drawing.Size(200, 16)
@@ -740,7 +740,7 @@ Partial Class frmMain
         'LabelValue7
         '
         Me.LabelValue7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue7.Location = New System.Drawing.Point(651, 168)
+        Me.LabelValue7.Location = New System.Drawing.Point(651, 169)
         Me.LabelValue7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue7.Name = "LabelValue7"
         Me.LabelValue7.Size = New System.Drawing.Size(200, 16)
@@ -761,7 +761,7 @@ Partial Class frmMain
         'LabelValue6
         '
         Me.LabelValue6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue6.Location = New System.Drawing.Point(651, 142)
+        Me.LabelValue6.Location = New System.Drawing.Point(651, 143)
         Me.LabelValue6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue6.Name = "LabelValue6"
         Me.LabelValue6.Size = New System.Drawing.Size(200, 16)
@@ -782,7 +782,7 @@ Partial Class frmMain
         'LabelValue5
         '
         Me.LabelValue5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue5.Location = New System.Drawing.Point(651, 116)
+        Me.LabelValue5.Location = New System.Drawing.Point(651, 117)
         Me.LabelValue5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue5.Name = "LabelValue5"
         Me.LabelValue5.Size = New System.Drawing.Size(200, 16)
@@ -803,7 +803,7 @@ Partial Class frmMain
         'LabelValue4
         '
         Me.LabelValue4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue4.Location = New System.Drawing.Point(651, 90)
+        Me.LabelValue4.Location = New System.Drawing.Point(651, 91)
         Me.LabelValue4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue4.Name = "LabelValue4"
         Me.LabelValue4.Size = New System.Drawing.Size(200, 16)
@@ -824,7 +824,7 @@ Partial Class frmMain
         'LabelValue3
         '
         Me.LabelValue3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue3.Location = New System.Drawing.Point(651, 64)
+        Me.LabelValue3.Location = New System.Drawing.Point(651, 65)
         Me.LabelValue3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue3.Name = "LabelValue3"
         Me.LabelValue3.Size = New System.Drawing.Size(200, 16)
@@ -845,7 +845,7 @@ Partial Class frmMain
         'LabelValue2
         '
         Me.LabelValue2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue2.Location = New System.Drawing.Point(651, 38)
+        Me.LabelValue2.Location = New System.Drawing.Point(651, 39)
         Me.LabelValue2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue2.Name = "LabelValue2"
         Me.LabelValue2.Size = New System.Drawing.Size(200, 16)
@@ -866,7 +866,7 @@ Partial Class frmMain
         'LabelValue1
         '
         Me.LabelValue1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue1.Location = New System.Drawing.Point(651, 12)
+        Me.LabelValue1.Location = New System.Drawing.Point(651, 13)
         Me.LabelValue1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
         Me.LabelValue1.Name = "LabelValue1"
         Me.LabelValue1.Size = New System.Drawing.Size(200, 16)
@@ -981,7 +981,7 @@ Partial Class frmMain
         'TextBoxInput1
         '
         Me.TextBoxInput1.Location = New System.Drawing.Point(857, 12)
-        Me.TextBoxInput1.MaxLength = 5
+        Me.TextBoxInput1.MaxLength = 7
         Me.TextBoxInput1.Name = "TextBoxInput1"
         Me.TextBoxInput1.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput1.TabIndex = 206
@@ -1000,7 +1000,7 @@ Partial Class frmMain
         'TextBoxInput2
         '
         Me.TextBoxInput2.Location = New System.Drawing.Point(857, 38)
-        Me.TextBoxInput2.MaxLength = 5
+        Me.TextBoxInput2.MaxLength = 7
         Me.TextBoxInput2.Name = "TextBoxInput2"
         Me.TextBoxInput2.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput2.TabIndex = 208
@@ -1576,7 +1576,7 @@ Partial Class frmMain
         'TextBoxInput4
         '
         Me.TextBoxInput4.Location = New System.Drawing.Point(857, 90)
-        Me.TextBoxInput4.MaxLength = 5
+        Me.TextBoxInput4.MaxLength = 7
         Me.TextBoxInput4.Name = "TextBoxInput4"
         Me.TextBoxInput4.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput4.TabIndex = 308
@@ -1584,7 +1584,7 @@ Partial Class frmMain
         'TextBoxInput5
         '
         Me.TextBoxInput5.Location = New System.Drawing.Point(857, 116)
-        Me.TextBoxInput5.MaxLength = 5
+        Me.TextBoxInput5.MaxLength = 7
         Me.TextBoxInput5.Name = "TextBoxInput5"
         Me.TextBoxInput5.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput5.TabIndex = 309

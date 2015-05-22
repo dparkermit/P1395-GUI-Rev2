@@ -7,7 +7,132 @@ Imports System.Net.Sockets
 Imports System.Text
 Imports System.IO
 
+
+
+
 Public Class ServerSettings
+
+
+
+    Public Const LOG_ID_ENTERED_STATE_STARTUP As UInt16 = &H10
+    Public Const LOG_ID_ENTERED_STATE_WAIT_FOR_PERSONALITY_FROM_PULSE_SYNC As UInt16 = &H11
+    Public Const LOG_ID_PERSONALITY_RECEIVED As UInt16 = &H12
+    Public Const LOG_ID_PERSONALITY_ERROR_6_4 As UInt16 = &H13
+    Public Const LOG_ID_PERSONALITY_ERROR_2_5 As UInt16 = &H14
+    Public Const LOG_ID_ENTERED_STATE_WAITING_FOR_INITIALIZATION As UInt16 = &H15
+    Public Const LOG_ID_ALL_MODULES_CONFIGURED As UInt16 = &H16
+    Public Const LOG_ID_ENTERED_STATE_WARMUP As UInt16 = &H17
+    Public Const LOG_ID_WARMUP_DONE As UInt16 = &H18
+    Public Const LOG_ID_ENTERED_STATE_STANDBY As UInt16 = &H19
+    Public Const LOG_ID_CUSTOMER_HV_ON As UInt16 = &H1A
+    Public Const LOG_ID_ENTERED_STATE_DRIVE_UP As UInt16 = &H1B
+    Public Const LOG_ID_DRIVEUP_COMPLETE As UInt16 = &H1C
+    Public Const LOG_ID_CUSTOMER_HV_OFF As UInt16 = &H1D
+    Public Const LOG_ID_DRIVE_UP_TIMEOUT As UInt16 = &H1E
+    Public Const LOG_ID_ENTERED_STATE_READY As UInt16 = &H1F
+    Public Const LOG_ID_CUSTOMER_XRAY_ON As UInt16 = &H20
+
+    Public Const LOG_ID_ENTERED_STATE_XRAY_ON As UInt16 = &H22
+    Public Const LOG_ID_CUSTOMER_XRAY_OFF As UInt16 = &H23
+
+    Public Const LOG_ID_ENTERED_STATE_FAULT_HOLD As UInt16 = &H25
+
+    Public Const LOG_ID_ENTERED_STATE_FAULT_RESET As UInt16 = &H27
+    Public Const LOG_ID_HV_OFF_FAULTS_CLEAR As UInt16 = &H28
+    Public Const LOG_ID_ENTERED_STATE_FAULT_SYSTEM As UInt16 = &H29
+
+
+
+
+
+
+
+    Public Const LOG_ID_NOT_READY_ION_PUMP_BOARD As UInt16 = &H1110
+    Public Const LOG_ID_READY_ION_PUMP_BOARD As UInt16 = &H1111
+    Public Const LOG_ID_NOT_CONFIGURED_ION_PUMP_BOARD As UInt16 = &H1112
+    Public Const LOG_ID_CONFIGURED_ION_PUMP_BOARD As UInt16 = &H1113
+    Public Const LOG_ID_NOT_CONNECTED_ION_PUMP_BOARD As UInt16 = &H1114
+    Public Const LOG_ID_CONNECTED_ION_PUMP_BOARD As UInt16 = &H1115
+
+
+    Public Const LOG_ID_NOT_READY_PULSE_MONITOR_BOARD As UInt16 = &H1120
+    Public Const LOG_ID_READY_PULSE_MONITOR_BOARD As UInt16 = &H1121
+    Public Const LOG_ID_NOT_CONFIGURED_PULSE_MONITOR_BOARD As UInt16 = &H1122
+    Public Const LOG_ID_CONFIGURED_PULSE_MONITOR_BOARD As UInt16 = &H1123
+    Public Const LOG_ID_NOT_CONNECTED_MAGNETRON_CURRENT_BOARD As UInt16 = &H1124
+    Public Const LOG_ID_CONNECTED_MAGNETRON_CURRENT_BOARD As UInt16 = &H1125
+
+
+    Public Const LOG_ID_NOT_READY_PULSE_SYNC_BOARD As UInt16 = &H1130
+    Public Const LOG_ID_READY_PULSE_SYNC_BOARD As UInt16 = &H1131
+    Public Const LOG_ID_NOT_CONFIGURED_PULSE_SYNC_BOARD As UInt16 = &H1132
+    Public Const LOG_ID_CONFIGURED_PULSE_SYNC_BOARD As UInt16 = &H1133
+    Public Const LOG_ID_NOT_CONNECTED_PULSE_SYNC_BOARD As UInt16 = &H1134
+    Public Const LOG_ID_CONNECTED_PULSE_SYNC_BOARD As UInt16 = &H1135
+
+
+
+    Public Const LOG_ID_NOT_READY_HV_LAMBDA_BOARD As UInt16 = &H1140
+    Public Const LOG_ID_READY_HV_LAMBDA_BOARD As UInt16 = &H1141
+    Public Const LOG_ID_NOT_CONFIGURED_HV_LAMBDA_BOARD As UInt16 = &H1142
+    Public Const LOG_ID_CONFIGURED_HV_LAMBDA_BOARD As UInt16 = &H1143
+    Public Const LOG_ID_NOT_CONNECTED_HV_LAMBDA_BOARD As UInt16 = &H1144
+    Public Const LOG_ID_CONNECTED_HV_LAMBDA_BOARD As UInt16 = &H1145
+
+
+    Public Const LOG_ID_NOT_READY_AFC_BOARD As UInt16 = &H1150
+    Public Const LOG_ID_READY_AFC_BOARD As UInt16 = &H1151
+    Public Const LOG_ID_NOT_CONFIGURED_AFC_BOARD As UInt16 = &H1152
+    Public Const LOG_ID_CONFIGURED_AFC_BOARD As UInt16 = &H1153
+    Public Const LOG_ID_NOT_CONNECTED_AFC_BOARD As UInt16 = &H1154
+    Public Const LOG_ID_CONNECTED_AFC_BOARD As UInt16 = &H1155
+
+
+    Public Const LOG_ID_NOT_READY_COOLING_INTERFACE_BOARD As UInt16 = &H1160
+    Public Const LOG_ID_READY_COOLING_INTERFACE_BOARD As UInt16 = &H1161
+    Public Const LOG_ID_NOT_CONFIGURED_COOLING_INTERFACE_BOARD As UInt16 = &H1162
+    Public Const LOG_ID_CONFIGURED_COOLING_INTERFACE_BOARD As UInt16 = &H1163
+    Public Const LOG_ID_NOT_CONNECTED_COOLING_BOARD As UInt16 = &H1164
+    Public Const LOG_ID_CONNECTED_COOLING_BOARD As UInt16 = &H1165
+
+
+    Public Const LOG_ID_NOT_READY_HEATER_MAGNET As UInt16 = &H1170
+    Public Const LOG_ID_READY_HEATER_MAGNET As UInt16 = &H1171
+    Public Const LOG_ID_NOT_CONFIGURED_HEATER_MAGNET As UInt16 = &H1172
+    Public Const LOG_ID_CONFIGURED_HEATER_MAGNET As UInt16 = &H1173
+    Public Const LOG_ID_NOT_CONNECTED_HEATER_MAGNET_BOARD As UInt16 = &H1174
+    Public Const LOG_ID_CONNECTED_HEATER_MAGNET_BOARD As UInt16 = &H1175
+
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_OVER_CURRENT_ABSOLUTE As UInt16 = &H1070
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_CURRENT_ABSOLUTE As UInt16 = &H1071
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_OVER_CURRENT_RELATIVE As UInt16 = &H1072
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_CURRENT_RELATIVE As UInt16 = &H1073
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_OVER_VOLTAGE_ABSOLUTE As UInt16 = &H1074
+    Public Const LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_VOTLAGE_RELATIVE As UInt16 = &H1075
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_CURRENT_ABSOLUTE As UInt16 = &H1076
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_CURRENT_ABSOLUTE As UInt16 = &H1077
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_CURRENT_RELATIVE As UInt16 = &H1078
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_CURRENT_RELATIVE As UInt16 = &H1079
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_VOLTAGE_ABSOLUTE As UInt16 = &H107A
+    Public Const LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_VOTLAGE_RELATIVE As UInt16 = &H107B
+    Public Const LOG_ID_FAULT_HTR_MAG_HW_HEATER_OVER_VOLTAGE As UInt16 = &H107C
+    Public Const LOG_ID_FAULT_HTR_MAG_HW_TEMPERATURE_SWITCH As UInt16 = &H107D
+    Public Const LOG_ID_FAULT_HTR_MAG_COOLANT_FAULT As UInt16 = &H107E
+    Public Const LOG_ID_FAULT_HTR_CAN_FAULT_LATCHED As UInt16 = &H107F
+
+
+    Public Const LOG_ID_NOT_READY_GUN_DRIVER_BOARD As UInt16 = &H1180
+    Public Const LOG_ID_READY_GUN_DRIVER_BOARD As UInt16 = &H1181
+    Public Const LOG_ID_NOT_CONFIGURED_GUN_DRIVER_BOARD As UInt16 = &H1182
+    Public Const LOG_ID_CONFIGURED_GUN_DRIVER_BOARD As UInt16 = &H1183
+    Public Const LOG_ID_NOT_CONNECTED_GUN_DRIVER_BOARD As UInt16 = &H1184
+    Public Const LOG_ID_CONNECTED_GUN_DRIVER_BOARD As UInt16 = &H1185
+    Public Const LOG_ID_GUN_DRIVER_BOARD_HEATER_OFF As UInt16 = &H1186
+    Public Const LOG_ID_GUN_DRIVER_BOARD_HEATER_ON As UInt16 = &H1187
+
+
+
+
     Private client As TcpClient
     Private server As TcpListener
 
@@ -313,14 +438,19 @@ Public Class ServerSettings
                 For data_column = 0 To 18
                     mem_location = data_row * 38 + data_column * 2 + 2
                     data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
+                    If data_column = 11 Then
+                        If (data_word > &H8000) Then
+                            data_word = -(data_word - &H8000)
+                        End If
+                    End If
                     pulse_log_file.Write(data_word & ",")
                 Next
                 data_word = bytes(0) * 256 + bytes(1)
                 pulse_log_file.Write(data_word)
                 pulse_log_file.WriteLine("")
             Next
-            pulse_log_file.WriteLine("")
-            pulse_log_file.WriteLine("")
+            'pulse_log_file.WriteLine("")
+            'pulse_log_file.WriteLine("")
 
         End If
 
@@ -393,16 +523,158 @@ Public Class ServerSettings
                 minute = CInt(Math.Truncate(time / 60))
 
                 second = CInt(time Mod 60)
-
-                time_log = (year & "/" & month & "/" & day & " " & hour & ":" & minute & ":" & second)
-
+                time_log = "20" & Format(year, "00") & "/" & Format(month, "00") & "/" & Format(day, "00") & " " & Format(hour, "00") & ":" & Format(minute, "00") & ":" & Format(second, "00")
                 event_id = CUShort(bytes(head + 6)) << 8
                 event_id += CUShort(bytes(head + 7))
-                event_log_file.WriteLine(event_number & "," & time_log & "," & event_id)
+
+                event_log_file.WriteLine(event_number & "," & time_log & "," & GetEventMessage(event_id))
             Next
         End If
 
     End Sub
+
+    Function GetEventMessage(ByVal message_id As UInt16) As String
+        Dim message_text As String = ""
+        Select Case message_id
+            Case LOG_ID_ENTERED_STATE_STARTUP
+                message_text = "Entered State Startup"
+            Case LOG_ID_ENTERED_STATE_WAIT_FOR_PERSONALITY_FROM_PULSE_SYNC
+                message_text = "Entered State Wait For Personality from Pulse Sync"
+            Case LOG_ID_PERSONALITY_RECEIVED
+                message_text = "Personality recieved from Pulse Sync"
+            Case LOG_ID_PERSONALITY_ERROR_6_4
+                message_text = "6/4 MeV system - Personality not Valid"
+            Case LOG_ID_PERSONALITY_ERROR_2_5
+                message_text = "2.5 MeV System - Personality not Valid"
+            Case LOG_ID_ENTERED_STATE_WAITING_FOR_INITIALIZATION
+                message_text = "Entered State Waiting for Initialization"
+            Case LOG_ID_ALL_MODULES_CONFIGURED
+                message_text = "All Modules Configured"
+            Case LOG_ID_ENTERED_STATE_WARMUP
+                message_text = "Entered State Warmup"
+            Case LOG_ID_WARMUP_DONE
+                message_text = "Warmup Completed"
+            Case LOG_ID_ENTERED_STATE_STANDBY
+                message_text = "Entered State Standby"
+            Case LOG_ID_CUSTOMER_HV_ON
+                message_text = "Customer Input - HV ON"
+            Case LOG_ID_ENTERED_STATE_DRIVE_UP
+                message_text = "Entered State Drive Up"
+            Case LOG_ID_DRIVEUP_COMPLETE
+                message_text = "Drive up Completed"
+            Case LOG_ID_CUSTOMER_HV_OFF
+                message_text = "Customer Input - HV OFF"
+            Case LOG_ID_DRIVE_UP_TIMEOUT
+                message_text = "Drive up Timed Out"
+            Case LOG_ID_ENTERED_STATE_READY
+                message_text = "Entered State Ready"
+            Case LOG_ID_CUSTOMER_XRAY_ON
+                message_text = "Customer Input - XRay ON"
+            Case LOG_ID_ENTERED_STATE_XRAY_ON
+                message_text = "Entered state XRay On"
+            Case LOG_ID_CUSTOMER_XRAY_OFF
+                message_text = "Customer Input - XRay OFF"
+            Case LOG_ID_ENTERED_STATE_FAULT_HOLD
+                message_text = "Entered State Fault Hold"
+            Case LOG_ID_ENTERED_STATE_FAULT_RESET
+                message_text = "Entered State Fault Reset"
+            Case LOG_ID_HV_OFF_FAULTS_CLEAR
+                message_text = "HV Off - Faults Clear"
+
+#If 0 Then
+
+
+            Case LOG_ID_ENTERED_STATE_FAULT_SYSTEM
+            Case LOG_ID_NOT_READY_ION_PUMP_BOARD
+            Case LOG_ID_READY_ION_PUMP_BOARD
+            Case LOG_ID_NOT_CONFIGURED_ION_PUMP_BOARD
+            Case LOG_ID_CONFIGURED_ION_PUMP_BOARD
+            Case LOG_ID_NOT_CONNECTED_ION_PUMP_BOARD
+            Case LOG_ID_CONNECTED_ION_PUMP_BOARD
+
+
+            Case LOG_ID_NOT_READY_PULSE_MONITOR_BOARD
+            Case LOG_ID_READY_PULSE_MONITOR_BOARD
+            Case LOG_ID_NOT_CONFIGURED_PULSE_MONITOR_BOARD
+            Case LOG_ID_CONFIGURED_PULSE_MONITOR_BOARD
+            Case LOG_ID_NOT_CONNECTED_MAGNETRON_CURRENT_BOARD
+            Case LOG_ID_CONNECTED_MAGNETRON_CURRENT_BOARD
+
+
+            Case LOG_ID_NOT_READY_PULSE_SYNC_BOARD
+            Case LOG_ID_READY_PULSE_SYNC_BOARD
+            Case LOG_ID_NOT_CONFIGURED_PULSE_SYNC_BOARD
+            Case LOG_ID_CONFIGURED_PULSE_SYNC_BOARD
+            Case LOG_ID_NOT_CONNECTED_PULSE_SYNC_BOARD
+            Case LOG_ID_CONNECTED_PULSE_SYNC_BOARD
+
+
+
+            Case LOG_ID_NOT_READY_HV_LAMBDA_BOARD
+            Case LOG_ID_READY_HV_LAMBDA_BOARD
+            Case LOG_ID_NOT_CONFIGURED_HV_LAMBDA_BOARD
+            Case LOG_ID_CONFIGURED_HV_LAMBDA_BOARD
+            Case LOG_ID_NOT_CONNECTED_HV_LAMBDA_BOARD
+            Case LOG_ID_CONNECTED_HV_LAMBDA_BOARD
+
+
+            Case LOG_ID_NOT_READY_AFC_BOARD
+            Case LOG_ID_READY_AFC_BOARD
+            Case LOG_ID_NOT_CONFIGURED_AFC_BOARD
+            Case LOG_ID_CONFIGURED_AFC_BOARD
+            Case LOG_ID_NOT_CONNECTED_AFC_BOARD
+            Case LOG_ID_CONNECTED_AFC_BOARD
+
+
+            Case LOG_ID_NOT_READY_COOLING_INTERFACE_BOARD
+            Case LOG_ID_READY_COOLING_INTERFACE_BOARD
+            Case LOG_ID_NOT_CONFIGURED_COOLING_INTERFACE_BOARD
+            Case LOG_ID_CONFIGURED_COOLING_INTERFACE_BOARD
+            Case LOG_ID_NOT_CONNECTED_COOLING_BOARD
+            Case LOG_ID_CONNECTED_COOLING_BOARD
+
+
+            Case LOG_ID_NOT_READY_HEATER_MAGNET
+            Case LOG_ID_READY_HEATER_MAGNET
+            Case LOG_ID_NOT_CONFIGURED_HEATER_MAGNET
+            Case LOG_ID_CONFIGURED_HEATER_MAGNET
+            Case LOG_ID_NOT_CONNECTED_HEATER_MAGNET_BOARD
+            Case LOG_ID_CONNECTED_HEATER_MAGNET_BOARD
+
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_OVER_CURRENT_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_CURRENT_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_OVER_CURRENT_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_CURRENT_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_OVER_VOLTAGE_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_HEATER_UNDER_VOTLAGE_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_CURRENT_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_CURRENT_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_CURRENT_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_CURRENT_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_OVER_VOLTAGE_ABSOLUTE
+            Case LOG_ID_FAULT_HTR_MAG_MAGNET_UNDER_VOTLAGE_RELATIVE
+            Case LOG_ID_FAULT_HTR_MAG_HW_HEATER_OVER_VOLTAGE
+            Case LOG_ID_FAULT_HTR_MAG_HW_TEMPERATURE_SWITCH
+            Case LOG_ID_FAULT_HTR_MAG_COOLANT_FAULT
+            Case LOG_ID_FAULT_HTR_CAN_FAULT_LATCHED
+
+
+            Case LOG_ID_NOT_READY_GUN_DRIVER_BOARD
+            Case LOG_ID_READY_GUN_DRIVER_BOARD
+            Case LOG_ID_NOT_CONFIGURED_GUN_DRIVER_BOARD
+            Case LOG_ID_CONFIGURED_GUN_DRIVER_BOARD
+            Case LOG_ID_NOT_CONNECTED_GUN_DRIVER_BOARD
+            Case LOG_ID_CONNECTED_GUN_DRIVER_BOARD
+            Case LOG_ID_GUN_DRIVER_BOARD_HEATER_OFF
+            Case LOG_ID_GUN_DRIVER_BOARD_HEATER_ON
+
+#End If
+
+            Case Else
+                message_text = message_id.ToString("X4")
+        End Select
+        Return message_text
+    End Function
 
     Public Sub modbus_reply()
         Dim i As UInt16, row As UInt16
