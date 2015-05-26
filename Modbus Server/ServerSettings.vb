@@ -303,8 +303,11 @@ Public Class ServerSettings
 
 
     Public Sub ClosePulseLogFile()
+        If pulse_log_enabled Then
+            pulse_log_file.Close()
+        End If
         pulse_log_enabled = False
-        pulse_log_file.Close()
+
     End Sub
 
     Private Sub save_pulse_data(ByRef bytes As Byte())

@@ -43,8 +43,8 @@ Partial Class frmMain
         Me.LabelRCON = New System.Windows.Forms.Label()
         Me.ButtonResetSlave = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
+        Me.LabelScale = New System.Windows.Forms.Label()
+        Me.LabelOffset = New System.Windows.Forms.Label()
         Me.LabelEEpromIndex = New System.Windows.Forms.Label()
         Me.ComboBoxEEpromRegister = New System.Windows.Forms.ComboBox()
         Me.TextBoxEEpromOffSet = New System.Windows.Forms.TextBox()
@@ -207,7 +207,7 @@ Partial Class frmMain
         Me.CheckBoxSyncBit4 = New System.Windows.Forms.CheckBox()
         Me.ButtonToggleHighSpeedDataLogging = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBit3 = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelSyncMessageCntrlBits = New System.Windows.Forms.Label()
         Me.CheckBoxSyncBit2 = New System.Windows.Forms.CheckBox()
         Me.ButtonToggleCoolantFault = New System.Windows.Forms.Button()
         Me.CheckBoxSyncBit1 = New System.Windows.Forms.CheckBox()
@@ -436,25 +436,25 @@ Partial Class frmMain
         Me.Button1.Text = "Reload Defaults"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Label15
+        'LabelScale
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(854, 470)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(43, 16)
-        Me.Label15.TabIndex = 264
-        Me.Label15.Text = "Scale"
+        Me.LabelScale.AutoSize = True
+        Me.LabelScale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelScale.Location = New System.Drawing.Point(854, 470)
+        Me.LabelScale.Name = "LabelScale"
+        Me.LabelScale.Size = New System.Drawing.Size(43, 16)
+        Me.LabelScale.TabIndex = 264
+        Me.LabelScale.Text = "Scale"
         '
-        'Label14
+        'LabelOffset
         '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(854, 499)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(42, 16)
-        Me.Label14.TabIndex = 263
-        Me.Label14.Text = "Offset"
+        Me.LabelOffset.AutoSize = True
+        Me.LabelOffset.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelOffset.Location = New System.Drawing.Point(854, 499)
+        Me.LabelOffset.Name = "LabelOffset"
+        Me.LabelOffset.Size = New System.Drawing.Size(42, 16)
+        Me.LabelOffset.TabIndex = 263
+        Me.LabelOffset.Text = "Offset"
         '
         'LabelEEpromIndex
         '
@@ -2240,16 +2240,16 @@ Partial Class frmMain
         Me.CheckBoxSyncBit3.Text = "XRAY OFF Bit"
         Me.CheckBoxSyncBit3.UseVisualStyleBackColor = False
         '
-        'Label1
+        'LabelSyncMessageCntrlBits
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 450)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(152, 16)
-        Me.Label1.TabIndex = 374
-        Me.Label1.Text = "Sync Message Cntrl Bits"
+        Me.LabelSyncMessageCntrlBits.AutoSize = True
+        Me.LabelSyncMessageCntrlBits.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.LabelSyncMessageCntrlBits.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelSyncMessageCntrlBits.Location = New System.Drawing.Point(12, 450)
+        Me.LabelSyncMessageCntrlBits.Name = "LabelSyncMessageCntrlBits"
+        Me.LabelSyncMessageCntrlBits.Size = New System.Drawing.Size(152, 16)
+        Me.LabelSyncMessageCntrlBits.TabIndex = 374
+        Me.LabelSyncMessageCntrlBits.Text = "Sync Message Cntrl Bits"
         '
         'CheckBoxSyncBit2
         '
@@ -2447,7 +2447,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.CheckBoxSyncBit4)
         Me.Controls.Add(Me.ButtonToggleHighSpeedDataLogging)
         Me.Controls.Add(Me.CheckBoxSyncBit3)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LabelSyncMessageCntrlBits)
         Me.Controls.Add(Me.CheckBoxSyncBit2)
         Me.Controls.Add(Me.ButtonToggleCoolantFault)
         Me.Controls.Add(Me.CheckBoxSyncBit1)
@@ -2571,10 +2571,10 @@ Partial Class frmMain
         Me.Controls.Add(Me.LabelValueDebugD)
         Me.Controls.Add(Me.LabelValueDebugC)
         Me.Controls.Add(Me.LabelValueDebugB)
-        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.LabelScale)
         Me.Controls.Add(Me.LabelValueDebugA)
         Me.Controls.Add(Me.LabelValueDebug9)
-        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.LabelOffset)
         Me.Controls.Add(Me.LabelValueDebug8)
         Me.Controls.Add(Me.LabelValueDebug7)
         Me.Controls.Add(Me.LabelEEpromIndex)
@@ -2744,8 +2744,8 @@ Partial Class frmMain
     Friend WithEvents ButtonReadEEprom As System.Windows.Forms.Button
     Friend WithEvents ComboBoxEEpromRegister As System.Windows.Forms.ComboBox
     Friend WithEvents LabelEEpromIndex As System.Windows.Forms.Label
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents LabelScale As System.Windows.Forms.Label
+    Friend WithEvents LabelOffset As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents ButtonResetSlave As System.Windows.Forms.Button
     Friend WithEvents LabelRCON As System.Windows.Forms.Label
@@ -2823,7 +2823,7 @@ Partial Class frmMain
     Friend WithEvents CheckBoxSyncBit4 As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonToggleHighSpeedDataLogging As System.Windows.Forms.Button
     Friend WithEvents CheckBoxSyncBit3 As System.Windows.Forms.CheckBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents LabelSyncMessageCntrlBits As System.Windows.Forms.Label
     Friend WithEvents CheckBoxSyncBit2 As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonToggleCoolantFault As System.Windows.Forms.Button
     Friend WithEvents CheckBoxSyncBit1 As System.Windows.Forms.CheckBox

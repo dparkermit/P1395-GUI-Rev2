@@ -362,6 +362,130 @@
         ServerSettings.EventLogMessages.Add(&H108E, "	Fault - Gun Driver 15	")
         ServerSettings.EventLogMessages.Add(&H108F, "	Fault - Gun Driver 16	")
 
+
+        ButtonStartLog.Visible = False
+        ButtonStopLog.Visible = False
+
+
+
+#If 1 Then
+        ' Hide all of the advanced controls
+        LabelCanCXECReg.Visible = False
+        LabelCanErrorFlagCount.Visible = False
+        LabelCanTX1Count.Visible = False
+        LabelCanTX2Count.Visible = False
+        LabelCanRX0Filt0Count.Visible = False
+        LabelCanRX0Filt1Count.Visible = False
+        LabelCanRX1Filt2Count.Visible = False
+        LabelCanISREnteredCount.Visible = False
+        LabelCanUnknownIdentifierCount.Visible = False
+        LabelCanInvalidIndexCount.Visible = False
+        LabelCanAddressErrorCount.Visible = False
+        LabelCanTX0Count.Visible = False
+        LabelCanTXBufOverflowCount.Visible = False
+        LabelCanRXBufferOverflowCount.Visible = False
+        LabelCAnDataLogRXBufferOVerflowCount.Visible = False
+        LabelCanTimeoutCount.Visible = False
+
+        CheckBoxControlBit0.Visible = False
+        CheckBoxControlBit1.Visible = False
+        CheckBoxControlBit2.Visible = False
+        CheckBoxControlBit3.Visible = False
+        CheckBoxControlBit4.Visible = False
+        CheckBoxControlBit5.Visible = False
+        CheckBoxControlBit6.Visible = False
+        CheckBoxControlBit7.Visible = False
+
+        LabelErrorCanBusCount.Visible = False
+        LabelErrorI2CBusCount.Visible = False
+        LabelErrorResetCount.Visible = False
+        LabelErrorScaleCount.Visible = False
+        LabelErrorSelfTestResultRegister.Visible = False
+        LabelErrorSPIBusCount.Visible = False
+        LabelErrorStatusDataA.Visible = False
+        LabelErrorStatusDataB.Visible = False
+        LabelRCON.Visible = False
+
+        LabelDebug0.Visible = False
+        LabelDebug1.Visible = False
+        LabelDebug2.Visible = False
+        LabelDebug3.Visible = False
+        LabelDebug4.Visible = False
+        LabelDebug5.Visible = False
+        LabelDebug6.Visible = False
+        LabelDebug7.Visible = False
+        LabelDebug8.Visible = False
+        LabelDebug9.Visible = False
+        LabelDebugA.Visible = False
+        LabelDebugB.Visible = False
+        LabelDebugC.Visible = False
+        LabelDebugD.Visible = False
+        LabelDebugE.Visible = False
+        LabelDebugF.Visible = False
+
+        LabelValueDebug0.Visible = False
+        LabelValueDebug1.Visible = False
+        LabelValueDebug2.Visible = False
+        LabelValueDebug3.Visible = False
+        LabelValueDebug4.Visible = False
+        LabelValueDebug5.Visible = False
+        LabelValueDebug6.Visible = False
+        LabelValueDebug7.Visible = False
+        LabelValueDebug8.Visible = False
+        LabelValueDebug9.Visible = False
+        LabelValueDebugA.Visible = False
+        LabelValueDebugB.Visible = False
+        LabelValueDebugC.Visible = False
+        LabelValueDebugD.Visible = False
+        LabelValueDebugE.Visible = False
+        LabelValueDebugF.Visible = False
+
+        CheckBoxResetBOR.Visible = False
+        CheckBoxResetExt.Visible = False
+        CheckBoxResetIdle.Visible = False
+        CheckBoxResetIllegal.Visible = False
+        CheckBoxResetPOR.Visible = False
+        CheckBoxResetSleep.Visible = False
+        CheckBoxResetSoftware.Visible = False
+        CheckBoxResetTrap.Visible = False
+        CheckBoxResetWDT.Visible = False
+
+
+        ComboBoxEEpromRegister.Visible = False
+        LabelEEpromIndex.Visible = False
+        TextBoxEEpromOffSet.Visible = False
+        TextBoxEEpromScale.Visible = False
+        LabelScale.Visible = False
+        LabelOffset.Visible = False
+        ButtonReadEEprom.Visible = False
+        ButtonWriteEEprom.Visible = False
+        ButtonResetSlave.Visible = False
+        Button1.Visible = False
+
+
+        LabelComputerTime.Visible = False
+        LabelSyncMessageCntrlBits.Visible = False
+        ButtonToggleCoolantFault.Visible = False
+        ButtonToggleHighSpeedDataLogging.Visible = False
+        ButtonTogglePulseSyncHV.Visible = False
+        ButtonTogglePulseSyncXray.Visible = False
+        ButtonToggleReset.Visible = False
+        ButtonToggleResetDebug.Visible = False
+
+        CheckBoxSyncBit0.Visible = False
+        CheckBoxSyncBit1.Visible = False
+        CheckBoxSyncBit2.Visible = False
+        CheckBoxSyncBit3.Visible = False
+        CheckBoxSyncBit4.Visible = False
+        CheckBoxSyncBit5.Visible = False
+        CheckBoxSyncBit6.Visible = False
+        CheckBoxSyncBit7.Visible = False
+        CheckBoxSyncBit8.Visible = False
+        CheckBoxSyncBitF.Visible = False
+
+        ButtonSetTime.Visible = False
+#End If
+
     End Sub
 
     Private Sub frmMain_close(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.FormClosing
@@ -492,6 +616,16 @@
             CheckBoxSyncBit6.Checked = Sync_data And &H40
             CheckBoxSyncBit7.Checked = Sync_data And &H80
             CheckBoxSyncBitF.Checked = Sync_data And &H8000
+
+            If CheckBoxSyncBit1.Checked Then
+                ' High speed data logging is enabled
+                ButtonStopLog.Visible = True
+                ButtonStartLog.Visible = False
+            Else
+                ButtonStopLog.Visible = False
+                ButtonStartLog.Visible = True
+            End If
+
 
             ' Update the connected Boards
             Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.BOARD_COM_FAULT)
@@ -695,6 +829,10 @@
             ButtonUpdateInput3.Text = inputbutton3.button_name
             ButtonUpdateInput4.Text = inputbutton4.button_name
             ButtonUpdateInput5.Text = inputbutton5.button_name
+
+
+
+
 
 
             'Heater Mag Specific Data
@@ -977,8 +1115,8 @@
                 CheckBoxFaultBit3.Text = "Trigger ON"
                 CheckBoxFaultBit4.Text = "X-Ray/No HV"
                 CheckBoxFaultBit5.Text = "Sync Timeout"
-                CheckBoxFaultBit6.Text = "Unused"
-                CheckBoxFaultBit7.Text = "Unused"
+                CheckBoxFaultBit6.Text = "PFN Fan"
+                CheckBoxFaultBit7.Text = "RF Arc"
                 CheckBoxFaultBit8.Text = "Unused"
                 CheckBoxFaultBit9.Text = "Unused"
                 CheckBoxFaultBitA.Text = "Unused"
@@ -1199,7 +1337,7 @@
                 LabelValue8.Text = "Circulator Flow = N/A"
                 'LabelValue9.Text = "Spare Flow = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.SPARE_COOLANT_FLOW) / 1000, "0.000") & " LPM"
                 LabelValue9.Text = "Spare Flow = N/A"
-                LabelValue10.Text = "SF6 Pressure = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.SF6_PRESSURE) / 100 & " PSI"
+                LabelValue10.Text = "SF6 Pressure = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.SF6_PRESSURE) / 100, "00.00") & " PSI"
                 LabelValue11.Text = "Coolant Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.COOLANT_TEMPERATURE) - 272 & " C"
                 LabelValue12.Text = "Cabinent Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.CABINET_TEMPERATURE) - 272 & " C"
                 'LabelValue13.Text = "Linac Temp = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).custom_data(CS_COOLING.LINAC_TEMPERATURE) - 272 & " C"
@@ -1820,11 +1958,13 @@
 
 
     Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
+        ButtonStartLog.Visible = False
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
         ServerSettings.OpenPulseLogFile()
     End Sub
 
     Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
+        ButtonStopLog.Visible = False
         ServerSettings.ClosePulseLogFile()
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
     End Sub
