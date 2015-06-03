@@ -222,6 +222,15 @@ Partial Class frmMain
         Me.CheckBoxControlBit6 = New System.Windows.Forms.CheckBox()
         Me.CheckBoxControlBit7 = New System.Windows.Forms.CheckBox()
         Me.LabelGuiVersion = New System.Windows.Forms.Label()
+        Me.LabelRangeInput1 = New System.Windows.Forms.Label()
+        Me.LabelRangeInput2 = New System.Windows.Forms.Label()
+        Me.LabelRangeInput3 = New System.Windows.Forms.Label()
+        Me.LabelRangeInput4 = New System.Windows.Forms.Label()
+        Me.LabelRangeInput5 = New System.Windows.Forms.Label()
+        Me.ButtonReloadECBDefaults = New System.Windows.Forms.Button()
+        Me.ButtonZeroOnTime = New System.Windows.Forms.Button()
+        Me.ButtonZeroPulseCounters = New System.Windows.Forms.Button()
+        Me.ButtonToggleMode = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -232,7 +241,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetPOR.AutoSize = True
         Me.CheckBoxResetPOR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetPOR.Location = New System.Drawing.Point(1164, 72)
+        Me.CheckBoxResetPOR.Location = New System.Drawing.Point(816, 587)
         Me.CheckBoxResetPOR.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetPOR.Name = "CheckBoxResetPOR"
         Me.CheckBoxResetPOR.Size = New System.Drawing.Size(56, 20)
@@ -244,7 +253,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetBOR.AutoSize = True
         Me.CheckBoxResetBOR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetBOR.Location = New System.Drawing.Point(1164, 52)
+        Me.CheckBoxResetBOR.Location = New System.Drawing.Point(816, 567)
         Me.CheckBoxResetBOR.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetBOR.Name = "CheckBoxResetBOR"
         Me.CheckBoxResetBOR.Size = New System.Drawing.Size(56, 20)
@@ -265,7 +274,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetIdle.AutoSize = True
         Me.CheckBoxResetIdle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetIdle.Location = New System.Drawing.Point(1164, 32)
+        Me.CheckBoxResetIdle.Location = New System.Drawing.Point(816, 547)
         Me.CheckBoxResetIdle.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetIdle.Name = "CheckBoxResetIdle"
         Me.CheckBoxResetIdle.Size = New System.Drawing.Size(49, 20)
@@ -285,7 +294,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetSleep.AutoSize = True
         Me.CheckBoxResetSleep.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetSleep.Location = New System.Drawing.Point(1164, 12)
+        Me.CheckBoxResetSleep.Location = New System.Drawing.Point(816, 527)
         Me.CheckBoxResetSleep.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetSleep.Name = "CheckBoxResetSleep"
         Me.CheckBoxResetSleep.Size = New System.Drawing.Size(63, 20)
@@ -308,7 +317,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetWDT.AutoSize = True
         Me.CheckBoxResetWDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetWDT.Location = New System.Drawing.Point(1093, 92)
+        Me.CheckBoxResetWDT.Location = New System.Drawing.Point(745, 607)
         Me.CheckBoxResetWDT.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetWDT.Name = "CheckBoxResetWDT"
         Me.CheckBoxResetWDT.Size = New System.Drawing.Size(59, 20)
@@ -331,7 +340,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetSoftware.AutoSize = True
         Me.CheckBoxResetSoftware.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetSoftware.Location = New System.Drawing.Point(1093, 72)
+        Me.CheckBoxResetSoftware.Location = New System.Drawing.Point(745, 587)
         Me.CheckBoxResetSoftware.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetSoftware.Name = "CheckBoxResetSoftware"
         Me.CheckBoxResetSoftware.Size = New System.Drawing.Size(49, 20)
@@ -354,7 +363,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetExt.AutoSize = True
         Me.CheckBoxResetExt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetExt.Location = New System.Drawing.Point(1093, 52)
+        Me.CheckBoxResetExt.Location = New System.Drawing.Point(745, 567)
         Me.CheckBoxResetExt.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetExt.Name = "CheckBoxResetExt"
         Me.CheckBoxResetExt.Size = New System.Drawing.Size(45, 20)
@@ -377,7 +386,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetIllegal.AutoSize = True
         Me.CheckBoxResetIllegal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetIllegal.Location = New System.Drawing.Point(1093, 32)
+        Me.CheckBoxResetIllegal.Location = New System.Drawing.Point(745, 547)
         Me.CheckBoxResetIllegal.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetIllegal.Name = "CheckBoxResetIllegal"
         Me.CheckBoxResetIllegal.Size = New System.Drawing.Size(63, 20)
@@ -400,7 +409,7 @@ Partial Class frmMain
         '
         Me.CheckBoxResetTrap.AutoSize = True
         Me.CheckBoxResetTrap.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxResetTrap.Location = New System.Drawing.Point(1093, 12)
+        Me.CheckBoxResetTrap.Location = New System.Drawing.Point(745, 527)
         Me.CheckBoxResetTrap.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxResetTrap.Name = "CheckBoxResetTrap"
         Me.CheckBoxResetTrap.Size = New System.Drawing.Size(56, 20)
@@ -1612,7 +1621,7 @@ Partial Class frmMain
         Me.Splitter1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Splitter1.Location = New System.Drawing.Point(0, 0)
         Me.Splitter1.Name = "Splitter1"
-        Me.Splitter1.Size = New System.Drawing.Size(288, 692)
+        Me.Splitter1.Size = New System.Drawing.Size(288, 742)
         Me.Splitter1.TabIndex = 322
         Me.Splitter1.TabStop = False
         '
@@ -2429,12 +2438,124 @@ Partial Class frmMain
         Me.LabelGuiVersion.TabIndex = 390
         Me.LabelGuiVersion.Text = "GUI version"
         '
+        'LabelRangeInput1
+        '
+        Me.LabelRangeInput1.AutoSize = True
+        Me.LabelRangeInput1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRangeInput1.Location = New System.Drawing.Point(1066, 12)
+        Me.LabelRangeInput1.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelRangeInput1.Name = "LabelRangeInput1"
+        Me.LabelRangeInput1.Size = New System.Drawing.Size(49, 16)
+        Me.LabelRangeInput1.TabIndex = 391
+        Me.LabelRangeInput1.Text = "Range"
+        '
+        'LabelRangeInput2
+        '
+        Me.LabelRangeInput2.AutoSize = True
+        Me.LabelRangeInput2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRangeInput2.Location = New System.Drawing.Point(1066, 39)
+        Me.LabelRangeInput2.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelRangeInput2.Name = "LabelRangeInput2"
+        Me.LabelRangeInput2.Size = New System.Drawing.Size(49, 16)
+        Me.LabelRangeInput2.TabIndex = 392
+        Me.LabelRangeInput2.Text = "Range"
+        '
+        'LabelRangeInput3
+        '
+        Me.LabelRangeInput3.AutoSize = True
+        Me.LabelRangeInput3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRangeInput3.Location = New System.Drawing.Point(1066, 64)
+        Me.LabelRangeInput3.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelRangeInput3.Name = "LabelRangeInput3"
+        Me.LabelRangeInput3.Size = New System.Drawing.Size(49, 16)
+        Me.LabelRangeInput3.TabIndex = 393
+        Me.LabelRangeInput3.Text = "Range"
+        '
+        'LabelRangeInput4
+        '
+        Me.LabelRangeInput4.AutoSize = True
+        Me.LabelRangeInput4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRangeInput4.Location = New System.Drawing.Point(1066, 91)
+        Me.LabelRangeInput4.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelRangeInput4.Name = "LabelRangeInput4"
+        Me.LabelRangeInput4.Size = New System.Drawing.Size(49, 16)
+        Me.LabelRangeInput4.TabIndex = 394
+        Me.LabelRangeInput4.Text = "Range"
+        '
+        'LabelRangeInput5
+        '
+        Me.LabelRangeInput5.AutoSize = True
+        Me.LabelRangeInput5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelRangeInput5.Location = New System.Drawing.Point(1066, 117)
+        Me.LabelRangeInput5.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelRangeInput5.Name = "LabelRangeInput5"
+        Me.LabelRangeInput5.Size = New System.Drawing.Size(49, 16)
+        Me.LabelRangeInput5.TabIndex = 395
+        Me.LabelRangeInput5.Text = "Range"
+        '
+        'ButtonReloadECBDefaults
+        '
+        Me.ButtonReloadECBDefaults.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonReloadECBDefaults.FlatAppearance.BorderSize = 0
+        Me.ButtonReloadECBDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonReloadECBDefaults.Location = New System.Drawing.Point(170, 373)
+        Me.ButtonReloadECBDefaults.Name = "ButtonReloadECBDefaults"
+        Me.ButtonReloadECBDefaults.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonReloadECBDefaults.TabIndex = 396
+        Me.ButtonReloadECBDefaults.Text = "Reload Defaults"
+        Me.ButtonReloadECBDefaults.UseVisualStyleBackColor = False
+        '
+        'ButtonZeroOnTime
+        '
+        Me.ButtonZeroOnTime.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonZeroOnTime.FlatAppearance.BorderSize = 0
+        Me.ButtonZeroOnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonZeroOnTime.Location = New System.Drawing.Point(12, 706)
+        Me.ButtonZeroOnTime.Name = "ButtonZeroOnTime"
+        Me.ButtonZeroOnTime.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonZeroOnTime.TabIndex = 397
+        Me.ButtonZeroOnTime.Text = "Zero On Time"
+        Me.ButtonZeroOnTime.UseVisualStyleBackColor = False
+        '
+        'ButtonZeroPulseCounters
+        '
+        Me.ButtonZeroPulseCounters.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonZeroPulseCounters.FlatAppearance.BorderSize = 0
+        Me.ButtonZeroPulseCounters.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonZeroPulseCounters.Location = New System.Drawing.Point(167, 706)
+        Me.ButtonZeroPulseCounters.Name = "ButtonZeroPulseCounters"
+        Me.ButtonZeroPulseCounters.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonZeroPulseCounters.TabIndex = 398
+        Me.ButtonZeroPulseCounters.Text = "Zero Pulse Count"
+        Me.ButtonZeroPulseCounters.UseVisualStyleBackColor = False
+        '
+        'ButtonToggleMode
+        '
+        Me.ButtonToggleMode.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonToggleMode.FlatAppearance.BorderSize = 0
+        Me.ButtonToggleMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonToggleMode.Location = New System.Drawing.Point(15, 367)
+        Me.ButtonToggleMode.Name = "ButtonToggleMode"
+        Me.ButtonToggleMode.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonToggleMode.TabIndex = 400
+        Me.ButtonToggleMode.Text = "Advanced GUI"
+        Me.ButtonToggleMode.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1236, 692)
+        Me.ClientSize = New System.Drawing.Size(1246, 742)
+        Me.Controls.Add(Me.ButtonToggleMode)
+        Me.Controls.Add(Me.ButtonZeroPulseCounters)
+        Me.Controls.Add(Me.ButtonZeroOnTime)
+        Me.Controls.Add(Me.ButtonReloadECBDefaults)
+        Me.Controls.Add(Me.LabelRangeInput5)
+        Me.Controls.Add(Me.LabelRangeInput4)
+        Me.Controls.Add(Me.LabelRangeInput3)
+        Me.Controls.Add(Me.LabelRangeInput2)
+        Me.Controls.Add(Me.LabelRangeInput1)
         Me.Controls.Add(Me.LabelGuiVersion)
         Me.Controls.Add(Me.CheckBoxSyncBitF)
         Me.Controls.Add(Me.ButtonToggleResetDebug)
@@ -2838,4 +2959,13 @@ Partial Class frmMain
     Friend WithEvents CheckBoxControlBit6 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxControlBit7 As System.Windows.Forms.CheckBox
     Friend WithEvents LabelGuiVersion As System.Windows.Forms.Label
+    Friend WithEvents LabelRangeInput1 As System.Windows.Forms.Label
+    Friend WithEvents LabelRangeInput2 As System.Windows.Forms.Label
+    Friend WithEvents LabelRangeInput3 As System.Windows.Forms.Label
+    Friend WithEvents LabelRangeInput4 As System.Windows.Forms.Label
+    Friend WithEvents LabelRangeInput5 As System.Windows.Forms.Label
+    Friend WithEvents ButtonReloadECBDefaults As System.Windows.Forms.Button
+    Friend WithEvents ButtonZeroOnTime As System.Windows.Forms.Button
+    Friend WithEvents ButtonZeroPulseCounters As System.Windows.Forms.Button
+    Friend WithEvents ButtonToggleMode As System.Windows.Forms.Button
 End Class

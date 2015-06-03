@@ -38,6 +38,8 @@
     Public Const REGISTER_SPECIAL_ECB_REST_ARC_AND_PULSE_COUNT As UInt16 = &HE081
     Public Const REGISTER_SPECIAL_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON As UInt16 = &HE082
     Public Const REGISTER_SPECIAL_ECB_RESET_SLAVE As UInt16 = &HE083
+    Public Const REGISTER_SPECIAL_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS As UInt16 = &HE084
+
     Public Const REGISTER_DEBUG_TOGGLE_RESET As UInt16 = &HEF00
     Public Const REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = &HEF01
     Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
@@ -58,7 +60,7 @@
     Public Const REGISTER_SPECIAL_2_5_SET_DOSE_SAMPLE_DELAY As UInt16 = &HEF43  'Unused for the 2.5 - NOT IMPLIMENTED
     Public Const REGISTER_SPECIAL_2_5_SET_AFC_SAMPLE_DELAY As UInt16 = &HEF44
     Public Const REGISTER_SPECIAL_2_5_SET_MAGNETRON_CURRENT_SAMPLE_DELAY As UInt16 = &HEF45
-
+    Public Const REGISTER_SPECIAL_2_5_SET_HV_LAMBDA_VOLTAGE As UInt16 = &HEF46
 
 
 
@@ -366,9 +368,6 @@
         ButtonStartLog.Visible = False
         ButtonStopLog.Visible = False
 
-
-
-#If 1 Then
         ' Hide all of the advanced controls
         LabelCanCXECReg.Visible = False
         LabelCanErrorFlagCount.Visible = False
@@ -386,7 +385,6 @@
         LabelCanRXBufferOverflowCount.Visible = False
         LabelCAnDataLogRXBufferOVerflowCount.Visible = False
         LabelCanTimeoutCount.Visible = False
-
         CheckBoxControlBit0.Visible = False
         CheckBoxControlBit1.Visible = False
         CheckBoxControlBit2.Visible = False
@@ -395,7 +393,6 @@
         CheckBoxControlBit5.Visible = False
         CheckBoxControlBit6.Visible = False
         CheckBoxControlBit7.Visible = False
-
         LabelErrorCanBusCount.Visible = False
         LabelErrorI2CBusCount.Visible = False
         LabelErrorResetCount.Visible = False
@@ -405,7 +402,6 @@
         LabelErrorStatusDataA.Visible = False
         LabelErrorStatusDataB.Visible = False
         LabelRCON.Visible = False
-
         LabelDebug0.Visible = False
         LabelDebug1.Visible = False
         LabelDebug2.Visible = False
@@ -422,7 +418,6 @@
         LabelDebugD.Visible = False
         LabelDebugE.Visible = False
         LabelDebugF.Visible = False
-
         LabelValueDebug0.Visible = False
         LabelValueDebug1.Visible = False
         LabelValueDebug2.Visible = False
@@ -439,7 +434,6 @@
         LabelValueDebugD.Visible = False
         LabelValueDebugE.Visible = False
         LabelValueDebugF.Visible = False
-
         CheckBoxResetBOR.Visible = False
         CheckBoxResetExt.Visible = False
         CheckBoxResetIdle.Visible = False
@@ -449,7 +443,6 @@
         CheckBoxResetSoftware.Visible = False
         CheckBoxResetTrap.Visible = False
         CheckBoxResetWDT.Visible = False
-
 
         ComboBoxEEpromRegister.Visible = False
         LabelEEpromIndex.Visible = False
@@ -462,7 +455,6 @@
         ButtonResetSlave.Visible = False
         Button1.Visible = False
 
-
         LabelComputerTime.Visible = False
         LabelSyncMessageCntrlBits.Visible = False
         ButtonToggleCoolantFault.Visible = False
@@ -471,7 +463,6 @@
         ButtonTogglePulseSyncXray.Visible = False
         ButtonToggleReset.Visible = False
         ButtonToggleResetDebug.Visible = False
-
         CheckBoxSyncBit0.Visible = False
         CheckBoxSyncBit1.Visible = False
         CheckBoxSyncBit2.Visible = False
@@ -482,9 +473,12 @@
         CheckBoxSyncBit7.Visible = False
         CheckBoxSyncBit8.Visible = False
         CheckBoxSyncBitF.Visible = False
-
         ButtonSetTime.Visible = False
-#End If
+
+        ButtonReloadECBDefaults.Visible = False
+        ButtonZeroOnTime.Visible = False
+        ButtonZeroPulseCounters.Visible = False
+        Me.Size = New System.Drawing.Size(1200, 520)
 
     End Sub
 
@@ -911,8 +905,8 @@
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
                 inputbutton1.button_name = "Set Magnet"
-                inputbutton1.max_value = 25000
-                inputbutton1.min_value = 5000
+                inputbutton1.max_value = 19000
+                inputbutton1.min_value = 8000
                 inputbutton1.scale = 1000
                 inputbutton1.offset = 0
                 inputbutton1.button_index = REGISTER_ELECTROMAGNET_CURRENT
@@ -920,8 +914,8 @@
                 inputbutton2.enabled = True
                 inputbutton1.button_only = False
                 inputbutton2.button_name = "Set Heater"
-                inputbutton2.max_value = 15000
-                inputbutton2.min_value = 5000
+                inputbutton2.max_value = 10000
+                inputbutton2.min_value = 0
                 inputbutton2.scale = 1000
                 inputbutton2.offset = 0
                 inputbutton2.button_index = REGISTER_HEATER_CURRENT_AT_STANDBY
@@ -977,15 +971,17 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-
+                Dim thyratron_warmup As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.THYRATRON_WARMUP_COUNTER_SECONDS)
+                Dim magnetron_warmup As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.MAGNETRON_HEATER_WARMUP_COUNTER_SECONDS)
+                Dim gun_warmup As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.GUN_DRIVER_HEATER_WARMUP_COUNTER_SECONDS)
 
                 LabelValue1.Text = "Sec Powered = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_POWERED_SECONDS_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_POWERED_SECONDS_W1), "###,###,###,##0")
                 LabelValue2.Text = "Sec HV On = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_HV_ON_SECONDS_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_HV_ON_SECONDS_W1), "###,###,###,##0")
                 LabelValue3.Text = "Sec Xray On = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_XRAY_ON_SECONDS_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.SYSTEM_XRAY_ON_SECONDS_W1), "###,###,###,##0")
                 LabelValue4.Text = "Magnetron Pwr = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.AVERAGE_OUTPUT_POWER_WATTS) / 1000, "0.000") & " kW"
-                LabelValue5.Text = "Thyratron Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.THYRATRON_WARMUP_COUNTER_SECONDS)
-                LabelValue6.Text = "Magnetron Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.MAGNETRON_HEATER_WARMUP_COUNTER_SECONDS)
-                LabelValue7.Text = "Gun Driver Warmup = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(CS_ETHER.GUN_DRIVER_HEATER_WARMUP_COUNTER_SECONDS)
+                LabelValue5.Text = "Thyratron Warmup = " & Math.Truncate(thyratron_warmup / 60) & ":" & Format((thyratron_warmup Mod 60), "00")
+                LabelValue6.Text = "Magnetron Warmup = " & Math.Truncate(magnetron_warmup / 60) & ":" & Format((magnetron_warmup Mod 60), "00")
+                LabelValue7.Text = "Gun Driver Warmup = " & Math.Truncate(gun_warmup / 60) & ":" & Format((gun_warmup Mod 60), "00")
                 LabelValue8.Text = ""
                 LabelValue9.Text = ""
                 LabelValue10.Text = ""
@@ -994,6 +990,8 @@
                 LabelValue13.Text = ""
                 LabelValue14.Text = ""
                 LabelValue15.Text = ""
+
+
 
 
                 inputbutton1.enabled = False
@@ -1070,23 +1068,38 @@
                 LabelValue15.Text = ""
 
 
+                'inputbutton1.enabled = True
+                'inputbutton1.button_only = False
+                'inputbutton1.button_name = "Set High"
+                'inputbutton1.max_value = 20000
+                'inputbutton1.min_value = 5000
+                'inputbutton1.scale = 1000
+                'inputbutton1.offset = 0
+                'inputbutton1.button_index = REGISTER_HIGH_ENERGY_SET_POINT
+
+
+                'inputbutton2.enabled = True
+                'inputbutton2.button_only = False
+                'inputbutton2.button_name = "Set Low"
+                'inputbutton2.max_value = 20000
+                'inputbutton2.min_value = 5000
+                'inputbutton2.scale = 1000
+                'inputbutton2.offset = 0
+                'inputbutton2.button_index = REGISTER_LOW_ENERGY_SET_POINT
+
+
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
-                inputbutton1.button_name = "Set High"
-                inputbutton1.max_value = 20000
-                inputbutton1.min_value = 5000
+                inputbutton1.button_name = "Set HV"
+                inputbutton1.max_value = 17000
+                inputbutton1.min_value = 6000
                 inputbutton1.scale = 1000
                 inputbutton1.offset = 0
-                inputbutton1.button_index = REGISTER_HIGH_ENERGY_SET_POINT
+                inputbutton1.button_index = REGISTER_SPECIAL_2_5_SET_HV_LAMBDA_VOLTAGE
 
-                inputbutton2.enabled = True
-                inputbutton2.button_only = False
-                inputbutton2.button_name = "Set Low"
-                inputbutton2.max_value = 20000
-                inputbutton2.min_value = 5000
-                inputbutton2.scale = 1000
-                inputbutton2.offset = 0
-                inputbutton2.button_index = REGISTER_LOW_ENERGY_SET_POINT
+                inputbutton2.enabled = False
+
+
 
                 inputbutton3.enabled = False
                 inputbutton4.enabled = False
@@ -1143,18 +1156,31 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                LabelValue1.Text = "Grid Start H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) And &HFF)
-                LabelValue2.Text = "Grid Stop H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) And &HFF)
-                LabelValue3.Text = "PFN Trigger Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) / 256)
-                LabelValue4.Text = "AFC Sample Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) / 256)
-                LabelValue5.Text = "Mag Samp Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
-                LabelValue6.Text = "Dose Sample Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) And &HFF)
-                LabelValue7.Text = "Grid Start L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(6) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) And &HFF)
-                LabelValue8.Text = "Grid Stop L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) And &HFF)
-                LabelValue9.Text = "PFN Trigger Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) / 256)
-                LabelValue10.Text = "AFC Sample Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) / 256)
-                LabelValue11.Text = "Mag Samp Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) And &HFF)
-                LabelValue12.Text = "Dose Sample Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) And &HFF)
+                'LabelValue1.Text = "Grid Start H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) And &HFF)
+                'LabelValue2.Text = "Grid Stop H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) And &HFF)
+                'LabelValue3.Text = "PFN Trigger Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) / 256)
+                'LabelValue4.Text = "AFC Sample Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) / 256)
+                'LabelValue5.Text = "Mag Samp Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
+                'LabelValue6.Text = "Dose Sample Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) And &HFF)
+                'LabelValue7.Text = "Grid Start L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(6) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) And &HFF)
+                'LabelValue8.Text = "Grid Stop L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) And &HFF)
+                'LabelValue9.Text = "PFN Trigger Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) / 256)
+                'LabelValue10.Text = "AFC Sample Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) / 256)
+                'LabelValue11.Text = "Mag Samp Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) And &HFF)
+                'LabelValue12.Text = "Dose Sample Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) And &HFF)
+
+                LabelValue1.Text = "Grid Start = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256)
+                LabelValue2.Text = "Grid Stop = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256)
+                LabelValue3.Text = "PFN Trigger Delay = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) / 256)
+                LabelValue4.Text = "AFC Sample Delay = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) / 256)
+                LabelValue5.Text = "Mag Samp Delay = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
+                LabelValue6.Text = ""
+                LabelValue7.Text = ""
+                LabelValue8.Text = ""
+                LabelValue9.Text = ""
+                LabelValue10.Text = ""
+                LabelValue11.Text = ""
+                LabelValue12.Text = ""
                 LabelValue13.Text = ""
                 LabelValue14.Text = ""
                 LabelValue15.Text = ""
@@ -1430,12 +1456,17 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
+                Dim filtered_error As Long = CLng(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_FILTERED_ERROR_READING))
+                If filtered_error > 2 ^ 15 Then
+                    filtered_error -= 2 ^ 15
+                    filtered_error = -filtered_error
+                End If
                 LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.HOME_POSITION)
                 LabelValue2.Text = "AFT Ctrl V = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.AFT_CONTROL_VOLTAGE) / 1000, "0.000") & " V"
                 LabelValue3.Text = "Readback Position = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_CURRENT_POSITION)
                 LabelValue4.Text = ""
                 LabelValue5.Text = "Rback Home Pos = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_HOME_POSITION)
-                LabelValue6.Text = "Filtered Error = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_FILTERED_ERROR_READING)
+                LabelValue6.Text = "Filtered Error = " & filtered_error
                 LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_AFC_A_INPUT_READING)
                 LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).custom_data(CS_AFC.READBACK_AFC_B_INPUT_READING)
                 LabelValue9.Text = ""
@@ -1449,8 +1480,8 @@
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
                 inputbutton1.button_name = "Home Position"
-                inputbutton1.max_value = 64000
-                inputbutton1.min_value = 0
+                inputbutton1.max_value = 51200
+                inputbutton1.min_value = 6400
                 inputbutton1.scale = 1
                 inputbutton1.offset = 0
                 inputbutton1.button_index = REGISTER_HOME_POSITION
@@ -1459,7 +1490,7 @@
                 inputbutton2.button_only = False
                 inputbutton2.button_name = "AFT Control Voltage"
                 inputbutton2.max_value = 10000
-                inputbutton2.min_value = 0
+                inputbutton2.min_value = 1000
                 inputbutton2.scale = 1000
                 inputbutton2.offset = 0
                 inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE
@@ -1573,7 +1604,7 @@
 
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
-                inputbutton1.button_name = "Set Ek (0,-20V)"
+                inputbutton1.button_name = "Set Ek"
                 inputbutton1.max_value = 20000
                 inputbutton1.min_value = 0
                 inputbutton1.scale = -1000
@@ -1582,8 +1613,8 @@
 
                 inputbutton2.enabled = True
                 inputbutton2.button_only = False
-                inputbutton2.button_name = "Set Ef (0,-7V)"
-                inputbutton2.max_value = 7000
+                inputbutton2.button_name = "Set Ef"
+                inputbutton2.max_value = 5500
                 inputbutton2.min_value = 0
                 inputbutton2.scale = -1000
                 inputbutton2.offset = 0
@@ -1592,7 +1623,7 @@
                 inputbutton3.enabled = True
 
                 inputbutton3.button_only = False
-                inputbutton3.button_name = "Set Eg (-80,140)"
+                inputbutton3.button_name = "Set Eg"
                 inputbutton3.max_value = 2200
                 inputbutton3.min_value = 0
                 inputbutton3.scale = 10
@@ -1743,6 +1774,37 @@
 
             End If
             Me.BackColor = bgcolor
+            If inputbutton1.enabled And (inputbutton1.button_only = False) Then
+                LabelRangeInput1.Text = (CLng(inputbutton1.min_value) - CLng(inputbutton1.offset)) / inputbutton1.scale & " to " & (CLng(inputbutton1.max_value) - CLng(inputbutton1.offset)) / inputbutton1.scale
+            Else
+                LabelRangeInput1.Text = ""
+            End If
+
+            If inputbutton2.enabled And (inputbutton2.button_only = False) Then
+                LabelRangeInput2.Text = (CLng(inputbutton2.min_value) - CLng(inputbutton2.offset)) / inputbutton2.scale & " to " & (CLng(inputbutton2.max_value) - CLng(inputbutton2.offset)) / inputbutton2.scale
+            Else
+                LabelRangeInput2.Text = ""
+            End If
+
+            If inputbutton3.enabled And (inputbutton3.button_only = False) Then
+                LabelRangeInput3.Text = (CLng(inputbutton3.min_value) - CLng(inputbutton3.offset)) / inputbutton3.scale & " to " & (CLng(inputbutton3.max_value) - CLng(inputbutton3.offset)) / inputbutton3.scale
+            Else
+                LabelRangeInput3.Text = ""
+            End If
+
+            If inputbutton4.enabled And (inputbutton4.button_only = False) Then
+                LabelRangeInput4.Text = (CLng(inputbutton4.min_value) - CLng(inputbutton4.offset)) / inputbutton4.scale & " to " & (CLng(inputbutton4.max_value) - CLng(inputbutton4.offset)) / inputbutton4.scale
+            Else
+                LabelRangeInput4.Text = ""
+            End If
+
+
+            If inputbutton5.enabled And (inputbutton5.button_only = False) Then
+                LabelRangeInput5.Text = (CLng(inputbutton5.min_value) - CLng(inputbutton5.offset)) / inputbutton5.scale & " to " & (CLng(inputbutton5.max_value) - CLng(inputbutton5.offset)) / inputbutton5.scale
+            Else
+                LabelRangeInput5.Text = ""
+            End If
+
         End If ' connected
 
         TimerUpdate.Enabled = True
@@ -1948,7 +2010,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_LOAD_DEFAULT_SETTINGS_TO_EEPROM_AND_REBOOT, selected_board_index, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS, selected_board_index, 0, 0)
     End Sub
 
     Private Sub ButtonResetSlave_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetSlave.Click
@@ -1995,4 +2057,129 @@
         End Try
     End Sub
 
+    Private Sub ButtonReloadECBDefaults_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReloadECBDefaults.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_LOAD_DEFAULT_SETTINGS_TO_EEPROM_AND_REBOOT, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonZeroOnTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroOnTime.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonZeroPulseCounters_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroPulseCounters.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_REST_ARC_AND_PULSE_COUNT, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonToggleMode_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleMode.Click
+        LabelCanCXECReg.Visible = True
+        LabelCanErrorFlagCount.Visible = True
+        LabelCanTX1Count.Visible = True
+        LabelCanTX2Count.Visible = True
+        LabelCanRX0Filt0Count.Visible = True
+        LabelCanRX0Filt1Count.Visible = True
+        LabelCanRX1Filt2Count.Visible = True
+        LabelCanISREnteredCount.Visible = True
+        LabelCanUnknownIdentifierCount.Visible = True
+        LabelCanInvalidIndexCount.Visible = True
+        LabelCanAddressErrorCount.Visible = True
+        LabelCanTX0Count.Visible = True
+        LabelCanTXBufOverflowCount.Visible = True
+        LabelCanRXBufferOverflowCount.Visible = True
+        LabelCAnDataLogRXBufferOVerflowCount.Visible = True
+        LabelCanTimeoutCount.Visible = True
+        CheckBoxControlBit0.Visible = True
+        CheckBoxControlBit1.Visible = True
+        CheckBoxControlBit2.Visible = True
+        CheckBoxControlBit3.Visible = True
+        CheckBoxControlBit4.Visible = True
+        CheckBoxControlBit5.Visible = True
+        CheckBoxControlBit6.Visible = True
+        CheckBoxControlBit7.Visible = True
+        LabelErrorCanBusCount.Visible = True
+        LabelErrorI2CBusCount.Visible = True
+        LabelErrorResetCount.Visible = True
+        LabelErrorScaleCount.Visible = True
+        LabelErrorSelfTestResultRegister.Visible = True
+        LabelErrorSPIBusCount.Visible = True
+        LabelErrorStatusDataA.Visible = True
+        LabelErrorStatusDataB.Visible = True
+        LabelRCON.Visible = True
+        LabelDebug0.Visible = True
+        LabelDebug1.Visible = True
+        LabelDebug2.Visible = True
+        LabelDebug3.Visible = True
+        LabelDebug4.Visible = True
+        LabelDebug5.Visible = True
+        LabelDebug6.Visible = True
+        LabelDebug7.Visible = True
+        LabelDebug8.Visible = True
+        LabelDebug9.Visible = True
+        LabelDebugA.Visible = True
+        LabelDebugB.Visible = True
+        LabelDebugC.Visible = True
+        LabelDebugD.Visible = True
+        LabelDebugE.Visible = True
+        LabelDebugF.Visible = True
+        LabelValueDebug0.Visible = True
+        LabelValueDebug1.Visible = True
+        LabelValueDebug2.Visible = True
+        LabelValueDebug3.Visible = True
+        LabelValueDebug4.Visible = True
+        LabelValueDebug5.Visible = True
+        LabelValueDebug6.Visible = True
+        LabelValueDebug7.Visible = True
+        LabelValueDebug8.Visible = True
+        LabelValueDebug9.Visible = True
+        LabelValueDebugA.Visible = True
+        LabelValueDebugB.Visible = True
+        LabelValueDebugC.Visible = True
+        LabelValueDebugD.Visible = True
+        LabelValueDebugE.Visible = True
+        LabelValueDebugF.Visible = True
+        CheckBoxResetBOR.Visible = True
+        CheckBoxResetExt.Visible = True
+        CheckBoxResetIdle.Visible = True
+        CheckBoxResetIllegal.Visible = True
+        CheckBoxResetPOR.Visible = True
+        CheckBoxResetSleep.Visible = True
+        CheckBoxResetSoftware.Visible = True
+        CheckBoxResetTrap.Visible = True
+        CheckBoxResetWDT.Visible = True
+
+        ComboBoxEEpromRegister.Visible = True
+        LabelEEpromIndex.Visible = True
+        TextBoxEEpromOffSet.Visible = True
+        TextBoxEEpromScale.Visible = True
+        LabelScale.Visible = True
+        LabelOffset.Visible = True
+        ButtonReadEEprom.Visible = True
+        ButtonWriteEEprom.Visible = True
+        ButtonResetSlave.Visible = True
+        Button1.Visible = True
+
+        LabelComputerTime.Visible = True
+        LabelSyncMessageCntrlBits.Visible = True
+        ButtonToggleCoolantFault.Visible = True
+        ButtonToggleHighSpeedDataLogging.Visible = True
+        ButtonTogglePulseSyncHV.Visible = True
+        ButtonTogglePulseSyncXray.Visible = True
+        ButtonToggleReset.Visible = True
+        ButtonToggleResetDebug.Visible = True
+        CheckBoxSyncBit0.Visible = True
+        CheckBoxSyncBit1.Visible = True
+        CheckBoxSyncBit2.Visible = True
+        CheckBoxSyncBit3.Visible = True
+        CheckBoxSyncBit4.Visible = True
+        CheckBoxSyncBit5.Visible = True
+        CheckBoxSyncBit6.Visible = True
+        CheckBoxSyncBit7.Visible = True
+        CheckBoxSyncBit8.Visible = True
+        CheckBoxSyncBitF.Visible = True
+        ButtonSetTime.Visible = True
+
+        ButtonReloadECBDefaults.Visible = True
+        ButtonZeroOnTime.Visible = True
+        ButtonZeroPulseCounters.Visible = True
+        Me.Size = New System.Drawing.Size(1280, 780)
+        ButtonToggleMode.Visible = False
+    End Sub
 End Class
