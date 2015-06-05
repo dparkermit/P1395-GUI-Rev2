@@ -61,7 +61,8 @@
     Public Const REGISTER_SPECIAL_2_5_SET_AFC_SAMPLE_DELAY As UInt16 = &HEF44
     Public Const REGISTER_SPECIAL_2_5_SET_MAGNETRON_CURRENT_SAMPLE_DELAY As UInt16 = &HEF45
     Public Const REGISTER_SPECIAL_2_5_SET_HV_LAMBDA_VOLTAGE As UInt16 = &HEF46
-
+    Public Const REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_START As UInt16 = &HEF47
+    Public Const REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_STOP As UInt16 = &HEF48
 
 
 
@@ -584,12 +585,20 @@
             ' Magnet Current
             ' Heater Current
             ' PRF
-            LabelDisplay1.Text = "Magnetron Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_HIGH_ENERGY_PULSE_CURRENT) / 100 & " A"
-            LabelDisplay2.Text = "Magnet Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(CS_HTRMAG.READBACK_MAGNET_CURRENT) / 1000 & " A"
-            LabelDisplay3.Text = "Heater Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(CS_HTRMAG.READBACK_HEATER_CURRENT) / 1000 & " A"
+
+            Dim magnetron_current As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_HIGH_ENERGY_PULSE_CURRENT)
+
+
+            If (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_LOW_ENERGY_PULSE_CURRENT) > magnetron_current) Then
+                magnetron_current = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_LOW_ENERGY_PULSE_CURRENT)
+            End If
+
+            LabelDisplay1.Text = "Magnetron Current = " & Format(magnetron_current / 100, ".00") & " A"
+            LabelDisplay2.Text = "Magnet Imon = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(CS_HTRMAG.READBACK_MAGNET_CURRENT) / 1000, ".000") & " A"
+            LabelDisplay3.Text = "Heater Imon = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).custom_data(CS_HTRMAG.READBACK_HEATER_CURRENT) / 1000, ".000") & " A"
             LabelDisplay4.Text = "Pulses Today = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_THIS_HV_ON_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_THIS_HV_ON_W1)
             LabelDisplay5.Text = "Arcs Today = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.READBACK_ARCS_THIS_HV_ON)
-            LabelDisplay6.Text = "PRF = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.data_word_A) / 10 & " Hz"
+            LabelDisplay6.Text = "PRF = " & Format((ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.data_word_A) / 10, ".0") & " Hz"
             LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).custom_data(CS_IONPUMP.ION_PUMP_CURRENT_MONITOR) & " nA"
 
             Dim warmuptime As UInt16
@@ -632,7 +641,7 @@
             CheckBoxHtrMagConnected.Checked = ConnectedBoards And &H80
             CheckBoxGunDriverConnected.Checked = ConnectedBoards And &H100
 
-            ' Update the Faulted Boards
+            ' Update the Ready Boards
             'Dim FaultedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
             CheckBoxOperateIonPump.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).status_data.status_word_0 And &H1
             CheckBoxOperateMagnetronCurrentMon.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).status_data.status_word_0 And &H1
@@ -643,6 +652,8 @@
             CheckBoxOperateHtrMag.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).status_data.status_word_0 And &H1
             CheckBoxOperateGunDriver.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).status_data.status_word_0 And &H1
             CheckBoxOperateEthernet.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).status_data.status_word_0 And &H1
+
+            ' Update the Fault Boards
 
 
 
@@ -843,11 +854,11 @@
                 CheckBoxStatusBit0.Text = "MAG OFF"
                 CheckBoxStatusBit1.Text = "HTR OFF"
                 CheckBoxStatusBit2.Text = "Relay Open"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit3.Visible = False
+                CheckBoxStatusBit4.Visible = False
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "HTR OC ABS"
                 CheckBoxFaultBit1.Text = "HTR UC ABS"
@@ -905,7 +916,7 @@
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False
                 inputbutton1.button_name = "Set Magnet"
-                inputbutton1.max_value = 19000
+                inputbutton1.max_value = 21000
                 inputbutton1.min_value = 8000
                 inputbutton1.scale = 1000
                 inputbutton1.offset = 0
@@ -930,20 +941,20 @@
             ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
                 CheckBoxStatusBit0.Text = "X-Ray Dis"
                 CheckBoxStatusBit1.Text = "Personality Set"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit2.Visible = False
+                CheckBoxStatusBit3.Visible = False
+                CheckBoxStatusBit4.Visible = False
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "Drive Up Flt"
                 CheckBoxFaultBit1.Text = "Cool Com"
                 CheckBoxFaultBit2.Text = "Cool !Rdy"
-                CheckBoxFaultBit3.Text = "Unused"
-                CheckBoxFaultBit4.Text = "Unused"
-                CheckBoxFaultBit5.Text = "Unused"
-                CheckBoxFaultBit6.Text = "Unused"
+                CheckBoxFaultBit3.Visible = False
+                CheckBoxFaultBit4.Visible = False
+                CheckBoxFaultBit5.Visible = False
+                CheckBoxFaultBit6.Visible = False
                 CheckBoxFaultBit7.Text = "Gun Htr Off"
                 CheckBoxFaultBit8.Text = "HV Lambda"
                 CheckBoxFaultBit9.Text = "Ion Pimp"
@@ -1011,9 +1022,9 @@
                 CheckBoxStatusBit2.Text = "HV OFF"
                 CheckBoxStatusBit3.Text = "STATE FLT"
                 CheckBoxStatusBit4.Text = "PWR OFF"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "SUM FLT"
                 CheckBoxFaultBit1.Text = "Power OFF"
@@ -1024,13 +1035,13 @@
                 CheckBoxFaultBit6.Text = "Load FLT"
                 CheckBoxFaultBit7.Text = "PWR UP"
                 CheckBoxFaultBit8.Text = "Can FLT"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBit9.Visible = False
+                CheckBoxFaultBitA.Visible = False
+                CheckBoxFaultBitB.Visible = False
+                CheckBoxFaultBitC.Visible = False
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1056,10 +1067,12 @@
                 LabelValue4.Text = "Vmon = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_VMON) / 1000, "0.000") & " kV"
                 LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_IMON) / 1000 & " A"
                 'LabelValue6.Text = "Lambda Temperature = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_BASE_PLATE_TEMP) / 100, ".0")
-                LabelValue6.Text = "Lambda Temperature = N/A"
-                LabelValue7.Text = "High Mode Rdbck = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_HIGH_VPROG) / 1000, "0.000") & " kV"
-                LabelValue8.Text = "Low Mode Rdbck = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_LOW_VPROG) / 1000, "0.000") & " kV"
-                LabelValue9.Text = ""
+                'LabelValue7.Text = "High Mode Rdbck = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_HIGH_VPROG) / 1000, "0.000") & " kV"
+                'LabelValue8.Text = "Low Mode Rdbck = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_LOW_VPROG) / 1000, "0.000") & " kV"
+                LabelValue6.Text = ""
+                LabelValue7.Text = ""
+                LabelValue8.Text = ""
+                LabelValue9.Text = "Vmon Pre-Pulse = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).custom_data(CS_HVLAMBDA.READBACK_PEAK_LAMBDA_VOLTAGE) / 1000, "0.000") & " kV"
                 LabelValue10.Text = ""
                 LabelValue11.Text = ""
                 LabelValue12.Text = ""
@@ -1115,12 +1128,12 @@
 
                 CheckBoxStatusBit0.Text = "Cust HV OFF"
                 CheckBoxStatusBit1.Text = "Cust X-Ray OFF"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
+                CheckBoxStatusBit2.Visible = False
+                CheckBoxStatusBit3.Visible = False
                 CheckBoxStatusBit4.Text = "Over PRF"
                 CheckBoxStatusBit5.Text = "Only Low"
                 CheckBoxStatusBit6.Text = "Only High"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "Panel Open"
                 CheckBoxFaultBit1.Text = "Keylock"
@@ -1130,14 +1143,14 @@
                 CheckBoxFaultBit5.Text = "Sync Timeout"
                 CheckBoxFaultBit6.Text = "PFN Fan"
                 CheckBoxFaultBit7.Text = "RF Arc"
-                CheckBoxFaultBit8.Text = "Unused"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBit8.Visible = False
+                CheckBoxFaultBit9.Visible = False
+                CheckBoxFaultBitA.Visible = False
+                CheckBoxFaultBitB.Visible = False
+                CheckBoxFaultBitC.Visible = False
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1156,27 +1169,28 @@
                 LabelDebugE.Text = "Debug E = "
                 LabelDebugF.Text = "Debug F = "
 
-                'LabelValue1.Text = "Grid Start H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) And &HFF)
+                LabelValue1.Text = "Grid Start H = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_10) / 256)
+                LabelValue2.Text = "Grid Stop H = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) / 256)
                 'LabelValue2.Text = "Grid Stop H = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_10) And &HFF)
                 'LabelValue3.Text = "PFN Trigger Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) / 256)
                 'LabelValue4.Text = "AFC Sample Delay High = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) / 256)
                 'LabelValue5.Text = "Mag Samp Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
                 'LabelValue6.Text = "Dose Sample Delay High = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) And &HFF)
-                'LabelValue7.Text = "Grid Start L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(6) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(7) And &HFF)
-                'LabelValue8.Text = "Grid Stop L = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(9) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(10) And &HFF)
+                LabelValue7.Text = "Grid Start L = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_10) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_LOW_INTENSITY_10) / 256)
+                LabelValue8.Text = "Grid Stop L = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_LOW_INTENSITY_32) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_LOW_INTENSITY_32) / 256) & ", " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_LOW_INTENSITY_10) And &HFF) & ", " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_LOW_INTENSITY_10) / 256)
                 'LabelValue9.Text = "PFN Trigger Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) / 256)
                 'LabelValue10.Text = "AFC Sample Delay Low = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) / 256)
                 'LabelValue11.Text = "Mag Samp Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(11) And &HFF)
                 'LabelValue12.Text = "Dose Sample Delay Low = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(8) And &HFF)
 
-                LabelValue1.Text = "Grid Start = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256)
-                LabelValue2.Text = "Grid Stop = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256)
+                'LabelValue1.Text = "Grid Start = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_DELAY_HIGH_INTENSITY_32) / 256)
+                ' LabelValue2.Text = "Grid Stop = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.GRID_WIDTH_HIGH_INTENSITY_32) / 256)
                 LabelValue3.Text = "PFN Trigger Delay = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.PFN_DELAY_HIGH_AND_DOSE_SAMPLE_DELAY_HIGH) / 256)
                 LabelValue4.Text = "AFC Sample Delay = " & Math.Truncate(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) / 256)
                 LabelValue5.Text = "Mag Samp Delay = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
                 LabelValue6.Text = ""
-                LabelValue7.Text = ""
-                LabelValue8.Text = ""
+                ' LabelValue7.Text = ""
+                ' LabelValue8.Text = ""
                 LabelValue9.Text = ""
                 LabelValue10.Text = ""
                 LabelValue11.Text = ""
@@ -1192,7 +1206,7 @@
                 inputbutton1.min_value = 0
                 inputbutton1.scale = 1
                 inputbutton1.offset = 0
-                inputbutton1.button_index = REGISTER_SPECIAL_2_5_SET_GRID_START
+                inputbutton1.button_index = REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_START
 
                 inputbutton2.enabled = True
                 inputbutton2.button_only = False
@@ -1201,7 +1215,7 @@
                 inputbutton2.min_value = 0
                 inputbutton2.scale = 1
                 inputbutton2.offset = 0
-                inputbutton2.button_index = REGISTER_SPECIAL_2_5_SET_GRID_STOP
+                inputbutton2.button_index = REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_STOP
 
                 inputbutton3.enabled = True
                 inputbutton3.button_only = False
@@ -1239,29 +1253,29 @@
 
                 CheckBoxStatusBit0.Text = "HIGH MODE"
                 CheckBoxStatusBit1.Text = "Arc"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit2.Visible = False
+                CheckBoxStatusBit3.Visible = False
+                CheckBoxStatusBit4.Visible = False
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "Arc Slow"
                 CheckBoxFaultBit1.Text = "Arc Fast"
                 CheckBoxFaultBit2.Text = "Arc Cont"
                 CheckBoxFaultBit3.Text = "Can FLT"
                 CheckBoxFaultBit4.Text = "False Trig"
-                CheckBoxFaultBit5.Text = "Unused"
-                CheckBoxFaultBit6.Text = "Unused"
-                CheckBoxFaultBit7.Text = "Unused"
-                CheckBoxFaultBit8.Text = "Unused"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBit5.Visible = False
+                CheckBoxFaultBit6.Visible = False
+                CheckBoxFaultBit7.Visible = False
+                CheckBoxFaultBit8.Visible = False
+                CheckBoxFaultBit9.Visible = False
+                CheckBoxFaultBitA.Visible = False
+                CheckBoxFaultBitB.Visible = False
+                CheckBoxFaultBitC.Visible = False
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1284,8 +1298,8 @@
                 LabelValue2.Text = "Arcs Today = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.READBACK_ARCS_THIS_HV_ON), "###,###,###,##0")
                 LabelValue3.Text = "Pulse Total = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_LIFETIME_W4) * 2 ^ 48 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_LIFETIME_W3) * 2 ^ 32 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_LIFETIME_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.PULSES_LIFETIME_W1), "###,###,###,##0")
                 LabelValue4.Text = "Arcs Total = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.ARCS_LIFETIME_W2) * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.ARCS_LIFETIME_W1), "###,###,###,##0")
-                LabelValue5.Text = "Imon High = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_HIGH_ENERGY_PULSE_CURRENT) / 100, "0.00") & " A"
-                LabelValue6.Text = "Imon Low = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_LOW_ENERGY_PULSE_CURRENT) / 100, "0.00") & " A"
+                LabelValue5.Text = "Imon High Energy = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_HIGH_ENERGY_PULSE_CURRENT) / 100, "0.00") & " A"
+                LabelValue6.Text = "Imon Low Energy = " & Format(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).custom_data(CS_MAGNETRON.FILTERED_LOW_ENERGY_PULSE_CURRENT) / 100, "0.00") & " A"
                 LabelValue7.Text = ""
                 LabelValue8.Text = ""
                 LabelValue9.Text = ""
@@ -1314,10 +1328,10 @@
                 CheckBoxStatusBit3.Text = "SF6 Need Fill"
                 CheckBoxStatusBit4.Text = "SF6 Limit"
                 CheckBoxStatusBit5.Text = "SF6 Filling"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
-                CheckBoxFaultBit0.Text = "Unused"
+                CheckBoxFaultBit0.Visible = False
                 CheckBoxFaultBit1.Text = "Magnetron Flow"
                 CheckBoxFaultBit2.Text = "HVPS Flow"
                 CheckBoxFaultBit3.Text = "Circulator Flow"
@@ -1330,9 +1344,9 @@
                 CheckBoxFaultBitA.Text = "Linac Temp"
                 CheckBoxFaultBitB.Text = "SF6 SW"
                 CheckBoxFaultBitC.Text = "SF6 Pressure"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1415,29 +1429,29 @@
 
                 CheckBoxStatusBit0.Text = "Startup"
                 CheckBoxStatusBit1.Text = "Manual"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit2.Visible = False
+                CheckBoxStatusBit3.Visible = False
+                CheckBoxStatusBit4.Visible = False
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "Can FLT"
-                CheckBoxFaultBit1.Text = "Unused"
-                CheckBoxFaultBit2.Text = "Unused"
-                CheckBoxFaultBit3.Text = "Unused"
-                CheckBoxFaultBit4.Text = "Unused"
-                CheckBoxFaultBit5.Text = "Unused"
-                CheckBoxFaultBit6.Text = "Unused"
-                CheckBoxFaultBit7.Text = "Unused"
-                CheckBoxFaultBit8.Text = "Unused"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBit1.Visible = False
+                CheckBoxFaultBit2.Visible = False
+                CheckBoxFaultBit3.Visible = False
+                CheckBoxFaultBit4.Visible = False
+                CheckBoxFaultBit5.Visible = False
+                CheckBoxFaultBit6.Visible = False
+                CheckBoxFaultBit7.Visible = False
+                CheckBoxFaultBit8.Visible = False
+                CheckBoxFaultBit9.Visible = False
+                CheckBoxFaultBitA.Visible = False
+                CheckBoxFaultBitB.Visible = False
+                CheckBoxFaultBitC.Visible = False
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1539,9 +1553,9 @@
                 CheckBoxStatusBit2.Text = "Trig Off"
                 CheckBoxStatusBit3.Text = "Top Off"
                 CheckBoxStatusBit4.Text = "HV Off"
-                CheckBoxStatusBit5.Text = "NA"
-                CheckBoxStatusBit6.Text = "NA"
-                CheckBoxStatusBit7.Text = "NA"
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
                 CheckBoxFaultBit0.Text = "Sum Fault"
                 CheckBoxFaultBit1.Text = "FPGA Comm Lost"
@@ -1559,7 +1573,7 @@
                 CheckBoxFaultBitC.Text = "SW Htr UV"
                 CheckBoxFaultBitD.Text = "SW 24V Fault"
                 CheckBoxFaultBitE.Text = "System Fault"
-                CheckBoxFaultBitF.Text = "NA"
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Ek = "
                 LabelDebug1.Text = "Ika = "
@@ -1592,7 +1606,8 @@
                 LabelValue8.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HIGH_ENERGY_PULSE_TOP_VOLTAGE_MONITOR)) * 0.1 - 80, "0.0V") ' eg rd
 
                 LabelValue9.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_BIAS_VOLTAGE_MON)) * 0.1, "0.0V") ' GUN_DRIVER_EC_RD_CAL
-                LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_DRIVER_TEMPERATURE)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
+                'LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_DRIVER_TEMPERATURE)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
+                LabelValue10.Text = ""
                 LabelValue11.Text = "Ek SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_CATHODE_VOLTAGE_SET_POINT)) * (-0.001), "0.00kV") 'GUN_DRIVER_EK_SET_CAL
                 LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HEATER_VOLTAGE_SET_POINT)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
                 LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_LOW_ENERGY_PULSE_TOP_SET_POINT)) * 0.1 - 80, "0.0V") 'GUN_DRIVER_EG_SET_CAL
@@ -1606,7 +1621,7 @@
                 inputbutton1.button_only = False
                 inputbutton1.button_name = "Set Ek"
                 inputbutton1.max_value = 20000
-                inputbutton1.min_value = 0
+                inputbutton1.min_value = 6000
                 inputbutton1.scale = -1000
                 inputbutton1.offset = 0
                 inputbutton1.button_index = REGISTER_GUN_DRIVER_CATHODE_VOLTAGE
@@ -1639,31 +1654,31 @@
                     bgcolor = Color.LightCoral
                 End If
 
-                CheckBoxStatusBit0.Text = "Unused"
-                CheckBoxStatusBit1.Text = "Unused"
-                CheckBoxStatusBit2.Text = "Unused"
-                CheckBoxStatusBit3.Text = "Unused"
-                CheckBoxStatusBit4.Text = "Unused"
-                CheckBoxStatusBit5.Text = "Unused"
-                CheckBoxStatusBit6.Text = "Unused"
-                CheckBoxStatusBit7.Text = "Unused"
+                CheckBoxStatusBit0.Visible = False
+                CheckBoxStatusBit1.Visible = False
+                CheckBoxStatusBit2.Visible = False
+                CheckBoxStatusBit3.Visible = False
+                CheckBoxStatusBit4.Visible = False
+                CheckBoxStatusBit5.Visible = False
+                CheckBoxStatusBit6.Visible = False
+                CheckBoxStatusBit7.Visible = False
 
-                CheckBoxFaultBit0.Text = "Unused"
-                CheckBoxFaultBit1.Text = "Unused"
-                CheckBoxFaultBit2.Text = "Unused"
-                CheckBoxFaultBit3.Text = "Unused"
-                CheckBoxFaultBit4.Text = "Unused"
-                CheckBoxFaultBit5.Text = "Unused"
-                CheckBoxFaultBit6.Text = "Unused"
-                CheckBoxFaultBit7.Text = "Unused"
-                CheckBoxFaultBit8.Text = "Unused"
-                CheckBoxFaultBit9.Text = "Unused"
-                CheckBoxFaultBitA.Text = "Unused"
-                CheckBoxFaultBitB.Text = "Unused"
-                CheckBoxFaultBitC.Text = "Unused"
-                CheckBoxFaultBitD.Text = "Unused"
-                CheckBoxFaultBitE.Text = "Unused"
-                CheckBoxFaultBitF.Text = "Unused"
+                CheckBoxFaultBit0.Visible = False
+                CheckBoxFaultBit1.Text = "Ion Over Current"
+                CheckBoxFaultBit2.Text = "Ion Over Voltage"
+                CheckBoxFaultBit3.Text = "Ion Under Voltage"
+                CheckBoxFaultBit4.Visible = False
+                CheckBoxFaultBit5.Visible = False
+                CheckBoxFaultBit6.Visible = False
+                CheckBoxFaultBit7.Visible = False
+                CheckBoxFaultBit8.Visible = False
+                CheckBoxFaultBit9.Visible = False
+                CheckBoxFaultBitA.Visible = False
+                CheckBoxFaultBitB.Visible = False
+                CheckBoxFaultBitC.Visible = False
+                CheckBoxFaultBitD.Visible = False
+                CheckBoxFaultBitE.Visible = False
+                CheckBoxFaultBitF.Visible = False
 
                 LabelDebug0.Text = "Debug 0 = "
                 LabelDebug1.Text = "Debug 1 = "
@@ -1832,6 +1847,35 @@
         TextBoxInput3.Text = ""
         TextBoxInput4.Text = ""
         TextBoxInput5.Text = ""
+
+        CheckBoxStatusBit0.Visible = True
+        CheckBoxStatusBit1.Visible = True
+        CheckBoxStatusBit2.Visible = True
+        CheckBoxStatusBit3.Visible = True
+        CheckBoxStatusBit4.Visible = True
+        CheckBoxStatusBit5.Visible = True
+        CheckBoxStatusBit6.Visible = True
+        CheckBoxStatusBit7.Visible = True
+
+        CheckBoxFaultBit0.Visible = True
+        CheckBoxFaultBit1.Visible = True
+        CheckBoxFaultBit2.Visible = True
+        CheckBoxFaultBit3.Visible = True
+        CheckBoxFaultBit4.Visible = True
+        CheckBoxFaultBit5.Visible = True
+        CheckBoxFaultBit6.Visible = True
+        CheckBoxFaultBit7.Visible = True
+        CheckBoxFaultBit8.Visible = True
+        CheckBoxFaultBit9.Visible = True
+        CheckBoxFaultBitA.Visible = True
+        CheckBoxFaultBitB.Visible = True
+        CheckBoxFaultBitC.Visible = True
+        CheckBoxFaultBitD.Visible = True
+        CheckBoxFaultBitE.Visible = True
+        CheckBoxFaultBitF.Visible = True
+
+
+
     End Sub
 
 
