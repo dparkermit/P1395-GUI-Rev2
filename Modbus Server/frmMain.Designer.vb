@@ -1754,9 +1754,9 @@ Partial Class frmMain
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(103, 169)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(36, 16)
+        Me.Label2.Size = New System.Drawing.Size(32, 16)
         Me.Label2.TabIndex = 355
-        Me.Label2.Text = "Com"
+        Me.Label2.Text = "FLT"
         '
         'CheckBoxOperatePulseSync
         '
