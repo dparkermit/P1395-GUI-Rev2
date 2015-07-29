@@ -1615,31 +1615,31 @@
                     LabelDebugF.Text = "Eg Set = "
 
                 Else
-                    CheckBoxStatusBit0.Text = "Status 0"
-                    CheckBoxStatusBit1.Text = "Status 1"
-                    CheckBoxStatusBit2.Text = "Status 2"
-                    CheckBoxStatusBit3.Text = "Status 3"
-                    CheckBoxStatusBit4.Text = "Status 4"
-                    CheckBoxStatusBit5.Text = "Status 5"
-                    CheckBoxStatusBit6.Text = "Status 6"
-                    CheckBoxStatusBit7.Text = "Status 7"
+                    CheckBoxStatusBit0.Text = "Input HV On"
+                    CheckBoxStatusBit1.Text = "Input Beam EN"
+                    CheckBoxStatusBit2.Text = "FPGA HTR !RDY"
+                    CheckBoxStatusBit3.Text = "DAC Fail"
+                    CheckBoxStatusBit4.Text = "N/A"
+                    CheckBoxStatusBit5.Text = "N/A"
+                    CheckBoxStatusBit6.Text = "FPGA A"
+                    CheckBoxStatusBit7.Text = "FPGA C"
 
-                    CheckBoxFaultBit0.Text = "Fault 0"
-                    CheckBoxFaultBit1.Text = "Fault 1"
-                    CheckBoxFaultBit2.Text = "Fault 2"
-                    CheckBoxFaultBit3.Text = "Fault 3"
-                    CheckBoxFaultBit4.Text = "Fault 4"
-                    CheckBoxFaultBit5.Text = "Fault 5"
-                    CheckBoxFaultBit6.Text = "Fault 6"
-                    CheckBoxFaultBit7.Text = "Fault 7"
-                    CheckBoxFaultBit8.Text = "Fault 8"
-                    CheckBoxFaultBit9.Text = "Fault 9"
-                    CheckBoxFaultBitA.Text = "Fault A"
-                    CheckBoxFaultBitB.Text = "Fault B"
-                    CheckBoxFaultBitC.Text = "Fault C"
-                    CheckBoxFaultBitD.Text = "Fault D"
-                    CheckBoxFaultBitE.Text = "Fault E"
-                    CheckBoxFaultBitF.Text = "Fault F"
+                    CheckBoxFaultBit0.Text = "Firmware Mismatch"
+                    CheckBoxFaultBit1.Text = "HV V OOR"
+                    CheckBoxFaultBit2.Text = "HTR V OOR"
+                    CheckBoxFaultBit3.Text = "HTR I OVER"
+                    CheckBoxFaultBit4.Text = "HTR I UNDER"
+                    CheckBoxFaultBit5.Text = "TOP V OOR"
+                    CheckBoxFaultBit6.Text = "BIAS V OOR"
+                    CheckBoxFaultBit7.Text = "N/A"
+                    CheckBoxFaultBit8.Text = "FPGA Watchdog"
+                    CheckBoxFaultBit9.Text = "FPGA ARC"
+                    CheckBoxFaultBitA.Text = "FPGA TEMP"
+                    CheckBoxFaultBitB.Text = "FPGA Duty/Width"
+                    CheckBoxFaultBitC.Text = "FPGA Grid"
+                    CheckBoxFaultBitD.Text = "ADC Error"
+                    CheckBoxFaultBitE.Text = "HTR Timeout"
+                    CheckBoxFaultBitF.Text = "N/A"
 
                     LabelDebug0.Text = "Debug 0 = "
                     LabelDebug1.Text = "Debug 1 = "
@@ -1678,10 +1678,11 @@
                 LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_HEATER_VOLTAGE_SET_POINT)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
                 LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_LOW_ENERGY_PULSE_TOP_SET_POINT)) * 0.01 - 80, "0.00V") 'GUN_DRIVER_EG_SET_CAL
 
-                LabelValue14.Text = "Ana Flt = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_ANALOG_FAULT_STATUS) & _
-                     ", state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_SYSTEM_LOGIC_STATE)
-                LabelValue15.Text = "FPGA ASDR = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_FPGA_ASDR_REGISTER).ToString("x")
-
+                'LabelValue14.Text = "Ana Flt = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_ANALOG_FAULT_STATUS) & _
+                '     ", state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_SYSTEM_LOGIC_STATE)
+                LabelValue14.Text = "state = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_SYSTEM_LOGIC_STATE)
+                'LabelValue15.Text = "FPGA ASDR = " & ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_FPGA_ASDR_REGISTER).ToString("x")
+                LabelValue15.Text = ""
 
                 inputbutton1.enabled = True
                 inputbutton1.button_only = False

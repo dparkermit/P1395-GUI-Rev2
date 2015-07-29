@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Linac Remote GUI")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Rapiscan")> 
+<Assembly: AssemblyCompany("ETM")> 
 <Assembly: AssemblyProduct("Linac Remote GUI")> 
 <Assembly: AssemblyCopyright("Copyright ©ETM October 2014")> 
 <Assembly: AssemblyTrademark("")> 
