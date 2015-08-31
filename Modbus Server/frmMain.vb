@@ -113,7 +113,7 @@
         Public modbus_recv_index As Byte
 #End If
 
-    Dim board_index As Byte = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA
+    Public board_index As Byte
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim status_data As ETM_CAN_STATUS_REGISTER = New ETM_CAN_STATUS_REGISTER
@@ -672,15 +672,13 @@
             ' ------------------------------------------------------------------------------------------------------------'
             ' Update the board specific data
 
-            LabelAgileInfo.Text = "A" & (ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_number_high_word * 2 ^ 16 + ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_number_low_word) & "-" & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_dash & "  Rev-" & Convert.ToChar(ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.agile_rev_ascii) & "  SN-" & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.serial_number 'Dparker need to add in the first Char
-            LabelFirmwareVerssion.Text = "Firmware Version " & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_major_rev & "." & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_branch & "." & ServerSettings.ETMEthernetTXDataStructure(board_index).configuration.firmware_minor_rev
+            LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_number & "-" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_dash & "  Rev-" & Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) & "  SN-" & ServerSettings.ETMEthernetBoardLoggingData(board_index).serial_number 'Dparker need to add in the first Char
+            LabelFirmwareVerssion.Text = "Firmware Version " & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_agile_rev & "." & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch & "." & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch_rev
 
+            Dim status_word_0 As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).control_notice_bits
+            Dim status_word_1 As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).fault_bits
 
-
-
-            Dim status_word_0 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_0
-            Dim status_word_1 As UInt16 = ServerSettings.ETMEthernetTXDataStructure(board_index).status_data.status_word_1
-
+            ServerSettings.board_to_monitor = CByte(board_index)
 
             If (status_word_0 And &H80) Then
                 ' This board is not connected
@@ -724,6 +722,9 @@
             CheckBoxFaultBitD.Checked = status_word_1 And &H2000
             CheckBoxFaultBitE.Checked = status_word_1 And &H4000
             CheckBoxFaultBitF.Checked = status_word_1 And &H8000
+
+#If (0) Then
+
 
             LabelCanCXECReg.Text = "CXEC Register = 0x" & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_CXEC_reg.ToString("x")
             LabelCanErrorFlagCount.Text = "Error Flag Cnt = " & ServerSettings.ETMEthernetTXDataStructure(board_index).can_status.can_status_error_flag
@@ -784,7 +785,7 @@
             LabelValueDebugE.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_E
             LabelValueDebugF.Text = ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.debug_F
 
-
+#End If
             If inputbutton1.enabled Then
                 TextBoxInput1.Visible = True
                 ButtonUpdateInput1.Visible = True
@@ -854,6 +855,95 @@
             'Heater Mag Specific Data
             LabelBoardStatus.Text = ""
             bgcolor = SystemColors.Control
+
+
+
+            CheckBoxStatusBit0.Text = "Status 0"
+            CheckBoxStatusBit1.Text = "Status 1"
+            CheckBoxStatusBit2.Text = "Status 2"
+            CheckBoxStatusBit3.Text = "Status 3"
+            CheckBoxStatusBit4.Text = "Status 4"
+            CheckBoxStatusBit5.Text = "Status 5"
+            CheckBoxStatusBit6.Text = "Status 6"
+            CheckBoxStatusBit7.Text = "Status 7"
+
+            CheckBoxFaultBit0.Text = "Fault 0"
+            CheckBoxFaultBit1.Text = "Fault 1"
+            CheckBoxFaultBit2.Text = "Fault 2"
+            CheckBoxFaultBit3.Text = "Fault 3"
+            CheckBoxFaultBit4.Text = "Fault 4"
+            CheckBoxFaultBit5.Text = "Fault 5"
+            CheckBoxFaultBit6.Text = "Fault 6"
+            CheckBoxFaultBit7.Text = "Fault 7"
+            CheckBoxFaultBit8.Text = "Fault 8"
+            CheckBoxFaultBit9.Text = "Fault 9"
+            CheckBoxFaultBitA.Text = "Fault A"
+            CheckBoxFaultBitB.Text = "Fault B"
+            CheckBoxFaultBitC.Text = "Fault C"
+            CheckBoxFaultBitD.Text = "Fault D"
+            CheckBoxFaultBitE.Text = "Fault E"
+            CheckBoxFaultBitF.Text = "Fault F"
+
+            LabelDebug0.Text = "Debug 0 = "
+            LabelDebug1.Text = "Debug 1 = "
+            LabelDebug2.Text = "Debug 2 = "
+            LabelDebug3.Text = "Debug 3 = "
+            LabelDebug4.Text = "Debug 4 = "
+            LabelDebug5.Text = "Debug 5 = "
+            LabelDebug6.Text = "Debug 6 = "
+            LabelDebug7.Text = "Debug 7 = "
+            LabelDebug8.Text = "Debug 8 = "
+            LabelDebug9.Text = "Debug 9 = "
+            LabelDebugA.Text = "Debug A = "
+            LabelDebugB.Text = "Debug B = "
+            LabelDebugC.Text = "Debug C = "
+            LabelDebugD.Text = "Debug D = "
+            LabelDebugE.Text = "Debug E = "
+            LabelDebugF.Text = "Debug F = "
+
+            LabelValue1.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(0)
+            LabelValue2.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(1)
+            LabelValue3.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(2)
+            LabelValue4.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(3)
+            LabelValue5.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(4)
+            LabelValue6.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(5)
+            LabelValue7.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(6)
+            LabelValue8.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(7)
+            LabelValue9.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(8)
+            LabelValue10.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(9)
+            LabelValue11.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).ecb_local_data(0)
+            LabelValue12.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).ecb_local_data(1)
+            LabelValue13.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).ecb_local_data(2)
+            LabelValue14.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).ecb_local_data(3)
+            LabelValue15.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).ecb_local_data(15)
+
+            inputbutton1.enabled = False
+            inputbutton2.enabled = False
+            inputbutton3.enabled = False
+            inputbutton4.enabled = False
+            inputbutton5.enabled = False
+
+
+            LabelValueDebug0.Text = ServerSettings.ETMEthernetDebugData.debug_0
+            LabelValueDebug1.Text = ServerSettings.ETMEthernetDebugData.debug_1
+            LabelValueDebug2.Text = ServerSettings.ETMEthernetDebugData.debug_2
+            LabelValueDebug3.Text = ServerSettings.ETMEthernetDebugData.debug_3
+            LabelValueDebug4.Text = ServerSettings.ETMEthernetDebugData.debug_4
+            LabelValueDebug5.Text = ServerSettings.ETMEthernetDebugData.debug_5
+            LabelValueDebug6.Text = ServerSettings.ETMEthernetDebugData.debug_6
+            LabelValueDebug7.Text = ServerSettings.ETMEthernetDebugData.debug_7
+            LabelValueDebug8.Text = ServerSettings.ETMEthernetDebugData.debug_8
+            LabelValueDebug9.Text = ServerSettings.ETMEthernetDebugData.debug_9
+            LabelValueDebugA.Text = ServerSettings.ETMEthernetDebugData.debug_A
+            LabelValueDebugB.Text = ServerSettings.ETMEthernetDebugData.debug_B
+            LabelValueDebugC.Text = ServerSettings.ETMEthernetDebugData.debug_C
+            LabelValueDebugD.Text = ServerSettings.ETMEthernetDebugData.debug_D
+            LabelValueDebugE.Text = ServerSettings.ETMEthernetDebugData.debug_E
+            LabelValueDebugF.Text = ServerSettings.ETMEthernetDebugData.debug_F
+
+#If (0) Then
+
+
 
             If (board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET) Then
                 If (ConnectedBoards And &H80) Then
@@ -1807,6 +1897,8 @@
                 inputbutton5.enabled = False
 
             End If
+
+#End If
             Me.BackColor = bgcolor
             If inputbutton1.enabled And (inputbutton1.button_only = False) Then
                 LabelRangeInput1.Text = (CLng(inputbutton1.min_value) - CLng(inputbutton1.offset)) / inputbutton1.scale & " to " & (CLng(inputbutton1.max_value) - CLng(inputbutton1.offset)) / inputbutton1.scale

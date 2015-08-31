@@ -12,6 +12,7 @@ Public Class ServerSettings
 
     Public EventLogMessages As New Dictionary(Of UInt16, String)
 
+    Public board_to_monitor As Byte
 
     Private client As TcpClient
     Private server As TcpListener
@@ -50,6 +51,11 @@ Public Class ServerSettings
 
 
     Public Const MODBUS_COMMAND_REFRESH_TOTAL = 2
+
+
+    Public ETMEthernetBoardLoggingData(10) As ETM_CAN_BOARD_DATA
+
+    Public ETMEthernetDebugData As ETM_CAN_DEBUG_DATA
 
     Public ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET + 1) As ETM_ETHERNET_TX_DATA_STRUCTURE
     Public ETMEthernetCalStructure(MAX_CAL_INDEX + 1) As ETM_ETHERNET_CAL_STRUCTURE
@@ -96,6 +102,22 @@ Public Class ServerSettings
         ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT), MAX_CUSTOM_DATA_LENGTH)
         ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC), MAX_CUSTOM_DATA_LENGTH)
         ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_ETHERNET), MAX_CUSTOM_DATA_LENGTH)
+
+        ETMEthernetBoardLoggingData(0) = New ETM_CAN_BOARD_DATA(0)
+        ETMEthernetBoardLoggingData(1) = New ETM_CAN_BOARD_DATA(1)
+        ETMEthernetBoardLoggingData(2) = New ETM_CAN_BOARD_DATA(2)
+        ETMEthernetBoardLoggingData(3) = New ETM_CAN_BOARD_DATA(3)
+        ETMEthernetBoardLoggingData(4) = New ETM_CAN_BOARD_DATA(4)
+        ETMEthernetBoardLoggingData(5) = New ETM_CAN_BOARD_DATA(5)
+        ETMEthernetBoardLoggingData(6) = New ETM_CAN_BOARD_DATA(6)
+        ETMEthernetBoardLoggingData(7) = New ETM_CAN_BOARD_DATA(7)
+        ETMEthernetBoardLoggingData(8) = New ETM_CAN_BOARD_DATA(8)
+        ETMEthernetBoardLoggingData(9) = New ETM_CAN_BOARD_DATA(9)
+
+        ETMEthernetDebugData = New ETM_CAN_DEBUG_DATA(0)
+
+
+
 
 
 
@@ -374,9 +396,6 @@ Public Class ServerSettings
         Dim second As Integer
         Dim Log_Message As String = ""
 
-
-
-
         If event_log_enabled Then
             If (length > MAX_EVENT_SIZE_DATA) Then length = MAX_EVENT_SIZE_DATA
             event_count = CInt(length / 8)  ' one event is 8 bytes
@@ -441,16 +460,21 @@ Public Class ServerSettings
             i = CUShort(QueueCommandToECB.Count)
             xmitBuffer(8) = CByte((i >> 8) And &HFF) ' use reference to tell how many commands available
             xmitBuffer(9) = CByte(i And &HFF)
+            xmitBuffer(10) = board_to_monitor
             ' update data
             row = command_index_number
             connect_status = 5
             If (row >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And row <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
                 ' found addr
-                If (word_count <> (ETMEthernetTXDataStructure(row).custom_data_word_count + 54)) Then
-                    Exit Sub ' data isn't valid, maybe add some checking??
-                End If
+                'If (word_count <> (ETMEthernetTXDataStructure(row).custom_data_word_count + 54)) Then
+                'Exit Sub ' data isn't valid, maybe add some checking??
+                'End If
 
-                ETMEthernetTXDataStructure(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
+                'ETMEthernetTXDataStructure(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
+                ETMEthernetBoardLoggingData(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
+                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 13)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
                 For i = 0 To CUShort((word_count * 2 - 1))

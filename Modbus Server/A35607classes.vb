@@ -8,6 +8,7 @@
     MODBUS_WR_MAGNETRON_CURRENT
     MODBUS_WR_PULSE_SYNC
     MODBUS_WR_ETHERNET
+    MODBUS_WR_DEBUG_DATA
     MODBUS_WR_EVENTS
 
     MODBUS_WR_ONE_CAL_ENTRY
@@ -265,6 +266,11 @@ Public Class ETM_CAN_SYSTEM_DEBUG_DATA
     End Sub
 End Class
 
+
+
+
+
+
 Public Class ETM_CAN_CAN_STATUS
     ' Can data log 0
     Public can_status_CXEC_reg As UInt16
@@ -398,9 +404,140 @@ Public Class ETM_ETHERNET_TX_DATA_STRUCTURE
 
     End Sub
 
+End Class
 
+
+
+
+Public Class ETM_CAN_BOARD_DATA
+    Public data_identification As Byte         ' This is a unique identifier for each data set
+
+    ' Status Register
+    Public control_notice_bits As UInt16
+    Public fault_bits As UInt16
+    Public logged_bits As UInt16
+    Public not_logged_bits As UInt16
+
+    'Log Data
+    Public log_data(24) As UInt16
+
+    ' Configuration 0
+    Public agile_number As UInt32
+    Public agile_dash As UInt16
+    Public agile_rev_ascii As UInt16
+
+    ' Configuarion 1
+    Public serial_number As UInt16
+    Public firmware_agile_rev As UInt16
+    Public firmware_branch As UInt16
+    Public firmware_branch_rev As UInt16
+
+    'ECB Local Data 0
+    Public ecb_local_data(16) As UInt16
+
+    Sub New(ByVal id As Byte)
+        data_identification = id
+    End Sub
+
+    Public Sub SetData(ByRef data As Byte(), ByVal length As UInt16, ByVal offset As Byte)
+        If (length < 104) Then Exit Sub
+
+        ' Status Register
+        control_notice_bits = (CUShort(data(offset + 1)) << 8) + CUShort(data(offset))
+        fault_bits = (CUShort(data(offset + 3)) << 8) + CUShort(data(offset + 2))
+        logged_bits = (CUShort(data(offset + 5)) << 8) + CUShort(data(offset + 4))
+        not_logged_bits = (CUShort(data(offset + 7)) << 8) + CUShort(data(offset + 6))
+
+        'Log Data
+        For i = 0 To (23)
+            log_data(i) = (CUShort(data(offset + i * 2 + 1 + 8)) << 8) + CUShort(data(offset + i * 2 + 8))
+        Next
+
+        ' Configuration 0
+        agile_rev_ascii = (CUShort(data(offset + 57)) << 8) + CUShort(data(offset + 56))
+        agile_dash = (CUShort(data(offset + 59)) << 8) + CUShort(data(offset + 58))
+        agile_number = (CUShort(data(offset + 63)) << 24) + (CUShort(data(offset + 62)) << 16) + (CUShort(data(offset + 61)) << 8) + CUShort(data(offset + 60))
+
+        ' Configuration 1
+        firmware_branch_rev = (CUShort(data(offset + 65)) << 8) + CUShort(data(offset + 64))
+        firmware_branch = (CUShort(data(offset + 67)) << 8) + CUShort(data(offset + 66))
+        firmware_agile_rev = (CUShort(data(offset + 69)) << 8) + CUShort(data(offset + 68))
+        serial_number = (CUShort(data(offset + 71)) << 8) + CUShort(data(offset + 70))
+
+        'local Data
+        For i = 0 To (16)
+            ecb_local_data(i) = (CUShort(data(offset + i * 2 + 1 + 72)) << 8) + CUShort(data(offset + i * 2 + 72))
+        Next
+    End Sub
 
 End Class
+
+
+Public Class ETM_CAN_DEBUG_DATA
+    Public data_identification As Byte         ' This is a unique identifier for each data set
+
+    Public debug_0 As UInt16
+    Public debug_1 As UInt16
+    Public debug_2 As UInt16
+    Public debug_3 As UInt16
+
+    Public debug_4 As UInt16
+    Public debug_5 As UInt16
+    Public debug_6 As UInt16
+    Public debug_7 As UInt16
+
+    Public debug_8 As UInt16
+    Public debug_9 As UInt16
+    Public debug_A As UInt16
+    Public debug_B As UInt16
+
+    Public debug_C As UInt16
+    Public debug_D As UInt16
+    Public debug_E As UInt16
+    Public debug_F As UInt16
+
+
+    Sub New(ByVal id As Byte)
+        data_identification = id
+    End Sub
+
+    Public Sub SetData(ByRef data As Byte(), ByVal length As UInt16, ByVal offset As Byte)
+        Dim i As Byte
+        'If (length < 48) Then Exit Sub
+
+
+        i = offset
+        debug_0 = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        debug_1 = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        debug_2 = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        debug_3 = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+
+        i = offset + 8
+        debug_4 = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        debug_5 = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        debug_6 = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        debug_7 = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+
+        i = offset + 16
+        debug_8 = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        debug_9 = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        debug_A = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        debug_B = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+
+        i = offset + 24
+        debug_C = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        debug_D = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        debug_E = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        debug_F = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+
+
+    End Sub
+
+End Class
+
+
+
+
 Public Structure ETM_ETHERNET_CAL_STRUCTURE
     Public scale As UInt16
     Public offset As UInt16

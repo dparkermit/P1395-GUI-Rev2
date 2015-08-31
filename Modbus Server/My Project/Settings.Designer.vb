@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("192.168.0.15")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("192.168.70.15")>  _
         Public Property ServerIP() As String
             Get
                 Return CType(Me("ServerIP"),String)
