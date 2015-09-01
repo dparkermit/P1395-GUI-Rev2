@@ -10,54 +10,55 @@ Imports System.IO
 
 Public Class ServerSettings
 
+
+
+
+
+
     Public EventLogMessages As New Dictionary(Of UInt16, String)
 
     Public board_to_monitor As Byte
 
+
+
+
     Private client As TcpClient
     Private server As TcpListener
-
     Private stream As NetworkStream
     Private xmitBuffer(200) As Byte
     Private recvBuffer(1024) As Byte
-
     Private connect_status As Integer  ' 0 idle, 1 waiting, 3 connected, 5 waiting for write done
     Private connect_timeout As Integer  ' reset the timeout when receiving incoming packets
 
-    ' modbus header
-    Private Const PROTOCOL_IDENTIFIER = &H0
-    Private Const UNIT_IDENTIFIER = &HFF
 
+
+
+
+    ' modbus header
+    'Private Const PROTOCOL_IDENTIFIER = &H0
+    'Private Const UNIT_IDENTIFIER = &HFF
 
     ' modbus function codes
     Private Const READ_FUNCTION = &H3
     Private Const WRITE_FUNCTION = &H10
-
-    ' modbus protocol
     Private function_code As Byte
     Private command_index_number As Byte
     Private word_count As UInt16
+    Private update_loop_count As Byte
+    Private Const MODBUS_COMMAND_REFRESH_TOTAL = 2
 
-    Private trans_index As UShort = 0
-
-    Public update_loop_count As Byte
-
-
-    Public Const MAX_TX_SIZE = 255
-    Public Const WRITE_CMD = 0
-    Public Const READ_CMD = 1
-
-    Public Const MAX_CAL_INDEX = 65536
+    'Public Const MAX_TX_SIZE = 255
+    'Public Const WRITE_CMD = 0
+    'Public Const READ_CMD = 1
 
 
-    Public Const MODBUS_COMMAND_REFRESH_TOTAL = 2
 
 
-    Public ETMEthernetBoardLoggingData(10) As ETM_CAN_BOARD_DATA
-
+    Public Const MAX_BOARD_ADDRESSES = 16
+    Public ETMEthernetBoardLoggingData(MAX_BOARD_ADDRESSES) As ETM_CAN_BOARD_DATA
     Public ETMEthernetDebugData As ETM_CAN_DEBUG_DATA
 
-    Public ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET + 1) As ETM_ETHERNET_TX_DATA_STRUCTURE
+    Public Const MAX_CAL_INDEX = 65536
     Public ETMEthernetCalStructure(MAX_CAL_INDEX + 1) As ETM_ETHERNET_CAL_STRUCTURE
 
 
@@ -65,6 +66,7 @@ Public Class ServerSettings
     Public Const MAX_PULSE_SIZE_DATA = 620
     '    Public ETMEthernetPulseData(MAX_PULSE_SIZE_ROW, MAX_PULSE_SIZE_DATA) As Byte
     Public pulse_index As UInt16
+
 
     Public Const MAX_EVENT_SIZE_ROW = 5000
     Public Const MAX_EVENT_SIZE_DATA = 512 ' 64 entries
@@ -74,7 +76,7 @@ Public Class ServerSettings
 
     Public QueueCommandToECB As Queue
  
-    Public Const MAX_CUSTOM_DATA_LENGTH = 32
+
  
     Dim main_screen As frmMain
 
@@ -87,47 +89,23 @@ Public Class ServerSettings
         My.Settings.HighLowEnergyReverse = True
         connect_status = 0
         update_loop_count = 0
-        trans_index = 0
 
         pulse_index = 0
         QueueCommandToECB = New Queue()
 
+
+
         ' init modbus data
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_AFC), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_COOLING), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC), MAX_CUSTOM_DATA_LENGTH)
-        ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET) = New ETM_ETHERNET_TX_DATA_STRUCTURE(CByte(MODBUS_COMMANDS.MODBUS_WR_ETHERNET), MAX_CUSTOM_DATA_LENGTH)
-
-        ETMEthernetBoardLoggingData(0) = New ETM_CAN_BOARD_DATA(0)
-        ETMEthernetBoardLoggingData(1) = New ETM_CAN_BOARD_DATA(1)
-        ETMEthernetBoardLoggingData(2) = New ETM_CAN_BOARD_DATA(2)
-        ETMEthernetBoardLoggingData(3) = New ETM_CAN_BOARD_DATA(3)
-        ETMEthernetBoardLoggingData(4) = New ETM_CAN_BOARD_DATA(4)
-        ETMEthernetBoardLoggingData(5) = New ETM_CAN_BOARD_DATA(5)
-        ETMEthernetBoardLoggingData(6) = New ETM_CAN_BOARD_DATA(6)
-        ETMEthernetBoardLoggingData(7) = New ETM_CAN_BOARD_DATA(7)
-        ETMEthernetBoardLoggingData(8) = New ETM_CAN_BOARD_DATA(8)
-        ETMEthernetBoardLoggingData(9) = New ETM_CAN_BOARD_DATA(9)
-
+        For i = 0 To (MAX_BOARD_ADDRESSES - 1)
+            ETMEthernetBoardLoggingData(i) = New ETM_CAN_BOARD_DATA(CByte(i))
+        Next
         ETMEthernetDebugData = New ETM_CAN_DEBUG_DATA(0)
-
-
-
-
-
-
-
-        ' restore modbus_data
-        '   Call load_save_modbus_data(False)
 
         TimerUpdate.Enabled = True
 
     End Sub
+
+
 
     Private Sub ServerSettings_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Dim status As Integer = connect_status
@@ -152,15 +130,23 @@ Public Class ServerSettings
         End Try
 
     End Sub
+
+
+
+
     Public Function get_modbus_status() As Integer
         get_modbus_status = connect_status
     End Function
+
+
 
     Public Sub put_modbus_commands(ByVal index As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
         Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
         command_to_ECB = New ETM_ETHERNET_COMMAND_STRUCTURE(index, word2, word1, word0)
         QueueCommandToECB.Enqueue(command_to_ECB)
     End Sub
+
+
 
     Private Sub DoXmitDoneCallback(ByVal ar As IAsyncResult)
         Dim myStream As NetworkStream = CType(ar.AsyncState, NetworkStream)
@@ -175,6 +161,9 @@ Public Class ServerSettings
 
         End If
     End Sub
+
+
+
     Private Sub DoRecvDoneCallback(ByVal ar As IAsyncResult)
         Dim myStream As NetworkStream = CType(ar.AsyncState, NetworkStream)
         Dim bytecount As Int16, msglength As Int16
@@ -184,68 +173,141 @@ Public Class ServerSettings
         If (connect_status > 0) Then
             Try
                 bytecount = CShort(myStream.EndRead(ar))
-#If DEBUG_MODBUS Then
-                If (bytecount > 0) Then
-                    main_screen.modbus_recv_bytecount(main_screen.modbus_recv_index) = CUShort(bytecount)
-                    For i = 0 To (bytecount - 1)
-                        main_screen.modbus_recv_buffer(main_screen.modbus_recv_index, i) = recvBuffer(i)
-                    Next i
-                    If (main_screen.modbus_recv_index >= 255) Then
-                        main_screen.modbus_recv_index = 0
-                    Else
-                        main_screen.modbus_recv_index = CByte(main_screen.modbus_recv_index + 1)
-                    End 
 
-                End If
-#End If
-                        Do While (bytecount > 6)
-                            connect_timeout = 0
-                            ' get msg length
-                            msglength = CShort(recvBuffer(4) * 256 + recvBuffer(5))
-                            If (bytecount >= (6 + msglength)) Then
-                                function_code = recvBuffer(7)
-                                command_index_number = recvBuffer(6)
-                                If (command_index_number = MODBUS_COMMAND_REFRESH_TOTAL) Then
-                                    If (update_loop_count < 255) Then
-                                        update_loop_count = CByte(update_loop_count + 1)
-                                    Else
-                                        update_loop_count = 1
-                                    End If
-                                End If
-                                word_count = CUShort(recvBuffer(10) * 256 + recvBuffer(11))   ' read data length or number of registers
-                                Call modbus_reply()
-
-#If True Then  ' reply all requests
-                                bytecount = CShort(bytecount - (6 + msglength))
-                                If (bytecount > 6) Then
-                                    '   overlaps = overlaps + 1
-                                    For i = 0 To (bytecount - 1)
-                                        recvBuffer(i) = recvBuffer(i + 6 + msglength)  ' shift to next packet
-                                    Next
-                                Else
-                                    bytecount = 0
-                                End If
-#Else
-                            bytecount = 0
-#End If
+                Do While (bytecount > 6)
+                    connect_timeout = 0
+                    ' get msg length
+                    msglength = CShort(recvBuffer(4) * 256 + recvBuffer(5))
+                    If (bytecount >= (6 + msglength)) Then
+                        function_code = recvBuffer(7)
+                        command_index_number = recvBuffer(6)
+                        If (command_index_number = MODBUS_COMMAND_REFRESH_TOTAL) Then
+                            If (update_loop_count < 255) Then
+                                update_loop_count = CByte(update_loop_count + 1)
                             Else
-                                bytecount = 0
+                                update_loop_count = 1
                             End If
-                        Loop
-#If False Then
-                ' start a new read
-                If (connect_status > 0) Then
-                    stream.BeginRead(recvBuffer, 0, recvBuffer.Length, New AsyncCallback(AddressOf DoRecvDoneCallback), stream)
-                End If
-#End If
+                        End If
+                        word_count = CUShort(recvBuffer(10) * 256 + recvBuffer(11))   ' read data length or number of registers
+                        Call modbus_reply()
+                        bytecount = CShort(bytecount - (6 + msglength))
+                        If (bytecount > 6) Then
+                            For i = 0 To (bytecount - 1)
+                                recvBuffer(i) = recvBuffer(i + 6 + msglength)  ' shift to next packet
+                            Next
+                        Else
+                            bytecount = 0
+                        End If
+                    Else
+                        bytecount = 0
+                    End If
+                Loop
             Catch ex As Exception
                 MsgBox("DoRecvDoneCallback: " + ex.ToString)
             End Try
 
         End If
 
-
     End Sub
+
+
+
+    Public Sub modbus_reply()
+        Dim i As UInt16, row As UInt16
+        Dim board_address As UInt16
+        Dim msglen As Integer, datalen As Integer
+        Dim data(30) As Byte  ' max data length 30
+        Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
+        Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
+        Dim event_data(MAX_EVENT_SIZE_DATA) As Byte
+
+        If (function_code = WRITE_FUNCTION) Then
+            For i = 0 To 11
+                xmitBuffer(i) = recvBuffer(i)  ' use the same unit ID 0xff
+            Next
+            '  xmitBuffer(4) = 0 ' assume msglen < 256
+            xmitBuffer(5) = 6 ' length is always 6 for write cmd
+
+            i = CUShort(QueueCommandToECB.Count)
+            xmitBuffer(8) = CByte((i >> 8) And &HFF) ' use reference to tell how many commands available
+            xmitBuffer(9) = CByte(i And &HFF)
+            xmitBuffer(10) = board_to_monitor
+            ' update data
+            row = command_index_number
+            connect_status = 5
+
+            If (row >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And row <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
+                ' DPARKER do we need to check received data
+                ETMEthernetBoardLoggingData(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+
+            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
+
+                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 13)
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
+
+                For i = 0 To CUShort((word_count * 2 - 1))
+                    '  ETMEthernetEventData(event_index, i) = recvBuffer(13 + i) ' for debug only
+                    If (i < MAX_EVENT_SIZE_DATA) Then event_data(i) = recvBuffer(13 + i)
+                Next
+                event_index = CUShort(event_index + 1)
+                If (event_index >= MAX_EVENT_SIZE_ROW) Then event_index = 0
+                Call save_event_data(event_data, CUShort(word_count * 2))
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+
+            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_ONE_CAL_ENTRY) Then
+                If (word_count >= 3) Then
+                    i = CUShort(recvBuffer(13) * 256 + recvBuffer(14))
+                    ETMEthernetCalStructure(i).scale = CUShort(recvBuffer(15) * 256 + recvBuffer(16))
+                    ETMEthernetCalStructure(i).offset = CUShort(recvBuffer(17) * 256 + recvBuffer(18))
+                    stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+                End If
+
+            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
+                For i = 0 To CUShort((word_count * 2 - 1))
+                    '    ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)  ' for debug only
+                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
+                Next
+                pulse_index = CUShort(pulse_index + 1)
+                If (pulse_index >= MAX_PULSE_SIZE_ROW) Then pulse_index = 0
+                Call save_pulse_data(pulse_data)
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+
+            End If
+
+
+        ElseIf (function_code = READ_FUNCTION) Then
+            For i = 0 To 7
+                xmitBuffer(i) = recvBuffer(i)  ' use the same unit ID )
+            Next
+            datalen = word_count * 2
+            msglen = datalen + 3
+            '  xmitBuffer(4) = 0 ' assume msglen < 256
+            xmitBuffer(5) = Convert.ToByte(msglen Mod 256)
+            xmitBuffer(8) = Convert.ToByte(datalen Mod 256)
+
+            ' need update data
+            row = 0
+            Do While (word_count >= 4 And QueueCommandToECB.Count > 0)
+                command_to_ECB = CType(QueueCommandToECB.Dequeue, ETM_ETHERNET_COMMAND_STRUCTURE)
+
+                xmitBuffer(9 + row * 8) = Convert.ToByte((command_to_ECB.command_index >> 8) Mod 256)
+                xmitBuffer(10 + row * 8) = Convert.ToByte(command_to_ECB.command_index Mod 256)
+                For i = 0 To 2
+                    xmitBuffer(11 + i * 2 + row * 8) = Convert.ToByte((command_to_ECB.data(2 - i) >> 8) Mod 256)
+                    xmitBuffer(12 + i * 2 + row * 8) = Convert.ToByte(command_to_ECB.data(2 - i) Mod 256)
+                Next
+                word_count = CUShort(word_count - 4)
+                row = CUShort(row + 1)
+            Loop
+            connect_status = 5
+            stream.BeginWrite(xmitBuffer, 0, (msglen + 6), New AsyncCallback(AddressOf DoXmitDoneCallback), stream)           '(xmitBuffer, 0, 12)
+        End If
+    End Sub
+
+
+
     Private Sub DoAcceptTcpClientCallback(ByVal ar As IAsyncResult)
         ' Get the listener that handles the client request.
         Dim listener As TcpListener = CType(ar.AsyncState, TcpListener)
@@ -274,7 +336,6 @@ Public Class ServerSettings
             server.BeginAcceptTcpClient(New AsyncCallback(AddressOf DoAcceptTcpClientCallback), server)
             connect_status = 1
             connect_timeout = 0
-            trans_index = 0
             update_loop_count = 0
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -441,96 +502,6 @@ Public Class ServerSettings
     End Sub
 
   
-
-    Public Sub modbus_reply()
-        Dim i As UInt16, row As UInt16
-        Dim msglen As Integer, datalen As Integer
-        Dim data(30) As Byte  ' max data length 30
-        Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
-        Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
-        Dim event_data(MAX_EVENT_SIZE_DATA) As Byte
-
-        If (function_code = WRITE_FUNCTION) Then
-            For i = 0 To 11
-                xmitBuffer(i) = recvBuffer(i)  ' use the same unit ID 0xff
-            Next
-            '  xmitBuffer(4) = 0 ' assume msglen < 256
-            xmitBuffer(5) = 6 ' length is always 6 for write cmd
-
-            i = CUShort(QueueCommandToECB.Count)
-            xmitBuffer(8) = CByte((i >> 8) And &HFF) ' use reference to tell how many commands available
-            xmitBuffer(9) = CByte(i And &HFF)
-            xmitBuffer(10) = board_to_monitor
-            ' update data
-            row = command_index_number
-            connect_status = 5
-            If (row >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And row <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
-                ' found addr
-                'If (word_count <> (ETMEthernetTXDataStructure(row).custom_data_word_count + 54)) Then
-                'Exit Sub ' data isn't valid, maybe add some checking??
-                'End If
-
-                'ETMEthernetTXDataStructure(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
-                ETMEthernetBoardLoggingData(row).SetData(recvBuffer, CUShort(word_count * 2), 13)
-                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
-            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
-                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 13)
-                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
-            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
-                For i = 0 To CUShort((word_count * 2 - 1))
-                    '  ETMEthernetEventData(event_index, i) = recvBuffer(13 + i) ' for debug only
-                    If (i < MAX_EVENT_SIZE_DATA) Then event_data(i) = recvBuffer(13 + i)
-                Next
-                event_index = CUShort(event_index + 1)
-                If (event_index >= MAX_EVENT_SIZE_ROW) Then event_index = 0
-                Call save_event_data(event_data, CUShort(word_count * 2))
-                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
-            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_ONE_CAL_ENTRY) Then
-                If (word_count >= 3) Then
-                    i = CUShort(recvBuffer(13) * 256 + recvBuffer(14))
-                    ETMEthernetCalStructure(i).scale = CUShort(recvBuffer(15) * 256 + recvBuffer(16))
-                    ETMEthernetCalStructure(i).offset = CUShort(recvBuffer(17) * 256 + recvBuffer(18))
-                    stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
-                End If
-            ElseIf (row = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
-                For i = 0 To CUShort((word_count * 2 - 1))
-                    '    ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)  ' for debug only
-                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
-                Next
-                pulse_index = CUShort(pulse_index + 1)
-                If (pulse_index >= MAX_PULSE_SIZE_ROW) Then pulse_index = 0
-                Call save_pulse_data(pulse_data)
-                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
-
-            End If
-        ElseIf (function_code = READ_FUNCTION) Then
-            For i = 0 To 7
-                xmitBuffer(i) = recvBuffer(i)  ' use the same unit ID )
-            Next
-            datalen = word_count * 2
-            msglen = datalen + 3
-            '  xmitBuffer(4) = 0 ' assume msglen < 256
-            xmitBuffer(5) = Convert.ToByte(msglen Mod 256)
-            xmitBuffer(8) = Convert.ToByte(datalen Mod 256)
-
-            ' need update data
-            row = 0
-            Do While (word_count >= 4 And QueueCommandToECB.Count > 0)
-                command_to_ECB = CType(QueueCommandToECB.Dequeue, ETM_ETHERNET_COMMAND_STRUCTURE)
-
-                xmitBuffer(9 + row * 8) = Convert.ToByte((command_to_ECB.command_index >> 8) Mod 256)
-                xmitBuffer(10 + row * 8) = Convert.ToByte(command_to_ECB.command_index Mod 256)
-                For i = 0 To 2
-                    xmitBuffer(11 + i * 2 + row * 8) = Convert.ToByte((command_to_ECB.data(2 - i) >> 8) Mod 256)
-                    xmitBuffer(12 + i * 2 + row * 8) = Convert.ToByte(command_to_ECB.data(2 - i) Mod 256)
-                Next
-                word_count = CUShort(word_count - 4)
-                row = CUShort(row + 1)
-            Loop
-            connect_status = 5
-            stream.BeginWrite(xmitBuffer, 0, (msglen + 6), New AsyncCallback(AddressOf DoXmitDoneCallback), stream)           '(xmitBuffer, 0, 12)
-        End If
-    End Sub
 
     Private Sub TimerUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUpdate.Tick
         Dim tmpstr As String
