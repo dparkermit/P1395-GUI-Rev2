@@ -30,10 +30,6 @@ Public Class ServerSettings
 
 
 
-    ' modbus header
-    'Private Const PROTOCOL_IDENTIFIER = &H0
-    'Private Const UNIT_IDENTIFIER = &HFF
-
     ' modbus function codes
     Private Const READ_FUNCTION = &H3
     Private Const WRITE_FUNCTION = &H10
@@ -42,12 +38,6 @@ Public Class ServerSettings
     Private word_count As UInt16
     Private update_loop_count As Byte
     Private Const MODBUS_COMMAND_REFRESH_TOTAL = 2
-
-    'Public Const MAX_TX_SIZE = 255
-    'Public Const WRITE_CMD = 0
-    'Public Const READ_CMD = 1
-
-
 
 
     Public Const MAX_BOARD_ADDRESSES = 16
@@ -141,7 +131,7 @@ Public Class ServerSettings
 
 
 
-
+    ' This looks for new messages
     Private Sub DoRecvDoneCallback(ByVal ar As IAsyncResult)
         Dim myStream As NetworkStream = CType(ar.AsyncState, NetworkStream)
         Dim bytecount As Int16, msglength As Int16
@@ -320,15 +310,6 @@ Public Class ServerSettings
         End Try
     End Sub
 
-
-
-    ' Connection status
-    ' 0 = Idle
-    ' 1 = Linac Disconnectd
-    ' 2 = Resart Connection
-    ' 3 = Connected
-    ' 4 = Connected 
-    ' 5 = Connected
 
 
     Private Sub DoAcceptTcpClientCallback(ByVal ar As IAsyncResult)
