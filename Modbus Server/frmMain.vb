@@ -2045,6 +2045,10 @@
 
     End Sub
 
+    Private Sub ButtonTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTest.Click
+        ServerSettings.put_modbus_commands(REGISTER_HIGH_ENERGY_SET_POINT, 0, 0, 0)
+    End Sub
+
     Private Sub ButtonUpdateInput1_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput1.Click
         ExecuteButton(inputbutton1, TextBoxInput1)
     End Sub
@@ -2368,4 +2372,6 @@
         Me.Size = New System.Drawing.Size(1280, 780)
         ButtonToggleMode.Visible = False
     End Sub
+
+
 End Class

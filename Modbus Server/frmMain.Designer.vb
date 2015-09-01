@@ -231,6 +231,7 @@ Partial Class frmMain
         Me.ButtonZeroOnTime = New System.Windows.Forms.Button()
         Me.ButtonZeroPulseCounters = New System.Windows.Forms.Button()
         Me.ButtonToggleMode = New System.Windows.Forms.Button()
+        Me.ButtonTest = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2541,12 +2542,22 @@ Partial Class frmMain
         Me.ButtonToggleMode.Text = "Advanced GUI"
         Me.ButtonToggleMode.UseVisualStyleBackColor = False
         '
+        'ButtonTest
+        '
+        Me.ButtonTest.Location = New System.Drawing.Point(625, 26)
+        Me.ButtonTest.Name = "ButtonTest"
+        Me.ButtonTest.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonTest.TabIndex = 401
+        Me.ButtonTest.Text = "Test"
+        Me.ButtonTest.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1246, 742)
+        Me.Controls.Add(Me.ButtonTest)
         Me.Controls.Add(Me.ButtonToggleMode)
         Me.Controls.Add(Me.ButtonZeroPulseCounters)
         Me.Controls.Add(Me.ButtonZeroOnTime)
@@ -2968,4 +2979,5 @@ Partial Class frmMain
     Friend WithEvents ButtonZeroOnTime As System.Windows.Forms.Button
     Friend WithEvents ButtonZeroPulseCounters As System.Windows.Forms.Button
     Friend WithEvents ButtonToggleMode As System.Windows.Forms.Button
+    Friend WithEvents ButtonTest As System.Windows.Forms.Button
 End Class
