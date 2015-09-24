@@ -267,7 +267,7 @@ Public Class ServerSettings
             xmitBuffer(1) = recvBuffer(1) '  Transaction number low byte
             xmitBuffer(2) = 0 ' Protocol high Byte
             xmitBuffer(3) = 0 ' Protocol low byte
-            xmitBuffer(4) = CByte(msglen / 256)
+            xmitBuffer(4) = CByte(Math.Truncate(msglen / 256))
             xmitBuffer(5) = CByte(msglen Mod 256)
             xmitBuffer(6) = command_id ' Respond with the same command_id
             xmitBuffer(7) = recvBuffer(7) ' Respond with the same function code
@@ -277,13 +277,13 @@ Public Class ServerSettings
             Do While (word_count >= 4 And QueueCommandToECB.Count > 0)
                 ' Add each to the xmitBuffer
                 command_to_ECB = CType(QueueCommandToECB.Dequeue, ETM_ETHERNET_COMMAND_STRUCTURE)
-                xmitBuffer(9 + i * 8) = CByte(command_to_ECB.command_index / 256)
+                xmitBuffer(9 + i * 8) = CByte(Math.Truncate(command_to_ECB.command_index / 256))
                 xmitBuffer(10 + i * 8) = CByte(command_to_ECB.command_index Mod 256)
-                xmitBuffer(11 + i * 8) = CByte(command_to_ECB.data(2) / 256)
+                xmitBuffer(11 + i * 8) = CByte(Math.Truncate(command_to_ECB.data(2) / 256))
                 xmitBuffer(12 + i * 8) = CByte(command_to_ECB.data(2) Mod 256)
-                xmitBuffer(13 + i * 8) = CByte(command_to_ECB.data(1) / 256)
+                xmitBuffer(13 + i * 8) = CByte(Math.Truncate(command_to_ECB.data(1) / 256))
                 xmitBuffer(14 + i * 8) = CByte(command_to_ECB.data(1) Mod 256)
-                xmitBuffer(15 + i * 8) = CByte(command_to_ECB.data(0) / 256)
+                xmitBuffer(15 + i * 8) = CByte(Math.Truncate(command_to_ECB.data(0) / 256))
                 xmitBuffer(16 + i * 8) = CByte(command_to_ECB.data(0) Mod 256)
 
                 word_count = CUShort(word_count - 4)

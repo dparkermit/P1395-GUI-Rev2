@@ -139,14 +139,6 @@ Partial Class frmMain
         Me.CheckBoxFaultBit2 = New System.Windows.Forms.CheckBox()
         Me.CheckBoxFaultBit1 = New System.Windows.Forms.CheckBox()
         Me.CheckBoxFaultBit0 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxStatusBit0 = New System.Windows.Forms.CheckBox()
         Me.cboIndex = New System.Windows.Forms.ComboBox()
         Me.LabelBoardStatus = New System.Windows.Forms.Label()
         Me.TextBoxInput4 = New System.Windows.Forms.TextBox()
@@ -232,6 +224,22 @@ Partial Class frmMain
         Me.ButtonZeroPulseCounters = New System.Windows.Forms.Button()
         Me.ButtonToggleMode = New System.Windows.Forms.Button()
         Me.ButtonTest = New System.Windows.Forms.Button()
+        Me.CheckBoxLoggedBitF = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit0 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit1 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit5 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit6 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit7 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit8 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBit9 = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBitA = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBitB = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBitC = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBitD = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxLoggedBitE = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -1467,102 +1475,6 @@ Partial Class frmMain
         Me.CheckBoxFaultBit0.Text = "Fault Bit 0"
         Me.CheckBoxFaultBit0.UseVisualStyleBackColor = True
         '
-        'CheckBoxStatusBit7
-        '
-        Me.CheckBoxStatusBit7.AutoSize = True
-        Me.CheckBoxStatusBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit7.Location = New System.Drawing.Point(299, 222)
-        Me.CheckBoxStatusBit7.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit7.Name = "CheckBoxStatusBit7"
-        Me.CheckBoxStatusBit7.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit7.TabIndex = 126
-        Me.CheckBoxStatusBit7.Text = "Status Bit 7"
-        Me.CheckBoxStatusBit7.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit6
-        '
-        Me.CheckBoxStatusBit6.AutoSize = True
-        Me.CheckBoxStatusBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit6.Location = New System.Drawing.Point(299, 202)
-        Me.CheckBoxStatusBit6.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit6.Name = "CheckBoxStatusBit6"
-        Me.CheckBoxStatusBit6.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit6.TabIndex = 125
-        Me.CheckBoxStatusBit6.Text = "Status Bit 6"
-        Me.CheckBoxStatusBit6.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit5
-        '
-        Me.CheckBoxStatusBit5.AutoSize = True
-        Me.CheckBoxStatusBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit5.Location = New System.Drawing.Point(299, 182)
-        Me.CheckBoxStatusBit5.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit5.Name = "CheckBoxStatusBit5"
-        Me.CheckBoxStatusBit5.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit5.TabIndex = 124
-        Me.CheckBoxStatusBit5.Text = "Status Bit 5"
-        Me.CheckBoxStatusBit5.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit4
-        '
-        Me.CheckBoxStatusBit4.AutoSize = True
-        Me.CheckBoxStatusBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit4.Location = New System.Drawing.Point(299, 162)
-        Me.CheckBoxStatusBit4.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit4.Name = "CheckBoxStatusBit4"
-        Me.CheckBoxStatusBit4.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit4.TabIndex = 123
-        Me.CheckBoxStatusBit4.Text = "Status Bit 4"
-        Me.CheckBoxStatusBit4.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit3
-        '
-        Me.CheckBoxStatusBit3.AutoSize = True
-        Me.CheckBoxStatusBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit3.Location = New System.Drawing.Point(299, 140)
-        Me.CheckBoxStatusBit3.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit3.Name = "CheckBoxStatusBit3"
-        Me.CheckBoxStatusBit3.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit3.TabIndex = 122
-        Me.CheckBoxStatusBit3.Text = "Status Bit 3"
-        Me.CheckBoxStatusBit3.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit2
-        '
-        Me.CheckBoxStatusBit2.AutoSize = True
-        Me.CheckBoxStatusBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit2.Location = New System.Drawing.Point(299, 120)
-        Me.CheckBoxStatusBit2.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit2.Name = "CheckBoxStatusBit2"
-        Me.CheckBoxStatusBit2.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit2.TabIndex = 121
-        Me.CheckBoxStatusBit2.Text = "Status Bit 2"
-        Me.CheckBoxStatusBit2.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit1
-        '
-        Me.CheckBoxStatusBit1.AutoSize = True
-        Me.CheckBoxStatusBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit1.Location = New System.Drawing.Point(299, 100)
-        Me.CheckBoxStatusBit1.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit1.Name = "CheckBoxStatusBit1"
-        Me.CheckBoxStatusBit1.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit1.TabIndex = 120
-        Me.CheckBoxStatusBit1.Text = "Status Bit 1"
-        Me.CheckBoxStatusBit1.UseVisualStyleBackColor = True
-        '
-        'CheckBoxStatusBit0
-        '
-        Me.CheckBoxStatusBit0.AutoSize = True
-        Me.CheckBoxStatusBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxStatusBit0.Location = New System.Drawing.Point(299, 80)
-        Me.CheckBoxStatusBit0.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxStatusBit0.Name = "CheckBoxStatusBit0"
-        Me.CheckBoxStatusBit0.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxStatusBit0.TabIndex = 119
-        Me.CheckBoxStatusBit0.Text = "Status Bit 0"
-        Me.CheckBoxStatusBit0.UseVisualStyleBackColor = True
-        '
         'cboIndex
         '
         Me.cboIndex.FormattingEnabled = True
@@ -2544,12 +2456,204 @@ Partial Class frmMain
         '
         'ButtonTest
         '
-        Me.ButtonTest.Location = New System.Drawing.Point(625, 26)
+        Me.ButtonTest.Location = New System.Drawing.Point(190, 5)
         Me.ButtonTest.Name = "ButtonTest"
         Me.ButtonTest.Size = New System.Drawing.Size(100, 23)
         Me.ButtonTest.TabIndex = 401
         Me.ButtonTest.Text = "Test"
         Me.ButtonTest.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitF
+        '
+        Me.CheckBoxLoggedBitF.AutoSize = True
+        Me.CheckBoxLoggedBitF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitF.Location = New System.Drawing.Point(581, 314)
+        Me.CheckBoxLoggedBitF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitF.Name = "CheckBoxLoggedBitF"
+        Me.CheckBoxLoggedBitF.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitF.TabIndex = 417
+        Me.CheckBoxLoggedBitF.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitF.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit0
+        '
+        Me.CheckBoxLoggedBit0.AutoSize = True
+        Me.CheckBoxLoggedBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit0.Location = New System.Drawing.Point(581, 10)
+        Me.CheckBoxLoggedBit0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit0.Name = "CheckBoxLoggedBit0"
+        Me.CheckBoxLoggedBit0.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit0.TabIndex = 402
+        Me.CheckBoxLoggedBit0.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit0.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit1
+        '
+        Me.CheckBoxLoggedBit1.AutoSize = True
+        Me.CheckBoxLoggedBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit1.Location = New System.Drawing.Point(581, 30)
+        Me.CheckBoxLoggedBit1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit1.Name = "CheckBoxLoggedBit1"
+        Me.CheckBoxLoggedBit1.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit1.TabIndex = 403
+        Me.CheckBoxLoggedBit1.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit1.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit2
+        '
+        Me.CheckBoxLoggedBit2.AutoSize = True
+        Me.CheckBoxLoggedBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit2.Location = New System.Drawing.Point(581, 50)
+        Me.CheckBoxLoggedBit2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit2.Name = "CheckBoxLoggedBit2"
+        Me.CheckBoxLoggedBit2.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit2.TabIndex = 404
+        Me.CheckBoxLoggedBit2.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit2.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit3
+        '
+        Me.CheckBoxLoggedBit3.AutoSize = True
+        Me.CheckBoxLoggedBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit3.Location = New System.Drawing.Point(581, 70)
+        Me.CheckBoxLoggedBit3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit3.Name = "CheckBoxLoggedBit3"
+        Me.CheckBoxLoggedBit3.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit3.TabIndex = 405
+        Me.CheckBoxLoggedBit3.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit3.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit4
+        '
+        Me.CheckBoxLoggedBit4.AutoSize = True
+        Me.CheckBoxLoggedBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit4.Location = New System.Drawing.Point(581, 92)
+        Me.CheckBoxLoggedBit4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit4.Name = "CheckBoxLoggedBit4"
+        Me.CheckBoxLoggedBit4.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit4.TabIndex = 406
+        Me.CheckBoxLoggedBit4.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit4.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit5
+        '
+        Me.CheckBoxLoggedBit5.AutoSize = True
+        Me.CheckBoxLoggedBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit5.Location = New System.Drawing.Point(581, 112)
+        Me.CheckBoxLoggedBit5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit5.Name = "CheckBoxLoggedBit5"
+        Me.CheckBoxLoggedBit5.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit5.TabIndex = 407
+        Me.CheckBoxLoggedBit5.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit5.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit6
+        '
+        Me.CheckBoxLoggedBit6.AutoSize = True
+        Me.CheckBoxLoggedBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit6.Location = New System.Drawing.Point(581, 132)
+        Me.CheckBoxLoggedBit6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit6.Name = "CheckBoxLoggedBit6"
+        Me.CheckBoxLoggedBit6.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit6.TabIndex = 408
+        Me.CheckBoxLoggedBit6.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit6.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit7
+        '
+        Me.CheckBoxLoggedBit7.AutoSize = True
+        Me.CheckBoxLoggedBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit7.Location = New System.Drawing.Point(581, 152)
+        Me.CheckBoxLoggedBit7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit7.Name = "CheckBoxLoggedBit7"
+        Me.CheckBoxLoggedBit7.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit7.TabIndex = 409
+        Me.CheckBoxLoggedBit7.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit7.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit8
+        '
+        Me.CheckBoxLoggedBit8.AutoSize = True
+        Me.CheckBoxLoggedBit8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit8.Location = New System.Drawing.Point(581, 172)
+        Me.CheckBoxLoggedBit8.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit8.Name = "CheckBoxLoggedBit8"
+        Me.CheckBoxLoggedBit8.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit8.TabIndex = 410
+        Me.CheckBoxLoggedBit8.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit8.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBit9
+        '
+        Me.CheckBoxLoggedBit9.AutoSize = True
+        Me.CheckBoxLoggedBit9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBit9.Location = New System.Drawing.Point(581, 192)
+        Me.CheckBoxLoggedBit9.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBit9.Name = "CheckBoxLoggedBit9"
+        Me.CheckBoxLoggedBit9.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBit9.TabIndex = 411
+        Me.CheckBoxLoggedBit9.Text = "Logged Bit"
+        Me.CheckBoxLoggedBit9.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitA
+        '
+        Me.CheckBoxLoggedBitA.AutoSize = True
+        Me.CheckBoxLoggedBitA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitA.Location = New System.Drawing.Point(581, 212)
+        Me.CheckBoxLoggedBitA.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitA.Name = "CheckBoxLoggedBitA"
+        Me.CheckBoxLoggedBitA.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitA.TabIndex = 412
+        Me.CheckBoxLoggedBitA.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitA.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitB
+        '
+        Me.CheckBoxLoggedBitB.AutoSize = True
+        Me.CheckBoxLoggedBitB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitB.Location = New System.Drawing.Point(581, 232)
+        Me.CheckBoxLoggedBitB.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitB.Name = "CheckBoxLoggedBitB"
+        Me.CheckBoxLoggedBitB.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitB.TabIndex = 413
+        Me.CheckBoxLoggedBitB.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitB.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitC
+        '
+        Me.CheckBoxLoggedBitC.AutoSize = True
+        Me.CheckBoxLoggedBitC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitC.Location = New System.Drawing.Point(581, 254)
+        Me.CheckBoxLoggedBitC.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitC.Name = "CheckBoxLoggedBitC"
+        Me.CheckBoxLoggedBitC.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitC.TabIndex = 414
+        Me.CheckBoxLoggedBitC.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitC.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitD
+        '
+        Me.CheckBoxLoggedBitD.AutoSize = True
+        Me.CheckBoxLoggedBitD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitD.Location = New System.Drawing.Point(581, 274)
+        Me.CheckBoxLoggedBitD.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitD.Name = "CheckBoxLoggedBitD"
+        Me.CheckBoxLoggedBitD.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitD.TabIndex = 415
+        Me.CheckBoxLoggedBitD.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitD.UseVisualStyleBackColor = True
+        '
+        'CheckBoxLoggedBitE
+        '
+        Me.CheckBoxLoggedBitE.AutoSize = True
+        Me.CheckBoxLoggedBitE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxLoggedBitE.Location = New System.Drawing.Point(581, 294)
+        Me.CheckBoxLoggedBitE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CheckBoxLoggedBitE.Name = "CheckBoxLoggedBitE"
+        Me.CheckBoxLoggedBitE.Size = New System.Drawing.Size(92, 20)
+        Me.CheckBoxLoggedBitE.TabIndex = 416
+        Me.CheckBoxLoggedBitE.Text = "Logged Bit"
+        Me.CheckBoxLoggedBitE.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -2557,6 +2661,22 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1246, 742)
+        Me.Controls.Add(Me.CheckBoxLoggedBitF)
+        Me.Controls.Add(Me.CheckBoxLoggedBit0)
+        Me.Controls.Add(Me.CheckBoxLoggedBit1)
+        Me.Controls.Add(Me.CheckBoxLoggedBit2)
+        Me.Controls.Add(Me.CheckBoxLoggedBit3)
+        Me.Controls.Add(Me.CheckBoxLoggedBit4)
+        Me.Controls.Add(Me.CheckBoxLoggedBit5)
+        Me.Controls.Add(Me.CheckBoxLoggedBit6)
+        Me.Controls.Add(Me.CheckBoxLoggedBit7)
+        Me.Controls.Add(Me.CheckBoxLoggedBit8)
+        Me.Controls.Add(Me.CheckBoxLoggedBit9)
+        Me.Controls.Add(Me.CheckBoxLoggedBitA)
+        Me.Controls.Add(Me.CheckBoxLoggedBitB)
+        Me.Controls.Add(Me.CheckBoxLoggedBitC)
+        Me.Controls.Add(Me.CheckBoxLoggedBitD)
+        Me.Controls.Add(Me.CheckBoxLoggedBitE)
         Me.Controls.Add(Me.ButtonTest)
         Me.Controls.Add(Me.ButtonToggleMode)
         Me.Controls.Add(Me.ButtonZeroPulseCounters)
@@ -2756,14 +2876,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.CheckBoxFaultBitC)
         Me.Controls.Add(Me.CheckBoxFaultBitD)
         Me.Controls.Add(Me.CheckBoxFaultBitE)
-        Me.Controls.Add(Me.CheckBoxStatusBit0)
-        Me.Controls.Add(Me.CheckBoxStatusBit1)
-        Me.Controls.Add(Me.CheckBoxStatusBit2)
-        Me.Controls.Add(Me.CheckBoxStatusBit3)
-        Me.Controls.Add(Me.CheckBoxStatusBit4)
-        Me.Controls.Add(Me.CheckBoxStatusBit5)
-        Me.Controls.Add(Me.CheckBoxStatusBit6)
-        Me.Controls.Add(Me.CheckBoxStatusBit7)
         Me.Controls.Add(Me.Splitter1)
         Me.Name = "frmMain"
         Me.Text = "No Connection"
@@ -2829,14 +2941,6 @@ Partial Class frmMain
     Friend WithEvents CheckBoxFaultBit2 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxFaultBit1 As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxFaultBit0 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit7 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit5 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit2 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit1 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxStatusBit0 As System.Windows.Forms.CheckBox
     Friend WithEvents LabelFirmwareVerssion As System.Windows.Forms.Label
     Friend WithEvents LabelAgileInfo As System.Windows.Forms.Label
     Friend WithEvents TextBoxInput2 As System.Windows.Forms.TextBox
@@ -2980,4 +3084,20 @@ Partial Class frmMain
     Friend WithEvents ButtonZeroPulseCounters As System.Windows.Forms.Button
     Friend WithEvents ButtonToggleMode As System.Windows.Forms.Button
     Friend WithEvents ButtonTest As System.Windows.Forms.Button
+    Friend WithEvents CheckBoxLoggedBitF As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBit9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBitA As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBitB As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBitC As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBitD As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxLoggedBitE As System.Windows.Forms.CheckBox
 End Class
