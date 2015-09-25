@@ -67,24 +67,6 @@
 
 
 
-
-
-    ' Public Const ETHERNET_CMD_HEATER_MAGNET_HEATER_SET_POINT As UInt16 = 0
-    ' Public Const ETHERNET_CMD_HEATER_MAGNET_MAGNET_SET_POINT As UInt16 = 1
-    ' Public Const ETHERNET_CMD_HV_LAMBDA_HIGH_SET_POINT As UInt16 = 2
-    '  Public Const ETHERNET_CMD_HV_LAMBDA_LOW_SET_POINT As UInt16 = 3
-    '  Public Const PULSE_SYNC_SEND_DEFAULT_CMD As UInt16 = 4
-
-
-    '  Public Const ETHERNET_TOGGLE_RESET As UInt16 = 20
-    '  Public Const ETHERNET_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = 21
-    ' Public Const PULSE_SYNC_TOGGLE_HV_ENABLE As UInt16 = 22
-    '   Public Const PULSE_SYNC_TOGGLE_XRAY_ENABLE As UInt16 = 23
-    '  Public Const ETHERNET_CMD_TOGGLE_COOLANT_FAULT_BIT As UInt16 = 24
-
-    ' Public Const ETHERNET_CMD_UNKNOWN As UInt16 = 255
-
-
     Public Class ButtonParameters
         Public max_value As UInt16
         Public min_value As UInt16
@@ -107,13 +89,11 @@
 
     Public EEProm_index As UInt16
 
-#If DEBUG_MODBUS Then
-        Public modbus_recv_buffer(255, 1024) As Byte
-        Public modbus_recv_bytecount(255) As UInt16
-        Public modbus_recv_index As Byte
-#End If
+    Public command_count As UInt16
 
     Public board_index As Byte
+
+    Public selected_board_index As UInt16
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -280,63 +260,35 @@
 
 
     Private Sub TimerUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUpdate.Tick
-        Dim bgcolor As Color
         Dim ivalue As Integer
         Static connected As Boolean = False
         Static admin_param_checked As Boolean = False
 
         TimerUpdate.Enabled = False
+        ServerSettings.board_to_monitor = CByte(board_index)
 
         ivalue = ServerSettings.get_modbus_status()
         If (ivalue <= 2) Then
-            '  lblState.Text = "Linac Disconnected" '"NO LAN COMM"
-            If connected Then 'Or (TabControl1.SelectedIndex > 0) Then
-                ' lblState.ForeColor = Color.Red
-                If connected Then
-                    '   lstBoxEvents.Items.Insert(0, Now & " #" & Trim(Str(EVENTDISCONNECTED + 1)) & " " & EventNames(EVENTDISCONNECTED))
-                End If
-                connected = False
-                Me.Text = "A36507 Test GUI(Linac Disconnected)"
-                Me.BackColor = Color.LightCoral
-                Splitter1.BackColor = Color.Coral
-                '   TabControl1.SelectedIndex = 0
-
-                '  Call sys_init()
-            End If
+            connected = False
+            Me.Text = "A36507 Test GUI(Linac Disconnected)"
+            Me.BackColor = Color.LightCoral
+            Splitter1.BackColor = Color.Coral
         Else
-            If (connected = False) Then
-                connected = True
-                ServerSettings.event_log_enabled = True
-                Me.Text = "A36507 Test GUI"
-                Splitter1.BackColor = Color.LightSteelBlue
-            End If
+            connected = True
+            ServerSettings.event_log_enabled = True
+            Me.Text = "A36507 Test GUI"
+            Splitter1.BackColor = Color.LightSteelBlue
+
 
             ' ------------------------------------------------------------------------------------------------------------'
             ' Display System Data in the left pane
             DisplayLeftPane()
 
-
             ' ------------------------------------------------------------------------------------------------------------'
-            ' Update the board specific data
-
- 
-            ServerSettings.board_to_monitor = CByte(board_index)
-
-
-            '------------------------------- Display the debug Data ------------------------------------ '
-            DisplayDebugData()
-
-
-            '----------------------- Display the board specific data and buttons ---------------------------- '
-
+            ' UDisplay the board specific data and buttons in the right plane
             DisplayBoardCommonElements(board_index)
-
             DisplayBoardSpecificData(board_index)
-
-
-
-
-
+            DisplayDebugData()
 
         End If ' connected
 
@@ -405,29 +357,13 @@
 
         UpdateButtons()
 
-        LabelDebug0.Text = "Debug 0 = "
-        LabelDebug1.Text = "Debug 1 = "
-        LabelDebug2.Text = "Debug 2 = "
-        LabelDebug3.Text = "Debug 3 = "
-        LabelDebug4.Text = "Debug 4 = "
-        LabelDebug5.Text = "Debug 5 = "
-        LabelDebug6.Text = "Debug 6 = "
-        LabelDebug7.Text = "Debug 7 = "
-        LabelDebug8.Text = "Debug 8 = "
-        LabelDebug9.Text = "Debug 9 = "
-        LabelDebugA.Text = "Debug A = "
-        LabelDebugB.Text = "Debug B = "
-        LabelDebugC.Text = "Debug C = "
-        LabelDebugD.Text = "Debug D = "
-        LabelDebugE.Text = "Debug E = "
-        LabelDebugF.Text = "Debug F = "
 
 
         Dim selected_board_connected As Boolean = False
 
         If (selected_baord = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
 
-            'selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(15) And &H10
+            selected_board_connected = True
 
             CheckBoxFaultBit0.Text = "Drive Up Flt"
             CheckBoxFaultBit1.Text = "Cool Com"
@@ -1939,23 +1875,6 @@
     End Sub
 
 
-
-
-
-
-    Private Sub frmMain_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
-        Try
-            TimerUpdate.Enabled = False
-            '     My.Settings.Interval = CUShort(txtInterval.Text)
-            '     My.Settings.SerialNumber = CULng(txtSN.Text)
-            ServerSettings.Close()
-            '  End
-        Catch ex As Exception
-            MessageBox.Show("Exception caught in FormMain.FormClosed  " + ex.ToString)
-        End Try
-
-    End Sub
-
     Private Sub cboIndex_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboIndex.SelectedIndexChanged
         board_index = cboIndex.SelectedIndex + 1
         TextBoxInput1.Text = ""
@@ -1999,10 +1918,39 @@
         CheckBoxLoggedBitF.Visible = True
 
 
+        LabelDebug0.Text = "Debug 0 = "
+        LabelDebug1.Text = "Debug 1 = "
+        LabelDebug2.Text = "Debug 2 = "
+        LabelDebug3.Text = "Debug 3 = "
+        LabelDebug4.Text = "Debug 4 = "
+        LabelDebug5.Text = "Debug 5 = "
+        LabelDebug6.Text = "Debug 6 = "
+        LabelDebug7.Text = "Debug 7 = "
+        LabelDebug8.Text = "Debug 8 = "
+        LabelDebug9.Text = "Debug 9 = "
+        LabelDebugA.Text = "Debug A = "
+        LabelDebugB.Text = "Debug B = "
+        LabelDebugC.Text = "Debug C = "
+        LabelDebugD.Text = "Debug D = "
+        LabelDebugE.Text = "Debug E = "
+        LabelDebugF.Text = "Debug F = "
+
     End Sub
 
 
-    Public command_count As UInt16
+
+
+    Private Sub frmMain_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        Try
+            TimerUpdate.Enabled = False
+            ServerSettings.Close()
+        Catch ex As Exception
+            MessageBox.Show("Exception caught in FormMain.FormClosed  " + ex.ToString)
+        End Try
+
+    End Sub
+
+
 
 
     Private Sub ExecuteButton(ByVal button As ButtonParameters, ByVal input_box As TextBox)
@@ -2080,8 +2028,6 @@
 
 
 
-
-    Public selected_board_index As UInt16
 
     Private Sub ComboBoxEEpromRegister_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxEEpromRegister.SelectedIndexChanged
         Dim command_index As UInt16
