@@ -749,6 +749,96 @@
 
 
         ElseIf (selected_baord = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) Then
+#Const THEA_MODULATOR = 0
+
+
+#If THEA_MODULATOR Then
+            selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(15) And &H100
+
+
+            CheckBoxFaultBit0.Text = "Can Fault"
+            CheckBoxFaultBit1.Text = "Bias OV"
+            CheckBoxFaultBit2.Text = "Bias UV"
+            CheckBoxFaultBit3.Text = "Comm Flt"
+            CheckBoxFaultBit4.Text = "Top 1 OV"
+            CheckBoxFaultBit5.Text = "Top 1 UV"
+            CheckBoxFaultBit6.Text = "Top 2 OV"
+            CheckBoxFaultBit7.Text = "Top 2 UV"
+            CheckBoxFaultBit8.Visible = False
+            CheckBoxFaultBit9.Visible = False
+            CheckBoxFaultBitA.Visible = False
+            CheckBoxFaultBitB.Visible = False
+            CheckBoxFaultBitC.Visible = False
+            CheckBoxFaultBitD.Visible = False
+            CheckBoxFaultBitE.Visible = False
+            CheckBoxFaultBitF.Visible = False
+
+            CheckBoxLoggedBit0.Visible = False
+            CheckBoxLoggedBit1.Visible = False
+            CheckBoxLoggedBit2.Visible = False
+            CheckBoxLoggedBit3.Visible = False
+            CheckBoxLoggedBit4.Visible = False
+            CheckBoxLoggedBit5.Visible = False
+            CheckBoxLoggedBit6.Visible = False
+            CheckBoxLoggedBit7.Visible = False
+            CheckBoxLoggedBit8.Visible = False
+            CheckBoxLoggedBit9.Visible = False
+            CheckBoxLoggedBitA.Visible = False
+            CheckBoxLoggedBitB.Visible = False
+            CheckBoxLoggedBitC.Visible = False
+            CheckBoxLoggedBitD.Visible = False
+            CheckBoxLoggedBitE.Visible = False
+            CheckBoxLoggedBitF.Visible = False
+
+
+
+            LabelValue1.Text = "Top 1 Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(0) / 100, ".00") & " V"
+            LabelValue2.Text = "Top 2 Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(1) / 100, ".00") & " V"
+            LabelValue3.Text = "Heater Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(2) / 1000, ".000") & " V"
+            LabelValue4.Text = "Top 1 Set Rdbck= " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(3) / 100, ".00") & " V"
+            LabelValue5.Text = "Top 1 Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(2) / 100, ".00") & " V"
+            LabelValue6.Text = "Raw 1 Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(1) / 100, ".00") & " V"
+            LabelValue7.Text = "Top 2 Set Rdbck= " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(7) / 100, ".00") & " V"
+            LabelValue8.Text = "Top 2 Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(6) / 100, ".00") & " V"
+            LabelValue9.Text = "Raw 2 Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(5) / 100, ".00") & " V"
+            LabelValue10.Text = "Heater Set Rdbck = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(11) / 1000, ".000") & " V"
+            LabelValue11.Text = "Heater Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(10) / 1000, ".000") & " V"
+            LabelValue12.Text = "Heater 1 Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(9) / 1000, ".000") & " A"
+            LabelValue13.Text = "Heater 2 Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(8) / 1000, ".000") & " A"
+            LabelValue14.Text = "Bias Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(4) / 100, ".00") & " V"
+            LabelValue15.Text = ""
+
+            inputbutton1.enabled = True
+            inputbutton1.button_only = False
+            inputbutton1.button_name = "Set Top 1"
+            inputbutton1.max_value = 20000
+            inputbutton1.min_value = 0
+            inputbutton1.scale = 100
+            inputbutton1.offset = 0
+            inputbutton1.button_index = REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE
+
+            inputbutton2.enabled = True
+            inputbutton2.button_only = False
+            inputbutton2.button_name = "Set Top 2"
+            inputbutton2.max_value = 20000
+            inputbutton2.min_value = 0
+            inputbutton2.scale = 100
+            inputbutton2.offset = 0
+            inputbutton2.button_index = REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE
+
+            inputbutton3.enabled = True
+            inputbutton3.button_only = False
+            inputbutton3.button_name = "Set Htr V"
+            inputbutton3.max_value = 10000
+            inputbutton3.min_value = 0
+            inputbutton3.scale = 1000
+            inputbutton3.offset = 0
+            inputbutton3.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
+
+
+            inputbutton4.enabled = False
+            inputbutton5.enabled = False
+#Else
 
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(15) And &H100
 
@@ -839,7 +929,7 @@
 
             inputbutton4.enabled = False
             inputbutton5.enabled = False
-
+#End If
         End If
 
 
