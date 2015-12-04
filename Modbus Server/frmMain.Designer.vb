@@ -238,6 +238,7 @@ Partial Class frmMain
         Me.CheckBoxLoggedBitC = New System.Windows.Forms.CheckBox()
         Me.CheckBoxLoggedBitD = New System.Windows.Forms.CheckBox()
         Me.CheckBoxLoggedBitE = New System.Windows.Forms.CheckBox()
+        Me.ButtonSetRevSN = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -271,7 +272,7 @@ Partial Class frmMain
         'ButtonUpdateInput3
         '
         Me.ButtonUpdateInput3.Location = New System.Drawing.Point(1284, 75)
-        Me.ButtonUpdateInput3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonUpdateInput3.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonUpdateInput3.Name = "ButtonUpdateInput3"
         Me.ButtonUpdateInput3.Size = New System.Drawing.Size(133, 28)
         Me.ButtonUpdateInput3.TabIndex = 302
@@ -293,7 +294,7 @@ Partial Class frmMain
         'TextBoxInput3
         '
         Me.TextBoxInput3.Location = New System.Drawing.Point(1143, 79)
-        Me.TextBoxInput3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxInput3.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxInput3.MaxLength = 7
         Me.TextBoxInput3.Name = "TextBoxInput3"
         Me.TextBoxInput3.Size = New System.Drawing.Size(132, 22)
@@ -439,8 +440,8 @@ Partial Class frmMain
         '
         'ButtonResetSlave
         '
-        Me.ButtonResetSlave.Location = New System.Drawing.Point(1367, 610)
-        Me.ButtonResetSlave.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonResetSlave.Location = New System.Drawing.Point(1395, 609)
+        Me.ButtonResetSlave.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonResetSlave.Name = "ButtonResetSlave"
         Me.ButtonResetSlave.Size = New System.Drawing.Size(137, 28)
         Me.ButtonResetSlave.TabIndex = 266
@@ -449,8 +450,8 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1367, 575)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Location = New System.Drawing.Point(1395, 574)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(137, 28)
         Me.Button1.TabIndex = 265
@@ -464,9 +465,9 @@ Partial Class frmMain
         Me.LabelScale.Location = New System.Drawing.Point(1139, 578)
         Me.LabelScale.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelScale.Name = "LabelScale"
-        Me.LabelScale.Size = New System.Drawing.Size(51, 20)
+        Me.LabelScale.Size = New System.Drawing.Size(85, 20)
         Me.LabelScale.TabIndex = 264
-        Me.LabelScale.Text = "Scale"
+        Me.LabelScale.Text = "Scale/Rev"
         '
         'LabelOffset
         '
@@ -475,9 +476,9 @@ Partial Class frmMain
         Me.LabelOffset.Location = New System.Drawing.Point(1139, 614)
         Me.LabelOffset.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelOffset.Name = "LabelOffset"
-        Me.LabelOffset.Size = New System.Drawing.Size(55, 20)
+        Me.LabelOffset.Size = New System.Drawing.Size(83, 20)
         Me.LabelOffset.TabIndex = 263
-        Me.LabelOffset.Text = "Offset"
+        Me.LabelOffset.Text = "Offset/SN"
         '
         'LabelEEpromIndex
         '
@@ -495,7 +496,7 @@ Partial Class frmMain
         Me.ComboBoxEEpromRegister.FormattingEnabled = True
         Me.ComboBoxEEpromRegister.Items.AddRange(New Object() {"ADC AN0 ", "ADC AN0 - External", "ADC AN1 ", "ADC AN1 - External", "ADC AN2 ", "ADC AN2 - External", "ADC AN3 ", "ADC AN3 - External", "ADC AN4 ", "ADC AN4 - External", "ADC AN5 ", "ADC AN5 - External", "ADC AN6 ", "ADC AN6 - External", "ADC AN7 ", "ADC AN7 - External", "ADC AN8 ", "ADC AN8 - External", "ADC AN9 ", "ADC AN9 - External", "ADC AN10 ", "ADC AN10 - External", "ADC AN11 ", "ADC AN11 - External", "ADC AN12 ", "ADC AN12 - External", "ADC AN13 ", "ADC AN13 - External", "ADC AN14 ", "ADC AN14 - External", "ADC AN15 ", "ADC AN15 - External", "DAC CH0", "DAC CH0 - External", "DAC CH1", "DAC CH1 - External", "DAC CH2", "DAC CH2 - External", "DAC CH3", "DAC CH3 - External", "DAC CH4", "DAC CH4 - External", "DAC CH5", "DAC CH5 - External", "DAC CH6", "DAC CH6 - External", "DAC CH7", "DAC CH7 - External"})
         Me.ComboBoxEEpromRegister.Location = New System.Drawing.Point(997, 528)
-        Me.ComboBoxEEpromRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ComboBoxEEpromRegister.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxEEpromRegister.Name = "ComboBoxEEpromRegister"
         Me.ComboBoxEEpromRegister.Size = New System.Drawing.Size(227, 24)
         Me.ComboBoxEEpromRegister.TabIndex = 261
@@ -504,7 +505,7 @@ Partial Class frmMain
         'TextBoxEEpromOffSet
         '
         Me.TextBoxEEpromOffSet.Location = New System.Drawing.Point(997, 609)
-        Me.TextBoxEEpromOffSet.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxEEpromOffSet.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxEEpromOffSet.MaxLength = 7
         Me.TextBoxEEpromOffSet.Name = "TextBoxEEpromOffSet"
         Me.TextBoxEEpromOffSet.Size = New System.Drawing.Size(132, 22)
@@ -513,7 +514,7 @@ Partial Class frmMain
         'TextBoxEEpromScale
         '
         Me.TextBoxEEpromScale.Location = New System.Drawing.Point(997, 574)
-        Me.TextBoxEEpromScale.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxEEpromScale.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxEEpromScale.MaxLength = 7
         Me.TextBoxEEpromScale.Name = "TextBoxEEpromScale"
         Me.TextBoxEEpromScale.Size = New System.Drawing.Size(132, 22)
@@ -521,8 +522,8 @@ Partial Class frmMain
         '
         'ButtonWriteEEprom
         '
-        Me.ButtonWriteEEprom.Location = New System.Drawing.Point(1204, 610)
-        Me.ButtonWriteEEprom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonWriteEEprom.Location = New System.Drawing.Point(1232, 609)
+        Me.ButtonWriteEEprom.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonWriteEEprom.Name = "ButtonWriteEEprom"
         Me.ButtonWriteEEprom.Size = New System.Drawing.Size(137, 28)
         Me.ButtonWriteEEprom.TabIndex = 258
@@ -531,8 +532,8 @@ Partial Class frmMain
         '
         'ButtonReadEEprom
         '
-        Me.ButtonReadEEprom.Location = New System.Drawing.Point(1204, 575)
-        Me.ButtonReadEEprom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonReadEEprom.Location = New System.Drawing.Point(1232, 574)
+        Me.ButtonReadEEprom.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonReadEEprom.Name = "ButtonReadEEprom"
         Me.ButtonReadEEprom.Size = New System.Drawing.Size(137, 28)
         Me.ButtonReadEEprom.TabIndex = 257
@@ -914,7 +915,7 @@ Partial Class frmMain
         'ButtonUpdateInput2
         '
         Me.ButtonUpdateInput2.Location = New System.Drawing.Point(1284, 43)
-        Me.ButtonUpdateInput2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonUpdateInput2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonUpdateInput2.Name = "ButtonUpdateInput2"
         Me.ButtonUpdateInput2.Size = New System.Drawing.Size(133, 28)
         Me.ButtonUpdateInput2.TabIndex = 225
@@ -935,7 +936,7 @@ Partial Class frmMain
         'ButtonUpdateInput1
         '
         Me.ButtonUpdateInput1.Location = New System.Drawing.Point(1284, 11)
-        Me.ButtonUpdateInput1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonUpdateInput1.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonUpdateInput1.Name = "ButtonUpdateInput1"
         Me.ButtonUpdateInput1.Size = New System.Drawing.Size(133, 28)
         Me.ButtonUpdateInput1.TabIndex = 224
@@ -1011,7 +1012,7 @@ Partial Class frmMain
         'TextBoxInput1
         '
         Me.TextBoxInput1.Location = New System.Drawing.Point(1143, 15)
-        Me.TextBoxInput1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxInput1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxInput1.MaxLength = 7
         Me.TextBoxInput1.Name = "TextBoxInput1"
         Me.TextBoxInput1.Size = New System.Drawing.Size(132, 22)
@@ -1031,7 +1032,7 @@ Partial Class frmMain
         'TextBoxInput2
         '
         Me.TextBoxInput2.Location = New System.Drawing.Point(1143, 47)
-        Me.TextBoxInput2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxInput2.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxInput2.MaxLength = 7
         Me.TextBoxInput2.Name = "TextBoxInput2"
         Me.TextBoxInput2.Size = New System.Drawing.Size(132, 22)
@@ -1510,7 +1511,7 @@ Partial Class frmMain
         Me.cboIndex.FormattingEnabled = True
         Me.cboIndex.Items.AddRange(New Object() {"MODBUS_WR_HVLAMBDA " & Global.Microsoft.VisualBasic.ChrW(9), "MODBUS_WR_ION_PUMP", "MODBUS_WR_AFC", "MODBUS_WR_COOLING", "MODBUS_WR_HTR_MAGNET", "MODBUS_WR_GUN_DRIVER", "MODBUS_WR_MAGNETRON_CURRENT", "MODBUS_WR_PULSE_SYNC", "MODBUS_WR_ETHERNET"})
         Me.cboIndex.Location = New System.Drawing.Point(395, 11)
-        Me.cboIndex.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboIndex.Margin = New System.Windows.Forms.Padding(4)
         Me.cboIndex.Name = "cboIndex"
         Me.cboIndex.Size = New System.Drawing.Size(227, 24)
         Me.cboIndex.TabIndex = 2
@@ -1530,7 +1531,7 @@ Partial Class frmMain
         'TextBoxInput4
         '
         Me.TextBoxInput4.Location = New System.Drawing.Point(1143, 111)
-        Me.TextBoxInput4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxInput4.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxInput4.MaxLength = 7
         Me.TextBoxInput4.Name = "TextBoxInput4"
         Me.TextBoxInput4.Size = New System.Drawing.Size(132, 22)
@@ -1539,7 +1540,7 @@ Partial Class frmMain
         'TextBoxInput5
         '
         Me.TextBoxInput5.Location = New System.Drawing.Point(1143, 143)
-        Me.TextBoxInput5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxInput5.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxInput5.MaxLength = 7
         Me.TextBoxInput5.Name = "TextBoxInput5"
         Me.TextBoxInput5.Size = New System.Drawing.Size(132, 22)
@@ -1548,7 +1549,7 @@ Partial Class frmMain
         'ButtonUpdateInput4
         '
         Me.ButtonUpdateInput4.Location = New System.Drawing.Point(1284, 107)
-        Me.ButtonUpdateInput4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonUpdateInput4.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonUpdateInput4.Name = "ButtonUpdateInput4"
         Me.ButtonUpdateInput4.Size = New System.Drawing.Size(133, 28)
         Me.ButtonUpdateInput4.TabIndex = 310
@@ -1558,7 +1559,7 @@ Partial Class frmMain
         'ButtonUpdateInput5
         '
         Me.ButtonUpdateInput5.Location = New System.Drawing.Point(1284, 139)
-        Me.ButtonUpdateInput5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonUpdateInput5.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonUpdateInput5.Name = "ButtonUpdateInput5"
         Me.ButtonUpdateInput5.Size = New System.Drawing.Size(133, 28)
         Me.ButtonUpdateInput5.TabIndex = 311
@@ -1569,7 +1570,7 @@ Partial Class frmMain
         '
         Me.Splitter1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Splitter1.Location = New System.Drawing.Point(0, 0)
-        Me.Splitter1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Splitter1.Margin = New System.Windows.Forms.Padding(4)
         Me.Splitter1.Name = "Splitter1"
         Me.Splitter1.Size = New System.Drawing.Size(384, 913)
         Me.Splitter1.TabIndex = 322
@@ -2013,7 +2014,7 @@ Partial Class frmMain
         Me.LabelECBTime.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelECBTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelECBTime.Location = New System.Drawing.Point(16, 422)
-        Me.LabelECBTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LabelECBTime.Margin = New System.Windows.Forms.Padding(4)
         Me.LabelECBTime.Name = "LabelECBTime"
         Me.LabelECBTime.Size = New System.Drawing.Size(86, 20)
         Me.LabelECBTime.TabIndex = 364
@@ -2025,7 +2026,7 @@ Partial Class frmMain
         Me.LabelComputerTime.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelComputerTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelComputerTime.Location = New System.Drawing.Point(16, 530)
-        Me.LabelComputerTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LabelComputerTime.Margin = New System.Windows.Forms.Padding(4)
         Me.LabelComputerTime.Name = "LabelComputerTime"
         Me.LabelComputerTime.Size = New System.Drawing.Size(124, 20)
         Me.LabelComputerTime.TabIndex = 363
@@ -2037,7 +2038,7 @@ Partial Class frmMain
         Me.ButtonSetTime.FlatAppearance.BorderSize = 0
         Me.ButtonSetTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonSetTime.Location = New System.Drawing.Point(20, 459)
-        Me.ButtonSetTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonSetTime.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSetTime.Name = "ButtonSetTime"
         Me.ButtonSetTime.Size = New System.Drawing.Size(133, 28)
         Me.ButtonSetTime.TabIndex = 362
@@ -2050,7 +2051,7 @@ Partial Class frmMain
         Me.ButtonStopLog.FlatAppearance.BorderSize = 0
         Me.ButtonStopLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonStopLog.Location = New System.Drawing.Point(197, 495)
-        Me.ButtonStopLog.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonStopLog.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonStopLog.Name = "ButtonStopLog"
         Me.ButtonStopLog.Size = New System.Drawing.Size(163, 28)
         Me.ButtonStopLog.TabIndex = 361
@@ -2063,7 +2064,7 @@ Partial Class frmMain
         Me.ButtonStartLog.FlatAppearance.BorderSize = 0
         Me.ButtonStartLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonStartLog.Location = New System.Drawing.Point(20, 495)
-        Me.ButtonStartLog.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonStartLog.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonStartLog.Name = "ButtonStartLog"
         Me.ButtonStartLog.Size = New System.Drawing.Size(163, 28)
         Me.ButtonStartLog.TabIndex = 360
@@ -2076,7 +2077,7 @@ Partial Class frmMain
         Me.LabelECBState.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelECBState.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelECBState.Location = New System.Drawing.Point(16, 11)
-        Me.LabelECBState.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LabelECBState.Margin = New System.Windows.Forms.Padding(4)
         Me.LabelECBState.Name = "LabelECBState"
         Me.LabelECBState.Size = New System.Drawing.Size(88, 20)
         Me.LabelECBState.TabIndex = 359
@@ -2101,7 +2102,7 @@ Partial Class frmMain
         Me.ButtonToggleResetDebug.FlatAppearance.BorderSize = 0
         Me.ButtonToggleResetDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonToggleResetDebug.Location = New System.Drawing.Point(16, 758)
-        Me.ButtonToggleResetDebug.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonToggleResetDebug.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonToggleResetDebug.Name = "ButtonToggleResetDebug"
         Me.ButtonToggleResetDebug.Size = New System.Drawing.Size(203, 28)
         Me.ButtonToggleResetDebug.TabIndex = 388
@@ -2153,7 +2154,7 @@ Partial Class frmMain
         Me.ButtonTogglePulseSyncXray.FlatAppearance.BorderSize = 0
         Me.ButtonTogglePulseSyncXray.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonTogglePulseSyncXray.Location = New System.Drawing.Point(16, 687)
-        Me.ButtonTogglePulseSyncXray.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonTogglePulseSyncXray.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonTogglePulseSyncXray.Name = "ButtonTogglePulseSyncXray"
         Me.ButtonTogglePulseSyncXray.Size = New System.Drawing.Size(203, 28)
         Me.ButtonTogglePulseSyncXray.TabIndex = 378
@@ -2179,7 +2180,7 @@ Partial Class frmMain
         Me.ButtonTogglePulseSyncHV.FlatAppearance.BorderSize = 0
         Me.ButtonTogglePulseSyncHV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonTogglePulseSyncHV.Location = New System.Drawing.Point(16, 649)
-        Me.ButtonTogglePulseSyncHV.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonTogglePulseSyncHV.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonTogglePulseSyncHV.Name = "ButtonTogglePulseSyncHV"
         Me.ButtonTogglePulseSyncHV.Size = New System.Drawing.Size(203, 28)
         Me.ButtonTogglePulseSyncHV.TabIndex = 377
@@ -2205,7 +2206,7 @@ Partial Class frmMain
         Me.ButtonToggleHighSpeedDataLogging.FlatAppearance.BorderSize = 0
         Me.ButtonToggleHighSpeedDataLogging.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonToggleHighSpeedDataLogging.Location = New System.Drawing.Point(16, 613)
-        Me.ButtonToggleHighSpeedDataLogging.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonToggleHighSpeedDataLogging.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonToggleHighSpeedDataLogging.Name = "ButtonToggleHighSpeedDataLogging"
         Me.ButtonToggleHighSpeedDataLogging.Size = New System.Drawing.Size(203, 28)
         Me.ButtonToggleHighSpeedDataLogging.TabIndex = 376
@@ -2256,7 +2257,7 @@ Partial Class frmMain
         Me.ButtonToggleCoolantFault.FlatAppearance.BorderSize = 0
         Me.ButtonToggleCoolantFault.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonToggleCoolantFault.Location = New System.Drawing.Point(16, 722)
-        Me.ButtonToggleCoolantFault.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonToggleCoolantFault.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonToggleCoolantFault.Name = "ButtonToggleCoolantFault"
         Me.ButtonToggleCoolantFault.Size = New System.Drawing.Size(203, 28)
         Me.ButtonToggleCoolantFault.TabIndex = 375
@@ -2295,7 +2296,7 @@ Partial Class frmMain
         Me.ButtonToggleReset.FlatAppearance.BorderSize = 0
         Me.ButtonToggleReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonToggleReset.Location = New System.Drawing.Point(16, 577)
-        Me.ButtonToggleReset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonToggleReset.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonToggleReset.Name = "ButtonToggleReset"
         Me.ButtonToggleReset.Size = New System.Drawing.Size(203, 28)
         Me.ButtonToggleReset.TabIndex = 373
@@ -2479,7 +2480,7 @@ Partial Class frmMain
         Me.ButtonReloadECBDefaults.FlatAppearance.BorderSize = 0
         Me.ButtonReloadECBDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonReloadECBDefaults.Location = New System.Drawing.Point(227, 459)
-        Me.ButtonReloadECBDefaults.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonReloadECBDefaults.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonReloadECBDefaults.Name = "ButtonReloadECBDefaults"
         Me.ButtonReloadECBDefaults.Size = New System.Drawing.Size(133, 28)
         Me.ButtonReloadECBDefaults.TabIndex = 396
@@ -2492,7 +2493,7 @@ Partial Class frmMain
         Me.ButtonZeroOnTime.FlatAppearance.BorderSize = 0
         Me.ButtonZeroOnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonZeroOnTime.Location = New System.Drawing.Point(16, 869)
-        Me.ButtonZeroOnTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonZeroOnTime.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonZeroOnTime.Name = "ButtonZeroOnTime"
         Me.ButtonZeroOnTime.Size = New System.Drawing.Size(133, 28)
         Me.ButtonZeroOnTime.TabIndex = 397
@@ -2505,7 +2506,7 @@ Partial Class frmMain
         Me.ButtonZeroPulseCounters.FlatAppearance.BorderSize = 0
         Me.ButtonZeroPulseCounters.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonZeroPulseCounters.Location = New System.Drawing.Point(223, 869)
-        Me.ButtonZeroPulseCounters.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonZeroPulseCounters.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonZeroPulseCounters.Name = "ButtonZeroPulseCounters"
         Me.ButtonZeroPulseCounters.Size = New System.Drawing.Size(133, 28)
         Me.ButtonZeroPulseCounters.TabIndex = 398
@@ -2518,7 +2519,7 @@ Partial Class frmMain
         Me.ButtonToggleMode.FlatAppearance.BorderSize = 0
         Me.ButtonToggleMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonToggleMode.Location = New System.Drawing.Point(20, 452)
-        Me.ButtonToggleMode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonToggleMode.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonToggleMode.Name = "ButtonToggleMode"
         Me.ButtonToggleMode.Size = New System.Drawing.Size(133, 28)
         Me.ButtonToggleMode.TabIndex = 400
@@ -2717,12 +2718,23 @@ Partial Class frmMain
         Me.CheckBoxLoggedBitE.Text = "Logged Bit"
         Me.CheckBoxLoggedBitE.UseVisualStyleBackColor = True
         '
+        'ButtonSetRevSN
+        '
+        Me.ButtonSetRevSN.Location = New System.Drawing.Point(1232, 645)
+        Me.ButtonSetRevSN.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetRevSN.Name = "ButtonSetRevSN"
+        Me.ButtonSetRevSN.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetRevSN.TabIndex = 418
+        Me.ButtonSetRevSN.Text = "Set Rev/SN"
+        Me.ButtonSetRevSN.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.ButtonSetRevSN)
         Me.Controls.Add(Me.CheckBoxLoggedBitF)
         Me.Controls.Add(Me.CheckBoxLoggedBit0)
         Me.Controls.Add(Me.CheckBoxLoggedBit1)
@@ -2937,7 +2949,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.CheckBoxFaultBitD)
         Me.Controls.Add(Me.CheckBoxFaultBitE)
         Me.Controls.Add(Me.Splitter1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmMain"
         Me.Text = "No Connection"
         Me.ResumeLayout(False)
@@ -3159,4 +3171,5 @@ Partial Class frmMain
     Friend WithEvents CheckBoxLoggedBitC As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxLoggedBitD As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxLoggedBitE As System.Windows.Forms.CheckBox
+    Friend WithEvents ButtonSetRevSN As System.Windows.Forms.Button
 End Class

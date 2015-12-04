@@ -297,9 +297,15 @@
 
 
     Private Sub DisplayBoardCommonElements(ByVal selected_baord As Byte)
-
-        LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_number & "-" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_dash & "  Rev-" & Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) & "  SN-" & ServerSettings.ETMEthernetBoardLoggingData(board_index).serial_number 'Dparker need to add in the first Char
-        LabelFirmwareVerssion.Text = "Firmware Version " & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_agile_rev & "." & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch & "." & ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch_rev
+        'Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) 
+        LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_number & "-" &
+            Format(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_dash, "000") & "  Rev-" &
+            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) & "  SN-" &
+            ServerSettings.ETMEthernetBoardLoggingData(board_index).serial_number 'Dparker need to add in the first Char
+        LabelFirmwareVerssion.Text = "Firmware Version " &
+            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_agile_rev & "." &
+            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch & "." &
+            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch_rev
 
 
         Dim control_bits As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).control_notice_bits
@@ -971,6 +977,92 @@
             inputbutton5.scale = 1
             inputbutton5.offset = 0
             inputbutton5.button_index = REGISTER_SPECIAL_2_5_SET_MAGNETRON_CURRENT_SAMPLE_DELAY
+
+
+        ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING) Then
+            selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H40
+
+            CheckBoxFaultBit0.Text = "CAN Flt"
+            CheckBoxFaultBit1.Text = "Magnetron Flow"
+            CheckBoxFaultBit2.Text = "Linac FLow"
+            CheckBoxFaultBit3.Text = "HV Tank FLow"
+            CheckBoxFaultBit4.Text = "Flow 4"
+            CheckBoxFaultBit5.Text = "Flow 5"
+            CheckBoxFaultBit6.Text = "Flow 6"
+            CheckBoxFaultBit7.Text = "Cabinet SW"
+            CheckBoxFaultBit8.Text = "Coolant SW"
+            CheckBoxFaultBit9.Text = "Cabient Ovr Temp"
+            CheckBoxFaultBitA.Text = "Coolant Ovr Temp"
+            CheckBoxFaultBitB.Text = "Thermistor 3 over temp"
+            CheckBoxFaultBitC.Text = "SF6 Pressure"
+            CheckBoxFaultBitD.Text = "SF6 SW"
+            CheckBoxFaultBitE.Visible = False
+            CheckBoxFaultBitF.Visible = False
+
+            CheckBoxLoggedBit0.Text = "SF6 Relay Closed"
+            CheckBoxLoggedBit1.Text = "Coolant Too Cold"
+            CheckBoxLoggedBit2.Text = "SF6 To Low To Fill"
+            CheckBoxLoggedBit3.Text = "SF6 Fill Required"
+            CheckBoxLoggedBit4.Text = "No SF6 Pulses Available"
+            CheckBoxLoggedBit5.Text = "SF6 Filling"
+            CheckBoxLoggedBit6.Visible = False
+            CheckBoxLoggedBit7.Visible = False
+            CheckBoxLoggedBit8.Visible = False
+            CheckBoxLoggedBit9.Visible = False
+            CheckBoxLoggedBitA.Visible = False
+            CheckBoxLoggedBitB.Visible = False
+            CheckBoxLoggedBitC.Visible = False
+            CheckBoxLoggedBitD.Visible = False
+            CheckBoxLoggedBitE.Visible = False
+            CheckBoxLoggedBitF.Visible = False
+
+            LabelValue1.Text = "Pulses Allowed = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(12)
+            LabelValue2.Text = "Override Pulses = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(13)
+            LabelValue3.Text = "Bottle Pulses = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(14)
+            LabelValue4.Text = "Magnetron Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(0) / 1000, "0.000") & " LPM"
+            LabelValue5.Text = "Linac Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(1) / 1000, "0.000") & " LPM"
+            LabelValue6.Text = "HX Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(2) / 1000, "0.000") & " LPM"
+            LabelValue7.Text = "HVPS Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(3) / 1000, "0.000") & " LPM"
+            LabelValue8.Text = "Circulator Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(4) / 1000, "0.000") & " LPM"
+            LabelValue9.Text = "Spare Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(5) / 1000, "0.000") & " LPM"
+            LabelValue10.Text = "SF6 Pressure = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(11) / 100, "00.00") & " PSI"
+            LabelValue11.Text = "Coolant Temp = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(9) / 10 - 272 & " C"
+            LabelValue12.Text = "Cabinent Temp = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(10) / 10 - 272 & " C"
+            LabelValue13.Text = "Linac Temp = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(8) / 10 - 272 & " C"
+            LabelValue14.Text = ""
+            LabelValue15.Text = ""
+
+
+            inputbutton1.enabled = True
+            inputbutton1.button_only = True
+            inputbutton1.button_name = "25 SF6 Pulses"
+            inputbutton1.max_value = 255
+            inputbutton1.min_value = 0
+            inputbutton1.scale = 1
+            inputbutton1.offset = 0
+            inputbutton1.button_index = REGISTER_CMD_COOLANT_INTERFACE_ALLOW_25_MORE_SF6_PULSES
+
+            inputbutton2.enabled = True
+            inputbutton2.button_only = False
+            inputbutton2.button_name = "Override Pulses"
+            inputbutton2.max_value = 5
+            inputbutton2.min_value = 0
+            inputbutton2.scale = 1
+            inputbutton2.offset = 0
+            inputbutton2.button_index = REGISTER_CMD_COOLANT_INTERFACE_ALLOW_SF6_PULSES_WHEN_PRESSURE_BELOW_LIMIT
+
+            inputbutton3.enabled = True
+            inputbutton3.button_only = False
+            inputbutton3.button_name = "Set Bottle Pulses"
+            inputbutton3.max_value = 1000
+            inputbutton3.min_value = 0
+            inputbutton3.scale = 1
+            inputbutton3.offset = 0
+            inputbutton3.button_index = REGISTER_CMD_COOLANT_INTERFACE_SET_SF6_PULSES_IN_BOTTLE
+
+            inputbutton4.enabled = False
+            inputbutton5.enabled = False
+
 
 
         ElseIf (selected_baord = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER) Then
@@ -1870,7 +1962,7 @@
         LabelDisplay4.Text = "Pulses Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(5) * 2 ^ 16 + ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(4)
         LabelDisplay5.Text = "Arcs Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(12)
         LabelDisplay6.Text = "PRF = " & Format((ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(3)) / 10, ".0") & " Hz"
-        LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).log_data(2) & " nA"
+        LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).log_data(3) & " nA"
         LabelDisplay8.Text = "Warmup Remaining = " & Math.Truncate(warmuptime / 60) & ":" & Format((warmuptime Mod 60), "00")
 
         ' Update the current Sync Bits
@@ -1946,7 +2038,7 @@
         ServerSettings.EventLogMessages.Add(&H12, "	State - Entered State Personality Received	")
         ServerSettings.EventLogMessages.Add(&H13, "	Error - Personality not valid 6/4 MeV	")
         ServerSettings.EventLogMessages.Add(&H14, "	Error - Personality not valid 2.5 MeV	")
-        ServerSettings.EventLogMessages.Add(&H15, "	Entered State Waiting for Initialization	")
+        ServerSettings.EventLogMessages.Add(&H15, "	State - Entered State Waiting for Initialization	")
         ServerSettings.EventLogMessages.Add(&H16, "	Notice - All Modules Configured	")
         ServerSettings.EventLogMessages.Add(&H17, "	State - Entered State warmup	")
         ServerSettings.EventLogMessages.Add(&H18, "	Notice - Warmup Done	")
@@ -2205,6 +2297,8 @@
 
     Private Sub cboIndex_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboIndex.SelectedIndexChanged
         board_index = cboIndex.SelectedIndex + 1
+        ComboBoxEEpromRegister.SelectedIndex = 1
+        ComboBoxEEpromRegister.SelectedIndex = 0
         TextBoxInput1.Text = ""
         TextBoxInput2.Text = ""
         TextBoxInput3.Text = ""
@@ -2623,4 +2717,15 @@
         ButtonToggleMode.Visible = False
     End Sub
 
+    Private Sub ButtonSetRevSN_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetRevSN.Click
+        Dim index As UInt16
+        Dim rev As UInt16
+        Dim serial_num As UInt16
+
+        index = (EEProm_index And &HFF00) + &H80
+        rev = Asc(TextBoxEEpromScale.Text)
+        serial_num = TextBoxEEpromOffSet.Text
+
+        ServerSettings.put_modbus_commands(index, 0, rev, serial_num)
+    End Sub
 End Class
