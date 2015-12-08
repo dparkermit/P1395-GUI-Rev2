@@ -2311,9 +2311,9 @@ Partial Class frmMain
         Me.CheckBoxControlBit1.Location = New System.Drawing.Point(400, 341)
         Me.CheckBoxControlBit1.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxControlBit1.Name = "CheckBoxControlBit1"
-        Me.CheckBoxControlBit1.Size = New System.Drawing.Size(114, 24)
+        Me.CheckBoxControlBit1.Size = New System.Drawing.Size(143, 24)
         Me.CheckBoxControlBit1.TabIndex = 366
-        Me.CheckBoxControlBit1.Text = "Can Status"
+        Me.CheckBoxControlBit1.Text = "Not Configured"
         Me.CheckBoxControlBit1.UseVisualStyleBackColor = False
         '
         'CheckBoxControlBit0
@@ -2337,9 +2337,9 @@ Partial Class frmMain
         Me.CheckBoxControlBit2.Location = New System.Drawing.Point(400, 366)
         Me.CheckBoxControlBit2.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxControlBit2.Name = "CheckBoxControlBit2"
-        Me.CheckBoxControlBit2.Size = New System.Drawing.Size(143, 24)
+        Me.CheckBoxControlBit2.Size = New System.Drawing.Size(155, 24)
         Me.CheckBoxControlBit2.TabIndex = 367
-        Me.CheckBoxControlBit2.Text = "Not Configured"
+        Me.CheckBoxControlBit2.Text = "Self Check Error"
         Me.CheckBoxControlBit2.UseVisualStyleBackColor = False
         '
         'CheckBoxControlBit3
@@ -2350,9 +2350,9 @@ Partial Class frmMain
         Me.CheckBoxControlBit3.Location = New System.Drawing.Point(400, 390)
         Me.CheckBoxControlBit3.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxControlBit3.Name = "CheckBoxControlBit3"
-        Me.CheckBoxControlBit3.Size = New System.Drawing.Size(155, 24)
+        Me.CheckBoxControlBit3.Size = New System.Drawing.Size(88, 24)
         Me.CheckBoxControlBit3.TabIndex = 368
-        Me.CheckBoxControlBit3.Text = "Self Check Error"
+        Me.CheckBoxControlBit3.Text = "Unused"
         Me.CheckBoxControlBit3.UseVisualStyleBackColor = False
         '
         'CheckBoxControlBit4
@@ -2402,9 +2402,9 @@ Partial Class frmMain
         Me.CheckBoxControlBit7.Location = New System.Drawing.Point(400, 491)
         Me.CheckBoxControlBit7.Margin = New System.Windows.Forms.Padding(0)
         Me.CheckBoxControlBit7.Name = "CheckBoxControlBit7"
-        Me.CheckBoxControlBit7.Size = New System.Drawing.Size(142, 24)
+        Me.CheckBoxControlBit7.Size = New System.Drawing.Size(88, 24)
         Me.CheckBoxControlBit7.TabIndex = 372
-        Me.CheckBoxControlBit7.Text = "Not Connected"
+        Me.CheckBoxControlBit7.Text = "Unused"
         Me.CheckBoxControlBit7.UseVisualStyleBackColor = False
         '
         'LabelGuiVersion

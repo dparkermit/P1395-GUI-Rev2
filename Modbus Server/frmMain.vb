@@ -41,7 +41,6 @@
     Public Const REGISTER_SPECIAL_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS As UInt16 = &HE084
 
     Public Const REGISTER_DEBUG_TOGGLE_RESET As UInt16 = &HEF00
-    Public Const REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING As UInt16 = &HEF01
     Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
     Public Const REGISTER_DEBUG_TOGGLE_XRAY_ENABLE As UInt16 = &HEF03
     Public Const REGISTER_DEBUG_TOGGLE_COOLING_FAULT As UInt16 = &HEF04
@@ -592,12 +591,11 @@
         ElseIf (selected_baord = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT) Then
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H4
 
-            CheckBoxFaultBit0.Text = "Arc Slow"
-            CheckBoxFaultBit1.Text = "Arc Fast"
-            CheckBoxFaultBit2.Text = "Arc Cont"
-            CheckBoxFaultBit3.Text = "Can FLT"
-            CheckBoxFaultBit4.Text = "False Trig"
-            CheckBoxFaultBit5.Visible = False
+            CheckBoxFaultBit0.Text = "Can FLT"
+            CheckBoxFaultBit1.Text = "Arc Slow"
+            CheckBoxFaultBit2.Text = "Arc Fast"
+            CheckBoxFaultBit3.Text = "Arc Cont"
+            CheckBoxFaultBit5.Text = "False Trig"
             CheckBoxFaultBit6.Visible = False
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
@@ -2422,7 +2420,7 @@
     End Sub
 
     Private Sub ButtonToggleHighSpeedDataLogging_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleHighSpeedDataLogging.Click
-        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING, 0, 0, 0)
+        'ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_HIGH_SPEED_LOGGING, 0, 0, 0)
     End Sub
 
 
