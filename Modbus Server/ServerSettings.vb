@@ -508,8 +508,10 @@ Public Class ServerSettings
         pulse_log_file.Write("Magnetron Current High Energy, ")
         pulse_log_file.Write("Magnetron Current Low Energy, ")
         pulse_log_file.Write("Pulse Sync Trigger Width, ")
-        pulse_log_file.Write("Pulse Sync High Energy, ")
-        pulse_log_file.Write("Pulse Sync Low Energy, ")
+        pulse_log_file.Write("Pulse Sync Trigger Width Filtered, ")
+        pulse_log_file.Write("Pulse Grid Start, ")
+        pulse_log_file.Write("Pulse Grid Stop, ")
+        pulse_log_file.Write("Pulse PRF, ")
         pulse_log_file.Write("ECB Message Count")
         pulse_log_file.WriteLine("")
     End Sub
@@ -531,7 +533,7 @@ Public Class ServerSettings
 
         If pulse_log_enabled Then
             For data_row = 0 To 15
-                For data_column = 0 To 18
+                For data_column = 0 To 15
                     mem_location = data_row * 38 + data_column * 2 + 2
                     data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
                     If data_column = 11 Then
@@ -541,6 +543,21 @@ Public Class ServerSettings
                     End If
                     pulse_log_file.Write(data_word & ",")
                 Next
+
+                For data_column = 16 To 17
+                    mem_location = data_row * 38 + data_column * 2 + 2
+                    data_word = bytes(mem_location)
+                    pulse_log_file.Write(data_word & ",")
+                    data_word = bytes(mem_location + 1)
+                    pulse_log_file.Write(data_word & ",")
+                Next
+
+                For data_column = 18 To 18
+                    mem_location = data_row * 38 + data_column * 2 + 2
+                    data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
+                    pulse_log_file.Write(data_word & ",")
+                Next
+
                 data_word = bytes(0) * 256 + bytes(1)
                 pulse_log_file.Write(data_word)
                 pulse_log_file.WriteLine("")

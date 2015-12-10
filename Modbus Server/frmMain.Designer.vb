@@ -239,6 +239,8 @@ Partial Class frmMain
         Me.CheckBoxLoggedBitD = New System.Windows.Forms.CheckBox()
         Me.CheckBoxLoggedBitE = New System.Windows.Forms.CheckBox()
         Me.ButtonSetRevSN = New System.Windows.Forms.Button()
+        Me.ButtonSaveFactorySettings = New System.Windows.Forms.Button()
+        Me.ButtonLoadFactorySettings = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2728,12 +2730,40 @@ Partial Class frmMain
         Me.ButtonSetRevSN.Text = "Set Rev/SN"
         Me.ButtonSetRevSN.UseVisualStyleBackColor = True
         '
+        'ButtonSaveFactorySettings
+        '
+        Me.ButtonSaveFactorySettings.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonSaveFactorySettings.FlatAppearance.BorderSize = 0
+        Me.ButtonSaveFactorySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonSaveFactorySettings.Location = New System.Drawing.Point(229, 251)
+        Me.ButtonSaveFactorySettings.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSaveFactorySettings.Name = "ButtonSaveFactorySettings"
+        Me.ButtonSaveFactorySettings.Size = New System.Drawing.Size(133, 28)
+        Me.ButtonSaveFactorySettings.TabIndex = 420
+        Me.ButtonSaveFactorySettings.Text = "Save Factory"
+        Me.ButtonSaveFactorySettings.UseVisualStyleBackColor = False
+        '
+        'ButtonLoadFactorySettings
+        '
+        Me.ButtonLoadFactorySettings.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonLoadFactorySettings.FlatAppearance.BorderSize = 0
+        Me.ButtonLoadFactorySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonLoadFactorySettings.Location = New System.Drawing.Point(229, 290)
+        Me.ButtonLoadFactorySettings.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonLoadFactorySettings.Name = "ButtonLoadFactorySettings"
+        Me.ButtonLoadFactorySettings.Size = New System.Drawing.Size(133, 28)
+        Me.ButtonLoadFactorySettings.TabIndex = 421
+        Me.ButtonLoadFactorySettings.Text = "Load Factory"
+        Me.ButtonLoadFactorySettings.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.ButtonLoadFactorySettings)
+        Me.Controls.Add(Me.ButtonSaveFactorySettings)
         Me.Controls.Add(Me.ButtonSetRevSN)
         Me.Controls.Add(Me.CheckBoxLoggedBitF)
         Me.Controls.Add(Me.CheckBoxLoggedBit0)
@@ -3172,4 +3202,6 @@ Partial Class frmMain
     Friend WithEvents CheckBoxLoggedBitD As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxLoggedBitE As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonSetRevSN As System.Windows.Forms.Button
+    Friend WithEvents ButtonSaveFactorySettings As System.Windows.Forms.Button
+    Friend WithEvents ButtonLoadFactorySettings As System.Windows.Forms.Button
 End Class

@@ -39,6 +39,8 @@
     Public Const REGISTER_SPECIAL_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON As UInt16 = &HE082
     Public Const REGISTER_SPECIAL_ECB_RESET_SLAVE As UInt16 = &HE083
     Public Const REGISTER_SPECIAL_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS As UInt16 = &HE084
+    Public Const REGISTER_SPECIAL_ECB_SAVE_SETTINGS_TO_EEPROM_MIRROR As UInt16 = &HE085
+    Public Const REGISTER_SPECIAL_ECB_LOAD_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT As UInt16 = &HE086
 
     Public Const REGISTER_DEBUG_TOGGLE_RESET As UInt16 = &HEF00
     Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
@@ -2031,6 +2033,7 @@
 
 
     Private Sub LoadLogRegisterText()
+        ServerSettings.EventLogMessages.Add(&H10, "State - Entered State Startup")
         ServerSettings.EventLogMessages.Add(&H10, "	State - Entered State Startup	")
         ServerSettings.EventLogMessages.Add(&H11, "	State - Entered State Wait for Personality from Pulse Sync	")
         ServerSettings.EventLogMessages.Add(&H12, "	State - Entered State Personality Received	")
@@ -2725,5 +2728,13 @@
         serial_num = TextBoxEEpromOffSet.Text
 
         ServerSettings.put_modbus_commands(index, 0, rev, serial_num)
+    End Sub
+
+    Private Sub ButtonSaveFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSaveFactorySettings.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_SAVE_SETTINGS_TO_EEPROM_MIRROR, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonLoadFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLoadFactorySettings.Click
+        ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_LOAD_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT, 0, 0, 0)
     End Sub
 End Class
