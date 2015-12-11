@@ -1167,8 +1167,8 @@
             CheckBoxFaultBit4.Text = "SW Htr OC/UC Abs"
             CheckBoxFaultBit5.Text = "SW Htr OV/UV Rel"
             CheckBoxFaultBit6.Text = "SW Bias OV/UV Abs"
-            CheckBoxFaultBit7.Visible = False
-            CheckBoxFaultBit8.Text = "CAN COMM Fault"
+            CheckBoxFaultBit7.Text = "CAN COMM Fault"
+            CheckBoxFaultBit8.Text = "FPGA SPI COMM Fault"
             CheckBoxFaultBit9.Text = "FPGA ARC Fault"
             CheckBoxFaultBitA.Text = "FPGA T>75C"
             CheckBoxFaultBitB.Text = "FPGA PW/Duty Fault"
