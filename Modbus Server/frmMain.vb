@@ -596,7 +596,8 @@
             CheckBoxFaultBit1.Text = "Arc Slow"
             CheckBoxFaultBit2.Text = "Arc Fast"
             CheckBoxFaultBit3.Text = "Arc Cont"
-            CheckBoxFaultBit5.Text = "False Trig"
+            CheckBoxFaultBit4.Text = "False Trig"
+            CheckBoxFaultBit5.Visible = False
             CheckBoxFaultBit6.Visible = False
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
@@ -1160,19 +1161,19 @@
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H100
 
             CheckBoxFaultBit0.Text = "FPGA FW Rev Mismatch"
-            CheckBoxFaultBit1.Text = "SW Cath OV/UV Rel"
-            CheckBoxFaultBit2.Text = "SW Htr OV/UV Rel"
-            CheckBoxFaultBit3.Text = "SW Htr V I-Limited"
-            CheckBoxFaultBit4.Text = "SW Htr OC/UC Abs"
-            CheckBoxFaultBit5.Text = "SW Htr OV/UV Rel"
-            CheckBoxFaultBit6.Text = "SW Bias OV/UV Abs"
-            CheckBoxFaultBit7.Visible = False
-            CheckBoxFaultBit8.Text = "CAN COMM Fault"
-            CheckBoxFaultBit9.Text = "FPGA ARC Fault"
-            CheckBoxFaultBitA.Text = "FPGA T>75C"
-            CheckBoxFaultBitB.Text = "FPGA PW/Duty Fault"
-            CheckBoxFaultBitC.Text = "FPGA Grid Fault"
-            CheckBoxFaultBitD.Text = "CL Brd ADC Read Fail"
+            CheckBoxFaultBit1.Text = "HV Vmon Error"
+            CheckBoxFaultBit2.Text = "Heater Vmon Error"
+            CheckBoxFaultBit3.Text = "Heater Current Limit"
+            CheckBoxFaultBit4.Text = "Heater Imon Error"
+            CheckBoxFaultBit5.Text = "Top Vmon Error"
+            CheckBoxFaultBit6.Text = "Bias Vmon Error"
+            CheckBoxFaultBit7.Text = "Can Comm Error"
+            CheckBoxFaultBit8.Text = "Watchdog Fault"
+            CheckBoxFaultBit9.Text = "ARC Fault"
+            CheckBoxFaultBitA.Text = "Over Temp"
+            CheckBoxFaultBitB.Text = "PW/Duty Fault"
+            CheckBoxFaultBitC.Text = "Grid Fault - FPGA"
+            CheckBoxFaultBitD.Text = "ADC Read Fail"
             CheckBoxFaultBitE.Text = "Htr Ramp Timeout"
             CheckBoxFaultBitF.Text = "Htr Startup Fail"
 
@@ -1964,13 +1965,23 @@
         warmuptime = Math.Max(warmuptime, ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(5))
         warmuptime = Math.Max(warmuptime, ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(6))
 
+        ' Calculate the PRF
+        Dim prf As UInt16
+        prf = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(3)
+        If prf <> 0 Then
+            ' If the PRF is 0, then no trigger data is sent from the pulse sync board, so the "more accurate value" will store the last trigger sent
+            ' If the PRF is not Zero, then triggers are being sent so use the most recent value
+            prf = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(3)
+        End If
+
+
 
         LabelDisplay1.Text = "Magnetron Current = " & Format(magnetron_current / 100, ".00") & " A"
         LabelDisplay2.Text = "Magnet Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(1) / 1000, ".000") & " A"
         LabelDisplay3.Text = "Heater Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(3) / 1000, ".000") & " A"
         LabelDisplay4.Text = "Pulses Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(5) * 2 ^ 16 + ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(4)
         LabelDisplay5.Text = "Arcs Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(12)
-        LabelDisplay6.Text = "PRF = " & Format((ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(3)) / 10, ".0") & " Hz"
+        LabelDisplay6.Text = "PRF = " & Format(prf / 10, ".0") & " Hz"
         LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).log_data(3) & " nA"
         LabelDisplay8.Text = "Warmup Remaining = " & Math.Truncate(warmuptime / 60) & ":" & Format((warmuptime Mod 60), "00")
 
