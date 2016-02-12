@@ -41,6 +41,8 @@
     Public Const REGISTER_SPECIAL_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS As UInt16 = &HE084
     Public Const REGISTER_SPECIAL_ECB_SAVE_SETTINGS_TO_EEPROM_MIRROR As UInt16 = &HE085
     Public Const REGISTER_SPECIAL_ECB_LOAD_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT As UInt16 = &HE086
+    Public Const REGISTER_CMD_ECB_RESET_FAULTS As UInt16 = &HE087
+
 
     Public Const REGISTER_DEBUG_TOGGLE_RESET As UInt16 = &HEF00
     Public Const REGISTER_DEBUG_TOGGLE_HV_ENABLE As UInt16 = &HEF02
@@ -485,12 +487,12 @@
             LabelValue1.Text = "High Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(2) / 1000, "0.000") & " kV"
             LabelValue2.Text = "Low Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(1) / 1000, "0.000") & " kV"
             LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(7)
-            LabelValue4.Text = "Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(6) / 1000, "0.000") & " kV"
+            LabelValue4.Text = "Vmon Pulse = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(0) / 1000, "0.000") & " kV"
             LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
             LabelValue6.Text = ""
             LabelValue7.Text = ""
             LabelValue8.Text = ""
-            LabelValue9.Text = "Vmon Pre-Pulse = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(0) / 1000, "0.000") & " kV"
+            LabelValue9.Text = "Vmon Avg = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(6) / 1000, "0.000") & " kV"
             LabelValue10.Text = ""
             LabelValue11.Text = ""
             LabelValue12.Text = ""
@@ -516,21 +518,21 @@
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H80
 
             CheckBoxFaultBit0.Text = "HTR OC ABS"
-            CheckBoxFaultBit1.Text = "HTR UC ABS"
-            CheckBoxFaultBit2.Text = "HTR OC REL"
-            CheckBoxFaultBit3.Text = "HTR UC REL"
-            CheckBoxFaultBit4.Text = "HTR OV ABS"
-            CheckBoxFaultBit5.Text = "HTR UV REL"
-            CheckBoxFaultBit6.Text = "MAG OC ABS"
-            CheckBoxFaultBit7.Text = "MAG UC ABS"
-            CheckBoxFaultBit8.Text = "MAG OC REL"
-            CheckBoxFaultBit9.Text = "MAG UC REL"
-            CheckBoxFaultBitA.Text = "MAG OV ABS"
-            CheckBoxFaultBitB.Text = "MAG UV REL"
-            CheckBoxFaultBitC.Text = "HW HTR OV"
-            CheckBoxFaultBitD.Text = "HW TEMP SW"
-            CheckBoxFaultBitE.Text = "COOLANT FLT"
-            CheckBoxFaultBitF.Text = "CAN FLT"
+            CheckBoxFaultBit1.Text = "HTR OC REL"
+            CheckBoxFaultBit2.Text = "HTR UC REL"
+            CheckBoxFaultBit3.Text = "HTR UV REL"
+            CheckBoxFaultBit4.Text = "MAG OC ABS"
+            CheckBoxFaultBit5.Text = "MAG UC ABS"
+            CheckBoxFaultBit6.Text = "MAG UV ABS"
+            CheckBoxFaultBit7.Text = "COOLANT FLT"
+            CheckBoxFaultBit8.Text = "CAN FLT"
+            CheckBoxFaultBit9.Visible = False
+            CheckBoxFaultBitA.Visible = False
+            CheckBoxFaultBitB.Visible = False
+            CheckBoxFaultBitC.Visible = False
+            CheckBoxFaultBitD.Visible = False
+            CheckBoxFaultBitE.Visible = False
+            CheckBoxFaultBitF.Visible = False
 
             CheckBoxLoggedBit0.Visible = False
             CheckBoxLoggedBit1.Visible = False
@@ -597,7 +599,7 @@
             CheckBoxFaultBit2.Text = "Arc Fast"
             CheckBoxFaultBit3.Text = "Arc Cont"
             CheckBoxFaultBit4.Text = "False Trig"
-            CheckBoxFaultBit5.Visible = False
+            CheckBoxFaultBit5.Text = "Poor Pulse"
             CheckBoxFaultBit6.Visible = False
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
@@ -632,7 +634,7 @@
             LabelValue4.Text = "Arcs Total = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(7) * 2 ^ 16 + ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(6), "###,###,###,##0")
             LabelValue5.Text = "Imon High Energy = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(0) / 100, "0.00") & " A"
             LabelValue6.Text = "Imon Low Energy = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(2) / 100, "0.00") & " A"
-            LabelValue7.Text = ""
+            LabelValue7.Text = "Pulses OOR= " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(13), "###,###,###,##0")
             LabelValue8.Text = ""
             LabelValue9.Text = ""
             LabelValue10.Text = ""
@@ -1196,7 +1198,7 @@
 
 
             LabelValue1.Text = "Ek Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(8)) * (-0.001), "0.00kV") 'ekset
-            LabelValue2.Text = "Ef Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(9)) * (-0.001), "0.00V") 'efset
+            LabelValue2.Text = "If Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(9)) * (0.001), "0.00A") 'efset
             LabelValue3.Text = "Eg Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(11)) * 0.01 - 80, "0.0V")  ' egset
             LabelValue4.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(1)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
             LabelValue5.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(0)) * 0.1, "0.0mA") ' GUN_DRIVER_IKP_RD_CAL
@@ -1237,10 +1239,10 @@
 
             inputbutton2.enabled = True
             inputbutton2.button_only = False
-            inputbutton2.button_name = "Set Ef"
-            inputbutton2.max_value = 6200
+            inputbutton2.button_name = "Set If"
+            inputbutton2.max_value = 1600
             inputbutton2.min_value = 0
-            inputbutton2.scale = -1000
+            inputbutton2.scale = 1000
             inputbutton2.offset = 0
             inputbutton2.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
 
@@ -3567,5 +3569,9 @@
 
     Private Sub ButtonLoadFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLoadFactorySettings.Click
         ServerSettings.put_modbus_commands(REGISTER_SPECIAL_ECB_LOAD_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReset.Click
+        ServerSettings.put_modbus_commands(REGISTER_CMD_ECB_RESET_FAULTS, 0, 0, 0)
     End Sub
 End Class

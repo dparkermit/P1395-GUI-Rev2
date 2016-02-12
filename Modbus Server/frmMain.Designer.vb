@@ -241,6 +241,7 @@ Partial Class frmMain
         Me.ButtonSetRevSN = New System.Windows.Forms.Button()
         Me.ButtonSaveFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonLoadFactorySettings = New System.Windows.Forms.Button()
+        Me.ButtonReset = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2756,12 +2757,26 @@ Partial Class frmMain
         Me.ButtonLoadFactorySettings.Text = "Load Factory"
         Me.ButtonLoadFactorySettings.UseVisualStyleBackColor = False
         '
+        'ButtonReset
+        '
+        Me.ButtonReset.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonReset.FlatAppearance.BorderSize = 0
+        Me.ButtonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonReset.Location = New System.Drawing.Point(227, 7)
+        Me.ButtonReset.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonReset.Name = "ButtonReset"
+        Me.ButtonReset.Size = New System.Drawing.Size(133, 28)
+        Me.ButtonReset.TabIndex = 422
+        Me.ButtonReset.Text = "Reset Fault"
+        Me.ButtonReset.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.ButtonReset)
         Me.Controls.Add(Me.ButtonLoadFactorySettings)
         Me.Controls.Add(Me.ButtonSaveFactorySettings)
         Me.Controls.Add(Me.ButtonSetRevSN)
@@ -3204,4 +3219,5 @@ Partial Class frmMain
     Friend WithEvents ButtonSetRevSN As System.Windows.Forms.Button
     Friend WithEvents ButtonSaveFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonLoadFactorySettings As System.Windows.Forms.Button
+    Friend WithEvents ButtonReset As System.Windows.Forms.Button
 End Class
