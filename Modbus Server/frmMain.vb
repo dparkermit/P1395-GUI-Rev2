@@ -524,9 +524,9 @@
             CheckBoxFaultBit4.Text = "MAG OC ABS"
             CheckBoxFaultBit5.Text = "MAG UC ABS"
             CheckBoxFaultBit6.Text = "MAG UV ABS"
-            CheckBoxFaultBit7.Text = "COOLANT FLT"
-            CheckBoxFaultBit8.Text = "CAN FLT"
-            CheckBoxFaultBit9.Visible = False
+            CheckBoxFaultBit7.Text = "TEMP SW"
+            CheckBoxFaultBit8.Text = "COOLANT FLT"
+            CheckBoxFaultBit9.Text = "CAN FLT"
             CheckBoxFaultBitA.Visible = False
             CheckBoxFaultBitB.Visible = False
             CheckBoxFaultBitC.Visible = False
@@ -534,10 +534,10 @@
             CheckBoxFaultBitE.Visible = False
             CheckBoxFaultBitF.Visible = False
 
-            CheckBoxLoggedBit0.Visible = False
-            CheckBoxLoggedBit1.Visible = False
-            CheckBoxLoggedBit2.Visible = False
-            CheckBoxLoggedBit3.Visible = False
+            CheckBoxLoggedBit0.Text = "MAG OK"
+            CheckBoxLoggedBit1.Text = "HTR OK"
+            CheckBoxLoggedBit2.Text = "HTR OV LATCH"
+            CheckBoxLoggedBit3.Text = "RLY OPEN"
             CheckBoxLoggedBit4.Visible = False
             CheckBoxLoggedBit5.Visible = False
             CheckBoxLoggedBit6.Visible = False
