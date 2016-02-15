@@ -538,8 +538,8 @@
             CheckBoxLoggedBit1.Text = "HTR OK"
             CheckBoxLoggedBit2.Text = "HTR OV LATCH"
             CheckBoxLoggedBit3.Text = "RLY OPEN"
-            CheckBoxLoggedBit4.Visible = False
-            CheckBoxLoggedBit5.Visible = False
+            CheckBoxLoggedBit4.Text = "HTR OC"
+            CheckBoxLoggedBit5.Text = "OV TEMP"
             CheckBoxLoggedBit6.Visible = False
             CheckBoxLoggedBit7.Visible = False
             CheckBoxLoggedBit8.Visible = False
@@ -1007,7 +1007,7 @@
             CheckBoxLoggedBit3.Text = "SF6 Fill Required"
             CheckBoxLoggedBit4.Text = "No SF6 Pulses Available"
             CheckBoxLoggedBit5.Text = "SF6 Filling"
-            CheckBoxLoggedBit6.Visible = False
+            CheckBoxLoggedBit6.Text = "Flow OK"
             CheckBoxLoggedBit7.Visible = False
             CheckBoxLoggedBit8.Visible = False
             CheckBoxLoggedBit9.Visible = False
