@@ -1719,9 +1719,9 @@ Partial Class frmMain
         Me.Label2.Location = New System.Drawing.Point(137, 208)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 20)
+        Me.Label2.Size = New System.Drawing.Size(48, 20)
         Me.Label2.TabIndex = 355
-        Me.Label2.Text = "FLT"
+        Me.Label2.Text = "COM"
         '
         'CheckBoxOperatePulseSync
         '
