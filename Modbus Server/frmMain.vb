@@ -1162,21 +1162,21 @@
 
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H100
 
-            CheckBoxFaultBit0.Text = "FPGA FW Rev Mismatch"
-            CheckBoxFaultBit1.Text = "HV Vmon Error"
-            CheckBoxFaultBit2.Text = "Heater Vmon Error"
-            CheckBoxFaultBit3.Text = "Heater Current Limit"
-            CheckBoxFaultBit4.Text = "Heater Imon Error"
-            CheckBoxFaultBit5.Text = "Top Vmon Error"
-            CheckBoxFaultBit6.Text = "Bias Vmon Error"
-            CheckBoxFaultBit7.Text = "Can Comm Error"
-            CheckBoxFaultBit8.Text = "Watchdog Fault"
+            CheckBoxFaultBit0.Text = "FPGA Rev Flt"
+            CheckBoxFaultBit1.Text = "HV Vmon Flt"
+            CheckBoxFaultBit2.Text = "HTR Vmon Flt"
+            CheckBoxFaultBit3.Visible = False
+            CheckBoxFaultBit4.Text = "HTR OC ABS"
+            CheckBoxFaultBit5.Text = "Top Vmon Flt"
+            CheckBoxFaultBit6.Text = "Bias Vmon Flt"
+            CheckBoxFaultBit7.Visible = False
+            CheckBoxFaultBit8.Visible = False
             CheckBoxFaultBit9.Text = "ARC Fault"
             CheckBoxFaultBitA.Text = "Over Temp"
-            CheckBoxFaultBitB.Text = "PW/Duty Fault"
-            CheckBoxFaultBitC.Text = "Grid Fault - FPGA"
+            CheckBoxFaultBitB.Text = "CAN Comm"
+            CheckBoxFaultBitC.Text = "Grid Flt"
             CheckBoxFaultBitD.Text = "ADC Read Fail"
-            CheckBoxFaultBitE.Text = "Htr Ramp Timeout"
+            CheckBoxFaultBitE.Text = "SPI Comm FLt"
             CheckBoxFaultBitF.Text = "Htr Startup Fail"
 
             CheckBoxLoggedBit0.Visible = False
