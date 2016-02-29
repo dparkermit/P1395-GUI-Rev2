@@ -242,6 +242,15 @@ Partial Class frmMain
         Me.ButtonSaveFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonLoadFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
+        Me.ButtonResetFPGA = New System.Windows.Forms.Button()
+        Me.TextBoxPulseSyncA = New System.Windows.Forms.TextBox()
+        Me.TextBoxPulseSyncB = New System.Windows.Forms.TextBox()
+        Me.TextBoxPulseSyncC = New System.Windows.Forms.TextBox()
+        Me.TextBoxPulseSyncD = New System.Windows.Forms.TextBox()
+        Me.ButtonSetHighStart = New System.Windows.Forms.Button()
+        Me.ButtonSetHighStop = New System.Windows.Forms.Button()
+        Me.ButtonSetLowStop = New System.Windows.Forms.Button()
+        Me.ButtonSetLowStart = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2770,12 +2779,107 @@ Partial Class frmMain
         Me.ButtonReset.Text = "Reset Fault"
         Me.ButtonReset.UseVisualStyleBackColor = False
         '
+        'ButtonResetFPGA
+        '
+        Me.ButtonResetFPGA.Location = New System.Drawing.Point(1395, 644)
+        Me.ButtonResetFPGA.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonResetFPGA.Name = "ButtonResetFPGA"
+        Me.ButtonResetFPGA.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonResetFPGA.TabIndex = 423
+        Me.ButtonResetFPGA.Text = "Reset FPGA"
+        Me.ButtonResetFPGA.UseVisualStyleBackColor = True
+        '
+        'TextBoxPulseSyncA
+        '
+        Me.TextBoxPulseSyncA.Location = New System.Drawing.Point(1205, 722)
+        Me.TextBoxPulseSyncA.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxPulseSyncA.MaxLength = 7
+        Me.TextBoxPulseSyncA.Name = "TextBoxPulseSyncA"
+        Me.TextBoxPulseSyncA.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxPulseSyncA.TabIndex = 425
+        '
+        'TextBoxPulseSyncB
+        '
+        Me.TextBoxPulseSyncB.Location = New System.Drawing.Point(1205, 752)
+        Me.TextBoxPulseSyncB.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxPulseSyncB.MaxLength = 7
+        Me.TextBoxPulseSyncB.Name = "TextBoxPulseSyncB"
+        Me.TextBoxPulseSyncB.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxPulseSyncB.TabIndex = 426
+        '
+        'TextBoxPulseSyncC
+        '
+        Me.TextBoxPulseSyncC.Location = New System.Drawing.Point(1205, 782)
+        Me.TextBoxPulseSyncC.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxPulseSyncC.MaxLength = 7
+        Me.TextBoxPulseSyncC.Name = "TextBoxPulseSyncC"
+        Me.TextBoxPulseSyncC.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxPulseSyncC.TabIndex = 427
+        '
+        'TextBoxPulseSyncD
+        '
+        Me.TextBoxPulseSyncD.Location = New System.Drawing.Point(1205, 812)
+        Me.TextBoxPulseSyncD.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxPulseSyncD.MaxLength = 7
+        Me.TextBoxPulseSyncD.Name = "TextBoxPulseSyncD"
+        Me.TextBoxPulseSyncD.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxPulseSyncD.TabIndex = 428
+        '
+        'ButtonSetHighStart
+        '
+        Me.ButtonSetHighStart.Location = New System.Drawing.Point(1302, 720)
+        Me.ButtonSetHighStart.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetHighStart.Name = "ButtonSetHighStart"
+        Me.ButtonSetHighStart.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetHighStart.TabIndex = 429
+        Me.ButtonSetHighStart.Text = "Set High Start"
+        Me.ButtonSetHighStart.UseVisualStyleBackColor = True
+        '
+        'ButtonSetHighStop
+        '
+        Me.ButtonSetHighStop.Location = New System.Drawing.Point(1302, 749)
+        Me.ButtonSetHighStop.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetHighStop.Name = "ButtonSetHighStop"
+        Me.ButtonSetHighStop.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetHighStop.TabIndex = 430
+        Me.ButtonSetHighStop.Text = "Set High Stop"
+        Me.ButtonSetHighStop.UseVisualStyleBackColor = True
+        '
+        'ButtonSetLowStop
+        '
+        Me.ButtonSetLowStop.Location = New System.Drawing.Point(1302, 805)
+        Me.ButtonSetLowStop.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetLowStop.Name = "ButtonSetLowStop"
+        Me.ButtonSetLowStop.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetLowStop.TabIndex = 432
+        Me.ButtonSetLowStop.Text = "Set Low Stop"
+        Me.ButtonSetLowStop.UseVisualStyleBackColor = True
+        '
+        'ButtonSetLowStart
+        '
+        Me.ButtonSetLowStart.Location = New System.Drawing.Point(1302, 776)
+        Me.ButtonSetLowStart.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetLowStart.Name = "ButtonSetLowStart"
+        Me.ButtonSetLowStart.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetLowStart.TabIndex = 431
+        Me.ButtonSetLowStart.Text = "Set Low Start"
+        Me.ButtonSetLowStart.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.ButtonSetLowStop)
+        Me.Controls.Add(Me.ButtonSetLowStart)
+        Me.Controls.Add(Me.ButtonSetHighStop)
+        Me.Controls.Add(Me.ButtonSetHighStart)
+        Me.Controls.Add(Me.TextBoxPulseSyncD)
+        Me.Controls.Add(Me.TextBoxPulseSyncC)
+        Me.Controls.Add(Me.TextBoxPulseSyncB)
+        Me.Controls.Add(Me.TextBoxPulseSyncA)
+        Me.Controls.Add(Me.ButtonResetFPGA)
         Me.Controls.Add(Me.ButtonReset)
         Me.Controls.Add(Me.ButtonLoadFactorySettings)
         Me.Controls.Add(Me.ButtonSaveFactorySettings)
@@ -3220,4 +3324,13 @@ Partial Class frmMain
     Friend WithEvents ButtonSaveFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonLoadFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonReset As System.Windows.Forms.Button
+    Friend WithEvents ButtonResetFPGA As System.Windows.Forms.Button
+    Friend WithEvents TextBoxPulseSyncA As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPulseSyncB As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPulseSyncC As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPulseSyncD As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetHighStart As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetHighStop As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetLowStop As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetLowStart As System.Windows.Forms.Button
 End Class

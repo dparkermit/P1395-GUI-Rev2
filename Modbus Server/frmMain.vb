@@ -2,10 +2,12 @@
 
 
     Public Const REGISTER_HEATER_CURRENT_AT_STANDBY As UInt16 = &H0
-    Public Const REGISTER_ELECTROMAGNET_CURRENT As UInt16 = &H1
+    Public Const REGISTER_ELECTROMAGNET_CURRENT_HIGH_ENERGY As UInt16 = &H1
+    Public Const REGISTER_ELECTROMAGNET_CURRENT_LOW_ENERGY As UInt16 = &HC
     Public Const REGISTER_HOME_POSITION As UInt16 = &H5
     Public Const REGISTER_AFC_OFFSET As UInt16 = &H9
-    Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE As UInt16 = &HA
+    Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE_HIGH_ENERGY As UInt16 = &HA
+    Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE_LOW_ENERGY As UInt16 = &HB
     Public Const REGISTER_HIGH_ENERGY_SET_POINT As UInt16 = &H10
     Public Const REGISTER_LOW_ENERGY_SET_POINT As UInt16 = &H11
     Public Const REGISTER_GUN_DRIVER_HEATER_VOLTAGE As UInt16 = &H20
@@ -30,6 +32,8 @@
     Public Const REGISTER_CMD_AFC_SELECT_MANUAL_MODE As UInt16 = &H5082
     Public Const REGISTER_CMD_AFC_MANUAL_TARGET_POSITION As UInt16 = &H5083
     Public Const REGISTER_CMD_AFC_MANUAL_MOVE As UInt16 = &H5084
+
+    Public Const REGISTER_CMD_GUN_DRIVER_RESET_FPGA As UInt16 = &H8202
 
     Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_25_MORE_SF6_PULSES As UInt16 = &H6082
     Public Const REGISTER_CMD_COOLANT_INTERFACE_ALLOW_SF6_PULSES_WHEN_PRESSURE_BELOW_LIMIT As UInt16 = &H6083
@@ -65,7 +69,6 @@
     Public Const REGISTER_SPECIAL_2_5_SET_HV_LAMBDA_VOLTAGE As UInt16 = &HEF46
     Public Const REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_START As UInt16 = &HEF47
     Public Const REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_STOP As UInt16 = &HEF48
-
 
 
 
@@ -114,7 +117,6 @@
         ServerSettings.OpenEventLogFile()
         ServerSettings.event_log_file.WriteLine("GUI Started at " & Format(DateTime.UtcNow, "yyyy/MM/dd HH:mm:ss"))
         ServerSettings.CloseEventLogFile()
-
 
 
         inputbutton1.button_name = "loading"
@@ -366,7 +368,6 @@
         UpdateButtons()
 
 
-
         Dim selected_board_connected As Boolean = False
 
         If (selected_baord = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
@@ -449,7 +450,7 @@
 
 
             CheckBoxFaultBit0.Text = "Can FLT"
-            CheckBoxFaultBit1.Visible = False
+            CheckBoxFaultBit1.Text = "HV ON FLT"
             CheckBoxFaultBit2.Visible = False
             CheckBoxFaultBit3.Visible = False
             CheckBoxFaultBit4.Visible = False
@@ -502,14 +503,23 @@
 
             inputbutton1.enabled = True
             inputbutton1.button_only = False
-            inputbutton1.button_name = "Set HV"
+            inputbutton1.button_name = "Set HV High"
             inputbutton1.max_value = 17000
             inputbutton1.min_value = 6000
             inputbutton1.scale = 1000
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_SPECIAL_2_5_SET_HV_LAMBDA_VOLTAGE
+            inputbutton1.button_index = REGISTER_HIGH_ENERGY_SET_POINT
 
-            inputbutton2.enabled = False
+            inputbutton2.enabled = True
+            inputbutton2.button_only = False
+            inputbutton2.button_name = "Set HV Low"
+            inputbutton2.max_value = 17000
+            inputbutton2.min_value = 6000
+            inputbutton2.scale = 1000
+            inputbutton2.offset = 0
+            inputbutton2.button_index = REGISTER_LOW_ENERGY_SET_POINT
+
+
             inputbutton3.enabled = False
             inputbutton4.enabled = False
             inputbutton5.enabled = False
@@ -552,39 +562,48 @@
             CheckBoxLoggedBitF.Visible = False
 
 
-            LabelValue1.Text = "Magnet Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(2) / 1000, ".000") & " A"
-            LabelValue2.Text = "Heater Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(0) / 1000, ".000") & " A"
-            LabelValue3.Text = ""
-            LabelValue4.Text = "Magnet Set Rdbck= " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(5) / 1000, ".000") & " A"
-            LabelValue5.Text = "Mag Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(1) / 1000, ".000") & " A"
-            LabelValue6.Text = "Mag Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(0) / 1000, ".000") & " V"
-            LabelValue7.Text = ""
-            LabelValue8.Text = "Heater Scaled Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(1) / 1000, ".000") & " A"
-            LabelValue9.Text = "Heater Set Rdbck = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(7) / 1000, ".000") & " A"
-            LabelValue10.Text = "Htr Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(3) / 1000, ".000") & " A"
-            LabelValue11.Text = "Htr Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(2) / 1000, ".000") & " V"
-            LabelValue12.Text = ""
+            LabelValue1.Text = "Magnet Set High = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(2) / 1000, ".000") & " A"
+            LabelValue2.Text = "Magnet Set Low = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(3) / 1000, ".000") & " A"
+            LabelValue3.Text = "Heater Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(0) / 1000, ".000") & " A"
+            LabelValue4.Text = ""
+            LabelValue5.Text = "Magnet Set Rdbck= " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(5) / 1000, ".000") & " A"
+            LabelValue6.Text = "Mag Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(1) / 1000, ".000") & " A"
+            LabelValue7.Text = "Mag Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(0) / 1000, ".000") & " V"
+            LabelValue8.Text = ""
+            LabelValue9.Text = "Heater Scaled Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).ecb_local_data(1) / 1000, ".000") & " A"
+            LabelValue10.Text = "Heater Set Rdbck = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(7) / 1000, ".000") & " A"
+            LabelValue11.Text = "Htr Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(3) / 1000, ".000") & " A"
+            LabelValue12.Text = "Htr Vmon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(2) / 1000, ".000") & " V"
             LabelValue13.Text = ""
             LabelValue14.Text = ""
             LabelValue15.Text = ""
 
             inputbutton1.enabled = True
             inputbutton1.button_only = False
-            inputbutton1.button_name = "Set Magnet"
+            inputbutton1.button_name = "Set Magnet High"
             inputbutton1.max_value = 21000
             inputbutton1.min_value = 8000
             inputbutton1.scale = 1000
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_ELECTROMAGNET_CURRENT
+            inputbutton1.button_index = REGISTER_ELECTROMAGNET_CURRENT_HIGH_ENERGY
 
             inputbutton2.enabled = True
-            inputbutton1.button_only = False
-            inputbutton2.button_name = "Set Heater"
-            inputbutton2.max_value = 10000
-            inputbutton2.min_value = 0
+            inputbutton2.button_only = False
+            inputbutton2.button_name = "Set Magnet Low"
+            inputbutton2.max_value = 21000
+            inputbutton2.min_value = 8000
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_HEATER_CURRENT_AT_STANDBY
+            inputbutton2.button_index = REGISTER_ELECTROMAGNET_CURRENT_LOW_ENERGY
+
+            inputbutton3.enabled = True
+            inputbutton3.button_only = False
+            inputbutton3.button_name = "Set Heater"
+            inputbutton3.max_value = 10000
+            inputbutton3.min_value = 0
+            inputbutton3.scale = 1000
+            inputbutton3.offset = 0
+            inputbutton3.button_index = REGISTER_HEATER_CURRENT_AT_STANDBY
 
             inputbutton3.enabled = False
             inputbutton4.enabled = False
@@ -762,14 +781,14 @@
             End If
 
             LabelValue1.Text = "Home Position = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).ecb_local_data(0)
-            LabelValue2.Text = "AFT Ctrl V = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).ecb_local_data(1) / 1000, "0.000") & " V"
-            LabelValue3.Text = "Readback Position = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(2)
+            LabelValue2.Text = "AFT Ctrl V High = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).ecb_local_data(1) / 1000, "0.000") & " V"
+            LabelValue3.Text = "AFT Ctrl V Low = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).ecb_local_data(2) / 1000, "0.000") & " V"
             LabelValue4.Text = ""
-            LabelValue5.Text = "Rback Home Pos = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(11)
-            LabelValue6.Text = "Filtered Error = " & filtered_error
-            LabelValue7.Text = "Previous A Sample = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(6)
-            LabelValue8.Text = "Previous B Sample = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(5)
-            LabelValue9.Text = ""
+            LabelValue5.Text = "Readback Position = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(2)
+            LabelValue6.Text = "Rback Home Pos = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(11)
+            LabelValue7.Text = "Filtered Error = " & filtered_error
+            LabelValue8.Text = "Previous A Sample = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(6)
+            LabelValue9.Text = "Previous B Sample = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(5)
             LabelValue10.Text = "Rback AFT Ctrl V = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).log_data(8) / 1000, "0.000") & " V"
             LabelValue11.Text = ""
             LabelValue12.Text = ""
@@ -788,45 +807,54 @@
 
             inputbutton2.enabled = True
             inputbutton2.button_only = False
-            inputbutton2.button_name = "AFT Control Voltage"
+            inputbutton2.button_name = "AFT Control V High"
             inputbutton2.max_value = 10000
             inputbutton2.min_value = 1000
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE
+            inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_HIGH_ENERGY
 
-
-            If afc_manual_mode Then
-                inputbutton3.enabled = True
-            Else
-                inputbutton3.enabled = False
-
-            End If
-
+            inputbutton3.enabled = True
             inputbutton3.button_only = False
-            inputbutton3.button_name = "Manual Position"
-            inputbutton3.max_value = 64000
-            inputbutton3.min_value = 0
-            inputbutton3.scale = 1
+            inputbutton3.button_name = "AFT Control V Low"
+            inputbutton3.max_value = 10000
+            inputbutton3.min_value = 1000
+            inputbutton3.scale = 1000
             inputbutton3.offset = 0
-            inputbutton3.button_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
+            inputbutton3.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_LOW_ENERGY
+
 
             If afc_manual_mode Then
-                inputbutton4.button_name = "AFC Mode"
-                inputbutton4.button_index = REGISTER_CMD_AFC_SELECT_AFC_MODE
+                inputbutton4.enabled = True
             Else
-                inputbutton4.button_name = "Manual Mode"
-                inputbutton4.button_index = REGISTER_CMD_AFC_SELECT_MANUAL_MODE
+                inputbutton4.enabled = False
+
             End If
 
-            inputbutton4.enabled = True
-            inputbutton4.button_only = True
+            inputbutton4.button_only = False
+            inputbutton4.button_name = "Manual Position"
             inputbutton4.max_value = 64000
             inputbutton4.min_value = 0
             inputbutton4.scale = 1
             inputbutton4.offset = 0
+            inputbutton4.button_index = REGISTER_CMD_AFC_MANUAL_TARGET_POSITION
 
-            inputbutton5.enabled = False
+            If afc_manual_mode Then
+                inputbutton5.button_name = "AFC Mode"
+                inputbutton5.button_index = REGISTER_CMD_AFC_SELECT_AFC_MODE
+            Else
+                inputbutton5.button_name = "Manual Mode"
+                inputbutton5.button_index = REGISTER_CMD_AFC_SELECT_MANUAL_MODE
+            End If
+
+            inputbutton5.enabled = True
+            inputbutton5.button_only = True
+            inputbutton5.max_value = 64000
+            inputbutton5.min_value = 0
+            inputbutton5.scale = 1
+            inputbutton5.offset = 0
+
+
 
 
         ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC) Then
@@ -874,7 +902,7 @@
                 ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(1) / 256)
 
 
-            LabelValue2.Text = "Grid Stop L = " &
+            LabelValue2.Text = "Grid Stop H = " &
                 (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(4) And &HFF) &
                 ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(4) / 256) &
                 ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(5) And &HFF) &
@@ -902,11 +930,27 @@
                 ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(1) / 256)
 
 
-            LabelValue8.Text = "Grid Stop L = " &
+            LabelValue8.Text = "Grid Stop H = " &
                 (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(4) And &HFF) &
                 ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(4) / 256) &
                 ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(5) And &HFF) &
                 ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(5) / 256)
+
+
+            LabelValue7.Text = "Grid Start L = " &
+                (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(8) And &HFF) &
+                ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(8) / 256) &
+                ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(9) And &HFF) &
+                ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(9) / 256)
+
+
+
+            LabelValue8.Text = "Grid Stop L = " &
+                (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(12) And &HFF) &
+                ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(12) / 256) &
+                ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(13) And &HFF) &
+                ", " & Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(13) / 256)
+
 
             LabelValue9.Text = "PFN Trigger Delay = " &
                 Math.Truncate(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(2) / 256) &
@@ -933,7 +977,6 @@
             ' LabelValue5.Text = "Mag Samp Delay = " & (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).custom_data(CS_PULSESYNC.AFC_DELAY_HIGH_AND_MAGNETRON_CURRENT_SAMPLE_DELAY_HIGH) And &HFF)
             'LabelValue6.Text = ""
 
-          
 
             inputbutton1.enabled = True
             inputbutton1.button_only = False
@@ -944,6 +987,8 @@
             inputbutton1.offset = 0
             inputbutton1.button_index = REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_START
 
+
+
             inputbutton2.enabled = True
             inputbutton2.button_only = False
             inputbutton2.button_name = "Grid Stop"
@@ -952,6 +997,8 @@
             inputbutton2.scale = 1
             inputbutton2.offset = 0
             inputbutton2.button_index = REGISTER_SPECIAL_2_5_SET_DOSE_DYNAMIC_STOP
+
+
 
             inputbutton3.enabled = True
             inputbutton3.button_only = False
@@ -1199,16 +1246,17 @@
 
             LabelValue1.Text = "Ek Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(8)) * (-0.001), "0.00kV") 'ekset
             LabelValue2.Text = "If Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(9)) * (0.001), "0.00A") 'efset
-            LabelValue3.Text = "Eg Set = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(11)) * 0.01 - 80, "0.0V")  ' egset
-            LabelValue4.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(1)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
-            LabelValue5.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(0)) * 0.1, "0.0mA") ' GUN_DRIVER_IKP_RD_CAL
-            LabelValue6.Text = "Ef = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(7)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_RD_CAL
-            LabelValue7.Text = "If = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(6)) * 0.001, "0.00A") 'GUN_DRIVER_IF_RD_CAL
-            LabelValue8.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(3)) * 0.01 - 80, "0.0V") ' eg rd
+            LabelValue3.Text = "Eg Set High = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(0)) * 0.01 - 80, "0.0V")  ' egset
+            LabelValue4.Text = "Eg Set Low = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(1)) * 0.01 - 80, "0.0V")  ' egset
+            LabelValue5.Text = "Ek = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(1)) * (-0.001), "0.00kV") ' GUN_DRIVER_EK_RD_CAL
+            LabelValue6.Text = "Ikp = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(0)) * 0.1, "0.0mA") ' GUN_DRIVER_IKP_RD_CAL
+            LabelValue7.Text = "Ef = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(7)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_RD_CAL
+            LabelValue8.Text = "If = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(6)) * 0.001, "0.00A") 'GUN_DRIVER_IF_RD_CAL
+            LabelValue9.Text = "Eg = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(3)) * 0.01 - 80, "0.0V") ' eg rd
 
-            LabelValue9.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(12)) * -0.01, "0.0V") ' GUN_DRIVER_EC_RD_CAL
+            LabelValue10.Text = "Ec = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).log_data(12)) * -0.01, "0.0V") ' GUN_DRIVER_EC_RD_CAL
             'LabelValue10.Text = "Temp = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).custom_data(CS_GD.READBACK_DRIVER_TEMPERATURE)) * 0.01, "0.0C") 'GUN_DRIVER_TEMP_RD_CAL
-            LabelValue10.Text = ""
+            'LabelValue11.Text = ""
             LabelValue11.Text = "Ek SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(3)) * (-0.001), "0.00kV") 'GUN_DRIVER_EK_SET_CAL
             LabelValue12.Text = "Ef SetRd = " & Format(Convert.ToUInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(2)) * (-0.001), "0.00V") 'GUN_DRIVER_EF_SET_CAL
             LabelValue13.Text = "Eg SetRd = " & Format(Convert.ToInt16(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).ecb_local_data(0)) * 0.01 - 80, "0.0V") 'GUN_DRIVER_EG_SET_CAL
@@ -1247,9 +1295,8 @@
             inputbutton2.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
 
             inputbutton3.enabled = True
-
             inputbutton3.button_only = False
-            inputbutton3.button_name = "Set Eg"
+            inputbutton3.button_name = "Set Eg High"
             inputbutton3.max_value = 22000
             inputbutton3.min_value = 0
             inputbutton3.scale = 100
@@ -1257,7 +1304,15 @@
             inputbutton3.button_index = REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE
 
 
-            inputbutton4.enabled = False
+            inputbutton4.enabled = True
+            inputbutton4.button_only = False
+            inputbutton4.button_name = "Set Eg Low"
+            inputbutton4.max_value = 22000
+            inputbutton4.min_value = 0
+            inputbutton4.scale = 100
+            inputbutton4.offset = 8000
+            inputbutton4.button_index = REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE
+
             inputbutton5.enabled = False
 #End If
 
@@ -3600,4 +3655,60 @@
         ServerSettings.put_modbus_commands(REGISTER_CMD_ECB_RESET_FAULTS, 0, 0, 0)
     End Sub
 
+    Private Sub ButtonResetFPGA_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetFPGA.Click
+        ServerSettings.put_modbus_commands(REGISTER_CMD_GUN_DRIVER_RESET_FPGA, 0, 0, 0)
+    End Sub
+
+
+    Private Sub ButtonSetHighStart_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetHighStart.Click
+        Try
+            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
+            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
+
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_A_B, value1, 0, 0)
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_C_D, value2, 0, 0)
+
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+    End Sub
+
+    Private Sub ButtonSetHighStop_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetHighStop.Click
+        Try
+            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
+            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
+
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_A_B, value1, 0, 0)
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_C_D, value2, 0, 0)
+
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+    End Sub
+
+    Private Sub ButtonSetLowStart_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLowStart.Click
+        Try
+            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
+            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
+
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_A_B, value1, 0, 0)
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_C_D, value2, 0, 0)
+
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+    End Sub
+
+    Private Sub ButtonSetLowStop_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLowStop.Click
+        Try
+            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
+            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
+
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_A_B, value1, 0, 0)
+            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_C_D, value2, 0, 0)
+
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+    End Sub
 End Class
