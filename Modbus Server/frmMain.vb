@@ -10,6 +10,7 @@
     Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE_LOW_ENERGY As UInt16 = &HB
     Public Const REGISTER_HIGH_ENERGY_SET_POINT As UInt16 = &H10
     Public Const REGISTER_LOW_ENERGY_SET_POINT As UInt16 = &H11
+    Public Const REGISTER_ECB_SYSTEM_SERIAL_NUMBER As UInt16 = &H1F
     Public Const REGISTER_GUN_DRIVER_HEATER_VOLTAGE As UInt16 = &H20
     Public Const REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H21
     Public Const REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE As UInt16 = &H22
@@ -26,6 +27,7 @@
     Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_A_B As UInt16 = &H39
     Public Const REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_C_D As UInt16 = &H3A
     Public Const REGISTER_PULSE_SYNC_AFC_AND_SPARE_PULSE_DELAY_LOW_ENERGY As UInt16 = &H3B
+
 
 
     Public Const REGISTER_CMD_AFC_SELECT_AFC_MODE As UInt16 = &H5081
@@ -1067,7 +1069,8 @@
 
             LabelValue1.Text = "Pulses Allowed = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(12)
             LabelValue2.Text = "Override Pulses = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(13)
-            LabelValue3.Text = "Bottle Pulses = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(14)
+            LabelValue3.Text = "Bottle Pulses = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(14) & " / " &
+                ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).ecb_local_data(0)
             LabelValue4.Text = "Magnetron Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(0) / 1000, "0.000") & " LPM"
             LabelValue5.Text = "Linac Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(1) / 1000, "0.000") & " LPM"
             LabelValue6.Text = "HX Flow = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).log_data(2) / 1000, "0.000") & " LPM"
@@ -2066,6 +2069,7 @@
         LabelDisplay7.Text = "Trig = " & trigger_width & "nS / " & grid_width & "nS"
         'LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).log_data(3) & " nA"
         LabelDisplay8.Text = "Warmup Remaining = " & Math.Truncate(warmuptime / 60) & ":" & Format((warmuptime Mod 60), "00")
+        LabelSystemSerialNumber.Text = "SN = H" & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(19)
 
         ' Update the current Sync Bits
         Dim Sync_data As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(7)
@@ -3710,5 +3714,17 @@
         Catch ex As Exception
             MsgBox("Please enter valid data")
         End Try
+    End Sub
+
+    Private Sub ButtonSetSystemSN_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetSystemSN.Click
+        Try
+            Dim serial_num As UInt16
+            serial_num = TextBoxEEpromOffSet.Text
+
+            ServerSettings.put_modbus_commands(REGISTER_ECB_SYSTEM_SERIAL_NUMBER, serial_num, serial_num, serial_num)
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+
     End Sub
 End Class

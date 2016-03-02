@@ -251,6 +251,8 @@ Partial Class frmMain
         Me.ButtonSetHighStop = New System.Windows.Forms.Button()
         Me.ButtonSetLowStop = New System.Windows.Forms.Button()
         Me.ButtonSetLowStart = New System.Windows.Forms.Button()
+        Me.ButtonSetSystemSN = New System.Windows.Forms.Button()
+        Me.LabelSystemSerialNumber = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2865,12 +2867,36 @@ Partial Class frmMain
         Me.ButtonSetLowStart.Text = "Set Low Start"
         Me.ButtonSetLowStart.UseVisualStyleBackColor = True
         '
+        'ButtonSetSystemSN
+        '
+        Me.ButtonSetSystemSN.Location = New System.Drawing.Point(1232, 681)
+        Me.ButtonSetSystemSN.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetSystemSN.Name = "ButtonSetSystemSN"
+        Me.ButtonSetSystemSN.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetSystemSN.TabIndex = 433
+        Me.ButtonSetSystemSN.Text = "Set System SN"
+        Me.ButtonSetSystemSN.UseVisualStyleBackColor = True
+        '
+        'LabelSystemSerialNumber
+        '
+        Me.LabelSystemSerialNumber.AutoSize = True
+        Me.LabelSystemSerialNumber.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.LabelSystemSerialNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelSystemSerialNumber.Location = New System.Drawing.Point(240, 208)
+        Me.LabelSystemSerialNumber.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelSystemSerialNumber.Name = "LabelSystemSerialNumber"
+        Me.LabelSystemSerialNumber.Size = New System.Drawing.Size(32, 20)
+        Me.LabelSystemSerialNumber.TabIndex = 434
+        Me.LabelSystemSerialNumber.Text = "SN"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.LabelSystemSerialNumber)
+        Me.Controls.Add(Me.ButtonSetSystemSN)
         Me.Controls.Add(Me.ButtonSetLowStop)
         Me.Controls.Add(Me.ButtonSetLowStart)
         Me.Controls.Add(Me.ButtonSetHighStop)
@@ -3333,4 +3359,6 @@ Partial Class frmMain
     Friend WithEvents ButtonSetHighStop As System.Windows.Forms.Button
     Friend WithEvents ButtonSetLowStop As System.Windows.Forms.Button
     Friend WithEvents ButtonSetLowStart As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetSystemSN As System.Windows.Forms.Button
+    Friend WithEvents LabelSystemSerialNumber As System.Windows.Forms.Label
 End Class
