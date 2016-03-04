@@ -1213,14 +1213,14 @@
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H100
 
             CheckBoxFaultBit0.Text = "FPGA Rev Flt"
-            CheckBoxFaultBit1.Text = "HV Vmon Flt"
-            CheckBoxFaultBit2.Text = "HTR Vmon Flt"
-            CheckBoxFaultBit3.Visible = False
-            CheckBoxFaultBit4.Text = "HTR OC ABS"
-            CheckBoxFaultBit5.Text = "Top Vmon Flt"
-            CheckBoxFaultBit6.Text = "Bias Vmon Flt"
-            CheckBoxFaultBit7.Visible = False
-            CheckBoxFaultBit8.Visible = False
+            CheckBoxFaultBit1.Text = "HV Vmon OV REL"
+            CheckBoxFaultBit2.Text = "HV Vmon UV REL"
+            CheckBoxFaultBit3.Text = "HTR Vmon OV ABS"
+            CheckBoxFaultBit4.Text = "HTR Vmon UV ABS"
+            CheckBoxFaultBit5.Text = "HTR Imon OC ABS"
+            CheckBoxFaultBit6.Text = "Top Vmon OV REL"
+            CheckBoxFaultBit7.Text = "Top Vmon UV REL"
+            CheckBoxFaultBit8.Text = "Bias Vmon OV/UV ABS"
             CheckBoxFaultBit9.Text = "ARC Fault"
             CheckBoxFaultBitA.Text = "Over Temp"
             CheckBoxFaultBitB.Text = "CAN Comm"
