@@ -798,6 +798,7 @@
             LabelValue14.Text = ""
             LabelValue15.Text = ""
 
+
             inputbutton1.enabled = True
             inputbutton1.button_only = False
             inputbutton1.button_name = "Home Position"
@@ -867,8 +868,8 @@
             CheckBoxFaultBit2.Text = "RF Arc"
             CheckBoxFaultBit3.Text = "PFN Fan"
             CheckBoxFaultBit4.Visible = False
-            CheckBoxFaultBit5.Visible = False
-            CheckBoxFaultBit6.Visible = False
+            CheckBoxFaultBit5.Text = "Panel Open"
+            CheckBoxFaultBit6.Text = "Keylock Open"
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
             CheckBoxFaultBit9.Visible = False
@@ -884,8 +885,8 @@
             CheckBoxLoggedBit2.Text = "Low Override"
             CheckBoxLoggedBit3.Text = "High Override"
             CheckBoxLoggedBit4.Text = "Personality Read"
-            CheckBoxLoggedBit5.Text = "Panel Open"
-            CheckBoxLoggedBit6.Text = "Keylock Open"
+            CheckBoxLoggedBit5.Visible = False
+            CheckBoxLoggedBit6.Visible = False
             CheckBoxLoggedBit7.Text = "Trigger FLT"
             CheckBoxLoggedBit8.Visible = False
             CheckBoxLoggedBit9.Visible = False
@@ -923,7 +924,12 @@
                 (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(6) And &HFF) &
                 ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(14) And &HFF)
 
-            LabelValue6.Text = ""
+            LabelValue6.Text = "Inhibit Delay = " &
+              (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(2) And &HFF) &
+                ", " & (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(10) And &HFF)
+
+
+
 
             LabelValue7.Text = "Grid Start H = " &
                 (ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(0) And &HFF) &
