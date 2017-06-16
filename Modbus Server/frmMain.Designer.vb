@@ -253,6 +253,15 @@ Partial Class frmMain
         Me.ButtonSetLowStart = New System.Windows.Forms.Button()
         Me.ButtonSetSystemSN = New System.Windows.Forms.Button()
         Me.LabelSystemSerialNumber = New System.Windows.Forms.Label()
+        Me.ButtonSetIPAddres = New System.Windows.Forms.Button()
+        Me.ButtonSetRemoteIP = New System.Windows.Forms.Button()
+        Me.TextBoxIP0 = New System.Windows.Forms.TextBox()
+        Me.TextBoxIP1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxIP2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxIP3 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ButtonSetRunTime = New System.Windows.Forms.Button()
+        Me.TextBoxRunTime = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2889,12 +2898,109 @@ Partial Class frmMain
         Me.LabelSystemSerialNumber.TabIndex = 434
         Me.LabelSystemSerialNumber.Text = "SN"
         '
+        'ButtonSetIPAddres
+        '
+        Me.ButtonSetIPAddres.Location = New System.Drawing.Point(848, 826)
+        Me.ButtonSetIPAddres.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetIPAddres.Name = "ButtonSetIPAddres"
+        Me.ButtonSetIPAddres.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetIPAddres.TabIndex = 435
+        Me.ButtonSetIPAddres.Text = "Set IP"
+        Me.ButtonSetIPAddres.UseVisualStyleBackColor = True
+        '
+        'ButtonSetRemoteIP
+        '
+        Me.ButtonSetRemoteIP.Location = New System.Drawing.Point(848, 862)
+        Me.ButtonSetRemoteIP.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetRemoteIP.Name = "ButtonSetRemoteIP"
+        Me.ButtonSetRemoteIP.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetRemoteIP.TabIndex = 436
+        Me.ButtonSetRemoteIP.Text = "Set Remote IP"
+        Me.ButtonSetRemoteIP.UseVisualStyleBackColor = True
+        '
+        'TextBoxIP0
+        '
+        Me.TextBoxIP0.Location = New System.Drawing.Point(516, 826)
+        Me.TextBoxIP0.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxIP0.MaxLength = 7
+        Me.TextBoxIP0.Name = "TextBoxIP0"
+        Me.TextBoxIP0.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxIP0.TabIndex = 437
+        '
+        'TextBoxIP1
+        '
+        Me.TextBoxIP1.Location = New System.Drawing.Point(594, 826)
+        Me.TextBoxIP1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxIP1.MaxLength = 7
+        Me.TextBoxIP1.Name = "TextBoxIP1"
+        Me.TextBoxIP1.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxIP1.TabIndex = 438
+        '
+        'TextBoxIP2
+        '
+        Me.TextBoxIP2.Location = New System.Drawing.Point(672, 826)
+        Me.TextBoxIP2.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxIP2.MaxLength = 7
+        Me.TextBoxIP2.Name = "TextBoxIP2"
+        Me.TextBoxIP2.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxIP2.TabIndex = 439
+        '
+        'TextBoxIP3
+        '
+        Me.TextBoxIP3.Location = New System.Drawing.Point(750, 826)
+        Me.TextBoxIP3.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxIP3.MaxLength = 7
+        Me.TextBoxIP3.Name = "TextBoxIP3"
+        Me.TextBoxIP3.Size = New System.Drawing.Size(70, 22)
+        Me.TextBoxIP3.TabIndex = 440
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Lavender
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(223, 833)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(133, 28)
+        Me.Button2.TabIndex = 441
+        Me.Button2.Text = "Power Cycle Test"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'ButtonSetRunTime
+        '
+        Me.ButtonSetRunTime.Location = New System.Drawing.Point(848, 790)
+        Me.ButtonSetRunTime.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonSetRunTime.Name = "ButtonSetRunTime"
+        Me.ButtonSetRunTime.Size = New System.Drawing.Size(137, 28)
+        Me.ButtonSetRunTime.TabIndex = 442
+        Me.ButtonSetRunTime.Text = "Set Run Time"
+        Me.ButtonSetRunTime.UseVisualStyleBackColor = True
+        '
+        'TextBoxRunTime
+        '
+        Me.TextBoxRunTime.Location = New System.Drawing.Point(594, 790)
+        Me.TextBoxRunTime.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxRunTime.MaxLength = 7
+        Me.TextBoxRunTime.Name = "TextBoxRunTime"
+        Me.TextBoxRunTime.Size = New System.Drawing.Size(226, 22)
+        Me.TextBoxRunTime.TabIndex = 443
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.TextBoxRunTime)
+        Me.Controls.Add(Me.ButtonSetRunTime)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.TextBoxIP3)
+        Me.Controls.Add(Me.TextBoxIP2)
+        Me.Controls.Add(Me.TextBoxIP1)
+        Me.Controls.Add(Me.TextBoxIP0)
+        Me.Controls.Add(Me.ButtonSetRemoteIP)
+        Me.Controls.Add(Me.ButtonSetIPAddres)
         Me.Controls.Add(Me.LabelSystemSerialNumber)
         Me.Controls.Add(Me.ButtonSetSystemSN)
         Me.Controls.Add(Me.ButtonSetLowStop)
@@ -3361,4 +3467,13 @@ Partial Class frmMain
     Friend WithEvents ButtonSetLowStart As System.Windows.Forms.Button
     Friend WithEvents ButtonSetSystemSN As System.Windows.Forms.Button
     Friend WithEvents LabelSystemSerialNumber As System.Windows.Forms.Label
+    Friend WithEvents ButtonSetIPAddres As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetRemoteIP As System.Windows.Forms.Button
+    Friend WithEvents TextBoxIP0 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxIP1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxIP2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxIP3 As System.Windows.Forms.TextBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents ButtonSetRunTime As System.Windows.Forms.Button
+    Friend WithEvents TextBoxRunTime As System.Windows.Forms.TextBox
 End Class
