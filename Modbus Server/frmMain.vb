@@ -378,7 +378,7 @@
             CheckBoxFaultBit1.Text = "Drive Up Flt"
             CheckBoxFaultBit2.Text = "HV On Flt"
             CheckBoxFaultBit3.Text = "EEPROM"
-            CheckBoxFaultBit4.Visible = False
+            CheckBoxFaultBit4.Text = "Mag Ovr Pwr"
             CheckBoxFaultBit5.Visible = False
             CheckBoxFaultBit6.Visible = False
             CheckBoxFaultBit7.Visible = False
