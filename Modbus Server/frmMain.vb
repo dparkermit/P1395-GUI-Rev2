@@ -1001,7 +1001,7 @@
             inputbutton1.enabled = True
             inputbutton1.button_only = False
             inputbutton1.button_name = "PRF HIGH"
-            inputbutton1.max_value = 5000
+            inputbutton1.max_value = 8000
             inputbutton1.min_value = 10
             inputbutton1.scale = 10
             inputbutton1.offset = 0
@@ -1012,7 +1012,7 @@
             inputbutton2.enabled = True
             inputbutton2.button_only = False
             inputbutton2.button_name = "PRF LOW"
-            inputbutton2.max_value = 5000
+            inputbutton2.max_value = 8000
             inputbutton2.min_value = 10
             inputbutton2.scale = 10
             inputbutton2.offset = 0

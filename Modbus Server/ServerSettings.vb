@@ -215,12 +215,12 @@ Public Class ServerSettings
 
             If (command_id >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And command_id <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
                 ' DPARKER do we need to check received data
-                ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 13)
+                ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 15)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
 
-                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 13)
+                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 15)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
 
