@@ -2211,6 +2211,9 @@
         LabelErrorReserved0.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16).ToString("x") '  "= 0x" & ServerSettings.ETMEthernetDebugData.reserved_0.ToString("x")
         LabelErrorReserved1.Text = "Can Ver = 0x" & ServerSettings.ETMEthernetDebugData.reserved_1.ToString("x")
         LabelRCON.Text = "RCON = " & ServerSettings.ETMEthernetDebugData.RCON_value.ToString("X")
+
+        LabelCommandCount.Text = "Cmd Count = " & ServerSettings.command_rcv_count
+        LabelCommandLengthError.Text = "Cmd Lgth Err = " & ServerSettings.command_length_error
     End Sub
 
 

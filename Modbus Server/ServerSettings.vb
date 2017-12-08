@@ -129,25 +129,26 @@ Public Class ServerSettings
 
 
 
-
-
+    Public command_length_error As Long = 0
+    Public command_rcv_count As Long = 0
 
     ' This looks for new messages
     Private Sub DoRecvDoneCallback(ByVal ar As IAsyncResult)
         Dim myStream As NetworkStream = CType(ar.AsyncState, NetworkStream)
-        Dim bytecount As Int16, msglength As Int16
+        Dim bytecount As UInt16, msglength As UInt16
         Static last_ref As UShort = 0
         Static trans_num(100) As UShort
 
         If (connect_status > 0) Then
             Try
-                bytecount = CShort(myStream.EndRead(ar))
+                bytecount = CUShort(myStream.EndRead(ar))
 
                 Do While (bytecount > 6)
                     connect_timeout = 0
                     ' get msg length
-                    msglength = CShort(recvBuffer(4) * 256 + recvBuffer(5))
+                    msglength = CUShort(recvBuffer(4) * 256 + recvBuffer(5))
                     If (bytecount >= (6 + msglength)) Then
+                        command_rcv_count += 1
                         function_code = recvBuffer(7)
                         command_index_number = recvBuffer(6)
                         If (command_index_number = MODBUS_COMMAND_REFRESH_TOTAL) Then
@@ -159,7 +160,7 @@ Public Class ServerSettings
                         End If
                         word_count = CUShort(recvBuffer(10) * 256 + recvBuffer(11))   ' read data length or number of registers
                         Call modbus_reply()
-                        bytecount = CShort(bytecount - (6 + msglength))
+                        bytecount = CUShort(bytecount - (6 + msglength))
                         If (bytecount > 6) Then
                             For i = 0 To (bytecount - 1)
                                 recvBuffer(i) = recvBuffer(i + 6 + msglength)  ' shift to next packet
@@ -169,6 +170,7 @@ Public Class ServerSettings
                         End If
                     Else
                         bytecount = 0
+                        command_length_error += 1
                     End If
                 Loop
             Catch ex As Exception

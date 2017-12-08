@@ -262,6 +262,8 @@ Partial Class frmMain
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ButtonSetRunTime = New System.Windows.Forms.Button()
         Me.TextBoxRunTime = New System.Windows.Forms.TextBox()
+        Me.LabelCommandLengthError = New System.Windows.Forms.Label()
+        Me.LabelCommandCount = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -2986,12 +2988,36 @@ Partial Class frmMain
         Me.TextBoxRunTime.Size = New System.Drawing.Size(226, 22)
         Me.TextBoxRunTime.TabIndex = 443
         '
+        'LabelCommandLengthError
+        '
+        Me.LabelCommandLengthError.AutoSize = True
+        Me.LabelCommandLengthError.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCommandLengthError.Location = New System.Drawing.Point(1005, 872)
+        Me.LabelCommandLengthError.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LabelCommandLengthError.Name = "LabelCommandLengthError"
+        Me.LabelCommandLengthError.Size = New System.Drawing.Size(80, 20)
+        Me.LabelCommandLengthError.TabIndex = 444
+        Me.LabelCommandLengthError.Text = "LabelCan"
+        '
+        'LabelCommandCount
+        '
+        Me.LabelCommandCount.AutoSize = True
+        Me.LabelCommandCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelCommandCount.Location = New System.Drawing.Point(1005, 852)
+        Me.LabelCommandCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LabelCommandCount.Name = "LabelCommandCount"
+        Me.LabelCommandCount.Size = New System.Drawing.Size(80, 20)
+        Me.LabelCommandCount.TabIndex = 445
+        Me.LabelCommandCount.Text = "LabelCan"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.LabelCommandCount)
+        Me.Controls.Add(Me.LabelCommandLengthError)
         Me.Controls.Add(Me.TextBoxRunTime)
         Me.Controls.Add(Me.ButtonSetRunTime)
         Me.Controls.Add(Me.Button2)
@@ -3476,4 +3502,6 @@ Partial Class frmMain
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents ButtonSetRunTime As System.Windows.Forms.Button
     Friend WithEvents TextBoxRunTime As System.Windows.Forms.TextBox
+    Friend WithEvents LabelCommandLengthError As System.Windows.Forms.Label
+    Friend WithEvents LabelCommandCount As System.Windows.Forms.Label
 End Class
