@@ -158,7 +158,7 @@ Public Class ServerSettings
                                 update_loop_count = 1
                             End If
                         End If
-                        word_count = CUShort(recvBuffer(10) * 256 + recvBuffer(11))   ' read data length or number of registers
+                        word_count = CUShort((msglength - 4) / 2) 'CUShort(recvBuffer(10) * 256 + recvBuffer(11))   ' read data length or number of registers
                         Call modbus_reply()
                         bytecount = CUShort(bytecount - (6 + msglength))
                         If (bytecount > 6) Then
@@ -218,18 +218,18 @@ Public Class ServerSettings
 
             If (command_id >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And command_id <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
                 ' DPARKER do we need to check received data
-                ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 15)
+                ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 12)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
 
-                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 15)
+                ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 12)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
 
                 For i = 0 To CUShort((word_count * 2 - 1))
                     'ETMEthernetEventData(event_index, i) = recvBuffer(13 + i) ' for debug only
-                    If (i < MAX_EVENT_SIZE_DATA) Then event_data(i) = recvBuffer(15 + i)
+                    If (i < MAX_EVENT_SIZE_DATA) Then event_data(i) = recvBuffer(12 + i)
                 Next
                 event_index = CUShort(event_index + 1)
                 If (event_index >= MAX_EVENT_SIZE_ROW) Then event_index = 0
@@ -240,7 +240,7 @@ Public Class ServerSettings
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_PULSE_LOG) Then
                 For i = 0 To CUShort((word_count * 2 - 1))
                     '    ETMEthernetPulseData(pulse_index, i) = recvBuffer(13 + i)  ' for debug only
-                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(13 + i)
+                    If (i < MAX_PULSE_SIZE_DATA) Then pulse_data(i) = recvBuffer(12 + i)
                 Next
                 pulse_index = CUShort(pulse_index + 1)
                 If (pulse_index >= MAX_PULSE_SIZE_ROW) Then pulse_index = 0
@@ -254,7 +254,7 @@ Public Class ServerSettings
             ' Send the requested list of commands to the ECB
 
             connect_status = 5
-
+            word_count = 4
             datalen = word_count * 2
             msglen = datalen + 3
 
