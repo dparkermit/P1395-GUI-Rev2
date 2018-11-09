@@ -882,7 +882,7 @@
             CheckBoxFaultBit6.Text = "Keylock Open"
             CheckBoxFaultBit7.Text = "Per Read"
             CheckBoxFaultBit8.Text = "Gun Flt"
-            CheckBoxFaultBit9.Visible = False
+            CheckBoxFaultBit9.Text = "Serial"
             CheckBoxFaultBitA.Visible = False
             CheckBoxFaultBitB.Visible = False
             CheckBoxFaultBitC.Visible = False
