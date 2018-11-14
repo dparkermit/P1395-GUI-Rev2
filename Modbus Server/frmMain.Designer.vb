@@ -268,6 +268,7 @@ Partial Class frmMain
         Me.SerialPortETM = New System.IO.Ports.SerialPort(Me.components)
         Me.LabelWatchDogResponse = New System.Windows.Forms.Label()
         Me.TimerWatchdog = New System.Windows.Forms.Timer(Me.components)
+        Me.ButtonETMMode = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -3042,12 +3043,26 @@ Partial Class frmMain
         Me.TimerWatchdog.Enabled = True
         Me.TimerWatchdog.Interval = 20
         '
+        'ButtonETMMode
+        '
+        Me.ButtonETMMode.BackColor = System.Drawing.Color.Lavender
+        Me.ButtonETMMode.FlatAppearance.BorderSize = 0
+        Me.ButtonETMMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonETMMode.Location = New System.Drawing.Point(7, 205)
+        Me.ButtonETMMode.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonETMMode.Name = "ButtonETMMode"
+        Me.ButtonETMMode.Size = New System.Drawing.Size(95, 28)
+        Me.ButtonETMMode.TabIndex = 448
+        Me.ButtonETMMode.Text = "ETM Mode"
+        Me.ButtonETMMode.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.ButtonETMMode)
         Me.Controls.Add(Me.LabelWatchDogResponse)
         Me.Controls.Add(Me.ComboBoxComPorts)
         Me.Controls.Add(Me.LabelCommandCount)
@@ -3542,4 +3557,5 @@ Partial Class frmMain
     Friend WithEvents SerialPortETM As System.IO.Ports.SerialPort
     Friend WithEvents LabelWatchDogResponse As System.Windows.Forms.Label
     Friend WithEvents TimerWatchdog As System.Windows.Forms.Timer
+    Friend WithEvents ButtonETMMode As System.Windows.Forms.Button
 End Class

@@ -1,5 +1,6 @@
 ﻿Public Class frmMain
 
+    Public Const REGISTER_NONE As UInt16 = &HFF0
 
 
     Public Const REGISTER_HVPS_SET_POINT_DOSE_0 As UInt16 = &H400
@@ -567,7 +568,8 @@
             inputbutton1.min_value = 0
             inputbutton1.scale = 1
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_X_RAY_ON_RUN_TIME
+            inputbutton1.button_index = REGISTER_NONE
+            'inputbutton1.button_index = REGISTER_X_RAY_ON_RUN_TIME
 
 
 
@@ -652,7 +654,7 @@
             inputbutton2.min_value = 6000
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_LOW_ENERGY_SET_POINT
+            inputbutton2.button_index = REGISTER_HVPS_SET_POINT_DOSE_1
 
 
             inputbutton3.enabled = False
@@ -720,7 +722,7 @@
             inputbutton1.min_value = 8000
             inputbutton1.scale = 1000
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_ELECTROMAGNET_CURRENT_HIGH_ENERGY
+            inputbutton1.button_index = REGISTER_ELECTROMAGNET_CURRENT_DOSE_0
 
             inputbutton2.enabled = True
             inputbutton2.button_only = False
@@ -729,7 +731,7 @@
             inputbutton2.min_value = 8000
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_ELECTROMAGNET_CURRENT_LOW_ENERGY
+            inputbutton2.button_index = REGISTER_ELECTROMAGNET_CURRENT_DOSE_1
 
             inputbutton3.enabled = True
             inputbutton3.button_only = False
@@ -738,7 +740,7 @@
             inputbutton3.min_value = 0
             inputbutton3.scale = 1000
             inputbutton3.offset = 0
-            inputbutton3.button_index = REGISTER_HEATER_CURRENT_AT_STANDBY
+            inputbutton3.button_index = REGISTER_MAGNETRON_HEATER_CURRENT_DOSE_ALL
 
             inputbutton3.enabled = False
             inputbutton4.enabled = False
@@ -939,7 +941,7 @@
             inputbutton1.min_value = 6400
             inputbutton1.scale = 1
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_HOME_POSITION
+            inputbutton1.button_index = REGISTER_AFC_HOME_POSITION_DOSE_0
 
             inputbutton2.enabled = True
             inputbutton2.button_only = False
@@ -948,7 +950,7 @@
             inputbutton2.min_value = 1000
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_HIGH_ENERGY
+            inputbutton2.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_DOSE_ALL
 
             inputbutton3.enabled = True
             inputbutton3.button_only = False
@@ -957,7 +959,7 @@
             inputbutton3.min_value = 1000
             inputbutton3.scale = 1000
             inputbutton3.offset = 0
-            inputbutton3.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_LOW_ENERGY
+            inputbutton3.button_index = REGISTER_AFC_AFT_CONTROL_VOLTAGE_DOSE_ALL
 
 
             If afc_manual_mode Then
@@ -1128,7 +1130,8 @@
             inputbutton1.min_value = 10
             inputbutton1.scale = 10
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_PULSE_SYNC_INTERNAL_TRIGGER_PRF_DECIHERTZ_HIGH
+            inputbutton1.button_index = REGISTER_NONE
+            'inputbutton1.button_index = REGISTER_PULSE_SYNC_INTERNAL_TRIGGER_PRF_DECIHERTZ_HIGH
 
 
 
@@ -1139,7 +1142,8 @@
             inputbutton2.min_value = 10
             inputbutton2.scale = 10
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_PULSE_SYNC_INTERNAL_TRIGGER_PRF_DECIHERTZ_LOW
+            inputbutton1.button_index = REGISTER_NONE
+            'inputbutton2.button_index = REGISTER_PULSE_SYNC_INTERNAL_TRIGGER_PRF_DECIHERTZ_LOW
 
 
 
@@ -1427,7 +1431,7 @@
             inputbutton1.min_value = 6000
             inputbutton1.scale = -1000
             inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_GUN_DRIVER_CATHODE_VOLTAGE
+            inputbutton1.button_index = REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_0
 
             inputbutton2.enabled = True
             inputbutton2.button_only = False
@@ -1436,7 +1440,7 @@
             inputbutton2.min_value = 0
             inputbutton2.scale = 1000
             inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE
+            inputbutton2.button_index = REGISTER_GUN_DRIVER_HEATER_VOLTAGE_DOSE_ALL
 
             inputbutton3.enabled = True
             inputbutton3.button_only = False
@@ -1445,7 +1449,7 @@
             inputbutton3.min_value = 0
             inputbutton3.scale = 100
             inputbutton3.offset = 8000
-            inputbutton3.button_index = REGISTER_GUN_DRIVER_HIGH_ENERGY_PULSE_TOP_VOLTAGE
+            inputbutton3.button_index = REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_0
 
 
             inputbutton4.enabled = True
@@ -1455,7 +1459,7 @@
             inputbutton4.min_value = 0
             inputbutton4.scale = 100
             inputbutton4.offset = 8000
-            inputbutton4.button_index = REGISTER_GUN_DRIVER_LOW_ENERGY_PULSE_TOP_VOLTAGE
+            inputbutton4.button_index = REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_1
 
             inputbutton5.enabled = False
 #End If
@@ -2590,7 +2594,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS, selected_board_index, 0, 0)
+        'ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS, selected_board_index, 0, 0)
     End Sub
 
     Private Sub ButtonResetSlave_Click(sender As System.Object, e As System.EventArgs) Handles ButtonResetSlave.Click
@@ -2775,7 +2779,7 @@
     End Sub
 
     Private Sub ButtonSaveFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSaveFactorySettings.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SAVE_FACTORY_SETTINGS_TO_EEPROM_MIRROR, 0, 0, 0)
+        'ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SAVE_FACTORY_SETTINGS_TO_EEPROM_MIRROR, 0, 0, 0)
     End Sub
 
     Private Sub ButtonLoadFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLoadFactorySettings.Click
@@ -2790,58 +2794,6 @@
         ServerSettings.put_modbus_commands(REGISTER_DEBUG_GUN_DRIVER_RESET_FPGA, 0, 0, 0)
     End Sub
 
-
-    Private Sub ButtonSetHighStart_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetHighStart.Click
-        Try
-            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
-            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
-
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_A_B, value1, 0, 0)
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_HIGH_ENERGY_C_D, value2, 0, 0)
-
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-    End Sub
-
-    Private Sub ButtonSetHighStop_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetHighStop.Click
-        Try
-            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
-            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
-
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_A_B, value1, 0, 0)
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_HIGH_ENERGY_C_D, value2, 0, 0)
-
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-    End Sub
-
-    Private Sub ButtonSetLowStart_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLowStart.Click
-        Try
-            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
-            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
-
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_A_B, value1, 0, 0)
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_DELAY_LOW_ENERGY_C_D, value2, 0, 0)
-
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-    End Sub
-
-    Private Sub ButtonSetLowStop_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetLowStop.Click
-        Try
-            Dim value1 As UInt16 = TextBoxPulseSyncB.Text * 256 + TextBoxPulseSyncA.Text
-            Dim value2 As UInt16 = TextBoxPulseSyncD.Text * 256 + TextBoxPulseSyncC.Text
-
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_A_B, value1, 0, 0)
-            ServerSettings.put_modbus_commands(REGISTER_PULSE_SYNC_GRID_PULSE_WIDTH_LOW_ENERGY_C_D, value2, 0, 0)
-
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-    End Sub
 
     Private Sub ButtonSetSystemSN_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetSystemSN.Click
         Try
@@ -2930,7 +2882,7 @@
     End Sub
 
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
-        ServerSettings.put_modbus_commands(REGISTER_DEBUG_POWER_CYCLE_TEST, 0, 0, 0)
+        'ServerSettings.put_modbus_commands(REGISTER_DEBUG_POWER_CYCLE_TEST, 0, 0, 0)
     End Sub
 
     Private Sub ButtonSetRunTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetRunTime.Click
@@ -2942,7 +2894,7 @@
             run_time_high_word = CUShort(run_time_centiseconds >> 16)
             run_time_low_word = CUShort(run_time_centiseconds And &HFFFF)
 
-            ServerSettings.put_modbus_commands(REGISTER_X_RAY_ON_RUN_TIME, run_time_high_word, run_time_low_word, 0)
+            'ServerSettings.put_modbus_commands(REGISTER_X_RAY_ON_RUN_TIME, run_time_high_word, run_time_low_word, 0)
         Catch ex As Exception
             MsgBox("Please Enter Valid Data")
 
@@ -2951,5 +2903,9 @@
 
     Private Sub TimerWatchdog_Tick(sender As System.Object, e As System.EventArgs) Handles TimerWatchdog.Tick
         SendAndValidateWatchdog()
+    End Sub
+
+    Private Sub ButtonETMMode_Click(sender As System.Object, e As System.EventArgs) Handles ButtonETMMode.Click
+        ServerSettings.put_modbus_commands(REGISTER_SET_ACCESS_MODE_ETM, &H117F, 0, 0)
     End Sub
 End Class
