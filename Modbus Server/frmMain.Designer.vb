@@ -264,6 +264,10 @@ Partial Class frmMain
         Me.TextBoxRunTime = New System.Windows.Forms.TextBox()
         Me.LabelCommandLengthError = New System.Windows.Forms.Label()
         Me.LabelCommandCount = New System.Windows.Forms.Label()
+        Me.ComboBoxComPorts = New System.Windows.Forms.ComboBox()
+        Me.SerialPortETM = New System.IO.Ports.SerialPort(Me.components)
+        Me.LabelWatchDogResponse = New System.Windows.Forms.Label()
+        Me.TimerWatchdog = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -3010,12 +3014,42 @@ Partial Class frmMain
         Me.LabelCommandCount.TabIndex = 445
         Me.LabelCommandCount.Text = "LabelCan"
         '
+        'ComboBoxComPorts
+        '
+        Me.ComboBoxComPorts.FormattingEnabled = True
+        Me.ComboBoxComPorts.Location = New System.Drawing.Point(1269, 868)
+        Me.ComboBoxComPorts.Name = "ComboBoxComPorts"
+        Me.ComboBoxComPorts.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBoxComPorts.TabIndex = 446
+        '
+        'SerialPortETM
+        '
+        Me.SerialPortETM.BaudRate = 113000
+        '
+        'LabelWatchDogResponse
+        '
+        Me.LabelWatchDogResponse.AutoSize = True
+        Me.LabelWatchDogResponse.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelWatchDogResponse.Location = New System.Drawing.Point(1409, 870)
+        Me.LabelWatchDogResponse.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LabelWatchDogResponse.Name = "LabelWatchDogResponse"
+        Me.LabelWatchDogResponse.Size = New System.Drawing.Size(47, 20)
+        Me.LabelWatchDogResponse.TabIndex = 447
+        Me.LabelWatchDogResponse.Text = "Error"
+        '
+        'TimerWatchdog
+        '
+        Me.TimerWatchdog.Enabled = True
+        Me.TimerWatchdog.Interval = 20
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1661, 913)
+        Me.Controls.Add(Me.LabelWatchDogResponse)
+        Me.Controls.Add(Me.ComboBoxComPorts)
         Me.Controls.Add(Me.LabelCommandCount)
         Me.Controls.Add(Me.LabelCommandLengthError)
         Me.Controls.Add(Me.TextBoxRunTime)
@@ -3504,4 +3538,8 @@ Partial Class frmMain
     Friend WithEvents TextBoxRunTime As System.Windows.Forms.TextBox
     Friend WithEvents LabelCommandLengthError As System.Windows.Forms.Label
     Friend WithEvents LabelCommandCount As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxComPorts As System.Windows.Forms.ComboBox
+    Friend WithEvents SerialPortETM As System.IO.Ports.SerialPort
+    Friend WithEvents LabelWatchDogResponse As System.Windows.Forms.Label
+    Friend WithEvents TimerWatchdog As System.Windows.Forms.Timer
 End Class
