@@ -230,10 +230,6 @@
         LabelSyncMessageCntrlBits.Visible = False
 
         ButtonToggleResetDebug.Visible = False
-        CheckBoxSyncBit5.Visible = False
-        CheckBoxSyncBit6.Visible = False
-        CheckBoxSyncBit7.Visible = False
-        CheckBoxSyncBit8.Visible = False
         CheckBoxSyncBitF.Visible = False
         ButtonSetTime.Visible = False
 
@@ -598,7 +594,7 @@
             LabelValue2.Text = "Low Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(1) / 1000, "0.000") & " kV"
             LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(7)
             LabelValue4.Text = "Vmon Pulse = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(0) / 1000, "0.000") & " kV"
-            LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
+            LabelValue5.Text = "Imon = "& ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
             LabelValue6.Text = ""
             LabelValue7.Text = ""
             LabelValue8.Text = ""
@@ -708,7 +704,7 @@
             inputbutton3.enabled = True
             inputbutton3.button_only = False
             inputbutton3.button_name = "Set Heater"
-            inputbutton3.max_value = 10000
+            inputbutton3.max_value = 12000
             inputbutton3.min_value = 0
             inputbutton3.scale = 1000
             inputbutton3.offset = 0
@@ -2183,10 +2179,6 @@
         ' Update the current Sync Bits
         Dim Sync_data As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(7)
 
-        CheckBoxSyncBit5.Checked = Sync_data And &H20
-        CheckBoxSyncBit6.Checked = Sync_data And &H40
-        CheckBoxSyncBit7.Checked = Sync_data And &H80
-        CheckBoxSyncBitF.Checked = Sync_data And &H8000
 
         If (Sync_data And &H2) Then
             ' High speed data logging is enabled
@@ -2606,10 +2598,6 @@
         LabelSyncMessageCntrlBits.Visible = True
 
         ButtonToggleResetDebug.Visible = True
-        CheckBoxSyncBit5.Visible = True
-        CheckBoxSyncBit6.Visible = True
-        CheckBoxSyncBit7.Visible = True
-        CheckBoxSyncBit8.Visible = True
         CheckBoxSyncBitF.Visible = True
         ButtonSetTime.Visible = True
 
@@ -2711,7 +2699,7 @@
         End Try
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs)
         'ServerSettings.put_modbus_commands(REGISTER_DEBUG_POWER_CYCLE_TEST, 0, 0, 0)
     End Sub
 
