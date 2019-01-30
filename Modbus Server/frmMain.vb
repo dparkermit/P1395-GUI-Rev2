@@ -2712,4 +2712,16 @@
         ServerSettings.put_modbus_commands(REGISTER_SET_ACCESS_MODE_ETM, &H117F, 0, 0)
     End Sub
 
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim rev As UInt16
+        Dim serial_num As UInt16
+        Try
+            rev = TextBoxRev.Text
+            serial_num = TextBoxSN.Text
+            ServerSettings.put_modbus_commands(REGISTER_SET_ACCESS_MODE_ETM, 0, rev, serial_num)
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+
+    End Sub
 End Class
