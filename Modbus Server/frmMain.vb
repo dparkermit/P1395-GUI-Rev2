@@ -59,11 +59,13 @@
     Public Const REGISTER_SYSTEM_SET_TIME As UInt16 = &H1105
     Public Const REGISTER_SYSTEM_ENABLE_HIGH_SPEED_LOGGING As UInt16 = &H1106
     Public Const REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING As UInt16 = &H1107
-    Public Const REGISTER_SYSTEM_ECB_LOAD_FACTORY_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT As UInt16 = &H1108
+    Public Const REGISTER_SYSTEM_LOAD_FACTORY_DEFAULTS_AND_REBOOT As UInt16 = &H1108
     Public Const REGISTER_SYSTEM_SAVE_CURRENT_SETTINGS_TO_CUSTOMER_SAVE As UInt16 = &H1109
     Public Const REGISTER_SYSTEM_LOAD_CUSTOMER_SETTINGS_SAVE_AND_REBOOT As UInt16 = &H110A
     Public Const REGISTER_REMOTE_IP_ADDRESS As UInt16 = &H110B
     Public Const REGISTER_IP_ADDRESS As UInt16 = &H110C
+
+
 
     Public Const REGISTER_DEBUG_TOGGLE_RESET_DEBUG As UInt16 = &H1200
     Public Const REGISTER_DEBUG_RESET_MCU As UInt16 = &H1201
@@ -72,6 +74,8 @@
     Public Const REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT As UInt16 = &H1204
     Public Const REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON As UInt16 = &H1205
     Public Const REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT As UInt16 = &H1206
+    Public Const REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER As UInt16 = &H1207
+    Public Const REGISTER_ETM_SAVE_CURRENT_SETTINGS_TO_FACTORY_DEFAULT As UInt16 = &H1208
 
     Public Const YEAR_MULT As UInt32 = 35942400
     Public Const MONTH_MULT As UInt32 = 2764800
@@ -783,8 +787,8 @@
             CheckBoxFaultBit2.Visible = False
             CheckBoxFaultBit3.Text = "Ion Under Voltage"
             CheckBoxFaultBit4.Text = "PS Fault"
-            CheckBoxFaultBit5.Visible = False
-            CheckBoxFaultBit6.Visible = False
+            CheckBoxFaultBit5.Text = "Linac Guide Arc"
+            CheckBoxFaultBit6.Text = "Mag Guide Arc"
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
             CheckBoxFaultBit9.Visible = False
@@ -2176,6 +2180,8 @@
         LabelDisplay8.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(17)
         LabelSystemSerialNumber.Text = "SN = H" & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(19)
 
+        Label15.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).ecb_local_data(4)
+
         ' Update the current Sync Bits
         Dim Sync_data As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(7)
 
@@ -2417,7 +2423,6 @@
 
 
 
-
     Private Sub ComboBoxEEpromRegister_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
         Dim command_index As UInt16
         If board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET Then
@@ -2448,6 +2453,7 @@
             command_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
             selected_board_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
         End If
+
 
         command_index = command_index * 2 ^ 12
         EEProm_index = command_index + EEProm_index + &H100
@@ -2609,11 +2615,11 @@
     End Sub
 
     Private Sub ButtonSaveFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSaveFactorySettings.Click
-        'ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SAVE_FACTORY_SETTINGS_TO_EEPROM_MIRROR, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_ETM_SAVE_CURRENT_SETTINGS_TO_FACTORY_DEFAULT, 0, 0, 0)
     End Sub
 
     Private Sub ButtonLoadFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLoadFactorySettings.Click
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_ECB_LOAD_FACTORY_SETTINGS_FROM_EEPROM_MIRROR_AND_REBOOT, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_LOAD_FACTORY_DEFAULTS_AND_REBOOT, 0, 0, 0)
     End Sub
 
     Private Sub ButtonReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReset.Click
@@ -2715,13 +2721,63 @@
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim rev As UInt16
         Dim serial_num As UInt16
+        Dim command_index As UInt16
+
         Try
-            rev = TextBoxRev.Text
+            If board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET Then
+                command_index = ETM_CAN_ADDR_ETHERNET_BOARD
+                selected_board_index = ETM_CAN_ADDR_ETHERNET_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP Then
+                command_index = ETM_CAN_ADDR_ION_PUMP_BOARD
+                selected_board_index = ETM_CAN_ADDR_ION_PUMP_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
+                command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
+                selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC Then
+                command_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
+                selected_board_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
+                command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
+                selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_AFC Then
+                command_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
+                selected_board_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING Then
+                command_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
+                selected_board_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET Then
+                command_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
+                selected_board_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
+            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER Then
+                command_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
+                selected_board_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
+            End If
+
+
+            rev = Asc(TextBoxRev.Text)
             serial_num = TextBoxSN.Text
-            ServerSettings.put_modbus_commands(REGISTER_SET_ACCESS_MODE_ETM, 0, rev, serial_num)
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, selected_board_index, rev, serial_num)
         Catch ex As Exception
             MsgBox("Please enter valid data")
         End Try
 
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim h_num As UInt16
+        Try
+            h_num = TextBoxHNubmber.Text
+            ServerSettings.put_modbus_commands(REGISTER_ECB_SYSTEM_SERIAL_NUMBER, h_num, h_num, h_num)
+        Catch ex As Exception
+            MsgBox("Please enter valid data")
+        End Try
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_SAVE_CURRENT_SETTINGS_TO_CUSTOMER_SAVE, 0, 0, 0)
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_LOAD_CUSTOMER_SETTINGS_SAVE_AND_REBOOT, 0, 0, 0)
     End Sub
 End Class

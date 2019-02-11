@@ -256,7 +256,7 @@ Public Class ServerSettings
             connect_status = 5
             word_count = 4
             datalen = word_count * 2
-            msglen = datalen + 4
+            msglen = datalen + 6
 
 
             xmitBuffer(0) = recvBuffer(0) '  Transaction number high byte
@@ -524,7 +524,7 @@ Public Class ServerSettings
         If pulse_log_enabled Then
             For data_row = 0 To 15
                 For data_column = 0 To 15
-                    mem_location = data_row * 38 + data_column * 2 + 2
+                    mem_location = data_row * 38 + data_column * 2
                     data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
                     If data_column = 11 Then
                         If (data_word > &H8000) Then
@@ -535,7 +535,7 @@ Public Class ServerSettings
                 Next
 
                 For data_column = 16 To 17
-                    mem_location = data_row * 38 + data_column * 2 + 2
+                    mem_location = data_row * 38 + data_column * 2
                     data_word = bytes(mem_location)
                     pulse_log_file.Write(data_word & ",")
                     data_word = bytes(mem_location + 1)
@@ -543,7 +543,7 @@ Public Class ServerSettings
                 Next
 
                 For data_column = 18 To 18
-                    mem_location = data_row * 38 + data_column * 2 + 2
+                    mem_location = data_row * 38 + data_column * 2
                     data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
                     pulse_log_file.Write(data_word & ",")
                 Next

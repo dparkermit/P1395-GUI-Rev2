@@ -227,6 +227,12 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextBoxHNubmber = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -1734,7 +1740,7 @@ Partial Class frmMain
         Me.LabelECBTime.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelECBTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelECBTime.Location = New System.Drawing.Point(12, 343)
-        Me.LabelECBTime.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.LabelECBTime.Margin = New System.Windows.Forms.Padding(3)
         Me.LabelECBTime.Name = "LabelECBTime"
         Me.LabelECBTime.Size = New System.Drawing.Size(69, 16)
         Me.LabelECBTime.TabIndex = 364
@@ -1746,7 +1752,7 @@ Partial Class frmMain
         Me.LabelComputerTime.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelComputerTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelComputerTime.Location = New System.Drawing.Point(12, 431)
-        Me.LabelComputerTime.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.LabelComputerTime.Margin = New System.Windows.Forms.Padding(3)
         Me.LabelComputerTime.Name = "LabelComputerTime"
         Me.LabelComputerTime.Size = New System.Drawing.Size(100, 16)
         Me.LabelComputerTime.TabIndex = 363
@@ -1794,7 +1800,7 @@ Partial Class frmMain
         Me.LabelECBState.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelECBState.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelECBState.Location = New System.Drawing.Point(12, 9)
-        Me.LabelECBState.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.LabelECBState.Margin = New System.Windows.Forms.Padding(3)
         Me.LabelECBState.Name = "LabelECBState"
         Me.LabelECBState.Size = New System.Drawing.Size(69, 16)
         Me.LabelECBState.TabIndex = 359
@@ -2288,7 +2294,7 @@ Partial Class frmMain
         Me.LabelSystemSerialNumber.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelSystemSerialNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelSystemSerialNumber.Location = New System.Drawing.Point(180, 169)
-        Me.LabelSystemSerialNumber.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.LabelSystemSerialNumber.Margin = New System.Windows.Forms.Padding(3)
         Me.LabelSystemSerialNumber.Name = "LabelSystemSerialNumber"
         Me.LabelSystemSerialNumber.Size = New System.Drawing.Size(27, 16)
         Me.LabelSystemSerialNumber.TabIndex = 434
@@ -2368,7 +2374,7 @@ Partial Class frmMain
         '
         Me.ComboBoxComPorts.FormattingEnabled = True
         Me.ComboBoxComPorts.Location = New System.Drawing.Point(1040, 463)
-        Me.ComboBoxComPorts.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ComboBoxComPorts.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboBoxComPorts.Name = "ComboBoxComPorts"
         Me.ComboBoxComPorts.Size = New System.Drawing.Size(92, 21)
         Me.ComboBoxComPorts.TabIndex = 446
@@ -2449,12 +2455,79 @@ Partial Class frmMain
         Me.Button1.Text = "Set Rev/SN"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'TextBoxHNubmber
+        '
+        Me.TextBoxHNubmber.Location = New System.Drawing.Point(943, 652)
+        Me.TextBoxHNubmber.MaxLength = 7
+        Me.TextBoxHNubmber.Name = "TextBoxHNubmber"
+        Me.TextBoxHNubmber.Size = New System.Drawing.Size(54, 20)
+        Me.TextBoxHNubmber.TabIndex = 454
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(1003, 656)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(49, 16)
+        Me.Label14.TabIndex = 455
+        Me.Label14.Text = "H Num"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(943, 678)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(103, 23)
+        Me.Button2.TabIndex = 456
+        Me.Button2.Text = "Set H Num"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Lavender
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Location = New System.Drawing.Point(172, 270)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(100, 23)
+        Me.Button3.TabIndex = 457
+        Me.Button3.Text = "Save Customer"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Lavender
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Location = New System.Drawing.Point(172, 300)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(100, 23)
+        Me.Button4.TabIndex = 458
+        Me.Button4.Text = "Load Customer"
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(12, 636)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(56, 16)
+        Me.Label15.TabIndex = 459
+        Me.Label15.Text = "Label15"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1246, 742)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.TextBoxHNubmber)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
@@ -2866,4 +2939,10 @@ End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents TextBoxHNubmber As System.Windows.Forms.TextBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Label15 As System.Windows.Forms.Label
 End Class
