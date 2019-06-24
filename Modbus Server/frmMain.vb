@@ -691,8 +691,8 @@
             CheckBoxFaultBit2.Visible = False
             CheckBoxFaultBit3.Text = "Ion Under Voltage"
             CheckBoxFaultBit4.Text = "PS Fault"
-            CheckBoxFaultBit5.Visible = False
-            CheckBoxFaultBit6.Visible = False
+            CheckBoxFaultBit5.Text = "Linac Wave Arc"
+            CheckBoxFaultBit6.Text = "Mag Wave Arc"
             CheckBoxFaultBit7.Visible = False
             CheckBoxFaultBit8.Visible = False
             CheckBoxFaultBit9.Visible = False
