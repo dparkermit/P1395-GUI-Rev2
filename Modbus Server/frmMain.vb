@@ -465,7 +465,7 @@
 
 
         Dim selected_board_connected As Boolean = False
-
+#If (0) Then
         If (selected_baord = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
 
             selected_board_connected = True
@@ -598,7 +598,7 @@
             LabelValue2.Text = "Low Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(1) / 1000, "0.000") & " kV"
             LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(7)
             LabelValue4.Text = "Vmon Pulse = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(0) / 1000, "0.000") & " kV"
-            LabelValue5.Text = "Imon = "& ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
+            LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
             LabelValue6.Text = ""
             LabelValue7.Text = ""
             LabelValue8.Text = ""
@@ -1003,7 +1003,7 @@
             CheckBoxLoggedBitE.Visible = False
             CheckBoxLoggedBitF.Visible = False
 
-           
+
             LabelValue1.Text = "Grid H = " &
                 ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(0) &
                 ", " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).ecb_local_data(1)
@@ -1426,9 +1426,10 @@
 
 
 
+
         End If
 
-
+#End If
         If selected_board_connected Then
             LabelBoardStatus.Text = ""
             Me.BackColor = SystemColors.Control
@@ -2141,6 +2142,8 @@
         warmuptime = Math.Max(warmuptime, ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(5))
         warmuptime = Math.Max(warmuptime, ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(6))
 
+
+#If 0 Then
         ' Calculate the PRF
         Dim prf As UInt16
         prf = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(3)
@@ -2164,6 +2167,7 @@
         Catch ex As Exception
             trigger_width = 0
         End Try
+
 
 
 
@@ -2219,7 +2223,7 @@
         CheckBoxOperateGunDriver.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).fault_bits
         CheckBoxOperateEthernet.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).fault_bits
 
-
+#End If
 #If (0) Then
 
         ' Update the Ready Boards
@@ -2289,7 +2293,7 @@
         LabelErrorResetCount.Text = "Reset Count = " & ServerSettings.ETMEthernetDebugData.reset_count
         LabelErrorSelfTestResultRegister.Text = "Self Test = 0x" & ServerSettings.ETMEthernetDebugData.self_test_results.ToString("x")
         LabelErrorReserved0.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16).ToString("x") '  "= 0x" & ServerSettings.ETMEthernetDebugData.reserved_0.ToString("x")
-        LabelErrorReserved1.Text = "Can Ver = 0x" & ServerSettings.ETMEthernetDebugData.reserved_1.ToString("x")
+        'LabelErrorReserved1.Text = "Can Ver = 0x" & ServerSettings.ETMEthernetDebugData.reserved_1.ToString("x")
         LabelRCON.Text = "RCON = " & ServerSettings.ETMEthernetDebugData.RCON_value.ToString("X")
 
         LabelCommandCount.Text = "Cmd Count = " & ServerSettings.command_rcv_count
@@ -2434,9 +2438,6 @@
         ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
             command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
             selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC Then
-            command_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
-            selected_board_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
         ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
             command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
             selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
@@ -2733,9 +2734,6 @@
             ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
                 command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
                 selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC Then
-                command_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
-                selected_board_index = ETM_CAN_ADDR_PULSE_SYNC_BOARD
             ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
                 command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
                 selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD

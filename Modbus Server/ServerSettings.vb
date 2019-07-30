@@ -43,6 +43,7 @@ Public Class ServerSettings
     Public Const MAX_BOARD_ADDRESSES = 16
     Public ETMEthernetBoardLoggingData(MAX_BOARD_ADDRESSES) As ETM_CAN_BOARD_DATA
     Public ETMEthernetDebugData As ETM_CAN_DEBUG_DATA
+    Public ETMEthernetECBLoggingData As ETM_ECB_BOARD_DATA
 
     Public Const MAX_CAL_INDEX = 65536
     Public ETMEthernetCalStructure(MAX_CAL_INDEX + 1) As ETM_ETHERNET_CAL_STRUCTURE
@@ -95,6 +96,7 @@ Public Class ServerSettings
             ETMEthernetBoardLoggingData(i) = New ETM_CAN_BOARD_DATA(CByte(i))
         Next
         ETMEthernetDebugData = New ETM_CAN_DEBUG_DATA(0)
+        ETMEthernetECBLoggingData = New ETM_ECB_BOARD_DATA(15)
 
         TimerUpdate.Enabled = True
 
@@ -216,15 +218,19 @@ Public Class ServerSettings
             xmitBuffer(11) = 0
 
 
-            If (command_id >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And command_id <= CUShort(MODBUS_COMMANDS.MODBUS_WR_ETHERNET)) Then
+            If (command_id >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And command_id <= CUShort(MODBUS_COMMANDS.MODBUS_WR_PFN_BOARD)) Then
                 ' DPARKER do we need to check received data
                 ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 12)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
-            ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
+            ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then
+                ETMEthernetECBLoggingData.SetData(recvBuffer, CUShort(word_count * 2), 12)
+                stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
+            ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_DEBUG_DATA) Then
                 ETMEthernetDebugData.SetData(recvBuffer, CUShort(word_count * 2), 12)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
+
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_EVENTS) Then
 
                 For i = 0 To CUShort((word_count * 2 - 1))
@@ -281,7 +287,7 @@ Public Class ServerSettings
                 xmitBuffer(19) = CByte(command_to_ECB.data(0) Mod 256)
             End If
 
-        stream.BeginWrite(xmitBuffer, 0, (msglen + 6), New AsyncCallback(AddressOf DoXmitDoneCallback), stream)           '(xmitBuffer, 0, 12)
+            stream.BeginWrite(xmitBuffer, 0, (msglen + 6), New AsyncCallback(AddressOf DoXmitDoneCallback), stream)           '(xmitBuffer, 0, 12)
         End If
     End Sub
 
