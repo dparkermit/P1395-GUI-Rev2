@@ -26,11 +26,11 @@ Partial Class frmMain
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.ButtonUpdateInput3 = New System.Windows.Forms.Button()
         Me.TextBoxInput3 = New System.Windows.Forms.TextBox()
-        Me.LabelValue15 = New System.Windows.Forms.Label()
-        Me.LabelValue14 = New System.Windows.Forms.Label()
-        Me.LabelValue13 = New System.Windows.Forms.Label()
-        Me.LabelValue12 = New System.Windows.Forms.Label()
-        Me.LabelValue11 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog14 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog13 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog12 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog11 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog10 = New System.Windows.Forms.Label()
         Me.LabelRCON = New System.Windows.Forms.Label()
         Me.LabelValueDebugF = New System.Windows.Forms.Label()
         Me.LabelValueDebugE = New System.Windows.Forms.Label()
@@ -48,23 +48,23 @@ Partial Class frmMain
         Me.LabelValueDebug2 = New System.Windows.Forms.Label()
         Me.LabelValueDebug1 = New System.Windows.Forms.Label()
         Me.LabelValueDebug0 = New System.Windows.Forms.Label()
-        Me.LabelValue10 = New System.Windows.Forms.Label()
-        Me.LabelValue9 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog9 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog8 = New System.Windows.Forms.Label()
         Me.LabelFirmwareVerssion = New System.Windows.Forms.Label()
-        Me.LabelValue8 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog7 = New System.Windows.Forms.Label()
         Me.LabelAgileInfo = New System.Windows.Forms.Label()
-        Me.LabelValue7 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog6 = New System.Windows.Forms.Label()
         Me.LabelErrorReserved1 = New System.Windows.Forms.Label()
-        Me.LabelValue6 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog5 = New System.Windows.Forms.Label()
         Me.LabelErrorReserved0 = New System.Windows.Forms.Label()
-        Me.LabelValue5 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog4 = New System.Windows.Forms.Label()
         Me.LabelErrorSelfTestResultRegister = New System.Windows.Forms.Label()
-        Me.LabelValue4 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog3 = New System.Windows.Forms.Label()
         Me.LabelErrorResetCount = New System.Windows.Forms.Label()
-        Me.LabelValue3 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog2 = New System.Windows.Forms.Label()
         Me.LabelErrorScaleCount = New System.Windows.Forms.Label()
-        Me.LabelValue2 = New System.Windows.Forms.Label()
-        Me.LabelValue1 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog1 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog0 = New System.Windows.Forms.Label()
         Me.LabelErrorSPIBusCount = New System.Windows.Forms.Label()
         Me.ButtonUpdateInput2 = New System.Windows.Forms.Button()
         Me.LabelErrorI2CBusCount = New System.Windows.Forms.Label()
@@ -103,22 +103,6 @@ Partial Class frmMain
         Me.LabelCanTX1Count = New System.Windows.Forms.Label()
         Me.LabelCanErrorFlagCount = New System.Windows.Forms.Label()
         Me.LabelCanCXECReg = New System.Windows.Forms.Label()
-        Me.CheckBoxFaultBitF = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBitE = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBitD = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBitC = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBitB = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBitA = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxFaultBit0 = New System.Windows.Forms.CheckBox()
         Me.cboIndex = New System.Windows.Forms.ComboBox()
         Me.LabelBoardStatus = New System.Windows.Forms.Label()
         Me.TextBoxInput4 = New System.Windows.Forms.TextBox()
@@ -171,14 +155,14 @@ Partial Class frmMain
         Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
         Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
         Me.LabelSyncMessageCntrlBits = New System.Windows.Forms.Label()
-        Me.CheckBoxControlBit1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit0 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxControlBit7 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl1 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl0 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl2 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl3 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl4 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl5 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl6 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusCntrl7 = New System.Windows.Forms.CheckBox()
         Me.LabelGuiVersion = New System.Windows.Forms.Label()
         Me.LabelRangeInput1 = New System.Windows.Forms.Label()
         Me.LabelRangeInput2 = New System.Windows.Forms.Label()
@@ -189,22 +173,6 @@ Partial Class frmMain
         Me.ButtonZeroOnTime = New System.Windows.Forms.Button()
         Me.ButtonZeroPulseCounters = New System.Windows.Forms.Button()
         Me.ButtonToggleMode = New System.Windows.Forms.Button()
-        Me.CheckBoxLoggedBitF = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit0 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBit9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBitA = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBitB = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBitC = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBitD = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxLoggedBitE = New System.Windows.Forms.CheckBox()
         Me.ButtonSaveFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonLoadFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
@@ -233,6 +201,137 @@ Partial Class frmMain
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.TabPage4Dose = New System.Windows.Forms.TabControl()
+        Me.TabPage1ECB = New System.Windows.Forms.TabPage()
+        Me.TabPage2Slave = New System.Windows.Forms.TabPage()
+        Me.LblDebugReg3 = New System.Windows.Forms.Label()
+        Me.LblDebugReg2 = New System.Windows.Forms.Label()
+        Me.LblDebugReg1 = New System.Windows.Forms.Label()
+        Me.LblDebugReg0 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue23 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue15 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue16 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue17 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue18 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue19 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue20 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue21 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue22 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue0 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue1 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue2 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue3 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue4 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue5 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue6 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue7 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue8 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue9 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue10 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue11 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue12 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue13 = New System.Windows.Forms.Label()
+        Me.LblSlaveLogValue14 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog23 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog15 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog16 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog17 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog18 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog19 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog20 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog21 = New System.Windows.Forms.Label()
+        Me.LblSlaveLog22 = New System.Windows.Forms.Label()
+        Me.CbxSlaveStatusNotLoggedF = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLoggedE = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLoggedD = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLoggedC = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLoggedB = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLoggedA = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged9 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged8 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged0 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged7 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged6 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged5 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged4 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged3 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged2 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotLogged1 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedF = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedE = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedD = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedC = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedB = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLoggedA = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged9 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged8 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged0 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged7 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged6 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged5 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged4 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged3 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged2 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusLogged1 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultF = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultE = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultD = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultC = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultB = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFaultA = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault9 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault8 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault0 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault7 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault6 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault5 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault4 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault3 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault2 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusFault1 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice7 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice6 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice5 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice4 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice3 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice2 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice1 = New System.Windows.Forms.CheckBox()
+        Me.CbxSlaveStatusNotice0 = New System.Windows.Forms.CheckBox()
+        Me.TabPage3Debug = New System.Windows.Forms.TabPage()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.LblDebugReg7 = New System.Windows.Forms.Label()
+        Me.LblDebugReg6 = New System.Windows.Forms.Label()
+        Me.LblDebugReg5 = New System.Windows.Forms.Label()
+        Me.LblDebugReg4 = New System.Windows.Forms.Label()
+        Me.LblDebugRegF = New System.Windows.Forms.Label()
+        Me.LblDebugRegE = New System.Windows.Forms.Label()
+        Me.LblDebugRegD = New System.Windows.Forms.Label()
+        Me.LblDebugRegC = New System.Windows.Forms.Label()
+        Me.LblDebugRegB = New System.Windows.Forms.Label()
+        Me.LblDebugRegA = New System.Windows.Forms.Label()
+        Me.LblDebugReg9 = New System.Windows.Forms.Label()
+        Me.LblDebugReg8 = New System.Windows.Forms.Label()
+        Me.LblDebugCanF = New System.Windows.Forms.Label()
+        Me.LblDebugCanE = New System.Windows.Forms.Label()
+        Me.LblDebugCanD = New System.Windows.Forms.Label()
+        Me.LblDebugCanC = New System.Windows.Forms.Label()
+        Me.LblDebugCanB = New System.Windows.Forms.Label()
+        Me.LblDebugCanA = New System.Windows.Forms.Label()
+        Me.LblDebugCan9 = New System.Windows.Forms.Label()
+        Me.LblDebugCan8 = New System.Windows.Forms.Label()
+        Me.LblDebugCan7 = New System.Windows.Forms.Label()
+        Me.LblDebugCan6 = New System.Windows.Forms.Label()
+        Me.LblDebugCan5 = New System.Windows.Forms.Label()
+        Me.LblDebugCan4 = New System.Windows.Forms.Label()
+        Me.LblDebugCan3 = New System.Windows.Forms.Label()
+        Me.LblDebugCan2 = New System.Windows.Forms.Label()
+        Me.LblDebugCan1 = New System.Windows.Forms.Label()
+        Me.LblDebugCan0 = New System.Windows.Forms.Label()
+        Me.TabPage4Dose.SuspendLayout()
+        Me.TabPage2Slave.SuspendLayout()
+        Me.TabPage3Debug.SuspendLayout()
+        Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -241,7 +340,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput3
         '
-        Me.ButtonUpdateInput3.Location = New System.Drawing.Point(963, 61)
+        Me.ButtonUpdateInput3.Location = New System.Drawing.Point(583, 794)
         Me.ButtonUpdateInput3.Name = "ButtonUpdateInput3"
         Me.ButtonUpdateInput3.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput3.TabIndex = 302
@@ -250,72 +349,72 @@ Partial Class frmMain
         '
         'TextBoxInput3
         '
-        Me.TextBoxInput3.Location = New System.Drawing.Point(857, 64)
+        Me.TextBoxInput3.Location = New System.Drawing.Point(477, 797)
         Me.TextBoxInput3.MaxLength = 7
         Me.TextBoxInput3.Name = "TextBoxInput3"
         Me.TextBoxInput3.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxInput3.TabIndex = 301
         '
-        'LabelValue15
+        'LblSlaveLog14
         '
-        Me.LabelValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue15.Location = New System.Drawing.Point(651, 377)
-        Me.LabelValue15.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue15.Name = "LabelValue15"
-        Me.LabelValue15.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue15.TabIndex = 300
-        Me.LabelValue15.Text = "Label Value 15"
-        Me.LabelValue15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog14.Location = New System.Drawing.Point(385, 448)
+        Me.LblSlaveLog14.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog14.Name = "LblSlaveLog14"
+        Me.LblSlaveLog14.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog14.TabIndex = 300
+        Me.LblSlaveLog14.Text = "Log Data 14"
+        Me.LblSlaveLog14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue14
+        'LblSlaveLog13
         '
-        Me.LabelValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue14.Location = New System.Drawing.Point(651, 351)
-        Me.LabelValue14.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue14.Name = "LabelValue14"
-        Me.LabelValue14.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue14.TabIndex = 299
-        Me.LabelValue14.Text = "Label Value 14"
-        Me.LabelValue14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog13.Location = New System.Drawing.Point(385, 422)
+        Me.LblSlaveLog13.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog13.Name = "LblSlaveLog13"
+        Me.LblSlaveLog13.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog13.TabIndex = 299
+        Me.LblSlaveLog13.Text = "Log Data 13"
+        Me.LblSlaveLog13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue13
+        'LblSlaveLog12
         '
-        Me.LabelValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue13.Location = New System.Drawing.Point(651, 325)
-        Me.LabelValue13.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue13.Name = "LabelValue13"
-        Me.LabelValue13.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue13.TabIndex = 298
-        Me.LabelValue13.Text = "Label Value 13"
-        Me.LabelValue13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog12.Location = New System.Drawing.Point(385, 396)
+        Me.LblSlaveLog12.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog12.Name = "LblSlaveLog12"
+        Me.LblSlaveLog12.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog12.TabIndex = 298
+        Me.LblSlaveLog12.Text = "Log Data 12"
+        Me.LblSlaveLog12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue12
+        'LblSlaveLog11
         '
-        Me.LabelValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue12.Location = New System.Drawing.Point(651, 299)
-        Me.LabelValue12.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue12.Name = "LabelValue12"
-        Me.LabelValue12.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue12.TabIndex = 297
-        Me.LabelValue12.Text = "Label Value 12"
-        Me.LabelValue12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog11.Location = New System.Drawing.Point(385, 370)
+        Me.LblSlaveLog11.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog11.Name = "LblSlaveLog11"
+        Me.LblSlaveLog11.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog11.TabIndex = 297
+        Me.LblSlaveLog11.Text = "Log Data 11"
+        Me.LblSlaveLog11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue11
+        'LblSlaveLog10
         '
-        Me.LabelValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue11.Location = New System.Drawing.Point(651, 273)
-        Me.LabelValue11.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue11.Name = "LabelValue11"
-        Me.LabelValue11.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue11.TabIndex = 277
-        Me.LabelValue11.Text = "Label Value 11"
-        Me.LabelValue11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog10.Location = New System.Drawing.Point(385, 344)
+        Me.LblSlaveLog10.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog10.Name = "LblSlaveLog10"
+        Me.LblSlaveLog10.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog10.TabIndex = 277
+        Me.LblSlaveLog10.Text = "Log Data 10"
+        Me.LblSlaveLog10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelRCON
         '
         Me.LabelRCON.AutoSize = True
         Me.LabelRCON.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRCON.Location = New System.Drawing.Point(297, 578)
+        Me.LabelRCON.Location = New System.Drawing.Point(101, 653)
         Me.LabelRCON.Name = "LabelRCON"
         Me.LabelRCON.Size = New System.Drawing.Size(71, 16)
         Me.LabelRCON.TabIndex = 267
@@ -325,7 +424,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugF.AutoSize = True
         Me.LabelValueDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugF.Location = New System.Drawing.Point(1106, 386)
+        Me.LabelValueDebugF.Location = New System.Drawing.Point(297, 342)
         Me.LabelValueDebugF.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugF.Name = "LabelValueDebugF"
         Me.LabelValueDebugF.Size = New System.Drawing.Size(84, 16)
@@ -336,7 +435,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugE.AutoSize = True
         Me.LabelValueDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugE.Location = New System.Drawing.Point(1106, 370)
+        Me.LabelValueDebugE.Location = New System.Drawing.Point(297, 326)
         Me.LabelValueDebugE.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugE.Name = "LabelValueDebugE"
         Me.LabelValueDebugE.Size = New System.Drawing.Size(84, 16)
@@ -347,7 +446,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugD.AutoSize = True
         Me.LabelValueDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugD.Location = New System.Drawing.Point(1106, 354)
+        Me.LabelValueDebugD.Location = New System.Drawing.Point(297, 310)
         Me.LabelValueDebugD.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugD.Name = "LabelValueDebugD"
         Me.LabelValueDebugD.Size = New System.Drawing.Size(84, 16)
@@ -358,7 +457,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugC.AutoSize = True
         Me.LabelValueDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugC.Location = New System.Drawing.Point(1106, 338)
+        Me.LabelValueDebugC.Location = New System.Drawing.Point(297, 294)
         Me.LabelValueDebugC.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugC.Name = "LabelValueDebugC"
         Me.LabelValueDebugC.Size = New System.Drawing.Size(84, 16)
@@ -369,7 +468,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugB.AutoSize = True
         Me.LabelValueDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugB.Location = New System.Drawing.Point(1106, 322)
+        Me.LabelValueDebugB.Location = New System.Drawing.Point(297, 278)
         Me.LabelValueDebugB.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugB.Name = "LabelValueDebugB"
         Me.LabelValueDebugB.Size = New System.Drawing.Size(84, 16)
@@ -380,7 +479,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebugA.AutoSize = True
         Me.LabelValueDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugA.Location = New System.Drawing.Point(1106, 306)
+        Me.LabelValueDebugA.Location = New System.Drawing.Point(297, 262)
         Me.LabelValueDebugA.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebugA.Name = "LabelValueDebugA"
         Me.LabelValueDebugA.Size = New System.Drawing.Size(84, 16)
@@ -391,7 +490,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug9.AutoSize = True
         Me.LabelValueDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug9.Location = New System.Drawing.Point(1106, 290)
+        Me.LabelValueDebug9.Location = New System.Drawing.Point(297, 246)
         Me.LabelValueDebug9.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug9.Name = "LabelValueDebug9"
         Me.LabelValueDebug9.Size = New System.Drawing.Size(84, 16)
@@ -402,7 +501,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug8.AutoSize = True
         Me.LabelValueDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug8.Location = New System.Drawing.Point(1106, 274)
+        Me.LabelValueDebug8.Location = New System.Drawing.Point(297, 230)
         Me.LabelValueDebug8.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug8.Name = "LabelValueDebug8"
         Me.LabelValueDebug8.Size = New System.Drawing.Size(84, 16)
@@ -413,7 +512,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug7.AutoSize = True
         Me.LabelValueDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug7.Location = New System.Drawing.Point(1106, 258)
+        Me.LabelValueDebug7.Location = New System.Drawing.Point(297, 214)
         Me.LabelValueDebug7.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug7.Name = "LabelValueDebug7"
         Me.LabelValueDebug7.Size = New System.Drawing.Size(84, 16)
@@ -424,7 +523,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug6.AutoSize = True
         Me.LabelValueDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug6.Location = New System.Drawing.Point(1106, 242)
+        Me.LabelValueDebug6.Location = New System.Drawing.Point(297, 198)
         Me.LabelValueDebug6.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug6.Name = "LabelValueDebug6"
         Me.LabelValueDebug6.Size = New System.Drawing.Size(84, 16)
@@ -435,7 +534,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug5.AutoSize = True
         Me.LabelValueDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug5.Location = New System.Drawing.Point(1106, 226)
+        Me.LabelValueDebug5.Location = New System.Drawing.Point(297, 182)
         Me.LabelValueDebug5.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug5.Name = "LabelValueDebug5"
         Me.LabelValueDebug5.Size = New System.Drawing.Size(84, 16)
@@ -446,7 +545,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug4.AutoSize = True
         Me.LabelValueDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug4.Location = New System.Drawing.Point(1106, 210)
+        Me.LabelValueDebug4.Location = New System.Drawing.Point(297, 166)
         Me.LabelValueDebug4.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug4.Name = "LabelValueDebug4"
         Me.LabelValueDebug4.Size = New System.Drawing.Size(84, 16)
@@ -457,7 +556,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug3.AutoSize = True
         Me.LabelValueDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug3.Location = New System.Drawing.Point(1106, 194)
+        Me.LabelValueDebug3.Location = New System.Drawing.Point(297, 150)
         Me.LabelValueDebug3.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug3.Name = "LabelValueDebug3"
         Me.LabelValueDebug3.Size = New System.Drawing.Size(84, 16)
@@ -468,7 +567,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug2.AutoSize = True
         Me.LabelValueDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug2.Location = New System.Drawing.Point(1106, 178)
+        Me.LabelValueDebug2.Location = New System.Drawing.Point(297, 134)
         Me.LabelValueDebug2.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug2.Name = "LabelValueDebug2"
         Me.LabelValueDebug2.Size = New System.Drawing.Size(84, 16)
@@ -479,7 +578,7 @@ Partial Class frmMain
         '
         Me.LabelValueDebug1.AutoSize = True
         Me.LabelValueDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug1.Location = New System.Drawing.Point(1106, 162)
+        Me.LabelValueDebug1.Location = New System.Drawing.Point(297, 118)
         Me.LabelValueDebug1.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug1.Name = "LabelValueDebug1"
         Me.LabelValueDebug1.Size = New System.Drawing.Size(84, 16)
@@ -490,196 +589,196 @@ Partial Class frmMain
         '
         Me.LabelValueDebug0.AutoSize = True
         Me.LabelValueDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug0.Location = New System.Drawing.Point(1106, 146)
+        Me.LabelValueDebug0.Location = New System.Drawing.Point(297, 102)
         Me.LabelValueDebug0.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelValueDebug0.Name = "LabelValueDebug0"
         Me.LabelValueDebug0.Size = New System.Drawing.Size(84, 16)
         Me.LabelValueDebug0.TabIndex = 241
         Me.LabelValueDebug0.Text = "ValueDebug"
         '
-        'LabelValue10
+        'LblSlaveLog9
         '
-        Me.LabelValue10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue10.Location = New System.Drawing.Point(651, 247)
-        Me.LabelValue10.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue10.Name = "LabelValue10"
-        Me.LabelValue10.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue10.TabIndex = 234
-        Me.LabelValue10.Text = "Label Value 10"
-        Me.LabelValue10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog9.Location = New System.Drawing.Point(385, 318)
+        Me.LblSlaveLog9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog9.Name = "LblSlaveLog9"
+        Me.LblSlaveLog9.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog9.TabIndex = 234
+        Me.LblSlaveLog9.Text = "Log Data 9"
+        Me.LblSlaveLog9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue9
+        'LblSlaveLog8
         '
-        Me.LabelValue9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue9.Location = New System.Drawing.Point(651, 221)
-        Me.LabelValue9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue9.Name = "LabelValue9"
-        Me.LabelValue9.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue9.TabIndex = 233
-        Me.LabelValue9.Text = "Label Value 9"
-        Me.LabelValue9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog8.Location = New System.Drawing.Point(385, 292)
+        Me.LblSlaveLog8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog8.Name = "LblSlaveLog8"
+        Me.LblSlaveLog8.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog8.TabIndex = 233
+        Me.LblSlaveLog8.Text = "Log Data 8"
+        Me.LblSlaveLog8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelFirmwareVerssion
         '
         Me.LabelFirmwareVerssion.AutoSize = True
-        Me.LabelFirmwareVerssion.Location = New System.Drawing.Point(296, 64)
+        Me.LabelFirmwareVerssion.Location = New System.Drawing.Point(226, 49)
         Me.LabelFirmwareVerssion.Name = "LabelFirmwareVerssion"
         Me.LabelFirmwareVerssion.Size = New System.Drawing.Size(49, 13)
         Me.LabelFirmwareVerssion.TabIndex = 193
         Me.LabelFirmwareVerssion.Text = "Firmware"
         '
-        'LabelValue8
+        'LblSlaveLog7
         '
-        Me.LabelValue8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue8.Location = New System.Drawing.Point(651, 195)
-        Me.LabelValue8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue8.Name = "LabelValue8"
-        Me.LabelValue8.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue8.TabIndex = 232
-        Me.LabelValue8.Text = "Label Value 8"
-        Me.LabelValue8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog7.Location = New System.Drawing.Point(385, 266)
+        Me.LblSlaveLog7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog7.Name = "LblSlaveLog7"
+        Me.LblSlaveLog7.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog7.TabIndex = 232
+        Me.LblSlaveLog7.Text = "Log Data 7"
+        Me.LblSlaveLog7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelAgileInfo
         '
         Me.LabelAgileInfo.AutoSize = True
-        Me.LabelAgileInfo.Location = New System.Drawing.Point(296, 49)
+        Me.LabelAgileInfo.Location = New System.Drawing.Point(226, 34)
         Me.LabelAgileInfo.Name = "LabelAgileInfo"
         Me.LabelAgileInfo.Size = New System.Drawing.Size(51, 13)
         Me.LabelAgileInfo.TabIndex = 192
         Me.LabelAgileInfo.Text = "Agile Info"
         '
-        'LabelValue7
+        'LblSlaveLog6
         '
-        Me.LabelValue7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue7.Location = New System.Drawing.Point(651, 169)
-        Me.LabelValue7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue7.Name = "LabelValue7"
-        Me.LabelValue7.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue7.TabIndex = 231
-        Me.LabelValue7.Text = "Label Value 7"
-        Me.LabelValue7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog6.Location = New System.Drawing.Point(385, 240)
+        Me.LblSlaveLog6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog6.Name = "LblSlaveLog6"
+        Me.LblSlaveLog6.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog6.TabIndex = 231
+        Me.LblSlaveLog6.Text = "Log Data 6"
+        Me.LblSlaveLog6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorReserved1
         '
         Me.LabelErrorReserved1.AutoSize = True
         Me.LabelErrorReserved1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorReserved1.Location = New System.Drawing.Point(297, 562)
+        Me.LabelErrorReserved1.Location = New System.Drawing.Point(101, 637)
         Me.LabelErrorReserved1.Name = "LabelErrorReserved1"
         Me.LabelErrorReserved1.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorReserved1.TabIndex = 190
         Me.LabelErrorReserved1.Text = "LabelError"
         '
-        'LabelValue6
+        'LblSlaveLog5
         '
-        Me.LabelValue6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue6.Location = New System.Drawing.Point(651, 143)
-        Me.LabelValue6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue6.Name = "LabelValue6"
-        Me.LabelValue6.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue6.TabIndex = 230
-        Me.LabelValue6.Text = "Label Value 6"
-        Me.LabelValue6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog5.Location = New System.Drawing.Point(385, 214)
+        Me.LblSlaveLog5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog5.Name = "LblSlaveLog5"
+        Me.LblSlaveLog5.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog5.TabIndex = 230
+        Me.LblSlaveLog5.Text = "Log Data 5"
+        Me.LblSlaveLog5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorReserved0
         '
         Me.LabelErrorReserved0.AutoSize = True
         Me.LabelErrorReserved0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorReserved0.Location = New System.Drawing.Point(297, 546)
+        Me.LabelErrorReserved0.Location = New System.Drawing.Point(101, 621)
         Me.LabelErrorReserved0.Name = "LabelErrorReserved0"
         Me.LabelErrorReserved0.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorReserved0.TabIndex = 189
         Me.LabelErrorReserved0.Text = "LabelError"
         '
-        'LabelValue5
+        'LblSlaveLog4
         '
-        Me.LabelValue5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue5.Location = New System.Drawing.Point(651, 117)
-        Me.LabelValue5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue5.Name = "LabelValue5"
-        Me.LabelValue5.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue5.TabIndex = 229
-        Me.LabelValue5.Text = "Label Value 5"
-        Me.LabelValue5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog4.Location = New System.Drawing.Point(385, 188)
+        Me.LblSlaveLog4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog4.Name = "LblSlaveLog4"
+        Me.LblSlaveLog4.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog4.TabIndex = 229
+        Me.LblSlaveLog4.Text = "Log Data 4"
+        Me.LblSlaveLog4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorSelfTestResultRegister
         '
         Me.LabelErrorSelfTestResultRegister.AutoSize = True
         Me.LabelErrorSelfTestResultRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorSelfTestResultRegister.Location = New System.Drawing.Point(297, 530)
+        Me.LabelErrorSelfTestResultRegister.Location = New System.Drawing.Point(101, 605)
         Me.LabelErrorSelfTestResultRegister.Name = "LabelErrorSelfTestResultRegister"
         Me.LabelErrorSelfTestResultRegister.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorSelfTestResultRegister.TabIndex = 188
         Me.LabelErrorSelfTestResultRegister.Text = "LabelError"
         '
-        'LabelValue4
+        'LblSlaveLog3
         '
-        Me.LabelValue4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue4.Location = New System.Drawing.Point(651, 91)
-        Me.LabelValue4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue4.Name = "LabelValue4"
-        Me.LabelValue4.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue4.TabIndex = 228
-        Me.LabelValue4.Text = "Label Value 4"
-        Me.LabelValue4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog3.Location = New System.Drawing.Point(385, 162)
+        Me.LblSlaveLog3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog3.Name = "LblSlaveLog3"
+        Me.LblSlaveLog3.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog3.TabIndex = 228
+        Me.LblSlaveLog3.Text = "Log Data 3"
+        Me.LblSlaveLog3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorResetCount
         '
         Me.LabelErrorResetCount.AutoSize = True
         Me.LabelErrorResetCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorResetCount.Location = New System.Drawing.Point(297, 514)
+        Me.LabelErrorResetCount.Location = New System.Drawing.Point(101, 589)
         Me.LabelErrorResetCount.Name = "LabelErrorResetCount"
         Me.LabelErrorResetCount.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorResetCount.TabIndex = 187
         Me.LabelErrorResetCount.Text = "LabelError"
         '
-        'LabelValue3
+        'LblSlaveLog2
         '
-        Me.LabelValue3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue3.Location = New System.Drawing.Point(651, 65)
-        Me.LabelValue3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue3.Name = "LabelValue3"
-        Me.LabelValue3.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue3.TabIndex = 227
-        Me.LabelValue3.Text = "Label Value 3"
-        Me.LabelValue3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog2.Location = New System.Drawing.Point(385, 136)
+        Me.LblSlaveLog2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog2.Name = "LblSlaveLog2"
+        Me.LblSlaveLog2.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog2.TabIndex = 227
+        Me.LblSlaveLog2.Text = "Log Data 2"
+        Me.LblSlaveLog2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorScaleCount
         '
         Me.LabelErrorScaleCount.AutoSize = True
         Me.LabelErrorScaleCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorScaleCount.Location = New System.Drawing.Point(297, 498)
+        Me.LabelErrorScaleCount.Location = New System.Drawing.Point(101, 573)
         Me.LabelErrorScaleCount.Name = "LabelErrorScaleCount"
         Me.LabelErrorScaleCount.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorScaleCount.TabIndex = 186
         Me.LabelErrorScaleCount.Text = "LabelError"
         '
-        'LabelValue2
+        'LblSlaveLog1
         '
-        Me.LabelValue2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue2.Location = New System.Drawing.Point(651, 39)
-        Me.LabelValue2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue2.Name = "LabelValue2"
-        Me.LabelValue2.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue2.TabIndex = 226
-        Me.LabelValue2.Text = "Label Value 2"
-        Me.LabelValue2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog1.Location = New System.Drawing.Point(385, 110)
+        Me.LblSlaveLog1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog1.Name = "LblSlaveLog1"
+        Me.LblSlaveLog1.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog1.TabIndex = 226
+        Me.LblSlaveLog1.Text = "Log Data 1"
+        Me.LblSlaveLog1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LabelValue1
+        'LblSlaveLog0
         '
-        Me.LabelValue1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValue1.Location = New System.Drawing.Point(651, 13)
-        Me.LabelValue1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.LabelValue1.Name = "LabelValue1"
-        Me.LabelValue1.Size = New System.Drawing.Size(200, 16)
-        Me.LabelValue1.TabIndex = 222
-        Me.LabelValue1.Text = "Label Value 1"
-        Me.LabelValue1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblSlaveLog0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog0.Location = New System.Drawing.Point(385, 84)
+        Me.LblSlaveLog0.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog0.Name = "LblSlaveLog0"
+        Me.LblSlaveLog0.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog0.TabIndex = 222
+        Me.LblSlaveLog0.Text = "Log Data 0"
+        Me.LblSlaveLog0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelErrorSPIBusCount
         '
         Me.LabelErrorSPIBusCount.AutoSize = True
         Me.LabelErrorSPIBusCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorSPIBusCount.Location = New System.Drawing.Point(297, 483)
+        Me.LabelErrorSPIBusCount.Location = New System.Drawing.Point(101, 558)
         Me.LabelErrorSPIBusCount.Name = "LabelErrorSPIBusCount"
         Me.LabelErrorSPIBusCount.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorSPIBusCount.TabIndex = 184
@@ -687,7 +786,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput2
         '
-        Me.ButtonUpdateInput2.Location = New System.Drawing.Point(963, 35)
+        Me.ButtonUpdateInput2.Location = New System.Drawing.Point(583, 768)
         Me.ButtonUpdateInput2.Name = "ButtonUpdateInput2"
         Me.ButtonUpdateInput2.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput2.TabIndex = 225
@@ -698,7 +797,7 @@ Partial Class frmMain
         '
         Me.LabelErrorI2CBusCount.AutoSize = True
         Me.LabelErrorI2CBusCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorI2CBusCount.Location = New System.Drawing.Point(297, 466)
+        Me.LabelErrorI2CBusCount.Location = New System.Drawing.Point(101, 541)
         Me.LabelErrorI2CBusCount.Name = "LabelErrorI2CBusCount"
         Me.LabelErrorI2CBusCount.Size = New System.Drawing.Size(71, 16)
         Me.LabelErrorI2CBusCount.TabIndex = 183
@@ -706,7 +805,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput1
         '
-        Me.ButtonUpdateInput1.Location = New System.Drawing.Point(963, 9)
+        Me.ButtonUpdateInput1.Location = New System.Drawing.Point(583, 742)
         Me.ButtonUpdateInput1.Name = "ButtonUpdateInput1"
         Me.ButtonUpdateInput1.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput1.TabIndex = 224
@@ -716,7 +815,7 @@ Partial Class frmMain
         'LabelDebugF
         '
         Me.LabelDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugF.Location = New System.Drawing.Point(864, 386)
+        Me.LabelDebugF.Location = New System.Drawing.Point(55, 342)
         Me.LabelDebugF.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugF.Name = "LabelDebugF"
         Me.LabelDebugF.Size = New System.Drawing.Size(200, 16)
@@ -727,7 +826,7 @@ Partial Class frmMain
         'LabelDebugE
         '
         Me.LabelDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugE.Location = New System.Drawing.Point(864, 370)
+        Me.LabelDebugE.Location = New System.Drawing.Point(55, 326)
         Me.LabelDebugE.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugE.Name = "LabelDebugE"
         Me.LabelDebugE.Size = New System.Drawing.Size(200, 16)
@@ -738,7 +837,7 @@ Partial Class frmMain
         'LabelDebugD
         '
         Me.LabelDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugD.Location = New System.Drawing.Point(864, 354)
+        Me.LabelDebugD.Location = New System.Drawing.Point(55, 310)
         Me.LabelDebugD.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugD.Name = "LabelDebugD"
         Me.LabelDebugD.Size = New System.Drawing.Size(200, 16)
@@ -749,7 +848,7 @@ Partial Class frmMain
         'LabelDebugC
         '
         Me.LabelDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugC.Location = New System.Drawing.Point(864, 338)
+        Me.LabelDebugC.Location = New System.Drawing.Point(55, 294)
         Me.LabelDebugC.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugC.Name = "LabelDebugC"
         Me.LabelDebugC.Size = New System.Drawing.Size(200, 16)
@@ -760,7 +859,7 @@ Partial Class frmMain
         'LabelDebugB
         '
         Me.LabelDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugB.Location = New System.Drawing.Point(864, 322)
+        Me.LabelDebugB.Location = New System.Drawing.Point(55, 278)
         Me.LabelDebugB.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugB.Name = "LabelDebugB"
         Me.LabelDebugB.Size = New System.Drawing.Size(200, 16)
@@ -771,7 +870,7 @@ Partial Class frmMain
         'LabelDebugA
         '
         Me.LabelDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugA.Location = New System.Drawing.Point(864, 306)
+        Me.LabelDebugA.Location = New System.Drawing.Point(55, 262)
         Me.LabelDebugA.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebugA.Name = "LabelDebugA"
         Me.LabelDebugA.Size = New System.Drawing.Size(200, 16)
@@ -781,7 +880,7 @@ Partial Class frmMain
         '
         'TextBoxInput1
         '
-        Me.TextBoxInput1.Location = New System.Drawing.Point(857, 12)
+        Me.TextBoxInput1.Location = New System.Drawing.Point(477, 745)
         Me.TextBoxInput1.MaxLength = 7
         Me.TextBoxInput1.Name = "TextBoxInput1"
         Me.TextBoxInput1.Size = New System.Drawing.Size(100, 20)
@@ -790,7 +889,7 @@ Partial Class frmMain
         'LabelDebug9
         '
         Me.LabelDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug9.Location = New System.Drawing.Point(864, 290)
+        Me.LabelDebug9.Location = New System.Drawing.Point(55, 246)
         Me.LabelDebug9.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug9.Name = "LabelDebug9"
         Me.LabelDebug9.Size = New System.Drawing.Size(200, 16)
@@ -800,7 +899,7 @@ Partial Class frmMain
         '
         'TextBoxInput2
         '
-        Me.TextBoxInput2.Location = New System.Drawing.Point(857, 38)
+        Me.TextBoxInput2.Location = New System.Drawing.Point(477, 771)
         Me.TextBoxInput2.MaxLength = 7
         Me.TextBoxInput2.Name = "TextBoxInput2"
         Me.TextBoxInput2.Size = New System.Drawing.Size(100, 20)
@@ -809,7 +908,7 @@ Partial Class frmMain
         'LabelDebug8
         '
         Me.LabelDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug8.Location = New System.Drawing.Point(864, 274)
+        Me.LabelDebug8.Location = New System.Drawing.Point(55, 230)
         Me.LabelDebug8.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug8.Name = "LabelDebug8"
         Me.LabelDebug8.Size = New System.Drawing.Size(200, 16)
@@ -820,7 +919,7 @@ Partial Class frmMain
         'LabelDebug7
         '
         Me.LabelDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug7.Location = New System.Drawing.Point(864, 258)
+        Me.LabelDebug7.Location = New System.Drawing.Point(55, 214)
         Me.LabelDebug7.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug7.Name = "LabelDebug7"
         Me.LabelDebug7.Size = New System.Drawing.Size(200, 16)
@@ -831,7 +930,7 @@ Partial Class frmMain
         'LabelDebug6
         '
         Me.LabelDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug6.Location = New System.Drawing.Point(864, 242)
+        Me.LabelDebug6.Location = New System.Drawing.Point(55, 198)
         Me.LabelDebug6.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug6.Name = "LabelDebug6"
         Me.LabelDebug6.Size = New System.Drawing.Size(200, 16)
@@ -842,7 +941,7 @@ Partial Class frmMain
         'LabelDebug5
         '
         Me.LabelDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug5.Location = New System.Drawing.Point(864, 226)
+        Me.LabelDebug5.Location = New System.Drawing.Point(55, 182)
         Me.LabelDebug5.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug5.Name = "LabelDebug5"
         Me.LabelDebug5.Size = New System.Drawing.Size(200, 16)
@@ -853,7 +952,7 @@ Partial Class frmMain
         'LabelDebug4
         '
         Me.LabelDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug4.Location = New System.Drawing.Point(864, 210)
+        Me.LabelDebug4.Location = New System.Drawing.Point(55, 166)
         Me.LabelDebug4.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug4.Name = "LabelDebug4"
         Me.LabelDebug4.Size = New System.Drawing.Size(200, 16)
@@ -864,7 +963,7 @@ Partial Class frmMain
         'LabelDebug3
         '
         Me.LabelDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug3.Location = New System.Drawing.Point(864, 194)
+        Me.LabelDebug3.Location = New System.Drawing.Point(55, 150)
         Me.LabelDebug3.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug3.Name = "LabelDebug3"
         Me.LabelDebug3.Size = New System.Drawing.Size(200, 16)
@@ -875,7 +974,7 @@ Partial Class frmMain
         'LabelDebug2
         '
         Me.LabelDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug2.Location = New System.Drawing.Point(864, 178)
+        Me.LabelDebug2.Location = New System.Drawing.Point(55, 134)
         Me.LabelDebug2.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug2.Name = "LabelDebug2"
         Me.LabelDebug2.Size = New System.Drawing.Size(200, 16)
@@ -886,7 +985,7 @@ Partial Class frmMain
         'LabelDebug1
         '
         Me.LabelDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug1.Location = New System.Drawing.Point(864, 162)
+        Me.LabelDebug1.Location = New System.Drawing.Point(55, 118)
         Me.LabelDebug1.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug1.Name = "LabelDebug1"
         Me.LabelDebug1.Size = New System.Drawing.Size(200, 16)
@@ -897,7 +996,7 @@ Partial Class frmMain
         'LabelDebug0
         '
         Me.LabelDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug0.Location = New System.Drawing.Point(864, 146)
+        Me.LabelDebug0.Location = New System.Drawing.Point(55, 102)
         Me.LabelDebug0.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDebug0.Name = "LabelDebug0"
         Me.LabelDebug0.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -910,7 +1009,7 @@ Partial Class frmMain
         '
         Me.LabelCanTimeoutCount.AutoSize = True
         Me.LabelCanTimeoutCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTimeoutCount.Location = New System.Drawing.Point(480, 578)
+        Me.LabelCanTimeoutCount.Location = New System.Drawing.Point(284, 653)
         Me.LabelCanTimeoutCount.Name = "LabelCanTimeoutCount"
         Me.LabelCanTimeoutCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanTimeoutCount.TabIndex = 166
@@ -920,7 +1019,7 @@ Partial Class frmMain
         '
         Me.LabelCAnDataLogRXBufferOVerflowCount.AutoSize = True
         Me.LabelCAnDataLogRXBufferOVerflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Location = New System.Drawing.Point(480, 562)
+        Me.LabelCAnDataLogRXBufferOVerflowCount.Location = New System.Drawing.Point(284, 637)
         Me.LabelCAnDataLogRXBufferOVerflowCount.Name = "LabelCAnDataLogRXBufferOVerflowCount"
         Me.LabelCAnDataLogRXBufferOVerflowCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCAnDataLogRXBufferOVerflowCount.TabIndex = 165
@@ -930,7 +1029,7 @@ Partial Class frmMain
         '
         Me.LabelCanRXBufferOverflowCount.AutoSize = True
         Me.LabelCanRXBufferOverflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRXBufferOverflowCount.Location = New System.Drawing.Point(480, 546)
+        Me.LabelCanRXBufferOverflowCount.Location = New System.Drawing.Point(284, 621)
         Me.LabelCanRXBufferOverflowCount.Name = "LabelCanRXBufferOverflowCount"
         Me.LabelCanRXBufferOverflowCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanRXBufferOverflowCount.TabIndex = 164
@@ -940,7 +1039,7 @@ Partial Class frmMain
         '
         Me.LabelCanTXBufOverflowCount.AutoSize = True
         Me.LabelCanTXBufOverflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTXBufOverflowCount.Location = New System.Drawing.Point(480, 530)
+        Me.LabelCanTXBufOverflowCount.Location = New System.Drawing.Point(284, 605)
         Me.LabelCanTXBufOverflowCount.Name = "LabelCanTXBufOverflowCount"
         Me.LabelCanTXBufOverflowCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanTXBufOverflowCount.TabIndex = 163
@@ -950,7 +1049,7 @@ Partial Class frmMain
         '
         Me.LabelCanTX0Count.AutoSize = True
         Me.LabelCanTX0Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX0Count.Location = New System.Drawing.Point(480, 514)
+        Me.LabelCanTX0Count.Location = New System.Drawing.Point(284, 589)
         Me.LabelCanTX0Count.Name = "LabelCanTX0Count"
         Me.LabelCanTX0Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanTX0Count.TabIndex = 162
@@ -960,7 +1059,7 @@ Partial Class frmMain
         '
         Me.LabelCanAddressErrorCount.AutoSize = True
         Me.LabelCanAddressErrorCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanAddressErrorCount.Location = New System.Drawing.Point(480, 498)
+        Me.LabelCanAddressErrorCount.Location = New System.Drawing.Point(284, 573)
         Me.LabelCanAddressErrorCount.Name = "LabelCanAddressErrorCount"
         Me.LabelCanAddressErrorCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanAddressErrorCount.TabIndex = 161
@@ -970,7 +1069,7 @@ Partial Class frmMain
         '
         Me.LabelCanInvalidIndexCount.AutoSize = True
         Me.LabelCanInvalidIndexCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanInvalidIndexCount.Location = New System.Drawing.Point(480, 482)
+        Me.LabelCanInvalidIndexCount.Location = New System.Drawing.Point(284, 557)
         Me.LabelCanInvalidIndexCount.Name = "LabelCanInvalidIndexCount"
         Me.LabelCanInvalidIndexCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanInvalidIndexCount.TabIndex = 160
@@ -980,7 +1079,7 @@ Partial Class frmMain
         '
         Me.LabelCanUnknownIdentifierCount.AutoSize = True
         Me.LabelCanUnknownIdentifierCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanUnknownIdentifierCount.Location = New System.Drawing.Point(480, 466)
+        Me.LabelCanUnknownIdentifierCount.Location = New System.Drawing.Point(284, 541)
         Me.LabelCanUnknownIdentifierCount.Name = "LabelCanUnknownIdentifierCount"
         Me.LabelCanUnknownIdentifierCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanUnknownIdentifierCount.TabIndex = 159
@@ -990,7 +1089,7 @@ Partial Class frmMain
         '
         Me.LabelCanISREnteredCount.AutoSize = True
         Me.LabelCanISREnteredCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanISREnteredCount.Location = New System.Drawing.Point(480, 450)
+        Me.LabelCanISREnteredCount.Location = New System.Drawing.Point(284, 525)
         Me.LabelCanISREnteredCount.Name = "LabelCanISREnteredCount"
         Me.LabelCanISREnteredCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanISREnteredCount.TabIndex = 158
@@ -1000,7 +1099,7 @@ Partial Class frmMain
         '
         Me.LabelCanRX1Filt2Count.AutoSize = True
         Me.LabelCanRX1Filt2Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX1Filt2Count.Location = New System.Drawing.Point(480, 434)
+        Me.LabelCanRX1Filt2Count.Location = New System.Drawing.Point(284, 509)
         Me.LabelCanRX1Filt2Count.Name = "LabelCanRX1Filt2Count"
         Me.LabelCanRX1Filt2Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanRX1Filt2Count.TabIndex = 157
@@ -1010,7 +1109,7 @@ Partial Class frmMain
         '
         Me.LabelCanRX0Filt1Count.AutoSize = True
         Me.LabelCanRX0Filt1Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX0Filt1Count.Location = New System.Drawing.Point(480, 418)
+        Me.LabelCanRX0Filt1Count.Location = New System.Drawing.Point(284, 493)
         Me.LabelCanRX0Filt1Count.Name = "LabelCanRX0Filt1Count"
         Me.LabelCanRX0Filt1Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanRX0Filt1Count.TabIndex = 156
@@ -1020,7 +1119,7 @@ Partial Class frmMain
         '
         Me.LabelCanRX0Filt0Count.AutoSize = True
         Me.LabelCanRX0Filt0Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX0Filt0Count.Location = New System.Drawing.Point(480, 402)
+        Me.LabelCanRX0Filt0Count.Location = New System.Drawing.Point(284, 477)
         Me.LabelCanRX0Filt0Count.Name = "LabelCanRX0Filt0Count"
         Me.LabelCanRX0Filt0Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanRX0Filt0Count.TabIndex = 155
@@ -1030,7 +1129,7 @@ Partial Class frmMain
         '
         Me.LabelCanTX2Count.AutoSize = True
         Me.LabelCanTX2Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX2Count.Location = New System.Drawing.Point(480, 386)
+        Me.LabelCanTX2Count.Location = New System.Drawing.Point(284, 461)
         Me.LabelCanTX2Count.Name = "LabelCanTX2Count"
         Me.LabelCanTX2Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanTX2Count.TabIndex = 154
@@ -1040,7 +1139,7 @@ Partial Class frmMain
         '
         Me.LabelCanTX1Count.AutoSize = True
         Me.LabelCanTX1Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX1Count.Location = New System.Drawing.Point(480, 370)
+        Me.LabelCanTX1Count.Location = New System.Drawing.Point(284, 445)
         Me.LabelCanTX1Count.Name = "LabelCanTX1Count"
         Me.LabelCanTX1Count.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanTX1Count.TabIndex = 153
@@ -1050,7 +1149,7 @@ Partial Class frmMain
         '
         Me.LabelCanErrorFlagCount.AutoSize = True
         Me.LabelCanErrorFlagCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanErrorFlagCount.Location = New System.Drawing.Point(480, 354)
+        Me.LabelCanErrorFlagCount.Location = New System.Drawing.Point(284, 429)
         Me.LabelCanErrorFlagCount.Name = "LabelCanErrorFlagCount"
         Me.LabelCanErrorFlagCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanErrorFlagCount.TabIndex = 152
@@ -1060,209 +1159,17 @@ Partial Class frmMain
         '
         Me.LabelCanCXECReg.AutoSize = True
         Me.LabelCanCXECReg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanCXECReg.Location = New System.Drawing.Point(480, 338)
+        Me.LabelCanCXECReg.Location = New System.Drawing.Point(284, 413)
         Me.LabelCanCXECReg.Name = "LabelCanCXECReg"
         Me.LabelCanCXECReg.Size = New System.Drawing.Size(66, 16)
         Me.LabelCanCXECReg.TabIndex = 151
         Me.LabelCanCXECReg.Text = "LabelCan"
         '
-        'CheckBoxFaultBitF
-        '
-        Me.CheckBoxFaultBitF.AutoSize = True
-        Me.CheckBoxFaultBitF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitF.Location = New System.Drawing.Point(483, 314)
-        Me.CheckBoxFaultBitF.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitF.Name = "CheckBoxFaultBitF"
-        Me.CheckBoxFaultBitF.Size = New System.Drawing.Size(85, 20)
-        Me.CheckBoxFaultBitF.TabIndex = 142
-        Me.CheckBoxFaultBitF.Text = "Fault Bit F"
-        Me.CheckBoxFaultBitF.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBitE
-        '
-        Me.CheckBoxFaultBitE.AutoSize = True
-        Me.CheckBoxFaultBitE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitE.Location = New System.Drawing.Point(483, 294)
-        Me.CheckBoxFaultBitE.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitE.Name = "CheckBoxFaultBitE"
-        Me.CheckBoxFaultBitE.Size = New System.Drawing.Size(86, 20)
-        Me.CheckBoxFaultBitE.TabIndex = 141
-        Me.CheckBoxFaultBitE.Text = "Fault Bit E"
-        Me.CheckBoxFaultBitE.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBitD
-        '
-        Me.CheckBoxFaultBitD.AutoSize = True
-        Me.CheckBoxFaultBitD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitD.Location = New System.Drawing.Point(483, 274)
-        Me.CheckBoxFaultBitD.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitD.Name = "CheckBoxFaultBitD"
-        Me.CheckBoxFaultBitD.Size = New System.Drawing.Size(87, 20)
-        Me.CheckBoxFaultBitD.TabIndex = 140
-        Me.CheckBoxFaultBitD.Text = "Fault Bit D"
-        Me.CheckBoxFaultBitD.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBitC
-        '
-        Me.CheckBoxFaultBitC.AutoSize = True
-        Me.CheckBoxFaultBitC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitC.Location = New System.Drawing.Point(483, 254)
-        Me.CheckBoxFaultBitC.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitC.Name = "CheckBoxFaultBitC"
-        Me.CheckBoxFaultBitC.Size = New System.Drawing.Size(86, 20)
-        Me.CheckBoxFaultBitC.TabIndex = 139
-        Me.CheckBoxFaultBitC.Text = "Fault Bit C"
-        Me.CheckBoxFaultBitC.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBitB
-        '
-        Me.CheckBoxFaultBitB.AutoSize = True
-        Me.CheckBoxFaultBitB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitB.Location = New System.Drawing.Point(483, 232)
-        Me.CheckBoxFaultBitB.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitB.Name = "CheckBoxFaultBitB"
-        Me.CheckBoxFaultBitB.Size = New System.Drawing.Size(86, 20)
-        Me.CheckBoxFaultBitB.TabIndex = 138
-        Me.CheckBoxFaultBitB.Text = "Fault Bit B"
-        Me.CheckBoxFaultBitB.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBitA
-        '
-        Me.CheckBoxFaultBitA.AutoSize = True
-        Me.CheckBoxFaultBitA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBitA.Location = New System.Drawing.Point(483, 212)
-        Me.CheckBoxFaultBitA.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBitA.Name = "CheckBoxFaultBitA"
-        Me.CheckBoxFaultBitA.Size = New System.Drawing.Size(86, 20)
-        Me.CheckBoxFaultBitA.TabIndex = 137
-        Me.CheckBoxFaultBitA.Text = "Fault Bit A"
-        Me.CheckBoxFaultBitA.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit9
-        '
-        Me.CheckBoxFaultBit9.AutoSize = True
-        Me.CheckBoxFaultBit9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit9.Location = New System.Drawing.Point(483, 192)
-        Me.CheckBoxFaultBit9.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit9.Name = "CheckBoxFaultBit9"
-        Me.CheckBoxFaultBit9.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit9.TabIndex = 136
-        Me.CheckBoxFaultBit9.Text = "Fault Bit 9"
-        Me.CheckBoxFaultBit9.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit8
-        '
-        Me.CheckBoxFaultBit8.AutoSize = True
-        Me.CheckBoxFaultBit8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit8.Location = New System.Drawing.Point(483, 172)
-        Me.CheckBoxFaultBit8.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit8.Name = "CheckBoxFaultBit8"
-        Me.CheckBoxFaultBit8.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit8.TabIndex = 135
-        Me.CheckBoxFaultBit8.Text = "Fault Bit 8"
-        Me.CheckBoxFaultBit8.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit7
-        '
-        Me.CheckBoxFaultBit7.AutoSize = True
-        Me.CheckBoxFaultBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit7.Location = New System.Drawing.Point(483, 152)
-        Me.CheckBoxFaultBit7.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit7.Name = "CheckBoxFaultBit7"
-        Me.CheckBoxFaultBit7.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit7.TabIndex = 134
-        Me.CheckBoxFaultBit7.Text = "Fault Bit 7"
-        Me.CheckBoxFaultBit7.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit6
-        '
-        Me.CheckBoxFaultBit6.AutoSize = True
-        Me.CheckBoxFaultBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit6.Location = New System.Drawing.Point(483, 132)
-        Me.CheckBoxFaultBit6.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit6.Name = "CheckBoxFaultBit6"
-        Me.CheckBoxFaultBit6.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit6.TabIndex = 133
-        Me.CheckBoxFaultBit6.Text = "Fault Bit 6"
-        Me.CheckBoxFaultBit6.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit5
-        '
-        Me.CheckBoxFaultBit5.AutoSize = True
-        Me.CheckBoxFaultBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit5.Location = New System.Drawing.Point(483, 112)
-        Me.CheckBoxFaultBit5.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit5.Name = "CheckBoxFaultBit5"
-        Me.CheckBoxFaultBit5.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit5.TabIndex = 132
-        Me.CheckBoxFaultBit5.Text = "Fault Bit 5"
-        Me.CheckBoxFaultBit5.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit4
-        '
-        Me.CheckBoxFaultBit4.AutoSize = True
-        Me.CheckBoxFaultBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit4.Location = New System.Drawing.Point(483, 92)
-        Me.CheckBoxFaultBit4.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit4.Name = "CheckBoxFaultBit4"
-        Me.CheckBoxFaultBit4.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit4.TabIndex = 131
-        Me.CheckBoxFaultBit4.Text = "Fault Bit 4"
-        Me.CheckBoxFaultBit4.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit3
-        '
-        Me.CheckBoxFaultBit3.AutoSize = True
-        Me.CheckBoxFaultBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit3.Location = New System.Drawing.Point(483, 70)
-        Me.CheckBoxFaultBit3.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit3.Name = "CheckBoxFaultBit3"
-        Me.CheckBoxFaultBit3.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit3.TabIndex = 130
-        Me.CheckBoxFaultBit3.Text = "Fault Bit 3"
-        Me.CheckBoxFaultBit3.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit2
-        '
-        Me.CheckBoxFaultBit2.AutoSize = True
-        Me.CheckBoxFaultBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit2.Location = New System.Drawing.Point(483, 50)
-        Me.CheckBoxFaultBit2.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit2.Name = "CheckBoxFaultBit2"
-        Me.CheckBoxFaultBit2.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit2.TabIndex = 129
-        Me.CheckBoxFaultBit2.Text = "Fault Bit 2"
-        Me.CheckBoxFaultBit2.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit1
-        '
-        Me.CheckBoxFaultBit1.AutoSize = True
-        Me.CheckBoxFaultBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit1.Location = New System.Drawing.Point(483, 30)
-        Me.CheckBoxFaultBit1.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit1.Name = "CheckBoxFaultBit1"
-        Me.CheckBoxFaultBit1.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit1.TabIndex = 128
-        Me.CheckBoxFaultBit1.Text = "Fault Bit 1"
-        Me.CheckBoxFaultBit1.UseVisualStyleBackColor = True
-        '
-        'CheckBoxFaultBit0
-        '
-        Me.CheckBoxFaultBit0.AutoSize = True
-        Me.CheckBoxFaultBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxFaultBit0.Location = New System.Drawing.Point(483, 10)
-        Me.CheckBoxFaultBit0.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxFaultBit0.Name = "CheckBoxFaultBit0"
-        Me.CheckBoxFaultBit0.Size = New System.Drawing.Size(84, 20)
-        Me.CheckBoxFaultBit0.TabIndex = 127
-        Me.CheckBoxFaultBit0.Text = "Fault Bit 0"
-        Me.CheckBoxFaultBit0.UseVisualStyleBackColor = True
-        '
         'cboIndex
         '
         Me.cboIndex.FormattingEnabled = True
         Me.cboIndex.Items.AddRange(New Object() {"MODBUS_WR_HVLAMBDA " & Global.Microsoft.VisualBasic.ChrW(9), "MODBUS_WR_ION_PUMP", "MODBUS_WR_AFC", "MODBUS_WR_COOLING", "MODBUS_WR_HTR_MAGNET", "MODBUS_WR_GUN_DRIVER", "MODBUS_WR_MAGNETRON_CURRENT", "MODBUS_WR_PULSE_SYNC", "MODBUS_WR_ETHERNET"})
-        Me.cboIndex.Location = New System.Drawing.Point(296, 9)
+        Me.cboIndex.Location = New System.Drawing.Point(3, 13)
         Me.cboIndex.Name = "cboIndex"
         Me.cboIndex.Size = New System.Drawing.Size(171, 21)
         Me.cboIndex.TabIndex = 2
@@ -1272,7 +1179,7 @@ Partial Class frmMain
         '
         Me.LabelBoardStatus.AutoSize = True
         Me.LabelBoardStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelBoardStatus.Location = New System.Drawing.Point(296, 33)
+        Me.LabelBoardStatus.Location = New System.Drawing.Point(226, 18)
         Me.LabelBoardStatus.Name = "LabelBoardStatus"
         Me.LabelBoardStatus.Size = New System.Drawing.Size(115, 16)
         Me.LabelBoardStatus.TabIndex = 152
@@ -1280,7 +1187,7 @@ Partial Class frmMain
         '
         'TextBoxInput4
         '
-        Me.TextBoxInput4.Location = New System.Drawing.Point(857, 90)
+        Me.TextBoxInput4.Location = New System.Drawing.Point(477, 823)
         Me.TextBoxInput4.MaxLength = 7
         Me.TextBoxInput4.Name = "TextBoxInput4"
         Me.TextBoxInput4.Size = New System.Drawing.Size(100, 20)
@@ -1288,7 +1195,7 @@ Partial Class frmMain
         '
         'TextBoxInput5
         '
-        Me.TextBoxInput5.Location = New System.Drawing.Point(857, 116)
+        Me.TextBoxInput5.Location = New System.Drawing.Point(477, 849)
         Me.TextBoxInput5.MaxLength = 7
         Me.TextBoxInput5.Name = "TextBoxInput5"
         Me.TextBoxInput5.Size = New System.Drawing.Size(100, 20)
@@ -1296,7 +1203,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput4
         '
-        Me.ButtonUpdateInput4.Location = New System.Drawing.Point(963, 87)
+        Me.ButtonUpdateInput4.Location = New System.Drawing.Point(583, 820)
         Me.ButtonUpdateInput4.Name = "ButtonUpdateInput4"
         Me.ButtonUpdateInput4.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput4.TabIndex = 310
@@ -1305,7 +1212,7 @@ Partial Class frmMain
         '
         'ButtonUpdateInput5
         '
-        Me.ButtonUpdateInput5.Location = New System.Drawing.Point(963, 113)
+        Me.ButtonUpdateInput5.Location = New System.Drawing.Point(583, 846)
         Me.ButtonUpdateInput5.Name = "ButtonUpdateInput5"
         Me.ButtonUpdateInput5.Size = New System.Drawing.Size(100, 23)
         Me.ButtonUpdateInput5.TabIndex = 311
@@ -1317,7 +1224,7 @@ Partial Class frmMain
         Me.Splitter1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.Splitter1.Location = New System.Drawing.Point(0, 0)
         Me.Splitter1.Name = "Splitter1"
-        Me.Splitter1.Size = New System.Drawing.Size(288, 742)
+        Me.Splitter1.Size = New System.Drawing.Size(364, 961)
         Me.Splitter1.TabIndex = 322
         Me.Splitter1.TabStop = False
         '
@@ -1842,109 +1749,109 @@ Partial Class frmMain
         Me.LabelSyncMessageCntrlBits.TabIndex = 374
         Me.LabelSyncMessageCntrlBits.Text = "Sync Message Cntrl Bits"
         '
-        'CheckBoxControlBit1
+        'CbxSlaveStatusCntrl1
         '
-        Me.CheckBoxControlBit1.AutoSize = True
-        Me.CheckBoxControlBit1.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit1.Location = New System.Drawing.Point(300, 277)
-        Me.CheckBoxControlBit1.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit1.Name = "CheckBoxControlBit1"
-        Me.CheckBoxControlBit1.Size = New System.Drawing.Size(116, 20)
-        Me.CheckBoxControlBit1.TabIndex = 366
-        Me.CheckBoxControlBit1.Text = "Not Configured"
-        Me.CheckBoxControlBit1.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl1.AutoSize = True
+        Me.CbxSlaveStatusCntrl1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl1.Location = New System.Drawing.Point(3, 103)
+        Me.CbxSlaveStatusCntrl1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl1.Name = "CbxSlaveStatusCntrl1"
+        Me.CbxSlaveStatusCntrl1.Size = New System.Drawing.Size(116, 20)
+        Me.CbxSlaveStatusCntrl1.TabIndex = 366
+        Me.CbxSlaveStatusCntrl1.Text = "Not Configured"
+        Me.CbxSlaveStatusCntrl1.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit0
+        'CbxSlaveStatusCntrl0
         '
-        Me.CheckBoxControlBit0.AutoSize = True
-        Me.CheckBoxControlBit0.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit0.Location = New System.Drawing.Point(299, 257)
-        Me.CheckBoxControlBit0.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit0.Name = "CheckBoxControlBit0"
-        Me.CheckBoxControlBit0.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxControlBit0.TabIndex = 365
-        Me.CheckBoxControlBit0.Text = "Not Ready"
-        Me.CheckBoxControlBit0.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl0.AutoSize = True
+        Me.CbxSlaveStatusCntrl0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl0.Location = New System.Drawing.Point(3, 83)
+        Me.CbxSlaveStatusCntrl0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl0.Name = "CbxSlaveStatusCntrl0"
+        Me.CbxSlaveStatusCntrl0.Size = New System.Drawing.Size(92, 20)
+        Me.CbxSlaveStatusCntrl0.TabIndex = 365
+        Me.CbxSlaveStatusCntrl0.Text = "Not Ready"
+        Me.CbxSlaveStatusCntrl0.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit2
+        'CbxSlaveStatusCntrl2
         '
-        Me.CheckBoxControlBit2.AutoSize = True
-        Me.CheckBoxControlBit2.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit2.Location = New System.Drawing.Point(300, 297)
-        Me.CheckBoxControlBit2.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit2.Name = "CheckBoxControlBit2"
-        Me.CheckBoxControlBit2.Size = New System.Drawing.Size(123, 20)
-        Me.CheckBoxControlBit2.TabIndex = 367
-        Me.CheckBoxControlBit2.Text = "Self Check Error"
-        Me.CheckBoxControlBit2.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl2.AutoSize = True
+        Me.CbxSlaveStatusCntrl2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl2.Location = New System.Drawing.Point(3, 123)
+        Me.CbxSlaveStatusCntrl2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl2.Name = "CbxSlaveStatusCntrl2"
+        Me.CbxSlaveStatusCntrl2.Size = New System.Drawing.Size(123, 20)
+        Me.CbxSlaveStatusCntrl2.TabIndex = 367
+        Me.CbxSlaveStatusCntrl2.Text = "Self Check Error"
+        Me.CbxSlaveStatusCntrl2.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit3
+        'CbxSlaveStatusCntrl3
         '
-        Me.CheckBoxControlBit3.AutoSize = True
-        Me.CheckBoxControlBit3.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit3.Location = New System.Drawing.Point(300, 317)
-        Me.CheckBoxControlBit3.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit3.Name = "CheckBoxControlBit3"
-        Me.CheckBoxControlBit3.Size = New System.Drawing.Size(74, 20)
-        Me.CheckBoxControlBit3.TabIndex = 368
-        Me.CheckBoxControlBit3.Text = "Unused"
-        Me.CheckBoxControlBit3.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl3.AutoSize = True
+        Me.CbxSlaveStatusCntrl3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl3.Location = New System.Drawing.Point(3, 143)
+        Me.CbxSlaveStatusCntrl3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl3.Name = "CbxSlaveStatusCntrl3"
+        Me.CbxSlaveStatusCntrl3.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusCntrl3.TabIndex = 368
+        Me.CbxSlaveStatusCntrl3.Text = "Unused"
+        Me.CbxSlaveStatusCntrl3.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit4
+        'CbxSlaveStatusCntrl4
         '
-        Me.CheckBoxControlBit4.AutoSize = True
-        Me.CheckBoxControlBit4.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit4.Location = New System.Drawing.Point(300, 339)
-        Me.CheckBoxControlBit4.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit4.Name = "CheckBoxControlBit4"
-        Me.CheckBoxControlBit4.Size = New System.Drawing.Size(74, 20)
-        Me.CheckBoxControlBit4.TabIndex = 369
-        Me.CheckBoxControlBit4.Text = "Unused"
-        Me.CheckBoxControlBit4.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl4.AutoSize = True
+        Me.CbxSlaveStatusCntrl4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl4.Location = New System.Drawing.Point(3, 163)
+        Me.CbxSlaveStatusCntrl4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl4.Name = "CbxSlaveStatusCntrl4"
+        Me.CbxSlaveStatusCntrl4.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusCntrl4.TabIndex = 369
+        Me.CbxSlaveStatusCntrl4.Text = "Unused"
+        Me.CbxSlaveStatusCntrl4.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit5
+        'CbxSlaveStatusCntrl5
         '
-        Me.CheckBoxControlBit5.AutoSize = True
-        Me.CheckBoxControlBit5.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit5.Location = New System.Drawing.Point(300, 359)
-        Me.CheckBoxControlBit5.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit5.Name = "CheckBoxControlBit5"
-        Me.CheckBoxControlBit5.Size = New System.Drawing.Size(74, 20)
-        Me.CheckBoxControlBit5.TabIndex = 370
-        Me.CheckBoxControlBit5.Text = "Unused"
-        Me.CheckBoxControlBit5.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl5.AutoSize = True
+        Me.CbxSlaveStatusCntrl5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl5.Location = New System.Drawing.Point(3, 183)
+        Me.CbxSlaveStatusCntrl5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl5.Name = "CbxSlaveStatusCntrl5"
+        Me.CbxSlaveStatusCntrl5.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusCntrl5.TabIndex = 370
+        Me.CbxSlaveStatusCntrl5.Text = "Unused"
+        Me.CbxSlaveStatusCntrl5.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit6
+        'CbxSlaveStatusCntrl6
         '
-        Me.CheckBoxControlBit6.AutoSize = True
-        Me.CheckBoxControlBit6.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit6.Location = New System.Drawing.Point(300, 379)
-        Me.CheckBoxControlBit6.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit6.Name = "CheckBoxControlBit6"
-        Me.CheckBoxControlBit6.Size = New System.Drawing.Size(74, 20)
-        Me.CheckBoxControlBit6.TabIndex = 371
-        Me.CheckBoxControlBit6.Text = "Unused"
-        Me.CheckBoxControlBit6.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl6.AutoSize = True
+        Me.CbxSlaveStatusCntrl6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl6.Location = New System.Drawing.Point(3, 203)
+        Me.CbxSlaveStatusCntrl6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl6.Name = "CbxSlaveStatusCntrl6"
+        Me.CbxSlaveStatusCntrl6.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusCntrl6.TabIndex = 371
+        Me.CbxSlaveStatusCntrl6.Text = "Unused"
+        Me.CbxSlaveStatusCntrl6.UseVisualStyleBackColor = False
         '
-        'CheckBoxControlBit7
+        'CbxSlaveStatusCntrl7
         '
-        Me.CheckBoxControlBit7.AutoSize = True
-        Me.CheckBoxControlBit7.BackColor = System.Drawing.SystemColors.Control
-        Me.CheckBoxControlBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxControlBit7.Location = New System.Drawing.Point(300, 399)
-        Me.CheckBoxControlBit7.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxControlBit7.Name = "CheckBoxControlBit7"
-        Me.CheckBoxControlBit7.Size = New System.Drawing.Size(74, 20)
-        Me.CheckBoxControlBit7.TabIndex = 372
-        Me.CheckBoxControlBit7.Text = "Unused"
-        Me.CheckBoxControlBit7.UseVisualStyleBackColor = False
+        Me.CbxSlaveStatusCntrl7.AutoSize = True
+        Me.CbxSlaveStatusCntrl7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusCntrl7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusCntrl7.Location = New System.Drawing.Point(3, 223)
+        Me.CbxSlaveStatusCntrl7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusCntrl7.Name = "CbxSlaveStatusCntrl7"
+        Me.CbxSlaveStatusCntrl7.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusCntrl7.TabIndex = 372
+        Me.CbxSlaveStatusCntrl7.Text = "Unused"
+        Me.CbxSlaveStatusCntrl7.UseVisualStyleBackColor = False
         '
         'LabelGuiVersion
         '
@@ -1961,7 +1868,7 @@ Partial Class frmMain
         '
         Me.LabelRangeInput1.AutoSize = True
         Me.LabelRangeInput1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRangeInput1.Location = New System.Drawing.Point(1066, 12)
+        Me.LabelRangeInput1.Location = New System.Drawing.Point(686, 745)
         Me.LabelRangeInput1.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelRangeInput1.Name = "LabelRangeInput1"
         Me.LabelRangeInput1.Size = New System.Drawing.Size(49, 16)
@@ -1972,7 +1879,7 @@ Partial Class frmMain
         '
         Me.LabelRangeInput2.AutoSize = True
         Me.LabelRangeInput2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRangeInput2.Location = New System.Drawing.Point(1066, 39)
+        Me.LabelRangeInput2.Location = New System.Drawing.Point(686, 772)
         Me.LabelRangeInput2.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelRangeInput2.Name = "LabelRangeInput2"
         Me.LabelRangeInput2.Size = New System.Drawing.Size(49, 16)
@@ -1983,7 +1890,7 @@ Partial Class frmMain
         '
         Me.LabelRangeInput3.AutoSize = True
         Me.LabelRangeInput3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRangeInput3.Location = New System.Drawing.Point(1066, 64)
+        Me.LabelRangeInput3.Location = New System.Drawing.Point(686, 797)
         Me.LabelRangeInput3.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelRangeInput3.Name = "LabelRangeInput3"
         Me.LabelRangeInput3.Size = New System.Drawing.Size(49, 16)
@@ -1994,7 +1901,7 @@ Partial Class frmMain
         '
         Me.LabelRangeInput4.AutoSize = True
         Me.LabelRangeInput4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRangeInput4.Location = New System.Drawing.Point(1066, 91)
+        Me.LabelRangeInput4.Location = New System.Drawing.Point(686, 824)
         Me.LabelRangeInput4.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelRangeInput4.Name = "LabelRangeInput4"
         Me.LabelRangeInput4.Size = New System.Drawing.Size(49, 16)
@@ -2005,7 +1912,7 @@ Partial Class frmMain
         '
         Me.LabelRangeInput5.AutoSize = True
         Me.LabelRangeInput5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRangeInput5.Location = New System.Drawing.Point(1066, 117)
+        Me.LabelRangeInput5.Location = New System.Drawing.Point(686, 850)
         Me.LabelRangeInput5.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelRangeInput5.Name = "LabelRangeInput5"
         Me.LabelRangeInput5.Size = New System.Drawing.Size(49, 16)
@@ -2029,7 +1936,7 @@ Partial Class frmMain
         Me.ButtonZeroOnTime.BackColor = System.Drawing.Color.Lavender
         Me.ButtonZeroOnTime.FlatAppearance.BorderSize = 0
         Me.ButtonZeroOnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonZeroOnTime.Location = New System.Drawing.Point(10, 556)
+        Me.ButtonZeroOnTime.Location = New System.Drawing.Point(7, 524)
         Me.ButtonZeroOnTime.Name = "ButtonZeroOnTime"
         Me.ButtonZeroOnTime.Size = New System.Drawing.Size(100, 23)
         Me.ButtonZeroOnTime.TabIndex = 397
@@ -2041,7 +1948,7 @@ Partial Class frmMain
         Me.ButtonZeroPulseCounters.BackColor = System.Drawing.Color.Lavender
         Me.ButtonZeroPulseCounters.FlatAppearance.BorderSize = 0
         Me.ButtonZeroPulseCounters.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonZeroPulseCounters.Location = New System.Drawing.Point(160, 556)
+        Me.ButtonZeroPulseCounters.Location = New System.Drawing.Point(170, 524)
         Me.ButtonZeroPulseCounters.Name = "ButtonZeroPulseCounters"
         Me.ButtonZeroPulseCounters.Size = New System.Drawing.Size(100, 23)
         Me.ButtonZeroPulseCounters.TabIndex = 398
@@ -2059,198 +1966,6 @@ Partial Class frmMain
         Me.ButtonToggleMode.TabIndex = 400
         Me.ButtonToggleMode.Text = "Advanced GUI"
         Me.ButtonToggleMode.UseVisualStyleBackColor = False
-        '
-        'CheckBoxLoggedBitF
-        '
-        Me.CheckBoxLoggedBitF.AutoSize = True
-        Me.CheckBoxLoggedBitF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitF.Location = New System.Drawing.Point(581, 314)
-        Me.CheckBoxLoggedBitF.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitF.Name = "CheckBoxLoggedBitF"
-        Me.CheckBoxLoggedBitF.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitF.TabIndex = 417
-        Me.CheckBoxLoggedBitF.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitF.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit0
-        '
-        Me.CheckBoxLoggedBit0.AutoSize = True
-        Me.CheckBoxLoggedBit0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit0.Location = New System.Drawing.Point(581, 10)
-        Me.CheckBoxLoggedBit0.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit0.Name = "CheckBoxLoggedBit0"
-        Me.CheckBoxLoggedBit0.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit0.TabIndex = 402
-        Me.CheckBoxLoggedBit0.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit0.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit1
-        '
-        Me.CheckBoxLoggedBit1.AutoSize = True
-        Me.CheckBoxLoggedBit1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit1.Location = New System.Drawing.Point(581, 30)
-        Me.CheckBoxLoggedBit1.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit1.Name = "CheckBoxLoggedBit1"
-        Me.CheckBoxLoggedBit1.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit1.TabIndex = 403
-        Me.CheckBoxLoggedBit1.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit1.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit2
-        '
-        Me.CheckBoxLoggedBit2.AutoSize = True
-        Me.CheckBoxLoggedBit2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit2.Location = New System.Drawing.Point(581, 50)
-        Me.CheckBoxLoggedBit2.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit2.Name = "CheckBoxLoggedBit2"
-        Me.CheckBoxLoggedBit2.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit2.TabIndex = 404
-        Me.CheckBoxLoggedBit2.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit2.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit3
-        '
-        Me.CheckBoxLoggedBit3.AutoSize = True
-        Me.CheckBoxLoggedBit3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit3.Location = New System.Drawing.Point(581, 70)
-        Me.CheckBoxLoggedBit3.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit3.Name = "CheckBoxLoggedBit3"
-        Me.CheckBoxLoggedBit3.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit3.TabIndex = 405
-        Me.CheckBoxLoggedBit3.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit3.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit4
-        '
-        Me.CheckBoxLoggedBit4.AutoSize = True
-        Me.CheckBoxLoggedBit4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit4.Location = New System.Drawing.Point(581, 92)
-        Me.CheckBoxLoggedBit4.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit4.Name = "CheckBoxLoggedBit4"
-        Me.CheckBoxLoggedBit4.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit4.TabIndex = 406
-        Me.CheckBoxLoggedBit4.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit4.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit5
-        '
-        Me.CheckBoxLoggedBit5.AutoSize = True
-        Me.CheckBoxLoggedBit5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit5.Location = New System.Drawing.Point(581, 112)
-        Me.CheckBoxLoggedBit5.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit5.Name = "CheckBoxLoggedBit5"
-        Me.CheckBoxLoggedBit5.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit5.TabIndex = 407
-        Me.CheckBoxLoggedBit5.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit5.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit6
-        '
-        Me.CheckBoxLoggedBit6.AutoSize = True
-        Me.CheckBoxLoggedBit6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit6.Location = New System.Drawing.Point(581, 132)
-        Me.CheckBoxLoggedBit6.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit6.Name = "CheckBoxLoggedBit6"
-        Me.CheckBoxLoggedBit6.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit6.TabIndex = 408
-        Me.CheckBoxLoggedBit6.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit6.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit7
-        '
-        Me.CheckBoxLoggedBit7.AutoSize = True
-        Me.CheckBoxLoggedBit7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit7.Location = New System.Drawing.Point(581, 152)
-        Me.CheckBoxLoggedBit7.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit7.Name = "CheckBoxLoggedBit7"
-        Me.CheckBoxLoggedBit7.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit7.TabIndex = 409
-        Me.CheckBoxLoggedBit7.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit7.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit8
-        '
-        Me.CheckBoxLoggedBit8.AutoSize = True
-        Me.CheckBoxLoggedBit8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit8.Location = New System.Drawing.Point(581, 172)
-        Me.CheckBoxLoggedBit8.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit8.Name = "CheckBoxLoggedBit8"
-        Me.CheckBoxLoggedBit8.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit8.TabIndex = 410
-        Me.CheckBoxLoggedBit8.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit8.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBit9
-        '
-        Me.CheckBoxLoggedBit9.AutoSize = True
-        Me.CheckBoxLoggedBit9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBit9.Location = New System.Drawing.Point(581, 192)
-        Me.CheckBoxLoggedBit9.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBit9.Name = "CheckBoxLoggedBit9"
-        Me.CheckBoxLoggedBit9.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBit9.TabIndex = 411
-        Me.CheckBoxLoggedBit9.Text = "Logged Bit"
-        Me.CheckBoxLoggedBit9.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBitA
-        '
-        Me.CheckBoxLoggedBitA.AutoSize = True
-        Me.CheckBoxLoggedBitA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitA.Location = New System.Drawing.Point(581, 212)
-        Me.CheckBoxLoggedBitA.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitA.Name = "CheckBoxLoggedBitA"
-        Me.CheckBoxLoggedBitA.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitA.TabIndex = 412
-        Me.CheckBoxLoggedBitA.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitA.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBitB
-        '
-        Me.CheckBoxLoggedBitB.AutoSize = True
-        Me.CheckBoxLoggedBitB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitB.Location = New System.Drawing.Point(581, 232)
-        Me.CheckBoxLoggedBitB.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitB.Name = "CheckBoxLoggedBitB"
-        Me.CheckBoxLoggedBitB.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitB.TabIndex = 413
-        Me.CheckBoxLoggedBitB.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitB.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBitC
-        '
-        Me.CheckBoxLoggedBitC.AutoSize = True
-        Me.CheckBoxLoggedBitC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitC.Location = New System.Drawing.Point(581, 254)
-        Me.CheckBoxLoggedBitC.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitC.Name = "CheckBoxLoggedBitC"
-        Me.CheckBoxLoggedBitC.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitC.TabIndex = 414
-        Me.CheckBoxLoggedBitC.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitC.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBitD
-        '
-        Me.CheckBoxLoggedBitD.AutoSize = True
-        Me.CheckBoxLoggedBitD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitD.Location = New System.Drawing.Point(581, 274)
-        Me.CheckBoxLoggedBitD.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitD.Name = "CheckBoxLoggedBitD"
-        Me.CheckBoxLoggedBitD.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitD.TabIndex = 415
-        Me.CheckBoxLoggedBitD.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitD.UseVisualStyleBackColor = True
-        '
-        'CheckBoxLoggedBitE
-        '
-        Me.CheckBoxLoggedBitE.AutoSize = True
-        Me.CheckBoxLoggedBitE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxLoggedBitE.Location = New System.Drawing.Point(581, 294)
-        Me.CheckBoxLoggedBitE.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxLoggedBitE.Name = "CheckBoxLoggedBitE"
-        Me.CheckBoxLoggedBitE.Size = New System.Drawing.Size(92, 20)
-        Me.CheckBoxLoggedBitE.TabIndex = 416
-        Me.CheckBoxLoggedBitE.Text = "Logged Bit"
-        Me.CheckBoxLoggedBitE.UseVisualStyleBackColor = True
         '
         'ButtonSaveFactorySettings
         '
@@ -2302,7 +2017,7 @@ Partial Class frmMain
         '
         'ButtonSetIPAddres
         '
-        Me.ButtonSetIPAddres.Location = New System.Drawing.Point(554, 615)
+        Me.ButtonSetIPAddres.Location = New System.Drawing.Point(284, 174)
         Me.ButtonSetIPAddres.Name = "ButtonSetIPAddres"
         Me.ButtonSetIPAddres.Size = New System.Drawing.Size(103, 23)
         Me.ButtonSetIPAddres.TabIndex = 435
@@ -2311,7 +2026,7 @@ Partial Class frmMain
         '
         'ButtonSetRemoteIP
         '
-        Me.ButtonSetRemoteIP.Location = New System.Drawing.Point(554, 644)
+        Me.ButtonSetRemoteIP.Location = New System.Drawing.Point(284, 203)
         Me.ButtonSetRemoteIP.Name = "ButtonSetRemoteIP"
         Me.ButtonSetRemoteIP.Size = New System.Drawing.Size(103, 23)
         Me.ButtonSetRemoteIP.TabIndex = 436
@@ -2320,7 +2035,7 @@ Partial Class frmMain
         '
         'TextBoxIP0
         '
-        Me.TextBoxIP0.Location = New System.Drawing.Point(305, 615)
+        Me.TextBoxIP0.Location = New System.Drawing.Point(35, 174)
         Me.TextBoxIP0.MaxLength = 7
         Me.TextBoxIP0.Name = "TextBoxIP0"
         Me.TextBoxIP0.Size = New System.Drawing.Size(54, 20)
@@ -2328,7 +2043,7 @@ Partial Class frmMain
         '
         'TextBoxIP1
         '
-        Me.TextBoxIP1.Location = New System.Drawing.Point(364, 615)
+        Me.TextBoxIP1.Location = New System.Drawing.Point(94, 174)
         Me.TextBoxIP1.MaxLength = 7
         Me.TextBoxIP1.Name = "TextBoxIP1"
         Me.TextBoxIP1.Size = New System.Drawing.Size(54, 20)
@@ -2336,7 +2051,7 @@ Partial Class frmMain
         '
         'TextBoxIP2
         '
-        Me.TextBoxIP2.Location = New System.Drawing.Point(422, 615)
+        Me.TextBoxIP2.Location = New System.Drawing.Point(152, 174)
         Me.TextBoxIP2.MaxLength = 7
         Me.TextBoxIP2.Name = "TextBoxIP2"
         Me.TextBoxIP2.Size = New System.Drawing.Size(54, 20)
@@ -2344,7 +2059,7 @@ Partial Class frmMain
         '
         'TextBoxIP3
         '
-        Me.TextBoxIP3.Location = New System.Drawing.Point(481, 615)
+        Me.TextBoxIP3.Location = New System.Drawing.Point(211, 174)
         Me.TextBoxIP3.MaxLength = 7
         Me.TextBoxIP3.Name = "TextBoxIP3"
         Me.TextBoxIP3.Size = New System.Drawing.Size(54, 20)
@@ -2354,7 +2069,7 @@ Partial Class frmMain
         '
         Me.LabelCommandLengthError.AutoSize = True
         Me.LabelCommandLengthError.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCommandLengthError.Location = New System.Drawing.Point(672, 652)
+        Me.LabelCommandLengthError.Location = New System.Drawing.Point(402, 211)
         Me.LabelCommandLengthError.Name = "LabelCommandLengthError"
         Me.LabelCommandLengthError.Size = New System.Drawing.Size(66, 16)
         Me.LabelCommandLengthError.TabIndex = 444
@@ -2364,7 +2079,7 @@ Partial Class frmMain
         '
         Me.LabelCommandCount.AutoSize = True
         Me.LabelCommandCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCommandCount.Location = New System.Drawing.Point(672, 636)
+        Me.LabelCommandCount.Location = New System.Drawing.Point(402, 195)
         Me.LabelCommandCount.Name = "LabelCommandCount"
         Me.LabelCommandCount.Size = New System.Drawing.Size(66, 16)
         Me.LabelCommandCount.TabIndex = 445
@@ -2373,7 +2088,7 @@ Partial Class frmMain
         'ComboBoxComPorts
         '
         Me.ComboBoxComPorts.FormattingEnabled = True
-        Me.ComboBoxComPorts.Location = New System.Drawing.Point(1040, 463)
+        Me.ComboBoxComPorts.Location = New System.Drawing.Point(274, 345)
         Me.ComboBoxComPorts.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboBoxComPorts.Name = "ComboBoxComPorts"
         Me.ComboBoxComPorts.Size = New System.Drawing.Size(92, 21)
@@ -2387,7 +2102,7 @@ Partial Class frmMain
         '
         Me.LabelWatchDogResponse.AutoSize = True
         Me.LabelWatchDogResponse.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelWatchDogResponse.Location = New System.Drawing.Point(1144, 465)
+        Me.LabelWatchDogResponse.Location = New System.Drawing.Point(378, 347)
         Me.LabelWatchDogResponse.Name = "LabelWatchDogResponse"
         Me.LabelWatchDogResponse.Size = New System.Drawing.Size(37, 16)
         Me.LabelWatchDogResponse.TabIndex = 447
@@ -2403,7 +2118,7 @@ Partial Class frmMain
         Me.ButtonETMMode.BackColor = System.Drawing.Color.Lavender
         Me.ButtonETMMode.FlatAppearance.BorderSize = 0
         Me.ButtonETMMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonETMMode.Location = New System.Drawing.Point(7, 595)
+        Me.ButtonETMMode.Location = New System.Drawing.Point(15, 553)
         Me.ButtonETMMode.Name = "ButtonETMMode"
         Me.ButtonETMMode.Size = New System.Drawing.Size(71, 23)
         Me.ButtonETMMode.TabIndex = 448
@@ -2412,7 +2127,7 @@ Partial Class frmMain
         '
         'TextBoxRev
         '
-        Me.TextBoxRev.Location = New System.Drawing.Point(943, 546)
+        Me.TextBoxRev.Location = New System.Drawing.Point(177, 428)
         Me.TextBoxRev.MaxLength = 7
         Me.TextBoxRev.Name = "TextBoxRev"
         Me.TextBoxRev.Size = New System.Drawing.Size(54, 20)
@@ -2420,7 +2135,7 @@ Partial Class frmMain
         '
         'TextBoxSN
         '
-        Me.TextBoxSN.Location = New System.Drawing.Point(943, 578)
+        Me.TextBoxSN.Location = New System.Drawing.Point(177, 460)
         Me.TextBoxSN.MaxLength = 7
         Me.TextBoxSN.Name = "TextBoxSN"
         Me.TextBoxSN.Size = New System.Drawing.Size(54, 20)
@@ -2430,7 +2145,7 @@ Partial Class frmMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1003, 547)
+        Me.Label1.Location = New System.Drawing.Point(237, 429)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(33, 16)
         Me.Label1.TabIndex = 451
@@ -2440,7 +2155,7 @@ Partial Class frmMain
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(1003, 578)
+        Me.Label3.Location = New System.Drawing.Point(237, 460)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(27, 16)
         Me.Label3.TabIndex = 452
@@ -2448,7 +2163,7 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(943, 615)
+        Me.Button1.Location = New System.Drawing.Point(177, 497)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(103, 23)
         Me.Button1.TabIndex = 453
@@ -2457,7 +2172,7 @@ Partial Class frmMain
         '
         'TextBoxHNubmber
         '
-        Me.TextBoxHNubmber.Location = New System.Drawing.Point(943, 652)
+        Me.TextBoxHNubmber.Location = New System.Drawing.Point(177, 534)
         Me.TextBoxHNubmber.MaxLength = 7
         Me.TextBoxHNubmber.Name = "TextBoxHNubmber"
         Me.TextBoxHNubmber.Size = New System.Drawing.Size(54, 20)
@@ -2467,7 +2182,7 @@ Partial Class frmMain
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(1003, 656)
+        Me.Label14.Location = New System.Drawing.Point(237, 538)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(49, 16)
         Me.Label14.TabIndex = 455
@@ -2475,7 +2190,7 @@ Partial Class frmMain
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(943, 678)
+        Me.Button2.Location = New System.Drawing.Point(177, 560)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(103, 23)
         Me.Button2.TabIndex = 456
@@ -2510,81 +2225,1778 @@ Partial Class frmMain
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(12, 636)
+        Me.Label15.Location = New System.Drawing.Point(103, 667)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(56, 16)
         Me.Label15.TabIndex = 459
         Me.Label15.Text = "Label15"
+        '
+        'TabPage4Dose
+        '
+        Me.TabPage4Dose.Controls.Add(Me.TabPage1ECB)
+        Me.TabPage4Dose.Controls.Add(Me.TabPage2Slave)
+        Me.TabPage4Dose.Controls.Add(Me.TabPage3Debug)
+        Me.TabPage4Dose.Controls.Add(Me.TabPage4)
+        Me.TabPage4Dose.Controls.Add(Me.TabPage5)
+        Me.TabPage4Dose.Location = New System.Drawing.Point(370, 0)
+        Me.TabPage4Dose.Name = "TabPage4Dose"
+        Me.TabPage4Dose.SelectedIndex = 0
+        Me.TabPage4Dose.Size = New System.Drawing.Size(1423, 961)
+        Me.TabPage4Dose.TabIndex = 460
+        '
+        'TabPage1ECB
+        '
+        Me.TabPage1ECB.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1ECB.Name = "TabPage1ECB"
+        Me.TabPage1ECB.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1ECB.Size = New System.Drawing.Size(1415, 935)
+        Me.TabPage1ECB.TabIndex = 1
+        Me.TabPage1ECB.Text = "ECB"
+        Me.TabPage1ECB.UseVisualStyleBackColor = True
+        '
+        'TabPage2Slave
+        '
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanF)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanE)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanD)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanC)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanB)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCanA)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan9)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan8)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan7)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan6)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan5)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan4)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan3)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan2)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan1)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugCan0)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegF)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegE)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegD)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegC)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegB)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugRegA)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg9)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg8)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg7)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg6)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg5)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg4)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg3)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg2)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg1)
+        Me.TabPage2Slave.Controls.Add(Me.LblDebugReg0)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue23)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue15)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue16)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue17)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue18)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue19)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue20)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue21)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue22)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue0)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue1)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue2)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue3)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue4)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue5)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue6)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue7)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue8)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue9)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue10)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue11)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue12)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue13)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLogValue14)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog23)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog15)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog16)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog17)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog18)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog19)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog20)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog21)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog22)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedF)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedE)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedD)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedC)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedB)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLoggedA)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged9)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged8)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged0)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged7)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged6)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotLogged1)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedF)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedE)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedD)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedC)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedB)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLoggedA)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged9)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged8)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged0)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged7)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged6)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusLogged1)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultF)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultE)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultD)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultC)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultB)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFaultA)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault9)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault8)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault0)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault7)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault6)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusFault1)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice7)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice6)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice1)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusNotice0)
+        Me.TabPage2Slave.Controls.Add(Me.LabelRangeInput5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl0)
+        Me.TabPage2Slave.Controls.Add(Me.LabelRangeInput4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl7)
+        Me.TabPage2Slave.Controls.Add(Me.LabelRangeInput3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl6)
+        Me.TabPage2Slave.Controls.Add(Me.LabelRangeInput2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl5)
+        Me.TabPage2Slave.Controls.Add(Me.LabelRangeInput1)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxSlaveStatusCntrl1)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog0)
+        Me.TabPage2Slave.Controls.Add(Me.TextBoxInput2)
+        Me.TabPage2Slave.Controls.Add(Me.TextBoxInput1)
+        Me.TabPage2Slave.Controls.Add(Me.ButtonUpdateInput1)
+        Me.TabPage2Slave.Controls.Add(Me.ButtonUpdateInput2)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog1)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog2)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog3)
+        Me.TabPage2Slave.Controls.Add(Me.TextBoxInput3)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog4)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog5)
+        Me.TabPage2Slave.Controls.Add(Me.ButtonUpdateInput3)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog6)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog7)
+        Me.TabPage2Slave.Controls.Add(Me.cboIndex)
+        Me.TabPage2Slave.Controls.Add(Me.LabelFirmwareVerssion)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog8)
+        Me.TabPage2Slave.Controls.Add(Me.LabelAgileInfo)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog9)
+        Me.TabPage2Slave.Controls.Add(Me.LabelBoardStatus)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog10)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog11)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog12)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog13)
+        Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog14)
+        Me.TabPage2Slave.Controls.Add(Me.TextBoxInput4)
+        Me.TabPage2Slave.Controls.Add(Me.TextBoxInput5)
+        Me.TabPage2Slave.Controls.Add(Me.ButtonUpdateInput4)
+        Me.TabPage2Slave.Controls.Add(Me.ButtonUpdateInput5)
+        Me.TabPage2Slave.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2Slave.Name = "TabPage2Slave"
+        Me.TabPage2Slave.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2Slave.Size = New System.Drawing.Size(1415, 935)
+        Me.TabPage2Slave.TabIndex = 0
+        Me.TabPage2Slave.Text = "Slave"
+        Me.TabPage2Slave.UseVisualStyleBackColor = True
+        '
+        'LblDebugReg3
+        '
+        Me.LblDebugReg3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg3.Location = New System.Drawing.Point(753, 144)
+        Me.LblDebugReg3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg3.Name = "LblDebugReg3"
+        Me.LblDebugReg3.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg3.TabIndex = 510
+        Me.LblDebugReg3.Text = "Debug Reg"
+        Me.LblDebugReg3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg2
+        '
+        Me.LblDebugReg2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg2.Location = New System.Drawing.Point(753, 124)
+        Me.LblDebugReg2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg2.Name = "LblDebugReg2"
+        Me.LblDebugReg2.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg2.TabIndex = 509
+        Me.LblDebugReg2.Text = "Debug Reg"
+        Me.LblDebugReg2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg1
+        '
+        Me.LblDebugReg1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg1.Location = New System.Drawing.Point(753, 104)
+        Me.LblDebugReg1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg1.Name = "LblDebugReg1"
+        Me.LblDebugReg1.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg1.TabIndex = 508
+        Me.LblDebugReg1.Text = "Debug Reg"
+        Me.LblDebugReg1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg0
+        '
+        Me.LblDebugReg0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg0.Location = New System.Drawing.Point(753, 84)
+        Me.LblDebugReg0.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg0.Name = "LblDebugReg0"
+        Me.LblDebugReg0.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg0.TabIndex = 507
+        Me.LblDebugReg0.Text = "Debug Reg"
+        Me.LblDebugReg0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue23
+        '
+        Me.LblSlaveLogValue23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue23.Location = New System.Drawing.Point(591, 682)
+        Me.LblSlaveLogValue23.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue23.Name = "LblSlaveLogValue23"
+        Me.LblSlaveLogValue23.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue23.TabIndex = 506
+        Me.LblSlaveLogValue23.Text = "Value = ???"
+        Me.LblSlaveLogValue23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue15
+        '
+        Me.LblSlaveLogValue15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue15.Location = New System.Drawing.Point(591, 474)
+        Me.LblSlaveLogValue15.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue15.Name = "LblSlaveLogValue15"
+        Me.LblSlaveLogValue15.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue15.TabIndex = 498
+        Me.LblSlaveLogValue15.Text = "Value = ???"
+        Me.LblSlaveLogValue15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue16
+        '
+        Me.LblSlaveLogValue16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue16.Location = New System.Drawing.Point(591, 500)
+        Me.LblSlaveLogValue16.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue16.Name = "LblSlaveLogValue16"
+        Me.LblSlaveLogValue16.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue16.TabIndex = 499
+        Me.LblSlaveLogValue16.Text = "Value = ???"
+        Me.LblSlaveLogValue16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue17
+        '
+        Me.LblSlaveLogValue17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue17.Location = New System.Drawing.Point(591, 526)
+        Me.LblSlaveLogValue17.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue17.Name = "LblSlaveLogValue17"
+        Me.LblSlaveLogValue17.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue17.TabIndex = 500
+        Me.LblSlaveLogValue17.Text = "Value = ???"
+        Me.LblSlaveLogValue17.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue18
+        '
+        Me.LblSlaveLogValue18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue18.Location = New System.Drawing.Point(591, 552)
+        Me.LblSlaveLogValue18.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue18.Name = "LblSlaveLogValue18"
+        Me.LblSlaveLogValue18.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue18.TabIndex = 501
+        Me.LblSlaveLogValue18.Text = "Value = ???"
+        Me.LblSlaveLogValue18.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue19
+        '
+        Me.LblSlaveLogValue19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue19.Location = New System.Drawing.Point(591, 578)
+        Me.LblSlaveLogValue19.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue19.Name = "LblSlaveLogValue19"
+        Me.LblSlaveLogValue19.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue19.TabIndex = 502
+        Me.LblSlaveLogValue19.Text = "Value = ???"
+        Me.LblSlaveLogValue19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue20
+        '
+        Me.LblSlaveLogValue20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue20.Location = New System.Drawing.Point(591, 604)
+        Me.LblSlaveLogValue20.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue20.Name = "LblSlaveLogValue20"
+        Me.LblSlaveLogValue20.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue20.TabIndex = 503
+        Me.LblSlaveLogValue20.Text = "Value = ???"
+        Me.LblSlaveLogValue20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue21
+        '
+        Me.LblSlaveLogValue21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue21.Location = New System.Drawing.Point(591, 630)
+        Me.LblSlaveLogValue21.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue21.Name = "LblSlaveLogValue21"
+        Me.LblSlaveLogValue21.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue21.TabIndex = 504
+        Me.LblSlaveLogValue21.Text = "Value = ???"
+        Me.LblSlaveLogValue21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue22
+        '
+        Me.LblSlaveLogValue22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue22.Location = New System.Drawing.Point(591, 656)
+        Me.LblSlaveLogValue22.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue22.Name = "LblSlaveLogValue22"
+        Me.LblSlaveLogValue22.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue22.TabIndex = 505
+        Me.LblSlaveLogValue22.Text = "Value = ???"
+        Me.LblSlaveLogValue22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue0
+        '
+        Me.LblSlaveLogValue0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue0.Location = New System.Drawing.Point(591, 84)
+        Me.LblSlaveLogValue0.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue0.Name = "LblSlaveLogValue0"
+        Me.LblSlaveLogValue0.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue0.TabIndex = 483
+        Me.LblSlaveLogValue0.Text = "Value = ???"
+        Me.LblSlaveLogValue0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue1
+        '
+        Me.LblSlaveLogValue1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue1.Location = New System.Drawing.Point(591, 110)
+        Me.LblSlaveLogValue1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue1.Name = "LblSlaveLogValue1"
+        Me.LblSlaveLogValue1.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue1.TabIndex = 484
+        Me.LblSlaveLogValue1.Text = "Value = ???"
+        Me.LblSlaveLogValue1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue2
+        '
+        Me.LblSlaveLogValue2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue2.Location = New System.Drawing.Point(591, 136)
+        Me.LblSlaveLogValue2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue2.Name = "LblSlaveLogValue2"
+        Me.LblSlaveLogValue2.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue2.TabIndex = 485
+        Me.LblSlaveLogValue2.Text = "Value = ???"
+        Me.LblSlaveLogValue2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue3
+        '
+        Me.LblSlaveLogValue3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue3.Location = New System.Drawing.Point(591, 162)
+        Me.LblSlaveLogValue3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue3.Name = "LblSlaveLogValue3"
+        Me.LblSlaveLogValue3.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue3.TabIndex = 486
+        Me.LblSlaveLogValue3.Text = "Value = ???"
+        Me.LblSlaveLogValue3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue4
+        '
+        Me.LblSlaveLogValue4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue4.Location = New System.Drawing.Point(591, 188)
+        Me.LblSlaveLogValue4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue4.Name = "LblSlaveLogValue4"
+        Me.LblSlaveLogValue4.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue4.TabIndex = 487
+        Me.LblSlaveLogValue4.Text = "Value = ???"
+        Me.LblSlaveLogValue4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue5
+        '
+        Me.LblSlaveLogValue5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue5.Location = New System.Drawing.Point(591, 214)
+        Me.LblSlaveLogValue5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue5.Name = "LblSlaveLogValue5"
+        Me.LblSlaveLogValue5.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue5.TabIndex = 488
+        Me.LblSlaveLogValue5.Text = "Value = ???"
+        Me.LblSlaveLogValue5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue6
+        '
+        Me.LblSlaveLogValue6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue6.Location = New System.Drawing.Point(591, 240)
+        Me.LblSlaveLogValue6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue6.Name = "LblSlaveLogValue6"
+        Me.LblSlaveLogValue6.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue6.TabIndex = 489
+        Me.LblSlaveLogValue6.Text = "Value = ???"
+        Me.LblSlaveLogValue6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue7
+        '
+        Me.LblSlaveLogValue7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue7.Location = New System.Drawing.Point(591, 266)
+        Me.LblSlaveLogValue7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue7.Name = "LblSlaveLogValue7"
+        Me.LblSlaveLogValue7.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue7.TabIndex = 490
+        Me.LblSlaveLogValue7.Text = "Value = ???"
+        Me.LblSlaveLogValue7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue8
+        '
+        Me.LblSlaveLogValue8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue8.Location = New System.Drawing.Point(591, 292)
+        Me.LblSlaveLogValue8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue8.Name = "LblSlaveLogValue8"
+        Me.LblSlaveLogValue8.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue8.TabIndex = 491
+        Me.LblSlaveLogValue8.Text = "Value = ???"
+        Me.LblSlaveLogValue8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue9
+        '
+        Me.LblSlaveLogValue9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue9.Location = New System.Drawing.Point(591, 318)
+        Me.LblSlaveLogValue9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue9.Name = "LblSlaveLogValue9"
+        Me.LblSlaveLogValue9.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue9.TabIndex = 492
+        Me.LblSlaveLogValue9.Text = "Value = ???"
+        Me.LblSlaveLogValue9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue10
+        '
+        Me.LblSlaveLogValue10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue10.Location = New System.Drawing.Point(591, 344)
+        Me.LblSlaveLogValue10.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue10.Name = "LblSlaveLogValue10"
+        Me.LblSlaveLogValue10.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue10.TabIndex = 493
+        Me.LblSlaveLogValue10.Text = "Value = ???"
+        Me.LblSlaveLogValue10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue11
+        '
+        Me.LblSlaveLogValue11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue11.Location = New System.Drawing.Point(591, 370)
+        Me.LblSlaveLogValue11.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue11.Name = "LblSlaveLogValue11"
+        Me.LblSlaveLogValue11.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue11.TabIndex = 494
+        Me.LblSlaveLogValue11.Text = "Value = ???"
+        Me.LblSlaveLogValue11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue12
+        '
+        Me.LblSlaveLogValue12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue12.Location = New System.Drawing.Point(591, 396)
+        Me.LblSlaveLogValue12.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue12.Name = "LblSlaveLogValue12"
+        Me.LblSlaveLogValue12.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue12.TabIndex = 495
+        Me.LblSlaveLogValue12.Text = "Value = ???"
+        Me.LblSlaveLogValue12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue13
+        '
+        Me.LblSlaveLogValue13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue13.Location = New System.Drawing.Point(591, 422)
+        Me.LblSlaveLogValue13.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue13.Name = "LblSlaveLogValue13"
+        Me.LblSlaveLogValue13.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue13.TabIndex = 496
+        Me.LblSlaveLogValue13.Text = "Value = ???"
+        Me.LblSlaveLogValue13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLogValue14
+        '
+        Me.LblSlaveLogValue14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLogValue14.Location = New System.Drawing.Point(591, 448)
+        Me.LblSlaveLogValue14.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLogValue14.Name = "LblSlaveLogValue14"
+        Me.LblSlaveLogValue14.Size = New System.Drawing.Size(103, 16)
+        Me.LblSlaveLogValue14.TabIndex = 497
+        Me.LblSlaveLogValue14.Text = "Value = ???"
+        Me.LblSlaveLogValue14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog23
+        '
+        Me.LblSlaveLog23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog23.Location = New System.Drawing.Point(385, 682)
+        Me.LblSlaveLog23.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog23.Name = "LblSlaveLog23"
+        Me.LblSlaveLog23.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog23.TabIndex = 482
+        Me.LblSlaveLog23.Text = "Log Data 23"
+        Me.LblSlaveLog23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog15
+        '
+        Me.LblSlaveLog15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog15.Location = New System.Drawing.Point(385, 474)
+        Me.LblSlaveLog15.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog15.Name = "LblSlaveLog15"
+        Me.LblSlaveLog15.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog15.TabIndex = 474
+        Me.LblSlaveLog15.Text = "Log Data 15"
+        Me.LblSlaveLog15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog16
+        '
+        Me.LblSlaveLog16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog16.Location = New System.Drawing.Point(385, 500)
+        Me.LblSlaveLog16.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog16.Name = "LblSlaveLog16"
+        Me.LblSlaveLog16.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog16.TabIndex = 475
+        Me.LblSlaveLog16.Text = "Log Data 16"
+        Me.LblSlaveLog16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog17
+        '
+        Me.LblSlaveLog17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog17.Location = New System.Drawing.Point(385, 526)
+        Me.LblSlaveLog17.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog17.Name = "LblSlaveLog17"
+        Me.LblSlaveLog17.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog17.TabIndex = 476
+        Me.LblSlaveLog17.Text = "Log Data 17"
+        Me.LblSlaveLog17.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog18
+        '
+        Me.LblSlaveLog18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog18.Location = New System.Drawing.Point(385, 552)
+        Me.LblSlaveLog18.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog18.Name = "LblSlaveLog18"
+        Me.LblSlaveLog18.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog18.TabIndex = 477
+        Me.LblSlaveLog18.Text = "Log Data 18"
+        Me.LblSlaveLog18.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog19
+        '
+        Me.LblSlaveLog19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog19.Location = New System.Drawing.Point(385, 578)
+        Me.LblSlaveLog19.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog19.Name = "LblSlaveLog19"
+        Me.LblSlaveLog19.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog19.TabIndex = 478
+        Me.LblSlaveLog19.Text = "Log Data 19"
+        Me.LblSlaveLog19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog20
+        '
+        Me.LblSlaveLog20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog20.Location = New System.Drawing.Point(385, 604)
+        Me.LblSlaveLog20.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog20.Name = "LblSlaveLog20"
+        Me.LblSlaveLog20.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog20.TabIndex = 479
+        Me.LblSlaveLog20.Text = "Log Data 20"
+        Me.LblSlaveLog20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog21
+        '
+        Me.LblSlaveLog21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog21.Location = New System.Drawing.Point(385, 630)
+        Me.LblSlaveLog21.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog21.Name = "LblSlaveLog21"
+        Me.LblSlaveLog21.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog21.TabIndex = 480
+        Me.LblSlaveLog21.Text = "Log Data 21"
+        Me.LblSlaveLog21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblSlaveLog22
+        '
+        Me.LblSlaveLog22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSlaveLog22.Location = New System.Drawing.Point(385, 656)
+        Me.LblSlaveLog22.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblSlaveLog22.Name = "LblSlaveLog22"
+        Me.LblSlaveLog22.Size = New System.Drawing.Size(200, 16)
+        Me.LblSlaveLog22.TabIndex = 481
+        Me.LblSlaveLog22.Text = "Log Data 22"
+        Me.LblSlaveLog22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'CbxSlaveStatusNotLoggedF
+        '
+        Me.CbxSlaveStatusNotLoggedF.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedF.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedF.Location = New System.Drawing.Point(189, 745)
+        Me.CbxSlaveStatusNotLoggedF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedF.Name = "CbxSlaveStatusNotLoggedF"
+        Me.CbxSlaveStatusNotLoggedF.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedF.TabIndex = 473
+        Me.CbxSlaveStatusNotLoggedF.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedF.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLoggedE
+        '
+        Me.CbxSlaveStatusNotLoggedE.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedE.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedE.Location = New System.Drawing.Point(189, 725)
+        Me.CbxSlaveStatusNotLoggedE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedE.Name = "CbxSlaveStatusNotLoggedE"
+        Me.CbxSlaveStatusNotLoggedE.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedE.TabIndex = 472
+        Me.CbxSlaveStatusNotLoggedE.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedE.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLoggedD
+        '
+        Me.CbxSlaveStatusNotLoggedD.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedD.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedD.Location = New System.Drawing.Point(189, 705)
+        Me.CbxSlaveStatusNotLoggedD.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedD.Name = "CbxSlaveStatusNotLoggedD"
+        Me.CbxSlaveStatusNotLoggedD.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedD.TabIndex = 471
+        Me.CbxSlaveStatusNotLoggedD.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedD.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLoggedC
+        '
+        Me.CbxSlaveStatusNotLoggedC.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedC.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedC.Location = New System.Drawing.Point(189, 685)
+        Me.CbxSlaveStatusNotLoggedC.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedC.Name = "CbxSlaveStatusNotLoggedC"
+        Me.CbxSlaveStatusNotLoggedC.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedC.TabIndex = 470
+        Me.CbxSlaveStatusNotLoggedC.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedC.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLoggedB
+        '
+        Me.CbxSlaveStatusNotLoggedB.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedB.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedB.Location = New System.Drawing.Point(189, 665)
+        Me.CbxSlaveStatusNotLoggedB.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedB.Name = "CbxSlaveStatusNotLoggedB"
+        Me.CbxSlaveStatusNotLoggedB.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedB.TabIndex = 469
+        Me.CbxSlaveStatusNotLoggedB.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedB.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLoggedA
+        '
+        Me.CbxSlaveStatusNotLoggedA.AutoSize = True
+        Me.CbxSlaveStatusNotLoggedA.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLoggedA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLoggedA.Location = New System.Drawing.Point(189, 645)
+        Me.CbxSlaveStatusNotLoggedA.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLoggedA.Name = "CbxSlaveStatusNotLoggedA"
+        Me.CbxSlaveStatusNotLoggedA.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLoggedA.TabIndex = 468
+        Me.CbxSlaveStatusNotLoggedA.Text = "Not Log"
+        Me.CbxSlaveStatusNotLoggedA.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged9
+        '
+        Me.CbxSlaveStatusNotLogged9.AutoSize = True
+        Me.CbxSlaveStatusNotLogged9.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged9.Location = New System.Drawing.Point(189, 625)
+        Me.CbxSlaveStatusNotLogged9.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged9.Name = "CbxSlaveStatusNotLogged9"
+        Me.CbxSlaveStatusNotLogged9.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged9.TabIndex = 467
+        Me.CbxSlaveStatusNotLogged9.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged9.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged8
+        '
+        Me.CbxSlaveStatusNotLogged8.AutoSize = True
+        Me.CbxSlaveStatusNotLogged8.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged8.Location = New System.Drawing.Point(189, 605)
+        Me.CbxSlaveStatusNotLogged8.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged8.Name = "CbxSlaveStatusNotLogged8"
+        Me.CbxSlaveStatusNotLogged8.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged8.TabIndex = 466
+        Me.CbxSlaveStatusNotLogged8.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged8.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged0
+        '
+        Me.CbxSlaveStatusNotLogged0.AutoSize = True
+        Me.CbxSlaveStatusNotLogged0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged0.Location = New System.Drawing.Point(189, 445)
+        Me.CbxSlaveStatusNotLogged0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged0.Name = "CbxSlaveStatusNotLogged0"
+        Me.CbxSlaveStatusNotLogged0.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged0.TabIndex = 458
+        Me.CbxSlaveStatusNotLogged0.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged0.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged7
+        '
+        Me.CbxSlaveStatusNotLogged7.AutoSize = True
+        Me.CbxSlaveStatusNotLogged7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged7.Location = New System.Drawing.Point(189, 585)
+        Me.CbxSlaveStatusNotLogged7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged7.Name = "CbxSlaveStatusNotLogged7"
+        Me.CbxSlaveStatusNotLogged7.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged7.TabIndex = 465
+        Me.CbxSlaveStatusNotLogged7.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged7.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged6
+        '
+        Me.CbxSlaveStatusNotLogged6.AutoSize = True
+        Me.CbxSlaveStatusNotLogged6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged6.Location = New System.Drawing.Point(189, 565)
+        Me.CbxSlaveStatusNotLogged6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged6.Name = "CbxSlaveStatusNotLogged6"
+        Me.CbxSlaveStatusNotLogged6.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged6.TabIndex = 464
+        Me.CbxSlaveStatusNotLogged6.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged6.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged5
+        '
+        Me.CbxSlaveStatusNotLogged5.AutoSize = True
+        Me.CbxSlaveStatusNotLogged5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged5.Location = New System.Drawing.Point(189, 545)
+        Me.CbxSlaveStatusNotLogged5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged5.Name = "CbxSlaveStatusNotLogged5"
+        Me.CbxSlaveStatusNotLogged5.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged5.TabIndex = 463
+        Me.CbxSlaveStatusNotLogged5.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged5.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged4
+        '
+        Me.CbxSlaveStatusNotLogged4.AutoSize = True
+        Me.CbxSlaveStatusNotLogged4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged4.Location = New System.Drawing.Point(189, 525)
+        Me.CbxSlaveStatusNotLogged4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged4.Name = "CbxSlaveStatusNotLogged4"
+        Me.CbxSlaveStatusNotLogged4.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged4.TabIndex = 462
+        Me.CbxSlaveStatusNotLogged4.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged4.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged3
+        '
+        Me.CbxSlaveStatusNotLogged3.AutoSize = True
+        Me.CbxSlaveStatusNotLogged3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged3.Location = New System.Drawing.Point(189, 505)
+        Me.CbxSlaveStatusNotLogged3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged3.Name = "CbxSlaveStatusNotLogged3"
+        Me.CbxSlaveStatusNotLogged3.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged3.TabIndex = 461
+        Me.CbxSlaveStatusNotLogged3.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged3.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged2
+        '
+        Me.CbxSlaveStatusNotLogged2.AutoSize = True
+        Me.CbxSlaveStatusNotLogged2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged2.Location = New System.Drawing.Point(189, 485)
+        Me.CbxSlaveStatusNotLogged2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged2.Name = "CbxSlaveStatusNotLogged2"
+        Me.CbxSlaveStatusNotLogged2.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged2.TabIndex = 460
+        Me.CbxSlaveStatusNotLogged2.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged2.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotLogged1
+        '
+        Me.CbxSlaveStatusNotLogged1.AutoSize = True
+        Me.CbxSlaveStatusNotLogged1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotLogged1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotLogged1.Location = New System.Drawing.Point(189, 465)
+        Me.CbxSlaveStatusNotLogged1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotLogged1.Name = "CbxSlaveStatusNotLogged1"
+        Me.CbxSlaveStatusNotLogged1.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusNotLogged1.TabIndex = 459
+        Me.CbxSlaveStatusNotLogged1.Text = "Not Log"
+        Me.CbxSlaveStatusNotLogged1.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedF
+        '
+        Me.CbxSlaveStatusLoggedF.AutoSize = True
+        Me.CbxSlaveStatusLoggedF.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedF.Location = New System.Drawing.Point(3, 745)
+        Me.CbxSlaveStatusLoggedF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedF.Name = "CbxSlaveStatusLoggedF"
+        Me.CbxSlaveStatusLoggedF.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedF.TabIndex = 457
+        Me.CbxSlaveStatusLoggedF.Text = "Logged"
+        Me.CbxSlaveStatusLoggedF.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedE
+        '
+        Me.CbxSlaveStatusLoggedE.AutoSize = True
+        Me.CbxSlaveStatusLoggedE.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedE.Location = New System.Drawing.Point(3, 725)
+        Me.CbxSlaveStatusLoggedE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedE.Name = "CbxSlaveStatusLoggedE"
+        Me.CbxSlaveStatusLoggedE.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedE.TabIndex = 456
+        Me.CbxSlaveStatusLoggedE.Text = "Logged"
+        Me.CbxSlaveStatusLoggedE.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedD
+        '
+        Me.CbxSlaveStatusLoggedD.AutoSize = True
+        Me.CbxSlaveStatusLoggedD.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedD.Location = New System.Drawing.Point(3, 705)
+        Me.CbxSlaveStatusLoggedD.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedD.Name = "CbxSlaveStatusLoggedD"
+        Me.CbxSlaveStatusLoggedD.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedD.TabIndex = 455
+        Me.CbxSlaveStatusLoggedD.Text = "Logged"
+        Me.CbxSlaveStatusLoggedD.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedC
+        '
+        Me.CbxSlaveStatusLoggedC.AutoSize = True
+        Me.CbxSlaveStatusLoggedC.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedC.Location = New System.Drawing.Point(3, 685)
+        Me.CbxSlaveStatusLoggedC.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedC.Name = "CbxSlaveStatusLoggedC"
+        Me.CbxSlaveStatusLoggedC.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedC.TabIndex = 454
+        Me.CbxSlaveStatusLoggedC.Text = "Logged"
+        Me.CbxSlaveStatusLoggedC.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedB
+        '
+        Me.CbxSlaveStatusLoggedB.AutoSize = True
+        Me.CbxSlaveStatusLoggedB.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedB.Location = New System.Drawing.Point(3, 665)
+        Me.CbxSlaveStatusLoggedB.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedB.Name = "CbxSlaveStatusLoggedB"
+        Me.CbxSlaveStatusLoggedB.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedB.TabIndex = 453
+        Me.CbxSlaveStatusLoggedB.Text = "Logged"
+        Me.CbxSlaveStatusLoggedB.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLoggedA
+        '
+        Me.CbxSlaveStatusLoggedA.AutoSize = True
+        Me.CbxSlaveStatusLoggedA.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLoggedA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLoggedA.Location = New System.Drawing.Point(3, 645)
+        Me.CbxSlaveStatusLoggedA.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLoggedA.Name = "CbxSlaveStatusLoggedA"
+        Me.CbxSlaveStatusLoggedA.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLoggedA.TabIndex = 452
+        Me.CbxSlaveStatusLoggedA.Text = "Logged"
+        Me.CbxSlaveStatusLoggedA.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged9
+        '
+        Me.CbxSlaveStatusLogged9.AutoSize = True
+        Me.CbxSlaveStatusLogged9.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged9.Location = New System.Drawing.Point(3, 625)
+        Me.CbxSlaveStatusLogged9.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged9.Name = "CbxSlaveStatusLogged9"
+        Me.CbxSlaveStatusLogged9.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged9.TabIndex = 451
+        Me.CbxSlaveStatusLogged9.Text = "Logged"
+        Me.CbxSlaveStatusLogged9.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged8
+        '
+        Me.CbxSlaveStatusLogged8.AutoSize = True
+        Me.CbxSlaveStatusLogged8.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged8.Location = New System.Drawing.Point(3, 605)
+        Me.CbxSlaveStatusLogged8.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged8.Name = "CbxSlaveStatusLogged8"
+        Me.CbxSlaveStatusLogged8.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged8.TabIndex = 450
+        Me.CbxSlaveStatusLogged8.Text = "Logged"
+        Me.CbxSlaveStatusLogged8.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged0
+        '
+        Me.CbxSlaveStatusLogged0.AutoSize = True
+        Me.CbxSlaveStatusLogged0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged0.Location = New System.Drawing.Point(3, 445)
+        Me.CbxSlaveStatusLogged0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged0.Name = "CbxSlaveStatusLogged0"
+        Me.CbxSlaveStatusLogged0.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged0.TabIndex = 442
+        Me.CbxSlaveStatusLogged0.Text = "Logged"
+        Me.CbxSlaveStatusLogged0.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged7
+        '
+        Me.CbxSlaveStatusLogged7.AutoSize = True
+        Me.CbxSlaveStatusLogged7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged7.Location = New System.Drawing.Point(3, 585)
+        Me.CbxSlaveStatusLogged7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged7.Name = "CbxSlaveStatusLogged7"
+        Me.CbxSlaveStatusLogged7.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged7.TabIndex = 449
+        Me.CbxSlaveStatusLogged7.Text = "Logged"
+        Me.CbxSlaveStatusLogged7.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged6
+        '
+        Me.CbxSlaveStatusLogged6.AutoSize = True
+        Me.CbxSlaveStatusLogged6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged6.Location = New System.Drawing.Point(3, 565)
+        Me.CbxSlaveStatusLogged6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged6.Name = "CbxSlaveStatusLogged6"
+        Me.CbxSlaveStatusLogged6.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged6.TabIndex = 448
+        Me.CbxSlaveStatusLogged6.Text = "Logged"
+        Me.CbxSlaveStatusLogged6.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged5
+        '
+        Me.CbxSlaveStatusLogged5.AutoSize = True
+        Me.CbxSlaveStatusLogged5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged5.Location = New System.Drawing.Point(3, 545)
+        Me.CbxSlaveStatusLogged5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged5.Name = "CbxSlaveStatusLogged5"
+        Me.CbxSlaveStatusLogged5.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged5.TabIndex = 447
+        Me.CbxSlaveStatusLogged5.Text = "Logged"
+        Me.CbxSlaveStatusLogged5.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged4
+        '
+        Me.CbxSlaveStatusLogged4.AutoSize = True
+        Me.CbxSlaveStatusLogged4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged4.Location = New System.Drawing.Point(3, 525)
+        Me.CbxSlaveStatusLogged4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged4.Name = "CbxSlaveStatusLogged4"
+        Me.CbxSlaveStatusLogged4.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged4.TabIndex = 446
+        Me.CbxSlaveStatusLogged4.Text = "Logged"
+        Me.CbxSlaveStatusLogged4.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged3
+        '
+        Me.CbxSlaveStatusLogged3.AutoSize = True
+        Me.CbxSlaveStatusLogged3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged3.Location = New System.Drawing.Point(3, 505)
+        Me.CbxSlaveStatusLogged3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged3.Name = "CbxSlaveStatusLogged3"
+        Me.CbxSlaveStatusLogged3.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged3.TabIndex = 445
+        Me.CbxSlaveStatusLogged3.Text = "Logged"
+        Me.CbxSlaveStatusLogged3.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged2
+        '
+        Me.CbxSlaveStatusLogged2.AutoSize = True
+        Me.CbxSlaveStatusLogged2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged2.Location = New System.Drawing.Point(3, 485)
+        Me.CbxSlaveStatusLogged2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged2.Name = "CbxSlaveStatusLogged2"
+        Me.CbxSlaveStatusLogged2.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged2.TabIndex = 444
+        Me.CbxSlaveStatusLogged2.Text = "Logged"
+        Me.CbxSlaveStatusLogged2.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusLogged1
+        '
+        Me.CbxSlaveStatusLogged1.AutoSize = True
+        Me.CbxSlaveStatusLogged1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusLogged1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusLogged1.Location = New System.Drawing.Point(3, 465)
+        Me.CbxSlaveStatusLogged1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusLogged1.Name = "CbxSlaveStatusLogged1"
+        Me.CbxSlaveStatusLogged1.Size = New System.Drawing.Size(74, 20)
+        Me.CbxSlaveStatusLogged1.TabIndex = 443
+        Me.CbxSlaveStatusLogged1.Text = "Logged"
+        Me.CbxSlaveStatusLogged1.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultF
+        '
+        Me.CbxSlaveStatusFaultF.AutoSize = True
+        Me.CbxSlaveStatusFaultF.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultF.Location = New System.Drawing.Point(189, 383)
+        Me.CbxSlaveStatusFaultF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultF.Name = "CbxSlaveStatusFaultF"
+        Me.CbxSlaveStatusFaultF.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultF.TabIndex = 441
+        Me.CbxSlaveStatusFaultF.Text = "Fault"
+        Me.CbxSlaveStatusFaultF.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultE
+        '
+        Me.CbxSlaveStatusFaultE.AutoSize = True
+        Me.CbxSlaveStatusFaultE.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultE.Location = New System.Drawing.Point(189, 363)
+        Me.CbxSlaveStatusFaultE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultE.Name = "CbxSlaveStatusFaultE"
+        Me.CbxSlaveStatusFaultE.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultE.TabIndex = 440
+        Me.CbxSlaveStatusFaultE.Text = "Fault"
+        Me.CbxSlaveStatusFaultE.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultD
+        '
+        Me.CbxSlaveStatusFaultD.AutoSize = True
+        Me.CbxSlaveStatusFaultD.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultD.Location = New System.Drawing.Point(189, 343)
+        Me.CbxSlaveStatusFaultD.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultD.Name = "CbxSlaveStatusFaultD"
+        Me.CbxSlaveStatusFaultD.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultD.TabIndex = 439
+        Me.CbxSlaveStatusFaultD.Text = "Fault"
+        Me.CbxSlaveStatusFaultD.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultC
+        '
+        Me.CbxSlaveStatusFaultC.AutoSize = True
+        Me.CbxSlaveStatusFaultC.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultC.Location = New System.Drawing.Point(189, 323)
+        Me.CbxSlaveStatusFaultC.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultC.Name = "CbxSlaveStatusFaultC"
+        Me.CbxSlaveStatusFaultC.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultC.TabIndex = 438
+        Me.CbxSlaveStatusFaultC.Text = "Fault"
+        Me.CbxSlaveStatusFaultC.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultB
+        '
+        Me.CbxSlaveStatusFaultB.AutoSize = True
+        Me.CbxSlaveStatusFaultB.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultB.Location = New System.Drawing.Point(189, 303)
+        Me.CbxSlaveStatusFaultB.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultB.Name = "CbxSlaveStatusFaultB"
+        Me.CbxSlaveStatusFaultB.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultB.TabIndex = 437
+        Me.CbxSlaveStatusFaultB.Text = "Fault"
+        Me.CbxSlaveStatusFaultB.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFaultA
+        '
+        Me.CbxSlaveStatusFaultA.AutoSize = True
+        Me.CbxSlaveStatusFaultA.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFaultA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFaultA.Location = New System.Drawing.Point(189, 283)
+        Me.CbxSlaveStatusFaultA.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFaultA.Name = "CbxSlaveStatusFaultA"
+        Me.CbxSlaveStatusFaultA.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFaultA.TabIndex = 436
+        Me.CbxSlaveStatusFaultA.Text = "Fault"
+        Me.CbxSlaveStatusFaultA.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault9
+        '
+        Me.CbxSlaveStatusFault9.AutoSize = True
+        Me.CbxSlaveStatusFault9.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault9.Location = New System.Drawing.Point(189, 263)
+        Me.CbxSlaveStatusFault9.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault9.Name = "CbxSlaveStatusFault9"
+        Me.CbxSlaveStatusFault9.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault9.TabIndex = 435
+        Me.CbxSlaveStatusFault9.Text = "Fault"
+        Me.CbxSlaveStatusFault9.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault8
+        '
+        Me.CbxSlaveStatusFault8.AutoSize = True
+        Me.CbxSlaveStatusFault8.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault8.Location = New System.Drawing.Point(189, 243)
+        Me.CbxSlaveStatusFault8.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault8.Name = "CbxSlaveStatusFault8"
+        Me.CbxSlaveStatusFault8.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault8.TabIndex = 434
+        Me.CbxSlaveStatusFault8.Text = "Fault"
+        Me.CbxSlaveStatusFault8.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault0
+        '
+        Me.CbxSlaveStatusFault0.AutoSize = True
+        Me.CbxSlaveStatusFault0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault0.Location = New System.Drawing.Point(189, 83)
+        Me.CbxSlaveStatusFault0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault0.Name = "CbxSlaveStatusFault0"
+        Me.CbxSlaveStatusFault0.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault0.TabIndex = 426
+        Me.CbxSlaveStatusFault0.Text = "Fault"
+        Me.CbxSlaveStatusFault0.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault7
+        '
+        Me.CbxSlaveStatusFault7.AutoSize = True
+        Me.CbxSlaveStatusFault7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault7.Location = New System.Drawing.Point(189, 223)
+        Me.CbxSlaveStatusFault7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault7.Name = "CbxSlaveStatusFault7"
+        Me.CbxSlaveStatusFault7.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault7.TabIndex = 433
+        Me.CbxSlaveStatusFault7.Text = "Fault"
+        Me.CbxSlaveStatusFault7.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault6
+        '
+        Me.CbxSlaveStatusFault6.AutoSize = True
+        Me.CbxSlaveStatusFault6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault6.Location = New System.Drawing.Point(189, 203)
+        Me.CbxSlaveStatusFault6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault6.Name = "CbxSlaveStatusFault6"
+        Me.CbxSlaveStatusFault6.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault6.TabIndex = 432
+        Me.CbxSlaveStatusFault6.Text = "Fault"
+        Me.CbxSlaveStatusFault6.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault5
+        '
+        Me.CbxSlaveStatusFault5.AutoSize = True
+        Me.CbxSlaveStatusFault5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault5.Location = New System.Drawing.Point(189, 183)
+        Me.CbxSlaveStatusFault5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault5.Name = "CbxSlaveStatusFault5"
+        Me.CbxSlaveStatusFault5.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault5.TabIndex = 431
+        Me.CbxSlaveStatusFault5.Text = "Fault"
+        Me.CbxSlaveStatusFault5.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault4
+        '
+        Me.CbxSlaveStatusFault4.AutoSize = True
+        Me.CbxSlaveStatusFault4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault4.Location = New System.Drawing.Point(189, 163)
+        Me.CbxSlaveStatusFault4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault4.Name = "CbxSlaveStatusFault4"
+        Me.CbxSlaveStatusFault4.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault4.TabIndex = 430
+        Me.CbxSlaveStatusFault4.Text = "Fault"
+        Me.CbxSlaveStatusFault4.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault3
+        '
+        Me.CbxSlaveStatusFault3.AutoSize = True
+        Me.CbxSlaveStatusFault3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault3.Location = New System.Drawing.Point(189, 143)
+        Me.CbxSlaveStatusFault3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault3.Name = "CbxSlaveStatusFault3"
+        Me.CbxSlaveStatusFault3.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault3.TabIndex = 429
+        Me.CbxSlaveStatusFault3.Text = "Fault"
+        Me.CbxSlaveStatusFault3.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault2
+        '
+        Me.CbxSlaveStatusFault2.AutoSize = True
+        Me.CbxSlaveStatusFault2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault2.Location = New System.Drawing.Point(189, 123)
+        Me.CbxSlaveStatusFault2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault2.Name = "CbxSlaveStatusFault2"
+        Me.CbxSlaveStatusFault2.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault2.TabIndex = 428
+        Me.CbxSlaveStatusFault2.Text = "Fault"
+        Me.CbxSlaveStatusFault2.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusFault1
+        '
+        Me.CbxSlaveStatusFault1.AutoSize = True
+        Me.CbxSlaveStatusFault1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusFault1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusFault1.Location = New System.Drawing.Point(189, 103)
+        Me.CbxSlaveStatusFault1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusFault1.Name = "CbxSlaveStatusFault1"
+        Me.CbxSlaveStatusFault1.Size = New System.Drawing.Size(56, 20)
+        Me.CbxSlaveStatusFault1.TabIndex = 427
+        Me.CbxSlaveStatusFault1.Text = "Fault"
+        Me.CbxSlaveStatusFault1.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice7
+        '
+        Me.CbxSlaveStatusNotice7.AutoSize = True
+        Me.CbxSlaveStatusNotice7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice7.Location = New System.Drawing.Point(3, 383)
+        Me.CbxSlaveStatusNotice7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice7.Name = "CbxSlaveStatusNotice7"
+        Me.CbxSlaveStatusNotice7.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice7.TabIndex = 425
+        Me.CbxSlaveStatusNotice7.Text = "Notice"
+        Me.CbxSlaveStatusNotice7.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice6
+        '
+        Me.CbxSlaveStatusNotice6.AutoSize = True
+        Me.CbxSlaveStatusNotice6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice6.Location = New System.Drawing.Point(3, 363)
+        Me.CbxSlaveStatusNotice6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice6.Name = "CbxSlaveStatusNotice6"
+        Me.CbxSlaveStatusNotice6.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice6.TabIndex = 424
+        Me.CbxSlaveStatusNotice6.Text = "Notice"
+        Me.CbxSlaveStatusNotice6.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice5
+        '
+        Me.CbxSlaveStatusNotice5.AutoSize = True
+        Me.CbxSlaveStatusNotice5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice5.Location = New System.Drawing.Point(3, 343)
+        Me.CbxSlaveStatusNotice5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice5.Name = "CbxSlaveStatusNotice5"
+        Me.CbxSlaveStatusNotice5.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice5.TabIndex = 423
+        Me.CbxSlaveStatusNotice5.Text = "Notice"
+        Me.CbxSlaveStatusNotice5.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice4
+        '
+        Me.CbxSlaveStatusNotice4.AutoSize = True
+        Me.CbxSlaveStatusNotice4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice4.Location = New System.Drawing.Point(3, 323)
+        Me.CbxSlaveStatusNotice4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice4.Name = "CbxSlaveStatusNotice4"
+        Me.CbxSlaveStatusNotice4.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice4.TabIndex = 422
+        Me.CbxSlaveStatusNotice4.Text = "Notice"
+        Me.CbxSlaveStatusNotice4.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice3
+        '
+        Me.CbxSlaveStatusNotice3.AutoSize = True
+        Me.CbxSlaveStatusNotice3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice3.Location = New System.Drawing.Point(3, 303)
+        Me.CbxSlaveStatusNotice3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice3.Name = "CbxSlaveStatusNotice3"
+        Me.CbxSlaveStatusNotice3.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice3.TabIndex = 421
+        Me.CbxSlaveStatusNotice3.Text = "Notice"
+        Me.CbxSlaveStatusNotice3.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice2
+        '
+        Me.CbxSlaveStatusNotice2.AutoSize = True
+        Me.CbxSlaveStatusNotice2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice2.Location = New System.Drawing.Point(3, 283)
+        Me.CbxSlaveStatusNotice2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice2.Name = "CbxSlaveStatusNotice2"
+        Me.CbxSlaveStatusNotice2.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice2.TabIndex = 420
+        Me.CbxSlaveStatusNotice2.Text = "Notice"
+        Me.CbxSlaveStatusNotice2.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice1
+        '
+        Me.CbxSlaveStatusNotice1.AutoSize = True
+        Me.CbxSlaveStatusNotice1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice1.Location = New System.Drawing.Point(3, 263)
+        Me.CbxSlaveStatusNotice1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice1.Name = "CbxSlaveStatusNotice1"
+        Me.CbxSlaveStatusNotice1.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice1.TabIndex = 419
+        Me.CbxSlaveStatusNotice1.Text = "Notice"
+        Me.CbxSlaveStatusNotice1.UseVisualStyleBackColor = False
+        '
+        'CbxSlaveStatusNotice0
+        '
+        Me.CbxSlaveStatusNotice0.AutoSize = True
+        Me.CbxSlaveStatusNotice0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxSlaveStatusNotice0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxSlaveStatusNotice0.Location = New System.Drawing.Point(3, 243)
+        Me.CbxSlaveStatusNotice0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxSlaveStatusNotice0.Name = "CbxSlaveStatusNotice0"
+        Me.CbxSlaveStatusNotice0.Size = New System.Drawing.Size(66, 20)
+        Me.CbxSlaveStatusNotice0.TabIndex = 418
+        Me.CbxSlaveStatusNotice0.Text = "Notice"
+        Me.CbxSlaveStatusNotice0.UseVisualStyleBackColor = False
+        '
+        'TabPage3Debug
+        '
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug0)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug0)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug1)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug2)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug3)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug4)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug5)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug6)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug7)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug8)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebug9)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugA)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugB)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugC)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugD)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugE)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanCXECReg)
+        Me.TabPage3Debug.Controls.Add(Me.LabelDebugF)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug1)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug2)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug3)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug4)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug5)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug6)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug7)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug8)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug9)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugA)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugB)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugC)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugD)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugE)
+        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugF)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorI2CBusCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanErrorFlagCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX1Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX2Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorSPIBusCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX0Filt0Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX0Filt1Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX1Filt2Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanISREnteredCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanUnknownIdentifierCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanInvalidIndexCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorScaleCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanAddressErrorCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX0Count)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanTXBufOverflowCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorResetCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanRXBufferOverflowCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCAnDataLogRXBufferOVerflowCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelCanTimeoutCount)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorSelfTestResultRegister)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorReserved0)
+        Me.TabPage3Debug.Controls.Add(Me.LabelErrorReserved1)
+        Me.TabPage3Debug.Controls.Add(Me.LabelRCON)
+        Me.TabPage3Debug.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3Debug.Name = "TabPage3Debug"
+        Me.TabPage3Debug.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3Debug.Size = New System.Drawing.Size(1415, 935)
+        Me.TabPage3Debug.TabIndex = 2
+        Me.TabPage3Debug.Text = "Debug"
+        Me.TabPage3Debug.UseVisualStyleBackColor = True
+        '
+        'TabPage4
+        '
+        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(1415, 935)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "Dose"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.ComboBoxComPorts)
+        Me.TabPage5.Controls.Add(Me.LabelWatchDogResponse)
+        Me.TabPage5.Controls.Add(Me.TextBoxRev)
+        Me.TabPage5.Controls.Add(Me.TextBoxSN)
+        Me.TabPage5.Controls.Add(Me.Button2)
+        Me.TabPage5.Controls.Add(Me.LabelCommandCount)
+        Me.TabPage5.Controls.Add(Me.Label1)
+        Me.TabPage5.Controls.Add(Me.LabelCommandLengthError)
+        Me.TabPage5.Controls.Add(Me.Label14)
+        Me.TabPage5.Controls.Add(Me.TextBoxIP3)
+        Me.TabPage5.Controls.Add(Me.Label3)
+        Me.TabPage5.Controls.Add(Me.TextBoxIP2)
+        Me.TabPage5.Controls.Add(Me.TextBoxHNubmber)
+        Me.TabPage5.Controls.Add(Me.TextBoxIP1)
+        Me.TabPage5.Controls.Add(Me.Button1)
+        Me.TabPage5.Controls.Add(Me.TextBoxIP0)
+        Me.TabPage5.Controls.Add(Me.ButtonSetIPAddres)
+        Me.TabPage5.Controls.Add(Me.ButtonSetRemoteIP)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(1415, 935)
+        Me.TabPage5.TabIndex = 4
+        Me.TabPage5.Text = "TabPage5"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'LblDebugReg7
+        '
+        Me.LblDebugReg7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg7.Location = New System.Drawing.Point(753, 224)
+        Me.LblDebugReg7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg7.Name = "LblDebugReg7"
+        Me.LblDebugReg7.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg7.TabIndex = 514
+        Me.LblDebugReg7.Text = "Debug Reg"
+        Me.LblDebugReg7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg6
+        '
+        Me.LblDebugReg6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg6.Location = New System.Drawing.Point(753, 204)
+        Me.LblDebugReg6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg6.Name = "LblDebugReg6"
+        Me.LblDebugReg6.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg6.TabIndex = 513
+        Me.LblDebugReg6.Text = "Debug Reg"
+        Me.LblDebugReg6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg5
+        '
+        Me.LblDebugReg5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg5.Location = New System.Drawing.Point(753, 184)
+        Me.LblDebugReg5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg5.Name = "LblDebugReg5"
+        Me.LblDebugReg5.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg5.TabIndex = 512
+        Me.LblDebugReg5.Text = "Debug Reg"
+        Me.LblDebugReg5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg4
+        '
+        Me.LblDebugReg4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg4.Location = New System.Drawing.Point(753, 164)
+        Me.LblDebugReg4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg4.Name = "LblDebugReg4"
+        Me.LblDebugReg4.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg4.TabIndex = 511
+        Me.LblDebugReg4.Text = "Debug Reg"
+        Me.LblDebugReg4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegF
+        '
+        Me.LblDebugRegF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegF.Location = New System.Drawing.Point(753, 384)
+        Me.LblDebugRegF.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegF.Name = "LblDebugRegF"
+        Me.LblDebugRegF.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegF.TabIndex = 522
+        Me.LblDebugRegF.Text = "Debug Reg"
+        Me.LblDebugRegF.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegE
+        '
+        Me.LblDebugRegE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegE.Location = New System.Drawing.Point(753, 364)
+        Me.LblDebugRegE.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegE.Name = "LblDebugRegE"
+        Me.LblDebugRegE.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegE.TabIndex = 521
+        Me.LblDebugRegE.Text = "Debug Reg"
+        Me.LblDebugRegE.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegD
+        '
+        Me.LblDebugRegD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegD.Location = New System.Drawing.Point(753, 344)
+        Me.LblDebugRegD.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegD.Name = "LblDebugRegD"
+        Me.LblDebugRegD.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegD.TabIndex = 520
+        Me.LblDebugRegD.Text = "Debug Reg"
+        Me.LblDebugRegD.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegC
+        '
+        Me.LblDebugRegC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegC.Location = New System.Drawing.Point(753, 324)
+        Me.LblDebugRegC.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegC.Name = "LblDebugRegC"
+        Me.LblDebugRegC.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegC.TabIndex = 519
+        Me.LblDebugRegC.Text = "Debug Reg"
+        Me.LblDebugRegC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegB
+        '
+        Me.LblDebugRegB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegB.Location = New System.Drawing.Point(753, 304)
+        Me.LblDebugRegB.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegB.Name = "LblDebugRegB"
+        Me.LblDebugRegB.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegB.TabIndex = 518
+        Me.LblDebugRegB.Text = "Debug Reg"
+        Me.LblDebugRegB.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugRegA
+        '
+        Me.LblDebugRegA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugRegA.Location = New System.Drawing.Point(753, 284)
+        Me.LblDebugRegA.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugRegA.Name = "LblDebugRegA"
+        Me.LblDebugRegA.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugRegA.TabIndex = 517
+        Me.LblDebugRegA.Text = "Debug Reg"
+        Me.LblDebugRegA.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg9
+        '
+        Me.LblDebugReg9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg9.Location = New System.Drawing.Point(753, 264)
+        Me.LblDebugReg9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg9.Name = "LblDebugReg9"
+        Me.LblDebugReg9.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg9.TabIndex = 516
+        Me.LblDebugReg9.Text = "Debug Reg"
+        Me.LblDebugReg9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugReg8
+        '
+        Me.LblDebugReg8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugReg8.Location = New System.Drawing.Point(753, 244)
+        Me.LblDebugReg8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugReg8.Name = "LblDebugReg8"
+        Me.LblDebugReg8.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugReg8.TabIndex = 515
+        Me.LblDebugReg8.Text = "Debug Reg"
+        Me.LblDebugReg8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanF
+        '
+        Me.LblDebugCanF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanF.Location = New System.Drawing.Point(753, 722)
+        Me.LblDebugCanF.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanF.Name = "LblDebugCanF"
+        Me.LblDebugCanF.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanF.TabIndex = 538
+        Me.LblDebugCanF.Text = "Can Debug"
+        Me.LblDebugCanF.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanE
+        '
+        Me.LblDebugCanE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanE.Location = New System.Drawing.Point(753, 702)
+        Me.LblDebugCanE.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanE.Name = "LblDebugCanE"
+        Me.LblDebugCanE.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanE.TabIndex = 537
+        Me.LblDebugCanE.Text = "Can Debug"
+        Me.LblDebugCanE.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanD
+        '
+        Me.LblDebugCanD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanD.Location = New System.Drawing.Point(753, 682)
+        Me.LblDebugCanD.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanD.Name = "LblDebugCanD"
+        Me.LblDebugCanD.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanD.TabIndex = 536
+        Me.LblDebugCanD.Text = "Can Debug"
+        Me.LblDebugCanD.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanC
+        '
+        Me.LblDebugCanC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanC.Location = New System.Drawing.Point(753, 662)
+        Me.LblDebugCanC.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanC.Name = "LblDebugCanC"
+        Me.LblDebugCanC.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanC.TabIndex = 535
+        Me.LblDebugCanC.Text = "Can Debug"
+        Me.LblDebugCanC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanB
+        '
+        Me.LblDebugCanB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanB.Location = New System.Drawing.Point(753, 642)
+        Me.LblDebugCanB.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanB.Name = "LblDebugCanB"
+        Me.LblDebugCanB.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanB.TabIndex = 534
+        Me.LblDebugCanB.Text = "Can Debug"
+        Me.LblDebugCanB.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCanA
+        '
+        Me.LblDebugCanA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCanA.Location = New System.Drawing.Point(753, 622)
+        Me.LblDebugCanA.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCanA.Name = "LblDebugCanA"
+        Me.LblDebugCanA.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCanA.TabIndex = 533
+        Me.LblDebugCanA.Text = "Can Debug"
+        Me.LblDebugCanA.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan9
+        '
+        Me.LblDebugCan9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan9.Location = New System.Drawing.Point(753, 602)
+        Me.LblDebugCan9.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan9.Name = "LblDebugCan9"
+        Me.LblDebugCan9.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan9.TabIndex = 532
+        Me.LblDebugCan9.Text = "Can Debug"
+        Me.LblDebugCan9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan8
+        '
+        Me.LblDebugCan8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan8.Location = New System.Drawing.Point(753, 582)
+        Me.LblDebugCan8.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan8.Name = "LblDebugCan8"
+        Me.LblDebugCan8.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan8.TabIndex = 531
+        Me.LblDebugCan8.Text = "Can Debug"
+        Me.LblDebugCan8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan7
+        '
+        Me.LblDebugCan7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan7.Location = New System.Drawing.Point(753, 562)
+        Me.LblDebugCan7.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan7.Name = "LblDebugCan7"
+        Me.LblDebugCan7.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan7.TabIndex = 530
+        Me.LblDebugCan7.Text = "Can Debug"
+        Me.LblDebugCan7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan6
+        '
+        Me.LblDebugCan6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan6.Location = New System.Drawing.Point(753, 542)
+        Me.LblDebugCan6.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan6.Name = "LblDebugCan6"
+        Me.LblDebugCan6.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan6.TabIndex = 529
+        Me.LblDebugCan6.Text = "Can Debug"
+        Me.LblDebugCan6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan5
+        '
+        Me.LblDebugCan5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan5.Location = New System.Drawing.Point(753, 522)
+        Me.LblDebugCan5.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan5.Name = "LblDebugCan5"
+        Me.LblDebugCan5.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan5.TabIndex = 528
+        Me.LblDebugCan5.Text = "Can Debug"
+        Me.LblDebugCan5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan4
+        '
+        Me.LblDebugCan4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan4.Location = New System.Drawing.Point(753, 502)
+        Me.LblDebugCan4.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan4.Name = "LblDebugCan4"
+        Me.LblDebugCan4.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan4.TabIndex = 527
+        Me.LblDebugCan4.Text = "Can Debug"
+        Me.LblDebugCan4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan3
+        '
+        Me.LblDebugCan3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan3.Location = New System.Drawing.Point(753, 482)
+        Me.LblDebugCan3.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan3.Name = "LblDebugCan3"
+        Me.LblDebugCan3.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan3.TabIndex = 526
+        Me.LblDebugCan3.Text = "Can Debug"
+        Me.LblDebugCan3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan2
+        '
+        Me.LblDebugCan2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan2.Location = New System.Drawing.Point(753, 462)
+        Me.LblDebugCan2.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan2.Name = "LblDebugCan2"
+        Me.LblDebugCan2.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan2.TabIndex = 525
+        Me.LblDebugCan2.Text = "Can Debug"
+        Me.LblDebugCan2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan1
+        '
+        Me.LblDebugCan1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan1.Location = New System.Drawing.Point(753, 442)
+        Me.LblDebugCan1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan1.Name = "LblDebugCan1"
+        Me.LblDebugCan1.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan1.TabIndex = 524
+        Me.LblDebugCan1.Text = "Can Debug"
+        Me.LblDebugCan1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDebugCan0
+        '
+        Me.LblDebugCan0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDebugCan0.Location = New System.Drawing.Point(753, 422)
+        Me.LblDebugCan0.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.LblDebugCan0.Name = "LblDebugCan0"
+        Me.LblDebugCan0.Size = New System.Drawing.Size(218, 16)
+        Me.LblDebugCan0.TabIndex = 523
+        Me.LblDebugCan0.Text = "Can Debug"
+        Me.LblDebugCan0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1246, 742)
+        Me.ClientSize = New System.Drawing.Size(1784, 961)
+        Me.Controls.Add(Me.TabPage4Dose)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label14)
-        Me.Controls.Add(Me.TextBoxHNubmber)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBoxSN)
-        Me.Controls.Add(Me.TextBoxRev)
         Me.Controls.Add(Me.ButtonETMMode)
-        Me.Controls.Add(Me.LabelWatchDogResponse)
-        Me.Controls.Add(Me.ComboBoxComPorts)
-        Me.Controls.Add(Me.LabelCommandCount)
-        Me.Controls.Add(Me.LabelCommandLengthError)
-        Me.Controls.Add(Me.TextBoxIP3)
-        Me.Controls.Add(Me.TextBoxIP2)
-        Me.Controls.Add(Me.TextBoxIP1)
-        Me.Controls.Add(Me.TextBoxIP0)
-        Me.Controls.Add(Me.ButtonSetRemoteIP)
-        Me.Controls.Add(Me.ButtonSetIPAddres)
         Me.Controls.Add(Me.LabelSystemSerialNumber)
         Me.Controls.Add(Me.ButtonReset)
         Me.Controls.Add(Me.ButtonLoadFactorySettings)
         Me.Controls.Add(Me.ButtonSaveFactorySettings)
-        Me.Controls.Add(Me.CheckBoxLoggedBitF)
-        Me.Controls.Add(Me.CheckBoxLoggedBit0)
-        Me.Controls.Add(Me.CheckBoxLoggedBit1)
-        Me.Controls.Add(Me.CheckBoxLoggedBit2)
-        Me.Controls.Add(Me.CheckBoxLoggedBit3)
-        Me.Controls.Add(Me.CheckBoxLoggedBit4)
-        Me.Controls.Add(Me.CheckBoxLoggedBit5)
-        Me.Controls.Add(Me.CheckBoxLoggedBit6)
-        Me.Controls.Add(Me.CheckBoxLoggedBit7)
-        Me.Controls.Add(Me.CheckBoxLoggedBit8)
-        Me.Controls.Add(Me.CheckBoxLoggedBit9)
-        Me.Controls.Add(Me.CheckBoxLoggedBitA)
-        Me.Controls.Add(Me.CheckBoxLoggedBitB)
-        Me.Controls.Add(Me.CheckBoxLoggedBitC)
-        Me.Controls.Add(Me.CheckBoxLoggedBitD)
-        Me.Controls.Add(Me.CheckBoxLoggedBitE)
         Me.Controls.Add(Me.ButtonToggleMode)
         Me.Controls.Add(Me.ButtonZeroPulseCounters)
         Me.Controls.Add(Me.ButtonZeroOnTime)
         Me.Controls.Add(Me.ButtonReloadECBDefaults)
-        Me.Controls.Add(Me.LabelRangeInput5)
-        Me.Controls.Add(Me.LabelRangeInput4)
-        Me.Controls.Add(Me.LabelRangeInput3)
-        Me.Controls.Add(Me.LabelRangeInput2)
-        Me.Controls.Add(Me.LabelRangeInput1)
         Me.Controls.Add(Me.LabelGuiVersion)
         Me.Controls.Add(Me.CheckBoxSyncBitF)
         Me.Controls.Add(Me.ButtonToggleResetDebug)
         Me.Controls.Add(Me.LabelSyncMessageCntrlBits)
-        Me.Controls.Add(Me.CheckBoxControlBit1)
-        Me.Controls.Add(Me.CheckBoxControlBit0)
-        Me.Controls.Add(Me.CheckBoxControlBit2)
-        Me.Controls.Add(Me.CheckBoxControlBit3)
-        Me.Controls.Add(Me.CheckBoxControlBit4)
-        Me.Controls.Add(Me.CheckBoxControlBit5)
-        Me.Controls.Add(Me.CheckBoxControlBit6)
-        Me.Controls.Add(Me.CheckBoxControlBit7)
         Me.Controls.Add(Me.LabelECBTime)
         Me.Controls.Add(Me.LabelComputerTime)
         Me.Controls.Add(Me.ButtonSetTime)
@@ -2627,114 +4039,20 @@ Partial Class frmMain
         Me.Controls.Add(Me.LabelDisplay3)
         Me.Controls.Add(Me.LabelDisplay2)
         Me.Controls.Add(Me.LabelDisplay1)
-        Me.Controls.Add(Me.ButtonUpdateInput5)
-        Me.Controls.Add(Me.ButtonUpdateInput4)
-        Me.Controls.Add(Me.TextBoxInput5)
-        Me.Controls.Add(Me.TextBoxInput4)
-        Me.Controls.Add(Me.LabelValue15)
-        Me.Controls.Add(Me.LabelValue14)
-        Me.Controls.Add(Me.LabelValue13)
-        Me.Controls.Add(Me.LabelValue12)
-        Me.Controls.Add(Me.LabelValue11)
-        Me.Controls.Add(Me.LabelValue10)
-        Me.Controls.Add(Me.LabelValue9)
-        Me.Controls.Add(Me.LabelValue8)
-        Me.Controls.Add(Me.LabelValue7)
-        Me.Controls.Add(Me.ButtonUpdateInput3)
-        Me.Controls.Add(Me.LabelValue6)
-        Me.Controls.Add(Me.LabelValue5)
-        Me.Controls.Add(Me.TextBoxInput3)
-        Me.Controls.Add(Me.LabelValue4)
-        Me.Controls.Add(Me.LabelValue3)
-        Me.Controls.Add(Me.LabelValue2)
-        Me.Controls.Add(Me.LabelValue1)
-        Me.Controls.Add(Me.LabelRCON)
-        Me.Controls.Add(Me.LabelErrorReserved1)
-        Me.Controls.Add(Me.ButtonUpdateInput2)
-        Me.Controls.Add(Me.LabelErrorReserved0)
-        Me.Controls.Add(Me.ButtonUpdateInput1)
-        Me.Controls.Add(Me.TextBoxInput1)
-        Me.Controls.Add(Me.TextBoxInput2)
-        Me.Controls.Add(Me.LabelErrorSelfTestResultRegister)
-        Me.Controls.Add(Me.LabelCanTimeoutCount)
-        Me.Controls.Add(Me.LabelCAnDataLogRXBufferOVerflowCount)
-        Me.Controls.Add(Me.LabelCanRXBufferOverflowCount)
-        Me.Controls.Add(Me.LabelErrorResetCount)
-        Me.Controls.Add(Me.LabelCanTXBufOverflowCount)
-        Me.Controls.Add(Me.LabelCanTX0Count)
-        Me.Controls.Add(Me.LabelCanAddressErrorCount)
-        Me.Controls.Add(Me.LabelErrorScaleCount)
-        Me.Controls.Add(Me.LabelCanInvalidIndexCount)
-        Me.Controls.Add(Me.LabelCanUnknownIdentifierCount)
-        Me.Controls.Add(Me.LabelCanISREnteredCount)
-        Me.Controls.Add(Me.LabelCanRX1Filt2Count)
-        Me.Controls.Add(Me.LabelCanRX0Filt1Count)
-        Me.Controls.Add(Me.LabelCanRX0Filt0Count)
-        Me.Controls.Add(Me.LabelErrorSPIBusCount)
-        Me.Controls.Add(Me.LabelCanTX2Count)
-        Me.Controls.Add(Me.LabelCanTX1Count)
-        Me.Controls.Add(Me.LabelValueDebugF)
-        Me.Controls.Add(Me.LabelCanErrorFlagCount)
-        Me.Controls.Add(Me.LabelErrorI2CBusCount)
-        Me.Controls.Add(Me.LabelCanCXECReg)
-        Me.Controls.Add(Me.LabelFirmwareVerssion)
-        Me.Controls.Add(Me.LabelValueDebugE)
-        Me.Controls.Add(Me.LabelAgileInfo)
-        Me.Controls.Add(Me.LabelValueDebugD)
-        Me.Controls.Add(Me.LabelValueDebugC)
-        Me.Controls.Add(Me.LabelValueDebugB)
-        Me.Controls.Add(Me.LabelValueDebugA)
-        Me.Controls.Add(Me.LabelValueDebug9)
-        Me.Controls.Add(Me.LabelValueDebug8)
-        Me.Controls.Add(Me.LabelValueDebug7)
-        Me.Controls.Add(Me.LabelValueDebug6)
-        Me.Controls.Add(Me.LabelValueDebug5)
-        Me.Controls.Add(Me.LabelValueDebug4)
-        Me.Controls.Add(Me.LabelValueDebug3)
-        Me.Controls.Add(Me.LabelValueDebug2)
-        Me.Controls.Add(Me.LabelValueDebug1)
-        Me.Controls.Add(Me.LabelValueDebug0)
-        Me.Controls.Add(Me.LabelBoardStatus)
-        Me.Controls.Add(Me.LabelDebugF)
-        Me.Controls.Add(Me.LabelDebugE)
-        Me.Controls.Add(Me.LabelDebugD)
-        Me.Controls.Add(Me.LabelDebugC)
-        Me.Controls.Add(Me.cboIndex)
-        Me.Controls.Add(Me.LabelDebugB)
-        Me.Controls.Add(Me.LabelDebugA)
-        Me.Controls.Add(Me.CheckBoxFaultBitF)
-        Me.Controls.Add(Me.CheckBoxFaultBit0)
-        Me.Controls.Add(Me.LabelDebug9)
-        Me.Controls.Add(Me.CheckBoxFaultBit1)
-        Me.Controls.Add(Me.CheckBoxFaultBit2)
-        Me.Controls.Add(Me.LabelDebug8)
-        Me.Controls.Add(Me.CheckBoxFaultBit3)
-        Me.Controls.Add(Me.LabelDebug7)
-        Me.Controls.Add(Me.CheckBoxFaultBit4)
-        Me.Controls.Add(Me.LabelDebug6)
-        Me.Controls.Add(Me.CheckBoxFaultBit5)
-        Me.Controls.Add(Me.LabelDebug5)
-        Me.Controls.Add(Me.CheckBoxFaultBit6)
-        Me.Controls.Add(Me.LabelDebug4)
-        Me.Controls.Add(Me.CheckBoxFaultBit7)
-        Me.Controls.Add(Me.LabelDebug3)
-        Me.Controls.Add(Me.CheckBoxFaultBit8)
-        Me.Controls.Add(Me.LabelDebug2)
-        Me.Controls.Add(Me.CheckBoxFaultBit9)
-        Me.Controls.Add(Me.LabelDebug1)
-        Me.Controls.Add(Me.CheckBoxFaultBitA)
-        Me.Controls.Add(Me.LabelDebug0)
-        Me.Controls.Add(Me.CheckBoxFaultBitB)
-        Me.Controls.Add(Me.CheckBoxFaultBitC)
-        Me.Controls.Add(Me.CheckBoxFaultBitD)
-        Me.Controls.Add(Me.CheckBoxFaultBitE)
         Me.Controls.Add(Me.Splitter1)
         Me.Name = "frmMain"
         Me.Text = "No Connection"
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        Me.TabPage4Dose.ResumeLayout(False)
+        Me.TabPage2Slave.ResumeLayout(False)
+        Me.TabPage2Slave.PerformLayout()
+        Me.TabPage3Debug.ResumeLayout(False)
+        Me.TabPage3Debug.PerformLayout()
+        Me.TabPage5.ResumeLayout(False)
+        Me.TabPage5.PerformLayout()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents TimerUpdate As System.Windows.Forms.Timer
     Friend WithEvents cboIndex As System.Windows.Forms.ComboBox
     Friend WithEvents LabelErrorReserved1 As System.Windows.Forms.Label
@@ -2776,38 +4094,22 @@ End Sub
     Friend WithEvents LabelCanTX1Count As System.Windows.Forms.Label
     Friend WithEvents LabelCanErrorFlagCount As System.Windows.Forms.Label
     Friend WithEvents LabelCanCXECReg As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxFaultBitF As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBitE As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBitD As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBitC As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBitB As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBitA As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit9 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit8 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit7 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit5 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit2 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit1 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxFaultBit0 As System.Windows.Forms.CheckBox
     Friend WithEvents LabelFirmwareVerssion As System.Windows.Forms.Label
     Friend WithEvents LabelAgileInfo As System.Windows.Forms.Label
     Friend WithEvents TextBoxInput2 As System.Windows.Forms.TextBox
     Friend WithEvents TextBoxInput1 As System.Windows.Forms.TextBox
     Friend WithEvents ButtonUpdateInput1 As System.Windows.Forms.Button
     Friend WithEvents ButtonUpdateInput2 As System.Windows.Forms.Button
-    Friend WithEvents LabelValue1 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue2 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue3 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue4 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue5 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue6 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue7 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue8 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue9 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue10 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog0 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog1 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog2 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog3 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog4 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog5 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog6 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog7 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog8 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog9 As System.Windows.Forms.Label
     Friend WithEvents LabelBoardStatus As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebugF As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebugE As System.Windows.Forms.Label
@@ -2826,11 +4128,11 @@ End Sub
     Friend WithEvents LabelValueDebug1 As System.Windows.Forms.Label
     Friend WithEvents LabelValueDebug0 As System.Windows.Forms.Label
     Friend WithEvents LabelRCON As System.Windows.Forms.Label
-    Friend WithEvents LabelValue11 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue12 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue13 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue14 As System.Windows.Forms.Label
-    Friend WithEvents LabelValue15 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog10 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog11 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog12 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog13 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog14 As System.Windows.Forms.Label
     Friend WithEvents ButtonUpdateInput3 As System.Windows.Forms.Button
     Friend WithEvents TextBoxInput3 As System.Windows.Forms.TextBox
     Friend WithEvents TextBoxInput4 As System.Windows.Forms.TextBox
@@ -2883,14 +4185,14 @@ End Sub
     Friend WithEvents CheckBoxSyncBitF As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonToggleResetDebug As System.Windows.Forms.Button
     Friend WithEvents LabelSyncMessageCntrlBits As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxControlBit1 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit0 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit2 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit5 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxControlBit7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusCntrl7 As System.Windows.Forms.CheckBox
     Friend WithEvents LabelGuiVersion As System.Windows.Forms.Label
     Friend WithEvents LabelRangeInput1 As System.Windows.Forms.Label
     Friend WithEvents LabelRangeInput2 As System.Windows.Forms.Label
@@ -2901,22 +4203,6 @@ End Sub
     Friend WithEvents ButtonZeroOnTime As System.Windows.Forms.Button
     Friend WithEvents ButtonZeroPulseCounters As System.Windows.Forms.Button
     Friend WithEvents ButtonToggleMode As System.Windows.Forms.Button
-    Friend WithEvents CheckBoxLoggedBitF As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit0 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit1 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit2 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit3 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit4 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit5 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit6 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit7 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit8 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBit9 As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBitA As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBitB As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBitC As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBitD As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxLoggedBitE As System.Windows.Forms.CheckBox
     Friend WithEvents ButtonSaveFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonLoadFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonReset As System.Windows.Forms.Button
@@ -2945,4 +4231,131 @@ End Sub
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents TabPage4Dose As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1ECB As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage2Slave As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage3Debug As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents CbxSlaveStatusNotLoggedF As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLoggedE As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLoggedD As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLoggedC As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLoggedB As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLoggedA As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotLogged1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedF As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedE As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedD As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedC As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedB As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLoggedA As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusLogged1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultF As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultE As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultD As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultC As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultB As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFaultA As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusFault1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxSlaveStatusNotice0 As System.Windows.Forms.CheckBox
+    Friend WithEvents LblSlaveLog15 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog16 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog17 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog18 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog19 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog20 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog21 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog22 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLog23 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue23 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue15 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue16 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue17 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue18 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue19 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue20 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue21 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue22 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue0 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue1 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue2 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue3 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue4 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue5 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue6 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue7 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue8 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue9 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue10 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue11 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue12 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue13 As System.Windows.Forms.Label
+    Friend WithEvents LblSlaveLogValue14 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg3 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg2 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg1 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg0 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegF As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegE As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegD As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegC As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegB As System.Windows.Forms.Label
+    Friend WithEvents LblDebugRegA As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg9 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg8 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg7 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg6 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg5 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugReg4 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanF As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanE As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanD As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanC As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanB As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCanA As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan9 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan8 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan7 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan6 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan5 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan4 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan3 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan2 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan1 As System.Windows.Forms.Label
+    Friend WithEvents LblDebugCan0 As System.Windows.Forms.Label
 End Class
