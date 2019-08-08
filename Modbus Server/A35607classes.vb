@@ -191,9 +191,9 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_0.trigger_grid_stop_max_dose = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
         dose_level_0.afc_home_poistion = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
         dose_level_0.self_trigger_prf = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
-        dose_level_0.unused_2 = (CUShort(data(i + 15)) << 25) + CUShort(data(i + 24))
-        dose_level_0.unused_1 = (CUShort(data(i + 11)) << 27) + CUShort(data(i + 26))
-        dose_level_0.unused_0 = (CUShort(data(i + 13)) << 29) + CUShort(data(i + 28))
+        dose_level_0.unused_2 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_level_0.unused_1 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_level_0.unused_0 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
         dose_level_0.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32
@@ -209,9 +209,9 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_1.trigger_grid_stop_max_dose = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
         dose_level_1.afc_home_poistion = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
         dose_level_1.self_trigger_prf = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
-        dose_level_1.unused_2 = (CUShort(data(i + 15)) << 25) + CUShort(data(i + 24))
-        dose_level_1.unused_1 = (CUShort(data(i + 11)) << 27) + CUShort(data(i + 26))
-        dose_level_1.unused_0 = (CUShort(data(i + 13)) << 29) + CUShort(data(i + 28))
+        dose_level_1.unused_2 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_level_1.unused_1 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_level_1.unused_0 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
         dose_level_1.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32
@@ -227,9 +227,9 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_2.trigger_grid_stop_max_dose = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
         dose_level_2.afc_home_poistion = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
         dose_level_2.self_trigger_prf = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
-        dose_level_2.unused_2 = (CUShort(data(i + 15)) << 25) + CUShort(data(i + 24))
-        dose_level_2.unused_1 = (CUShort(data(i + 11)) << 27) + CUShort(data(i + 26))
-        dose_level_2.unused_0 = (CUShort(data(i + 13)) << 29) + CUShort(data(i + 28))
+        dose_level_2.unused_2 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_level_2.unused_1 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_level_2.unused_0 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
         dose_level_2.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32
@@ -245,9 +245,9 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_3.trigger_grid_stop_max_dose = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
         dose_level_3.afc_home_poistion = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
         dose_level_3.self_trigger_prf = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
-        dose_level_3.unused_2 = (CUShort(data(i + 15)) << 25) + CUShort(data(i + 24))
-        dose_level_3.unused_1 = (CUShort(data(i + 11)) << 27) + CUShort(data(i + 26))
-        dose_level_3.unused_0 = (CUShort(data(i + 13)) << 29) + CUShort(data(i + 28))
+        dose_level_3.unused_2 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_level_3.unused_1 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_level_3.unused_0 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
         dose_level_3.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32
@@ -263,9 +263,9 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_all.afc_aux_control_or_offset = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
         dose_level_all.afc_manual_target_position = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
         dose_level_all.unused_3 = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
-        dose_level_all.unused_2 = (CUShort(data(i + 15)) << 25) + CUShort(data(i + 24))
-        dose_level_all.unused_1 = (CUShort(data(i + 11)) << 27) + CUShort(data(i + 26))
-        dose_level_all.unused_0 = (CUShort(data(i + 13)) << 29) + CUShort(data(i + 28))
+        dose_level_all.unused_2 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_level_all.unused_1 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_level_all.unused_0 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
         dose_level_all.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32

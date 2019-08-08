@@ -7,39 +7,61 @@
     Public Const REGISTER_ELECTROMAGNET_CURRENT_DOSE_0 As UInt16 = &H401
     Public Const REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_0 As UInt16 = &H402
     Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_0 As UInt16 = &H403
-    Public Const REGISTER_PULSE_SYNC_SPARE_TRIG_DOSE_0 As UInt16 = &H404
-    Public Const REGISTER_PULSE_SYNC_AFC_TRIGGER_DOSE_0 As UInt16 = &H405
-    Public Const REGISTER_PULSE_SYNC_GRID_START_MIN_DOSE_0 As UInt16 = &H406
-    Public Const REGISTER_PULSE_SYNC_GRID_START_MAX_DOSE_0 As UInt16 = &H407
-    Public Const REGISTER_PULSE_SYNC_GRID_STOP_MIN_DOSE_0 As UInt16 = &H408
-    Public Const REGISTER_PULSE_SYNC_GRID_STOP_MAX_DOSE_0 As UInt16 = &H409
+    Public Const REGISTER_TRIGGER_SPARE_DOSE_0 As UInt16 = &H404
+    Public Const REGISTER_TRIGGER_AFC_DOSE_0 As UInt16 = &H405
+    Public Const REGISTER_TRIGGER_GRID_START_MIN_DOSE_0 As UInt16 = &H406
+    Public Const REGISTER_TRIGGER_GRID_START_MAX_DOSE_0 As UInt16 = &H407
+    Public Const REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_0 As UInt16 = &H408
+    Public Const REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_0 As UInt16 = &H409
     Public Const REGISTER_AFC_HOME_POSITION_DOSE_0 As UInt16 = &H40A
-    Public Const REGISTER_PULSE_SYNC_PRF_DOSE_0 As UInt16 = &H40B
-
-
-
-
+    Public Const REGISTER_SELF_TRIGGER_PRF_DOSE_0 As UInt16 = &H40B
 
     Public Const REGISTER_HVPS_SET_POINT_DOSE_1 As UInt16 = &H410
     Public Const REGISTER_ELECTROMAGNET_CURRENT_DOSE_1 As UInt16 = &H411
     Public Const REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_1 As UInt16 = &H412
     Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_1 As UInt16 = &H413
-    Public Const REGISTER_PULSE_SYNC_SPARE_TRIG_DOSE_1 As UInt16 = &H414
-    Public Const REGISTER_PULSE_SYNC_AFC_TRIGGER_DOSE_1 As UInt16 = &H415
-    Public Const REGISTER_PULSE_SYNC_GRID_START_MIN_DOSE_1 As UInt16 = &H416
-    Public Const REGISTER_PULSE_SYNC_GRID_START_MAX_DOSE_1 As UInt16 = &H417
-    Public Const REGISTER_PULSE_SYNC_GRID_STOP_MIN_DOSE_1 As UInt16 = &H418
-    Public Const REGISTER_PULSE_SYNC_GRID_STOP_MAX_DOSE_1 As UInt16 = &H419
+    Public Const REGISTER_TRIGGER_SPARE_DOSE_1 As UInt16 = &H414
+    Public Const REGISTER_TRIGGER_AFC_DOSE_1 As UInt16 = &H415
+    Public Const REGISTER_TRIGGER_GRID_START_MIN_DOSE_1 As UInt16 = &H416
+    Public Const REGISTER_TRIGGER_GRID_START_MAX_DOSE_1 As UInt16 = &H417
+    Public Const REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_1 As UInt16 = &H418
+    Public Const REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_1 As UInt16 = &H419
     Public Const REGISTER_AFC_HOME_POSITION_DOSE_1 As UInt16 = &H41A
-    Public Const REGISTER_PULSE_SYNC_PRF_DOSE_1 As UInt16 = &H41B
+    Public Const REGISTER_SELF_TRIGGER_PRF_DOSE_1 As UInt16 = &H41B
+
+    Public Const REGISTER_HVPS_SET_POINT_DOSE_2 As UInt16 = &H420
+    Public Const REGISTER_ELECTROMAGNET_CURRENT_DOSE_2 As UInt16 = &H421
+    Public Const REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_2 As UInt16 = &H422
+    Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_2 As UInt16 = &H423
+    Public Const REGISTER_TRIGGER_SPARE_DOSE_2 As UInt16 = &H424
+    Public Const REGISTER_TRIGGER_AFC_DOSE_2 As UInt16 = &H425
+    Public Const REGISTER_TRIGGER_GRID_START_MIN_DOSE_2 As UInt16 = &H426
+    Public Const REGISTER_TRIGGER_GRID_START_MAX_DOSE_2 As UInt16 = &H427
+    Public Const REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_2 As UInt16 = &H428
+    Public Const REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_2 As UInt16 = &H429
+    Public Const REGISTER_AFC_HOME_POSITION_DOSE_2 As UInt16 = &H42A
+    Public Const REGISTER_SELF_TRIGGER_PRF_DOSE_2 As UInt16 = &H42B
+
+    Public Const REGISTER_HVPS_SET_POINT_DOSE_3 As UInt16 = &H430
+    Public Const REGISTER_ELECTROMAGNET_CURRENT_DOSE_3 As UInt16 = &H431
+    Public Const REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_3 As UInt16 = &H432
+    Public Const REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_3 As UInt16 = &H433
+    Public Const REGISTER_TRIGGER_SPARE_DOSE_3 As UInt16 = &H434
+    Public Const REGISTER_TRIGGER_AFC_DOSE_3 As UInt16 = &H435
+    Public Const REGISTER_TRIGGER_GRID_START_MIN_DOSE_3 As UInt16 = &H436
+    Public Const REGISTER_TRIGGER_GRID_START_MAX_DOSE_3 As UInt16 = &H437
+    Public Const REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_3 As UInt16 = &H438
+    Public Const REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_3 As UInt16 = &H439
+    Public Const REGISTER_AFC_HOME_POSITION_DOSE_3 As UInt16 = &H43A
+    Public Const REGISTER_SELF_TRIGGER_PRF_DOSE_3 As UInt16 = &H43B
 
     Public Const REGISTER_MAGNETRON_HEATER_CURRENT_DOSE_ALL As UInt16 = &H500
     Public Const REGISTER_GUN_DRIVER_HEATER_VOLTAGE_DOSE_ALL As UInt16 = &H501
-    Public Const REGISTER_PULSE_SYNC_HVPS_TRIGGER_START_DOSE_ALL As UInt16 = &H502
-    Public Const REGISTER_PULSE_SYNC_HVPS_TRIGGER_STOP_DOSE_ALL As UInt16 = &H503
-    Public Const REGISTER_PULSE_SYNC_PFN_TRIGGER_DOSE_ALL As UInt16 = &H504
-    Public Const REGISTER_PULSE_SYNC_MAGNETRON_AND_TARGET_CURRENT_TRIGGER_START_DOSE_ALL As UInt16 = &H505
-    Public Const REGISTER_PULSE_SYNC_MAGNETRON_AND_TARGET_CURRENT_TRIGGER_STOP_DOSE_ALL As UInt16 = &H506
+    Public Const REGISTER_TRIGGER_HVPS_START_DOSE_ALL As UInt16 = &H502
+    Public Const REGISTER_TRIGGER_HVPS_STOP_DOSE_ALL As UInt16 = &H503
+    Public Const REGISTER_TRIGGER_PFN_DOSE_ALL As UInt16 = &H504
+    Public Const REGISTER_TRIGGER_MAGNETRON_AND_TARGET_CURRENT_START_DOSE_ALL As UInt16 = &H505
+    Public Const REGISTER_TRIGGER_MAGNETRON_AND_TARGET_CURRENT_STOP_DOSE_ALL As UInt16 = &H506
     Public Const REGISTER_X_RAY_ON_TIME_DOSE_ALL As UInt16 = &H507
     Public Const REGISTER_GUN_BIAS_VOLTAGE_DOSE_ALL As UInt16 = &H508
     Public Const REGISTER_AFC_AFT_CONTROL_VOLTAGE_DOSE_ALL As UInt16 = &H509
@@ -65,11 +87,9 @@
     Public Const REGISTER_REMOTE_IP_ADDRESS As UInt16 = &H110B
     Public Const REGISTER_IP_ADDRESS As UInt16 = &H110C
 
-
-
     Public Const REGISTER_DEBUG_TOGGLE_RESET_DEBUG As UInt16 = &H1200
     Public Const REGISTER_DEBUG_RESET_MCU As UInt16 = &H1201
-    Public Const REGISTER_ECB_SYSTEM_SERIAL_NUMBER As UInt16 = &H1202
+    Public Const REGISTER_ETM_SYSTEM_SERIAL_NUMBER As UInt16 = &H1202
     Public Const REGISTER_DEBUG_GUN_DRIVER_RESET_FPGA As UInt16 = &H1203
     Public Const REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT As UInt16 = &H1204
     Public Const REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON As UInt16 = &H1205
@@ -81,7 +101,7 @@
     Public Const REGISTER_DEBUG_SET_EEPROM_DEBUG As UInt16 = &H1211
     Public Const REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR As UInt16 = &H1212
     Public Const REGISTER_ETM_CLEAR_DEBUG As UInt16 = &H1213
-
+  
     Public Const YEAR_MULT As UInt32 = 35942400
     Public Const MONTH_MULT As UInt32 = 2764800
     Public Const DAY_MULT As UInt32 = 86400
@@ -635,6 +655,90 @@
             LabelBoardStatus.Text = "Connected"
             Me.BackColor = SystemColors.Control
         End If
+
+        BtnHVPSDose0.Text = "HVPS = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.hvps_set_point / 1000 & " KV"
+        BtnMagnetCurrentDose0.Text = "Magnet = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.electromagnet_set_point / 1000 & " Amps"
+        BtnPulseTopDose0.Text = "Grid = " & ((ServerSettings.ETMEthernetECBLoggingData.dose_level_0.gun_driver_pulse_top_voltage / 100) - 80) & " Volts"
+        BtnGunCathodeDose0.Text = "Gun Ek = -" & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.gun_driver_cathode_voltage / 1000 & " KV"
+        BtnSpareTriggerDelayDose0.Text = "Spare Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_delay_spare & " nS"
+        BtnAFCTriggerDelayDose0.Text = "AFC Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_delay_afc & " nS"
+        BtnGrideStartMinDose0.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_grid_start_min_dose & " nS"
+        BtnGrideStartMaxDose0.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_grid_start_max_dose & " nS"
+        BtnGrideStopMinDose0.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_grid_stop_min_dose & " nS"
+        BtnGrideStopMaxDose0.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.trigger_grid_stop_max_dose & " nS"
+        BtnAFCHomeDose0.Text = "AFC Home = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.afc_home_poistion
+        BtnPRFDose0.Text = "PRF = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.self_trigger_prf / 50 & " Hz"
+        BtnUnused2Dose0.Text = "Unused 2 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.unused_2
+        BtnUnused1Dose0.Text = "Unused 1 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.unused_1
+        BtnUnused0Dose0.Text = "Unused 0 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_0.unused_0
+
+        BtnHVPSDose1.Text = "HVPS = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.hvps_set_point / 1000 & " KV"
+        BtnMagnetCurrentDose1.Text = "Magnet = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.electromagnet_set_point / 1000 & " Amps"
+        BtnPulseTopDose1.Text = "Grid = " & ((ServerSettings.ETMEthernetECBLoggingData.dose_level_1.gun_driver_pulse_top_voltage / 100) - 80) & " Volts"
+        BtnGunCathodeDose1.Text = "Gun Ek = -" & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.gun_driver_cathode_voltage / 1000 & " KV"
+        BtnSpareTriggerDelayDose1.Text = "Spare Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_delay_spare & " nS"
+        BtnAFCTriggerDelayDose1.Text = "AFC Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_delay_afc & " nS"
+        BtnGrideStartMinDose1.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_grid_start_min_dose & " nS"
+        BtnGrideStartMaxDose1.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_grid_start_max_dose & " nS"
+        BtnGrideStopMinDose1.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_grid_stop_min_dose & " nS"
+        BtnGrideStopMaxDose1.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.trigger_grid_stop_max_dose & " nS"
+        BtnAFCHomeDose1.Text = "AFC Home = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.afc_home_poistion
+        BtnPRFDose1.Text = "PRF = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.self_trigger_prf / 50 & " Hz"
+        BtnUnused2Dose1.Text = "Unused 2 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.unused_2
+        BtnUnused1Dose1.Text = "Unused 1 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.unused_1
+        BtnUnused0Dose1.Text = "Unused 0 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_1.unused_0
+
+        BtnHVPSDose2.Text = "HVPS = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.hvps_set_point / 1000 & " KV"
+        BtnMagnetCurrentDose2.Text = "Magnet = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.electromagnet_set_point / 1000 & " Amps"
+        BtnPulseTopDose2.Text = "Grid = " & ((ServerSettings.ETMEthernetECBLoggingData.dose_level_2.gun_driver_pulse_top_voltage / 100) - 80) & " Volts"
+        BtnGunCathodeDose2.Text = "Gun Ek = -" & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.gun_driver_cathode_voltage / 1000 & " KV"
+        BtnSpareTriggerDelayDose2.Text = "Spare Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_delay_spare & " nS"
+        BtnAFCTriggerDelayDose2.Text = "AFC Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_delay_afc & " nS"
+        BtnGrideStartMinDose2.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_grid_start_min_dose & " nS"
+        BtnGrideStartMaxDose2.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_grid_start_max_dose & " nS"
+        BtnGrideStopMinDose2.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_grid_stop_min_dose & " nS"
+        BtnGrideStopMaxDose2.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.trigger_grid_stop_max_dose & " nS"
+        BtnAFCHomeDose2.Text = "AFC Home = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.afc_home_poistion
+        BtnPRFDose2.Text = "PRF = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.self_trigger_prf / 50 & " Hz"
+        BtnUnused2Dose2.Text = "Unused 2 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.unused_2
+        BtnUnused1Dose2.Text = "Unused 1 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.unused_1
+        BtnUnused0Dose2.Text = "Unused 0 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_2.unused_0
+
+        BtnHVPSDose3.Text = "HVPS = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.hvps_set_point / 1000 & " KV"
+        BtnMagnetCurrentDose3.Text = "Magnet = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.electromagnet_set_point / 1000 & " Amps"
+        BtnPulseTopDose3.Text = "Grid = " & ((ServerSettings.ETMEthernetECBLoggingData.dose_level_3.gun_driver_pulse_top_voltage / 100) - 80) & " Volts"
+        BtnGunCathodeDose3.Text = "Gun Ek = -" & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.gun_driver_cathode_voltage / 1000 & " KV"
+        BtnSpareTriggerDelayDose3.Text = "Spare Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_delay_spare & " nS"
+        BtnAFCTriggerDelayDose3.Text = "AFC Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_delay_afc & " nS"
+        BtnGrideStartMinDose3.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_grid_start_min_dose & " nS"
+        BtnGrideStartMaxDose3.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_grid_start_max_dose & " nS"
+        BtnGrideStopMinDose3.Text = "Grid Start Min = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_grid_stop_min_dose & " nS"
+        BtnGrideStopMaxDose3.Text = "Grid Start Max = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.trigger_grid_stop_max_dose & " nS"
+        BtnAFCHomeDose3.Text = "AFC Home = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.afc_home_poistion
+        BtnPRFDose3.Text = "PRF = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.self_trigger_prf / 50 & " Hz"
+        BtnUnused2Dose3.Text = "Unused 2 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.unused_2
+        BtnUnused1Dose3.Text = "Unused 1 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.unused_1
+        BtnUnused0Dose3.Text = "Unused 0 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_3.unused_0
+
+
+        BtnMagnetronHeater.Text = "Mag Heater = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.magnetron_heater_current_at_standby / 1000 & " Amps"
+        BtnGunHeater.Text = "Gun Heater =  " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.gun_driver_heater_voltage / 1000 & " Amps"
+        BtnHVPSTrigStart.Text = "HVPS Trig Start = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.trigger_hvps_start & " nS"
+        BtnHVPSTrigStop.Text = "HVPS Trig Stop = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.trigger_hvps_stop & " nS"
+        BtnPFNTriggerDelay.Text = "PFN Trig Delay = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.trigger_pfn & " nS"
+        BtnSampleTriggerStart.Text = "Sample Start = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.trigger_magnetron_and_target_current_start & " nS"
+        BtnSampleTriggerStop.Text = "Sample Stop = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.trigger_magnetron_and_target_current_stop & " nS"
+        BtnXrayRunTime.Text = "XRay Run Time = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.x_ray_run_time_in_automated_mode & " Seconds"
+        BtnGunBias.Text = "Gun Bias = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.gun_driver_bias_voltage / -100 & " Volts"
+        BtnAFCAuxControl.Text = "AFC Aux = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.afc_aux_control_or_offset
+        BtnAFCManualPostion.Text = "AFC Manual Pos = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.afc_manual_target_position
+        BtnUnused3DoseAll.Text = "Unused 3 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.unused_3
+        BtnUnused2DoseAll.Text = "Unused 2 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.unused_2
+        BtnUnused1DoseAll.Text = "Unused 1 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.unused_1
+        BtnUnused0DoseAll.Text = "Unused 0 = " & ServerSettings.ETMEthernetECBLoggingData.dose_level_all.unused_0
+
+
+
 
     End Sub
 
@@ -1439,6 +1543,598 @@
         End Try
 
     End Function
+    Private Sub BntECBEEPromConfigure_Click(sender As Object, e As EventArgs) Handles BntECBEEPromConfigure.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnHVPSDose0_Click(sender As Object, e As EventArgs) Handles BtnHVPSDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Voltage for Dose 0", "HV Power Supply", 6, 22, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_HVPS_SET_POINT_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnHVPSDose1_Click(sender As Object, e As EventArgs) Handles BtnHVPSDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Voltage for Dose 1", "HV Power Supply", 6, 22, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_HVPS_SET_POINT_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnHVPSDose2_Click(sender As Object, e As EventArgs) Handles BtnHVPSDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Voltage for Dose 2", "HV Power Supply", 6, 22, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_HVPS_SET_POINT_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnHVPSDose3_Click(sender As Object, e As EventArgs) Handles BtnHVPSDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Voltage for Dose 3", "HV Power Supply", 6, 22, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_HVPS_SET_POINT_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnMagnetCurrentDose0_Click(sender As Object, e As EventArgs) Handles BtnMagnetCurrentDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Magnet Current for Dose 0", "Magnet and Heater", 8, 25, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_ELECTROMAGNET_CURRENT_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnMagnetCurrentDose1_Click(sender As Object, e As EventArgs) Handles BtnMagnetCurrentDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Magnet Current for Dose 1", "Magnet and Heater", 8, 25, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_ELECTROMAGNET_CURRENT_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnMagnetCurrentDose2_Click(sender As Object, e As EventArgs) Handles BtnMagnetCurrentDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Magnet Current for Dose 2", "Magnet and Heater", 8, 25, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_ELECTROMAGNET_CURRENT_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnMagnetCurrentDose3_Click(sender As Object, e As EventArgs) Handles BtnMagnetCurrentDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Magnet Current for Dose 3", "Magnet and Heater", 8, 25, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_ELECTROMAGNET_CURRENT_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPulseTopDose0_Click(sender As Object, e As EventArgs) Handles BtnPulseTopDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Eg for Dose 0", "Gun Driver", -80, 250, "V", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = (input_data + 80) * 100
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPulseTopDose1_Click(sender As Object, e As EventArgs) Handles BtnPulseTopDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Eg for Dose 1", "Gun Driver", -80, 250, "V", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = (input_data + 80) * 100
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPulseTopDose2_Click(sender As Object, e As EventArgs) Handles BtnPulseTopDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Eg for Dose 2", "Gun Driver", -80, 250, "V", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = (input_data + 80) * 100
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPulseTopDose3_Click(sender As Object, e As EventArgs) Handles BtnPulseTopDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Eg for Dose 3", "Gun Driver", -80, 250, "V", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = (input_data + 80) * 100
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_PULSE_TOP_VOLTAGE_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunCathodeDose0_Click(sender As Object, e As EventArgs) Handles BtnGunCathodeDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Ek for Dose 0", "Gun Driver", -20, -6, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * -1000
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunCathodeDose1_Click(sender As Object, e As EventArgs) Handles BtnGunCathodeDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Ek for Dose 1", "Gun Driver", -20, -6, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * -1000
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunCathodeDose2_Click(sender As Object, e As EventArgs) Handles BtnGunCathodeDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Ek for Dose 2", "Gun Driver", -20, -6, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * -1000
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunCathodeDose3_Click(sender As Object, e As EventArgs) Handles BtnGunCathodeDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Ek for Dose 3", "Gun Driver", -20, -6, "kV", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * -1000
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_CATHODE_VOLTAGE_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSpareTriggerDelayDose0_Click(sender As Object, e As EventArgs) Handles BtnSpareTriggerDelayDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Spare Trigger Delay for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_SPARE_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSpareTriggerDelayDose1_Click(sender As Object, e As EventArgs) Handles BtnSpareTriggerDelayDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Spare Trigger Delay for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_SPARE_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSpareTriggerDelayDose2_Click(sender As Object, e As EventArgs) Handles BtnSpareTriggerDelayDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Spare Trigger Delay for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_SPARE_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSpareTriggerDelayDose3_Click(sender As Object, e As EventArgs) Handles BtnSpareTriggerDelayDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Spare Trigger Delay for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_SPARE_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCTriggerDelayDose0_Click(sender As Object, e As EventArgs) Handles BtnAFCTriggerDelayDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set AFC Trigger Delay for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_AFC_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCTriggerDelayDose1_Click(sender As Object, e As EventArgs) Handles BtnAFCTriggerDelayDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set AFC Trigger Delay for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_AFC_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCTriggerDelayDose2_Click(sender As Object, e As EventArgs) Handles BtnAFCTriggerDelayDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set AFC Trigger Delay for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_AFC_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCTriggerDelayDose3_Click(sender As Object, e As EventArgs) Handles BtnAFCTriggerDelayDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set AFC Trigger Delay for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_AFC_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMinDose0_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMinDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Min for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MIN_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMinDose1_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMinDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Min for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MIN_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMinDose2_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMinDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Min for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MIN_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMinDose3_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMinDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Min for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MIN_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMaxDose0_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMaxDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Max for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MAX_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMaxDose1_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMaxDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Max for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MAX_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMaxDose2_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMaxDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Max for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MAX_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStartMaxDose3_Click(sender As Object, e As EventArgs) Handles BtnGrideStartMaxDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Start Max for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_START_MAX_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMinDose0_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMinDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMinDose1_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMinDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMinDose2_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMinDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMinDose3_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMinDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MIN_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMaxDose0_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMaxDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 0", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMaxDose1_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMaxDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 1", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMaxDose2_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMaxDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 2", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGrideStopMaxDose3_Click(sender As Object, e As EventArgs) Handles BtnGrideStopMaxDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Grid Stop Min for Dose 3", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_GRID_STOP_MAX_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCHomeDose0_Click(sender As Object, e As EventArgs) Handles BtnAFCHomeDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Home Position Dose 0", "AFC", 6400, 51200, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_AFC_HOME_POSITION_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCHomeDose1_Click(sender As Object, e As EventArgs) Handles BtnAFCHomeDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Home Position Dose 1", "AFC", 6400, 51200, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_AFC_HOME_POSITION_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCHomeDose2_Click(sender As Object, e As EventArgs) Handles BtnAFCHomeDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Home Position Dose 2", "AFC", 6400, 51200, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_AFC_HOME_POSITION_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCHomeDose3_Click(sender As Object, e As EventArgs) Handles BtnAFCHomeDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Home Position Dose 3", "AFC", 6400, 51200, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_AFC_HOME_POSITION_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPRFDose0_Click(sender As Object, e As EventArgs) Handles BtnPRFDose0.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set PRF Dose 0", "Trigger", 0, 800, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 50
+            ServerSettings.put_modbus_commands(REGISTER_SELF_TRIGGER_PRF_DOSE_0, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPRFDose1_Click(sender As Object, e As EventArgs) Handles BtnPRFDose1.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set PRF Dose 1", "Trigger", 0, 800, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 50
+            ServerSettings.put_modbus_commands(REGISTER_SELF_TRIGGER_PRF_DOSE_1, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPRFDose2_Click(sender As Object, e As EventArgs) Handles BtnPRFDose2.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set PRF Dose 2", "Trigger", 0, 800, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 50
+            ServerSettings.put_modbus_commands(REGISTER_SELF_TRIGGER_PRF_DOSE_2, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPRFDose3_Click(sender As Object, e As EventArgs) Handles BtnPRFDose3.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set PRF Dose 3", "Trigger", 0, 800, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 50
+            ServerSettings.put_modbus_commands(REGISTER_SELF_TRIGGER_PRF_DOSE_3, program_word, 0, 0, 0)
+        End If
+    End Sub
 
 
+    Private Sub BtnMagnetronHeater_Click(sender As Object, e As EventArgs) Handles BtnMagnetronHeater.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Heater Current", "Magnet and Heater", 0, 12, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_MAGNETRON_HEATER_CURRENT_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunHeater_Click(sender As Object, e As EventArgs) Handles BtnGunHeater.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set If", "Gun Driver", 0, 1.6, "A", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * 1000
+            ServerSettings.put_modbus_commands(REGISTER_GUN_DRIVER_HEATER_VOLTAGE_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnHVPSTrigStart_Click(sender As Object, e As EventArgs) Handles BtnHVPSTrigStart.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set HVPS Start", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_HVPS_START_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnHVPSTrigStop_Click(sender As Object, e As EventArgs) Handles BtnHVPSTrigStop.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set HVPS Stop", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_HVPS_STOP_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnPFNTriggerDelay_Click(sender As Object, e As EventArgs) Handles BtnPFNTriggerDelay.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set PFN Delay", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_PFN_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSampleTriggerStart_Click(sender As Object, e As EventArgs) Handles BtnSampleTriggerStart.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Sample Start", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_MAGNETRON_AND_TARGET_CURRENT_START_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnSampleTriggerStop_Click(sender As Object, e As EventArgs) Handles BtnSampleTriggerStop.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Sample Stop", "Trigger", 0, 60000, "nS", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_TRIGGER_MAGNETRON_AND_TARGET_CURRENT_STOP_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnXrayRunTime_Click(sender As Object, e As EventArgs) Handles BtnXrayRunTime.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Xray On Time", "Trigger", 0, 60000, "S", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_X_RAY_ON_TIME_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnGunBias_Click(sender As Object, e As EventArgs) Handles BtnGunBias.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Bias", "Gun Driver", -600, -300, "V", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data * -100
+            ServerSettings.put_modbus_commands(REGISTER_GUN_BIAS_VOLTAGE_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCAuxControl_Click(sender As Object, e As EventArgs) Handles BtnAFCAuxControl.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Aux Control", "AFC", 0, 60000, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_AFC_AFT_CONTROL_VOLTAGE_DOSE_ALL, program_word, 0, 0, 0)
+        End If
+    End Sub
+
+    Private Sub BtnAFCManualPostion_Click(sender As Object, e As EventArgs) Handles BtnAFCManualPostion.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set Manual Position", "AFC", 0, 64000, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_CMD_AFC_MANUAL_TARGET_POSITION, program_word, 0, 0, 0)
+        End If
+    End Sub
 End Class
