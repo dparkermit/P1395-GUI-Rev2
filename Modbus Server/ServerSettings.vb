@@ -64,9 +64,9 @@ Public Class ServerSettings
 
     Public QueueCommandToECB As Queue
 
-    Public Sub put_modbus_commands(ByVal index As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
+    Public Sub put_modbus_commands(ByVal index As UInt16, ByVal word3 As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
         Dim command_to_ECB As ETM_ETHERNET_COMMAND_STRUCTURE
-        command_to_ECB = New ETM_ETHERNET_COMMAND_STRUCTURE(index, word2, word1, word0)
+        command_to_ECB = New ETM_ETHERNET_COMMAND_STRUCTURE(index, word3, word2, word1, word0)
         QueueCommandToECB.Enqueue(command_to_ECB)
     End Sub
 
@@ -260,7 +260,7 @@ Public Class ServerSettings
             ' Send the requested list of commands to the ECB
 
             connect_status = 5
-            word_count = 4
+            word_count = 5
             datalen = word_count * 2
             msglen = datalen + 6
 
@@ -279,12 +279,16 @@ Public Class ServerSettings
                 command_to_ECB = CType(QueueCommandToECB.Dequeue, ETM_ETHERNET_COMMAND_STRUCTURE)
                 xmitBuffer(12) = CByte(Math.Truncate(command_to_ECB.command_index / 256))
                 xmitBuffer(13) = CByte(command_to_ECB.command_index Mod 256)
-                xmitBuffer(14) = CByte(Math.Truncate(command_to_ECB.data(2) / 256))
-                xmitBuffer(15) = CByte(command_to_ECB.data(2) Mod 256)
-                xmitBuffer(16) = CByte(Math.Truncate(command_to_ECB.data(1) / 256))
-                xmitBuffer(17) = CByte(command_to_ECB.data(1) Mod 256)
-                xmitBuffer(18) = CByte(Math.Truncate(command_to_ECB.data(0) / 256))
-                xmitBuffer(19) = CByte(command_to_ECB.data(0) Mod 256)
+                xmitBuffer(14) = CByte(Math.Truncate(command_to_ECB.data(3) / 256))
+                xmitBuffer(15) = CByte(command_to_ECB.data(3) Mod 256)
+                xmitBuffer(16) = CByte(Math.Truncate(command_to_ECB.data(2) / 256))
+                xmitBuffer(17) = CByte(command_to_ECB.data(2) Mod 256)
+                xmitBuffer(18) = CByte(Math.Truncate(command_to_ECB.data(1) / 256))
+                xmitBuffer(19) = CByte(command_to_ECB.data(1) Mod 256)
+                xmitBuffer(20) = CByte(Math.Truncate(command_to_ECB.data(0) / 256))
+                xmitBuffer(21) = CByte(command_to_ECB.data(0) Mod 256)
+
+
             End If
 
             stream.BeginWrite(xmitBuffer, 0, (msglen + 6), New AsyncCallback(AddressOf DoXmitDoneCallback), stream)           '(xmitBuffer, 0, 12)

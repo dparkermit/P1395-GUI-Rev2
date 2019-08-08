@@ -76,6 +76,11 @@
     Public Const REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT As UInt16 = &H1206
     Public Const REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER As UInt16 = &H1207
     Public Const REGISTER_ETM_SAVE_CURRENT_SETTINGS_TO_FACTORY_DEFAULT As UInt16 = &H1208
+    Public Const REGISTER_ETM_SLAVE_LOAD_DEFAULT_CALIBRATION As UInt16 = &H1209
+    Public Const REGISTER_DEBUG_SET_RAM_DEBUG As UInt16 = &H1210
+    Public Const REGISTER_DEBUG_SET_EEPROM_DEBUG As UInt16 = &H1211
+    Public Const REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR As UInt16 = &H1212
+    Public Const REGISTER_ETM_CLEAR_DEBUG As UInt16 = &H1213
 
     Public Const YEAR_MULT As UInt32 = 35942400
     Public Const MONTH_MULT As UInt32 = 2764800
@@ -402,7 +407,9 @@
         'Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) 
         LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_number & "-" &
             Format(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_dash, "000") & "  Rev-" &
-            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) & "  SN-" &
+            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii >> 8) &
+            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii Mod 256) &
+            "  SN-" &
             ServerSettings.ETMEthernetBoardLoggingData(board_index).serial_number 'Dparker need to add in the first Char
         LabelFirmwareVerssion.Text = "Firmware Version " &
             ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_agile_rev & "." &
@@ -544,17 +551,95 @@
         LblDebugCanE.Text = "RX_LOG_OF = " & ServerSettings.ETMEthernetDebugData.can_rx_log_buf_overflow
         LblDebugCanF.Text = "TIMEOUT = " & ServerSettings.ETMEthernetDebugData.can_timeout
 
+        LblDebugEEprom0.Text = "Int Rd Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_internal_read_count
+        LblDebugEEprom1.Text = "Int Rd Err = " & ServerSettings.ETMEthernetDebugData.eeprom_internal_read_error
+        LblDebugEEprom2.Text = "Int Wr Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_internal_write_count
+        LblDebugEEprom3.Text = "Int Wr Err = " & ServerSettings.ETMEthernetDebugData.eeprom_internal_write_error
+        LblDebugEEprom4.Text = "I2C Rd Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_i2c_read_count
+        LblDebugEEprom5.Text = "I2C Rd Err = " & ServerSettings.ETMEthernetDebugData.eeprom_i2c_read_error
+        LblDebugEEprom6.Text = "I2C Wr Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_i2c_write_count
+        LblDebugEEprom7.Text = "I2C Wr Err = " & ServerSettings.ETMEthernetDebugData.eeprom_i2c_write_error
+        LblDebugEEprom8.Text = "SPI Rd Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_spi_read_count
+        LblDebugEEprom9.Text = "SPI Rd Err = " & ServerSettings.ETMEthernetDebugData.eeprom_spi_read_error
+        LblDebugEEprom10.Text = "SPI Wr Cnt = " & ServerSettings.ETMEthernetDebugData.eeprom_spi_write_count
+        LblDebugEEprom11.Text = "SPI Wr Err = " & ServerSettings.ETMEthernetDebugData.eeprom_spi_write_error
+        LblDebugEEprom12.Text = "EEPROM CRC = " & ServerSettings.ETMEthernetDebugData.eeprom_crc_error_count
+        LblDebugEEprom13.Text = "CMD Invalid Idx = " & ServerSettings.ETMEthernetDebugData.cmd_data_register_read_invalid_index
+        LblDebugEEprom14.Text = "TBD 17 = " & ServerSettings.ETMEthernetDebugData.debugging_tbd_17
+        LblDebugEEprom15.Text = "TBD 16 = " & ServerSettings.ETMEthernetDebugData.debugging_tbd_16
+
+        LblDebugSystem0.Text = "Reset Cnt = " & ServerSettings.ETMEthernetDebugData.reset_count
+        LblDebugSystem1.Text = "RCON = " & ServerSettings.ETMEthernetDebugData.RCON_value
+        LblDebugSystem2.Text = "Can Ver = " & ServerSettings.ETMEthernetDebugData.can_build_version
+        LblDebugSystem3.Text = "Lib Ver = " & ServerSettings.ETMEthernetDebugData.library_build_version
+        LblDebugSystem4.Text = "I2C Err = " & ServerSettings.ETMEthernetDebugData.i2c_bus_error_count
+        LblDebugSystem5.Text = "SPI Err = " & ServerSettings.ETMEthernetDebugData.spi_bus_error_count
+        LblDebugSystem6.Text = "Scale Err = " & ServerSettings.ETMEthernetDebugData.scale_error_count
+        LblDebugSystem7.Text = "Self Test = " & ServerSettings.ETMEthernetDebugData.self_test_results
+
+        LblDebug0.Text = "RAM A = " & ServerSettings.ETMEthernetDebugData.ram_monitor_a
+        LblDebug1.Text = "RAM B = " & ServerSettings.ETMEthernetDebugData.ram_monitor_b
+        LblDebug2.Text = "RAM C = " & ServerSettings.ETMEthernetDebugData.ram_monitor_c
+        LblDebug3.Text = "EEPROM = 0x" & Hex(ServerSettings.ETMEthernetDebugData.eeprom_read_result)
+        LblDebug4.Text = "5V = " & ServerSettings.ETMEthernetDebugData.analog_1_nominal_5V
+        LblDebug5.Text = "+15 = " & ServerSettings.ETMEthernetDebugData.analog_2_nominal_pos_15
+        LblDebug6.Text = "-15 = " & ServerSettings.ETMEthernetDebugData.analog_3_nominal_neg_15
+        LblDebug7.Text = "24 = " & ServerSettings.ETMEthernetDebugData.analog_4_nominal_24
 
 
+        LblDebugCal0IntGain.Text = "Cal 0 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_0_internal_gain / 2 ^ 15
+        LblDebugCal0IntOffset.Text = "Cal 0 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_0_internal_offset
+        LblDebugCal0ExtGain.Text = "Cal 0 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_0_external_gain / 2 ^ 15
+        LblDebugCal0ExtOffset.Text = "Cal 0 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_0_external_offset
 
+        LblDebugCal1IntGain.Text = "Cal 1 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_1_internal_gain / 2 ^ 15
+        LblDebugCal1IntOffset.Text = "Cal 1 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_1_internal_offset
+        LblDebugCal1ExtGain.Text = "Cal 1 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_1_external_gain / 2 ^ 15
+        LblDebugCal1ExtOffset.Text = "Cal 1 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_1_external_offset
 
+        LblDebugCal2IntGain.Text = "Cal 2 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_2_internal_gain / 2 ^ 15
+        LblDebugCal2IntOffset.Text = "Cal 2 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_2_internal_offset
+        LblDebugCal2ExtGain.Text = "Cal 2 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_2_external_gain / 2 ^ 15
+        LblDebugCal2ExtOffset.Text = "Cal 2 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_2_external_offset
 
+        LblDebugCal3IntGain.Text = "Cal 3 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_3_internal_gain / 2 ^ 15
+        LblDebugCal3IntOffset.Text = "Cal 3 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_3_internal_offset
+        LblDebugCal3ExtGain.Text = "Cal 3 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_3_external_gain / 2 ^ 15
+        LblDebugCal3ExtOffset.Text = "Cal 3 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_3_external_offset
+
+        LblDebugCal4IntGain.Text = "Cal 4 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_4_internal_gain / 2 ^ 15
+        LblDebugCal4IntOffset.Text = "Cal 4 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_4_internal_offset
+        LblDebugCal4ExtGain.Text = "Cal 4 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_4_external_gain / 2 ^ 15
+        LblDebugCal4ExtOffset.Text = "Cal 4 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_4_external_offset
+
+        LblDebugCal5IntGain.Text = "Cal 5 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_5_internal_gain / 2 ^ 15
+        LblDebugCal5IntOffset.Text = "Cal 5 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_5_internal_offset
+        LblDebugCal5ExtGain.Text = "Cal 5 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_5_external_gain / 2 ^ 15
+        LblDebugCal5ExtOffset.Text = "Cal 5 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_5_external_offset
+
+        LblDebugCal6IntGain.Text = "Cal 6 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_6_internal_gain / 2 ^ 15
+        LblDebugCal6IntOffset.Text = "Cal 6 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_6_internal_offset
+        LblDebugCal6ExtGain.Text = "Cal 6 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_6_external_gain / 2 ^ 15
+        LblDebugCal6ExtOffset.Text = "Cal 6 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_6_external_offset
+
+        LblDebugCal7IntGain.Text = "Cal 7 IG = " & ServerSettings.ETMEthernetDebugData.calibartion_7_internal_gain / 2 ^ 15
+        LblDebugCal7IntOffset.Text = "Cal 7 IO= " & ServerSettings.ETMEthernetDebugData.calibartion_7_internal_offset
+        LblDebugCal7ExtGain.Text = "Cal 7 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_7_external_gain / 2 ^ 15
+        LblDebugCal7ExtOffset.Text = "Cal 7 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_7_external_offset
+        ' ADD Cal 1-7 once this is working properly
+
+        If ServerSettings.ETMEthernetBoardLoggingData(board_index).connection_timeout Then
+            LabelBoardStatus.Text = "NOT CONNECTED!!!"
+            Me.BackColor = Color.LightCoral
+        Else
+            LabelBoardStatus.Text = "Connected"
+            Me.BackColor = SystemColors.Control
+        End If
 
     End Sub
 
     Private Sub DisplayBoardSpecificData(ByVal selected_baord As Byte)
 
-        UpdateButtons()
 
 
         Dim selected_board_connected As Boolean = False
@@ -643,13 +728,7 @@
 
 
 #End If
-        If selected_board_connected Then
-            LabelBoardStatus.Text = ""
-            Me.BackColor = SystemColors.Control
-        Else
-            LabelBoardStatus.Text = "NOT CONNECTED!!!"
-            Me.BackColor = Color.LightCoral
-        End If
+
 
 
 
@@ -660,102 +739,7 @@
     End Sub
 
 
-    Private Sub UpdateButtons()
-
-        If inputbutton1.enabled Then
-            TextBoxInput1.Visible = True
-            ButtonUpdateInput1.Visible = True
-            If inputbutton1.button_only = True Then
-                TextBoxInput1.Visible = False
-            End If
-        Else
-            TextBoxInput1.Visible = False
-            ButtonUpdateInput1.Visible = False
-        End If
-
-        If inputbutton2.enabled Then
-            TextBoxInput2.Visible = True
-            ButtonUpdateInput2.Visible = True
-            If inputbutton2.button_only = True Then
-                TextBoxInput2.Visible = False
-            End If
-        Else
-            TextBoxInput2.Visible = False
-            ButtonUpdateInput2.Visible = False
-        End If
-
-        If inputbutton3.enabled Then
-            TextBoxInput3.Visible = True
-            ButtonUpdateInput3.Visible = True
-            If inputbutton3.button_only = True Then
-                TextBoxInput3.Visible = False
-            End If
-        Else
-            TextBoxInput3.Visible = False
-            ButtonUpdateInput3.Visible = False
-        End If
-
-        If inputbutton4.enabled Then
-            TextBoxInput4.Visible = True
-            ButtonUpdateInput4.Visible = True
-            If inputbutton4.button_only = True Then
-                TextBoxInput4.Visible = False
-            End If
-        Else
-            TextBoxInput4.Visible = False
-            ButtonUpdateInput4.Visible = False
-        End If
-
-        If inputbutton5.enabled Then
-            TextBoxInput5.Visible = True
-            ButtonUpdateInput5.Visible = True
-            If inputbutton5.button_only = True Then
-                TextBoxInput5.Visible = False
-            End If
-        Else
-            TextBoxInput5.Visible = False
-            ButtonUpdateInput5.Visible = False
-        End If
-
-        ButtonUpdateInput1.Text = inputbutton1.button_name
-        ButtonUpdateInput2.Text = inputbutton2.button_name
-        ButtonUpdateInput3.Text = inputbutton3.button_name
-        ButtonUpdateInput4.Text = inputbutton4.button_name
-        ButtonUpdateInput5.Text = inputbutton5.button_name
-
-
-        If inputbutton1.enabled And (inputbutton1.button_only = False) Then
-            LabelRangeInput1.Text = (CLng(inputbutton1.min_value) - CLng(inputbutton1.offset)) / inputbutton1.scale & " to " & (CLng(inputbutton1.max_value) - CLng(inputbutton1.offset)) / inputbutton1.scale
-        Else
-            LabelRangeInput1.Text = ""
-        End If
-
-        If inputbutton2.enabled And (inputbutton2.button_only = False) Then
-            LabelRangeInput2.Text = (CLng(inputbutton2.min_value) - CLng(inputbutton2.offset)) / inputbutton2.scale & " to " & (CLng(inputbutton2.max_value) - CLng(inputbutton2.offset)) / inputbutton2.scale
-        Else
-            LabelRangeInput2.Text = ""
-        End If
-
-        If inputbutton3.enabled And (inputbutton3.button_only = False) Then
-            LabelRangeInput3.Text = (CLng(inputbutton3.min_value) - CLng(inputbutton3.offset)) / inputbutton3.scale & " to " & (CLng(inputbutton3.max_value) - CLng(inputbutton3.offset)) / inputbutton3.scale
-        Else
-            LabelRangeInput3.Text = ""
-        End If
-
-        If inputbutton4.enabled And (inputbutton4.button_only = False) Then
-            LabelRangeInput4.Text = (CLng(inputbutton4.min_value) - CLng(inputbutton4.offset)) / inputbutton4.scale & " to " & (CLng(inputbutton4.max_value) - CLng(inputbutton4.offset)) / inputbutton4.scale
-        Else
-            LabelRangeInput4.Text = ""
-        End If
-
-
-        If inputbutton5.enabled And (inputbutton5.button_only = False) Then
-            LabelRangeInput5.Text = (CLng(inputbutton5.min_value) - CLng(inputbutton5.offset)) / inputbutton5.scale & " to " & (CLng(inputbutton5.max_value) - CLng(inputbutton5.offset)) / inputbutton5.scale
-        Else
-            LabelRangeInput5.Text = ""
-        End If
-
-    End Sub
+  
 
 
     Private Sub DisplayLeftPane()
@@ -1034,53 +1018,6 @@
 
 
 
-    Private Sub ExecuteButton(ByVal button As ButtonParameters, ByVal input_box As TextBox)
-        Dim program_word As UInt16
-        Try
-            If button.button_only Then
-                program_word = 0
-            Else
-                program_word = CUInt(input_box.Text * button.scale + button.offset)
-            End If
-            If program_word > button.max_value Then
-                program_word = button.max_value
-            End If
-            If program_word < button.min_value Then
-                program_word = button.min_value
-            End If
-            ServerSettings.put_modbus_commands(button.button_index, program_word, 0, 0)
-        Catch ex As Exception
-            MsgBox("You must enter valid Number")
-        End Try
-
-    End Sub
-
-    Private Sub ButtonUpdateInput1_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput1.Click
-        ExecuteButton(inputbutton1, TextBoxInput1)
-    End Sub
-
-
-    Private Sub ButtonUpdateInput2_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput2.Click
-        ExecuteButton(inputbutton2, TextBoxInput2)
-    End Sub
-
-    Private Sub ButtonUpdateInput3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonUpdateInput3.Click
-        ExecuteButton(inputbutton3, TextBoxInput3)
-    End Sub
-
-    Private Sub ButtonUpdateInput4_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput4.Click
-        ExecuteButton(inputbutton4, TextBoxInput4)
-    End Sub
-
-    Private Sub ButtonUpdateInput5_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUpdateInput5.Click
-        ExecuteButton(inputbutton5, TextBoxInput5)
-    End Sub
-
-    Private Sub ButtonToggleResetDebug_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleResetDebug.Click
-        ServerSettings.put_modbus_commands(REGISTER_DEBUG_TOGGLE_RESET_DEBUG, 0, 0, 0)
-    End Sub
-
-
 
     Private Sub ComboBoxEEpromRegister_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
         Dim command_index As UInt16
@@ -1134,22 +1071,18 @@
         'ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS, selected_board_index, 0, 0)
     End Sub
 
-    Private Sub ButtonResetSlave_Click(sender As System.Object, e As System.EventArgs)
-        ServerSettings.put_modbus_commands(REGISTER_DEBUG_RESET_MCU, selected_board_index, 0, 0)
-    End Sub
-
 
 
     Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
         ButtonStartLog.Visible = False
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
         ServerSettings.OpenPulseLogFile()
     End Sub
 
     Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
         ButtonStopLog.Visible = False
         ServerSettings.ClosePulseLogFile()
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
     End Sub
 
 
@@ -1171,7 +1104,7 @@
         'LabelTimeSet.Text = Format(time_now, "yy MM dd HH mm ss")
         'LabelTimeSet2.Text = time_seconds
         Try
-            ServerSettings.put_modbus_commands(REGISTER_SYSTEM_SET_TIME, time_high_word, time_low_word, 0)
+            ServerSettings.put_modbus_commands(REGISTER_SYSTEM_SET_TIME, time_high_word, time_low_word, 0, 0)
         Catch ex As Exception
             MsgBox("Date Time Type conversion failed")
 
@@ -1179,15 +1112,15 @@
     End Sub
 
     Private Sub ButtonReloadECBDefaults_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReloadECBDefaults.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0, 0)
     End Sub
 
     Private Sub ButtonZeroOnTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroOnTime.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0, 0)
     End Sub
 
     Private Sub ButtonZeroPulseCounters_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroPulseCounters.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT, 0, 0, 0)
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT, 0, 0, 0, 0)
     End Sub
 
 #If 0 Then
@@ -1274,21 +1207,6 @@
     End Sub
 #End If
 
-    Private Sub ButtonSaveFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSaveFactorySettings.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_SAVE_CURRENT_SETTINGS_TO_FACTORY_DEFAULT, 0, 0, 0)
-    End Sub
-
-    Private Sub ButtonLoadFactorySettings_Click(sender As System.Object, e As System.EventArgs) Handles ButtonLoadFactorySettings.Click
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_LOAD_FACTORY_DEFAULTS_AND_REBOOT, 0, 0, 0)
-    End Sub
-
-    Private Sub ButtonReset_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReset.Click
-        ServerSettings.put_modbus_commands(REGISTER_CMD_ECB_RESET_FAULTS, 0, 0, 0)
-    End Sub
-
-    Private Sub ButtonResetFPGA_Click(sender As System.Object, e As System.EventArgs)
-        ServerSettings.put_modbus_commands(REGISTER_DEBUG_GUN_DRIVER_RESET_FPGA, 0, 0, 0)
-    End Sub
 
 
     Private Sub ButtonSetIPAddres_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetIPAddres.Click
@@ -1321,7 +1239,7 @@
             ip_address_v4_lower += val
 
 
-            ServerSettings.put_modbus_commands(REGISTER_IP_ADDRESS, ip_address_v4_upper, ip_address_v4_lower, 0)
+            ServerSettings.put_modbus_commands(REGISTER_IP_ADDRESS, ip_address_v4_upper, ip_address_v4_lower, 0, 0)
 
         Catch ex As Exception
             MsgBox("Please enter valid data")
@@ -1359,7 +1277,7 @@
             ip_address_v4_lower += val
 
 
-            ServerSettings.put_modbus_commands(REGISTER_REMOTE_IP_ADDRESS, ip_address_v4_upper, ip_address_v4_lower, 0)
+            ServerSettings.put_modbus_commands(REGISTER_REMOTE_IP_ADDRESS, ip_address_v4_upper, ip_address_v4_lower, 0, 0)
         Catch ex As Exception
             MsgBox("Please enter valid data")
         End Try
@@ -1374,73 +1292,153 @@
         SendAndValidateWatchdog()
     End Sub
 
-    Private Sub ButtonETMMode_Click(sender As System.Object, e As System.EventArgs) Handles ButtonETMMode.Click
-        ServerSettings.put_modbus_commands(REGISTER_SET_ACCESS_MODE_ETM, &H117F, 0, 0)
-    End Sub
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim rev As UInt16
-        Dim serial_num As UInt16
-        Dim command_index As UInt16
-
-        Try
-            If board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET Then
-                command_index = ETM_CAN_ADDR_ETHERNET_BOARD
-                selected_board_index = ETM_CAN_ADDR_ETHERNET_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP Then
-                command_index = ETM_CAN_ADDR_ION_PUMP_BOARD
-                selected_board_index = ETM_CAN_ADDR_ION_PUMP_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
-                command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-                selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
-                command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
-                selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_AFC Then
-                command_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
-                selected_board_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING Then
-                command_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
-                selected_board_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET Then
-                command_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
-                selected_board_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
-            ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER Then
-                command_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
-                selected_board_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
-            End If
 
 
-            rev = Asc(TextBoxRev.Text)
-            serial_num = TextBoxSN.Text
-            ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, selected_board_index, rev, serial_num)
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-
-    End Sub
-
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim h_num As UInt16
-        Try
-            h_num = TextBoxHNubmber.Text
-            ServerSettings.put_modbus_commands(REGISTER_ECB_SYSTEM_SERIAL_NUMBER, h_num, h_num, h_num)
-        Catch ex As Exception
-            MsgBox("Please enter valid data")
-        End Try
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_SAVE_CURRENT_SETTINGS_TO_CUSTOMER_SAVE, 0, 0, 0)
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_LOAD_CUSTOMER_SETTINGS_SAVE_AND_REBOOT, 0, 0, 0)
-    End Sub
 
     Private Sub cboIndex_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboIndex.SelectedIndexChanged
         board_index = cboIndex.SelectedIndex + 1
     End Sub
+
+
+    Private Sub BtnSetRevSN_Click(sender As Object, e As EventArgs) Handles BtnSetRevSN.Click
+        Dim rev As Double
+        Dim serial_number As Double
+        Dim data_valid = get_set_rev("Input Revision Number", "Rev", rev)
+        If data_valid Then
+            data_valid = get_set_data("SN", "More Text", 0, 2 ^ 16 - 1, "Reg", serial_number)
+        End If
+        If data_valid Then
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, 0, serial_number, rev, 0)
+        End If
+
+        'ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, 0, 27, &H4332, 0)
+    End Sub
+
+    Private Sub BtnSlaveDefaultEEProm_Click(sender As Object, e As EventArgs) Handles BtnSlaveDefaultEEProm.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_LOAD_DEFAULT_CALIBRATION, 0, 2, 3, 0)
+    End Sub
+
+
+    Private Sub BtnRamDebug_Click(sender As Object, e As EventArgs) Handles BtnRamDebug.Click
+        Dim ram_a As Double
+        Dim ram_b As Double
+        Dim ram_c As Double
+        Dim data_valid = get_set_data("Ram Debug A", "More Text", 0, 4095, "Reg", ram_a)
+        If data_valid Then
+            data_valid = get_set_data("Ram Debug B", "More Text", 0, 4095, "Reg", ram_b)
+        End If
+        If data_valid Then
+            data_valid = get_set_data("Ram Debug C", "More Text", 0, 4095, "Reg", ram_c)
+        End If
+
+        If data_valid Then
+            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_RAM_DEBUG, 0, CUShort(ram_a), CUShort(ram_b), CUShort(ram_c))
+        End If
+
+        'ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_RAM_DEBUG, 0, 110, &HB6C, &HB6C + 2)
+    End Sub
+
+    Private Sub BtnEEPromDebug_Click(sender As Object, e As EventArgs) Handles BtnEEPromDebug.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("EEPROM DEBUG", "More Text", 0, 1000, "Reg", input_data)
+
+        If data_valid Then
+            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_EEPROM_DEBUG, 0, CUShort(input_data), CUShort(input_data), CUShort(input_data))
+        End If
+
+        'ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_EEPROM_DEBUG, 0, CUShort(TbEEPromDebug.Text), CUShort(TbEEPromDebug.Text), CUShort(TbEEPromDebug.Text))
+    End Sub
+
+    Private Sub BtnSetCalPair_Click(sender As Object, e As EventArgs) Handles BtnSetCalPair.Click
+        Dim location As Double
+        Dim gain As Double
+        Dim offset As Double
+        Dim data_valid = get_set_data("Location", "More Text", 0, 31, "Reg", location)
+        If data_valid Then
+            data_valid = get_set_data("Gain", "More Text", 0, 2, "Reg", gain)
+        End If
+        If data_valid Then
+            data_valid = get_set_data("Offset", "More Text", 0, 30000, "Reg", offset)
+        End If
+
+        If data_valid Then
+            gain = gain * 2 ^ 15
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR, 0, CUShort(location), CUShort(offset), CUShort(gain))
+        End If
+
+        'ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR, 0, &H7, 200, 0.75 * 2 ^ 15)
+    End Sub
+
+    Private Sub BtnAFCAuto_Click(sender As Object, e As EventArgs) Handles BtnAFCAuto.Click
+        ServerSettings.put_modbus_commands(REGISTER_CMD_AFC_SELECT_AFC_MODE, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnAFCManual_Click(sender As Object, e As EventArgs) Handles BtnAFCManual.Click
+        ServerSettings.put_modbus_commands(REGISTER_CMD_AFC_SELECT_MANUAL_MODE, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnClearDebug_Click(sender As Object, e As EventArgs) Handles BtnClearDebug.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_CLEAR_DEBUG, 0, 0, 0, 0)
+    End Sub
+
+
+    Function get_set_rev(ByVal prompt As String, ByVal title As String, ByRef data As Double) As Boolean
+        ' return true if got valid data
+        Dim strvalue As String
+
+        strvalue = InputBox(prompt, title)
+
+        get_set_rev = False
+        Try
+            If (strvalue <> "") Then
+                Select Case strvalue.Length
+                    Case 1
+                        data = (Asc(strvalue(0)) << 8) + &H20
+                        get_set_rev = True
+                    Case 2
+                        data = (Asc(strvalue(0)) << 8) + Asc(strvalue(1))
+                        get_set_rev = True
+                    Case Else
+                        MsgBox("The maximum revision length is 2", MsgBoxStyle.Exclamation)
+                End Select
+
+            End If
+        Catch
+            MsgBox("Invalid input, data discarded", MsgBoxStyle.Exclamation)
+        End Try
+
+    End Function
+
+
+    Function get_set_data(ByVal prompt As String, ByVal title As String, ByVal min As Double, ByVal max As Double, ByVal unit As String, ByRef data As Double) As Boolean
+        ' return true if got valid data
+        Dim strvalue As String
+        Dim prompt_range As String
+
+        If (max < 0 And min < 0) Then
+            prompt_range = prompt & " ( " & max & " " & unit & "  to  " & min & " " & unit & " )"
+        Else
+            prompt_range = prompt & " ( " & min & " " & unit & "  to  " & max & " " & unit & " )"
+        End If
+        strvalue = InputBox(prompt_range, title)
+        Dim dval As Double
+
+        get_set_data = False
+        Try
+            If (strvalue <> "") Then
+                dval = CDbl(strvalue)
+                If (dval > max Or dval < min) Then
+                    MsgBox("Input data is out of range, data discarded", MsgBoxStyle.Exclamation)
+                Else
+                    data = dval
+                    get_set_data = True
+                End If
+            End If
+        Catch
+            MsgBox("Invalid input, data discarded", MsgBoxStyle.Exclamation)
+        End Try
+
+    End Function
 
 
 End Class

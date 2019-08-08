@@ -307,6 +307,8 @@ Public Class ETM_CAN_BOARD_DATA
     Public firmware_branch As UInt16
     Public firmware_branch_rev As UInt16
 
+    Public connection_timeout As UInt16
+
 
     Sub New(ByVal id As Byte)
         data_identification = id
@@ -328,7 +330,7 @@ Public Class ETM_CAN_BOARD_DATA
         ' Configuration 0
         agile_rev_ascii = (CUShort(data(offset + 57)) << 8) + CUShort(data(offset + 56))
         agile_dash = (CUShort(data(offset + 59)) << 8) + CUShort(data(offset + 58))
-        agile_number = (CUShort(data(offset + 63)) << 24) + (CUShort(data(offset + 62)) << 16) + (CUShort(data(offset + 61)) << 8) + CUShort(data(offset + 60))
+        agile_number = (CUInt(data(offset + 63)) << 24) + (CUInt(data(offset + 62)) << 16) + (CUInt(data(offset + 61)) << 8) + CUInt(data(offset + 60))
 
         ' Configuration 1
         firmware_branch_rev = (CUShort(data(offset + 65)) << 8) + CUShort(data(offset + 64))
@@ -336,6 +338,7 @@ Public Class ETM_CAN_BOARD_DATA
         firmware_agile_rev = (CUShort(data(offset + 69)) << 8) + CUShort(data(offset + 68))
         serial_number = (CUShort(data(offset + 71)) << 8) + CUShort(data(offset + 70))
 
+        connection_timeout = (CUShort(data(offset + 73)) << 8) + CUShort(data(offset + 72))
     End Sub
 
 End Class
@@ -594,17 +597,18 @@ Public Class ETM_CAN_DEBUG_DATA
 
         ' Can data log - 0x27
         i += 8
+        eeprom_i2c_read_count = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        eeprom_i2c_read_error = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        eeprom_i2c_write_count = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        eeprom_i2c_write_error = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+
+        ' Can data log - 0x28
+        i += 8
         eeprom_spi_read_count = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
         eeprom_spi_read_error = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
         eeprom_spi_write_count = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
         eeprom_spi_write_error = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
 
-        ' Can data log - 0x28
-        i += 8
-        eeprom_i2c_read_count = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
-        eeprom_i2c_read_error = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
-        eeprom_i2c_write_count = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
-        eeprom_i2c_write_error = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
 
         ' Can data log - 0x29
         i += 8
@@ -725,14 +729,15 @@ Public Structure ETM_ETHERNET_CAL_STRUCTURE
 End Structure
 Public Class ETM_ETHERNET_COMMAND_STRUCTURE
     Public command_index As UInt16
-    Public data(3) As UInt16
+    Public data(4) As UInt16
 
     ' constructor
-    Sub New(ByVal index As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
+    Sub New(ByVal index As UInt16, ByVal word3 As UInt16, ByVal word2 As UInt16, ByVal word1 As UInt16, ByVal word0 As UInt16)
         command_index = index
         data(0) = word0
         data(1) = word1
         data(2) = word2
+        data(3) = word3
     End Sub
 End Class
 
