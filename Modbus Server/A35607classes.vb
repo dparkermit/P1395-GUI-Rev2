@@ -97,7 +97,7 @@ Public Structure ETM_ECB_INFO
     Public system_serial_number_low_word As UInt16
     Public date_of_atp As UInt16
     Public atp_technician As UInt16
-    Public control_state As UInt16
+    Public unused As UInt16
     Public crc_do_not_write As UInt16
 End Structure
 
@@ -152,13 +152,22 @@ Public Class ETM_ECB_BOARD_DATA
     'Counters
     Public system_counter As ETM_ECB_SYSTEM_COUNTER
 
+    Public discrete_inputs As UInt16
+    Public control_state As UInt16
+
+
+    ' Extra
+    Public thyraton_warmup As UInt16
+    Public gun_heater_warmup As UInt16
+    Public magnetron_heater_warmup As UInt16
+
     Sub New(ByVal id As Byte)
         data_identification = id
     End Sub
 
     Public Sub SetData(ByRef data As Byte(), ByVal length As UInt16, ByVal offset As Byte)
         'If (length < 104) Then Exit Sub
-        Dim i As Byte
+        Dim i As UShort
         i = offset
 
         ' Status Register
@@ -177,6 +186,16 @@ Public Class ETM_ECB_BOARD_DATA
         system_counter.warmup_status = (CUInt(data(i + 23)) << 24) + (CUInt(data(i + 22)) << 16) + (CUInt(data(i + 21)) << 8) + CUInt(data(i + 20))
         system_counter.pulse_counter = (CULng(data(i + 29)) << 40) + (CULng(data(i + 28)) << 32) + (CULng(data(i + 27)) << 24) + (CULng(data(i + 26)) << 16) + (CULng(data(i + 25)) << 8) + CULng(data(i + 24))
         system_counter.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
+
+        gun_heater_warmup = CUShort(system_counter.warmup_status And &H3FF)
+        magnetron_heater_warmup = CUShort((system_counter.warmup_status >> 10) And &H3FF)
+        thyraton_warmup = CUShort((system_counter.warmup_status >> 20) And &HFFF)
+
+
+
+
+
+
 
         i = i + 32
         dose_level_0.hvps_set_point = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
@@ -269,13 +288,50 @@ Public Class ETM_ECB_BOARD_DATA
         dose_level_all.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
         i = i + 32
-        'Dose Compensation A
+        dose_comp_group_a.compensation_0 = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        dose_comp_group_a.compensation_1 = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        dose_comp_group_a.compensation_2 = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        dose_comp_group_a.compensation_3 = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+        dose_comp_group_a.compensation_4 = (CUShort(data(i + 9)) << 8) + CUShort(data(i + 8))
+        dose_comp_group_a.compensation_5 = (CUShort(data(i + 11)) << 8) + CUShort(data(i + 10))
+        dose_comp_group_a.compensation_6 = (CUShort(data(i + 13)) << 8) + CUShort(data(i + 12))
+        dose_comp_group_a.compensation_7 = (CUShort(data(i + 15)) << 8) + CUShort(data(i + 14))
+        dose_comp_group_a.compensation_8 = (CUShort(data(i + 17)) << 8) + CUShort(data(i + 16))
+        dose_comp_group_a.compensation_9 = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
+        dose_comp_group_a.compensation_10 = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
+        dose_comp_group_a.compensation_11 = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
+        dose_comp_group_a.compensation_12 = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        dose_comp_group_a.compensation_13 = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        dose_comp_group_a.compensation_14 = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
+        dose_comp_group_a.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
 
-        i = 1 + 32
+
+        i = i + 32
         'Dose Compensation B
 
-        i = 1 + 32
+        i = i + 32
         ' Config
+        config.ecb_agile_number_high_word = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        config.ecb_agile_number_low_word = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+        config.ecb_agile_dash_number = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
+        config.ecb_agile_rev_ASCII_x2 = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))
+        config.ecb_serial_number_high_word = (CUShort(data(i + 9)) << 8) + CUShort(data(i + 8))
+        config.ecb_serial_number_low_word = (CUShort(data(i + 11)) << 8) + CUShort(data(i + 10))
+        config.firmware_agile_rev = (CUShort(data(i + 13)) << 8) + CUShort(data(i + 12))
+        config.firmware_branch = (CUShort(data(i + 15)) << 8) + CUShort(data(i + 14))
+        config.firmware_branch_rev = (CUShort(data(i + 17)) << 8) + CUShort(data(i + 16))
+        config.system_serial_letter = (CUShort(data(i + 19)) << 8) + CUShort(data(i + 18))
+        config.system_serial_number_high_word = (CUShort(data(i + 21)) << 8) + CUShort(data(i + 20))
+        config.system_serial_number_low_word = (CUShort(data(i + 23)) << 8) + CUShort(data(i + 22))
+        config.date_of_atp = (CUShort(data(i + 25)) << 8) + CUShort(data(i + 24))
+        config.atp_technician = (CUShort(data(i + 27)) << 8) + CUShort(data(i + 26))
+        config.unused = (CUShort(data(i + 29)) << 8) + CUShort(data(i + 28))
+        config.crc_do_not_write = (CUShort(data(i + 31)) << 8) + CUShort(data(i + 30))
+
+        i = i + 32
+        discrete_inputs = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        control_state = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
+
 
 
     End Sub

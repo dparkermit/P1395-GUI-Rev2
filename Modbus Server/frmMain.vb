@@ -133,9 +133,8 @@
 
     Public command_count As UInt16
 
-    Public board_index As Byte
+    Public board_can_address As Byte
 
-    Public selected_board_index As UInt16
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -170,7 +169,7 @@
         inputbutton5.button_name = "loading"
 
         Me.BackColor = Color.LightCoral
-        Splitter1.BackColor = Color.Coral
+        'Splitter1.BackColor = Color.Coral
 
         If (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed) Then
             Dim verDeployed As System.Version = My.Application.Deployment.CurrentVersion
@@ -183,9 +182,6 @@
 
 
 
-
-        ButtonStartLog.Visible = False
-        ButtonStopLog.Visible = False
 
 #If 0 Then
 
@@ -391,19 +387,21 @@
         Static admin_param_checked As Boolean = False
 
         TimerUpdate.Enabled = False
-        ServerSettings.board_to_monitor = CByte(board_index)
+        ServerSettings.board_to_monitor = CByte(board_can_address)
 
         ivalue = ServerSettings.get_modbus_status()
         If (ivalue <= 2) Then
             connected = False
             Me.Text = "A36507 Test GUI(Linac Disconnected)"
             Me.BackColor = Color.LightCoral
-            Splitter1.BackColor = Color.Coral
+            CbxConnect10.Checked = True
+            'Splitter1.BackColor = Color.Coral
         Else
             connected = True
             ServerSettings.event_log_enabled = True
             Me.Text = "A36507 Test GUI"
-            Splitter1.BackColor = Color.LightSteelBlue
+            CbxConnect10.Checked = False
+            'Splitter1.BackColor = Color.LightSteelBlue
 
 
             ' ------------------------------------------------------------------------------------------------------------'
@@ -412,9 +410,9 @@
 
             ' ------------------------------------------------------------------------------------------------------------'
             ' UDisplay the board specific data and buttons in the right plane
-            DisplayBoardCommonElements(board_index)
-            DisplayBoardSpecificData(board_index)
-            DisplayDebugData()
+            DisplayBoardCommonElements(board_can_address)
+            DisplayBoardSpecificData(board_can_address)
+            ' DisplayDebugData()
 
         End If ' connected
 
@@ -424,24 +422,145 @@
 
 
     Private Sub DisplayBoardCommonElements(ByVal selected_baord As Byte)
-        'Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii) 
-        LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_number & "-" &
-            Format(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_dash, "000") & "  Rev-" &
-            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii >> 8) &
-            Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_index).agile_rev_ascii Mod 256) &
-            "  SN-" &
-            ServerSettings.ETMEthernetBoardLoggingData(board_index).serial_number 'Dparker need to add in the first Char
-        LabelFirmwareVerssion.Text = "Firmware Version " &
-            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_agile_rev & "." &
-            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch & "." &
-            ServerSettings.ETMEthernetBoardLoggingData(board_index).firmware_branch_rev
+        Dim control_bits As UInt16
+        Dim fault_bits As UInt16
+        Dim logged_bits As UInt16
+        Dim not_logged_bits As UInt16
 
-        Dim test As UInt16 = 1
+        LabelECBState.Text = "0x" & Hex(ServerSettings.ETMEthernetECBLoggingData.control_state)
 
-        Dim control_bits As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).control_notice_bits
-        Dim fault_bits As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).fault_bits
-        Dim logged_bits As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).logged_bits
-        Dim not_logged_bits As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(board_index).not_logged_bits
+
+        CbxReady0.Checked = (ServerSettings.ETMEthernetBoardLoggingData(0).control_notice_bits And &H1)
+        CbxConnect0.Checked = (ServerSettings.ETMEthernetBoardLoggingData(0).connection_timeout)
+        CbxConnect0.Text = CoBoxSelectedCanBoard.Items.Item(0)
+
+        CbxReady1.Checked = (ServerSettings.ETMEthernetBoardLoggingData(1).control_notice_bits And &H1)
+        CbxConnect1.Checked = (ServerSettings.ETMEthernetBoardLoggingData(1).connection_timeout)
+        CbxConnect1.Text = CoBoxSelectedCanBoard.Items.Item(1)
+
+        CbxReady2.Checked = (ServerSettings.ETMEthernetBoardLoggingData(2).control_notice_bits And &H1)
+        CbxConnect2.Checked = ServerSettings.ETMEthernetBoardLoggingData(2).connection_timeout
+        CbxConnect2.Text = CoBoxSelectedCanBoard.Items.Item(2)
+
+        CbxReady3.Checked = (ServerSettings.ETMEthernetBoardLoggingData(3).control_notice_bits And &H1)
+        CbxConnect3.Checked = ServerSettings.ETMEthernetBoardLoggingData(3).connection_timeout
+        CbxConnect3.Text = CoBoxSelectedCanBoard.Items.Item(3)
+
+        CbxReady4.Checked = (ServerSettings.ETMEthernetBoardLoggingData(4).control_notice_bits And &H1)
+        CbxConnect4.Checked = ServerSettings.ETMEthernetBoardLoggingData(4).connection_timeout
+        CbxConnect4.Text = CoBoxSelectedCanBoard.Items.Item(4)
+
+        CbxReady5.Checked = (ServerSettings.ETMEthernetBoardLoggingData(5).control_notice_bits And &H1)
+        CbxConnect5.Checked = ServerSettings.ETMEthernetBoardLoggingData(5).connection_timeout
+        CbxConnect5.Text = CoBoxSelectedCanBoard.Items.Item(5)
+
+        CbxReady6.Checked = (ServerSettings.ETMEthernetBoardLoggingData(6).control_notice_bits And &H1)
+        CbxConnect6.Checked = ServerSettings.ETMEthernetBoardLoggingData(6).connection_timeout
+        CbxConnect6.Text = CoBoxSelectedCanBoard.Items.Item(6)
+
+        CbxReady7.Checked = (ServerSettings.ETMEthernetBoardLoggingData(7).control_notice_bits And &H1)
+        CbxConnect7.Checked = ServerSettings.ETMEthernetBoardLoggingData(7).connection_timeout
+        CbxConnect7.Text = CoBoxSelectedCanBoard.Items.Item(7)
+
+        CbxReady8.Checked = (ServerSettings.ETMEthernetBoardLoggingData(8).control_notice_bits And &H1)
+        CbxConnect8.Checked = ServerSettings.ETMEthernetBoardLoggingData(8).connection_timeout
+        CbxConnect8.Text = CoBoxSelectedCanBoard.Items.Item(8)
+
+        CbxReady9.Checked = (ServerSettings.ETMEthernetBoardLoggingData(9).control_notice_bits And &H1)
+        CbxConnect9.Checked = ServerSettings.ETMEthernetBoardLoggingData(9).connection_timeout
+        CbxConnect9.Text = CoBoxSelectedCanBoard.Items.Item(9)
+
+        CbxReady10.Checked = (ServerSettings.ETMEthernetECBLoggingData.control_notice_bits And &H1)
+        CbxConnect10.Text = CoBoxSelectedCanBoard.Items.Item(10)
+
+        If (board_can_address < 10) Then
+
+            LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetBoardLoggingData(board_can_address).agile_number & "-" &
+                Format(ServerSettings.ETMEthernetBoardLoggingData(board_can_address).agile_dash, "000") & "  Rev-" &
+                Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_can_address).agile_rev_ascii >> 8) &
+                Convert.ToChar(ServerSettings.ETMEthernetBoardLoggingData(board_can_address).agile_rev_ascii Mod 256) &
+                "  SN-" &
+                ServerSettings.ETMEthernetBoardLoggingData(board_can_address).serial_number 'Dparker need to add in the first Char
+            LabelFirmwareVerssion.Text = "Firmware Version " &
+                ServerSettings.ETMEthernetBoardLoggingData(board_can_address).firmware_agile_rev & "." &
+                ServerSettings.ETMEthernetBoardLoggingData(board_can_address).firmware_branch & "." &
+                ServerSettings.ETMEthernetBoardLoggingData(board_can_address).firmware_branch_rev
+
+
+            control_bits = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).control_notice_bits
+            fault_bits = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).fault_bits
+            logged_bits = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).logged_bits
+            not_logged_bits = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).not_logged_bits
+
+
+            LblSlaveLogValue0.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(0)
+            LblSlaveLogValue1.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(1)
+            LblSlaveLogValue2.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(2)
+            LblSlaveLogValue3.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(3)
+            LblSlaveLogValue4.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(4)
+            LblSlaveLogValue5.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(5)
+            LblSlaveLogValue6.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(6)
+            LblSlaveLogValue7.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(7)
+            LblSlaveLogValue8.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(8)
+            LblSlaveLogValue9.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(9)
+            LblSlaveLogValue10.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(10)
+            LblSlaveLogValue11.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(11)
+            LblSlaveLogValue12.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(12)
+            LblSlaveLogValue13.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(13)
+            LblSlaveLogValue14.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(14)
+            LblSlaveLogValue15.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(15)
+            LblSlaveLogValue16.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(16)
+            LblSlaveLogValue17.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(17)
+            LblSlaveLogValue18.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(18)
+            LblSlaveLogValue19.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(19)
+            LblSlaveLogValue20.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(20)
+            LblSlaveLogValue21.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(21)
+            LblSlaveLogValue22.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(22)
+            LblSlaveLogValue23.Text = ServerSettings.ETMEthernetBoardLoggingData(board_can_address).log_data(23)
+
+        Else
+            ' Display Ethernet Data
+            LabelAgileInfo.Text = "A" & ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_number_low_word & "-" &
+                Format(ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_dash_number, "000") & "  Rev-" &
+                 Convert.ToChar(ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_rev_ASCII_x2 >> 8) &
+                 Convert.ToChar(ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_rev_ASCII_x2 Mod 256) &
+                 "  SN-" & (ServerSettings.ETMEthernetECBLoggingData.config.ecb_serial_number_high_word * 2 ^ 16 + ServerSettings.ETMEthernetECBLoggingData.config.ecb_serial_number_low_word) &
+                 " SYSTEM Num " & Convert.ToChar(ServerSettings.ETMEthernetECBLoggingData.config.system_serial_letter Mod 256) &
+                 (ServerSettings.ETMEthernetECBLoggingData.config.system_serial_number_high_word * 2 ^ 16 + ServerSettings.ETMEthernetECBLoggingData.config.system_serial_number_low_word)
+
+            LabelFirmwareVerssion.Text = "Firmware Version " &
+                ServerSettings.ETMEthernetECBLoggingData.config.firmware_agile_rev & "." &
+                ServerSettings.ETMEthernetECBLoggingData.config.firmware_branch & "." &
+                ServerSettings.ETMEthernetECBLoggingData.config.firmware_branch_rev
+
+
+            control_bits = ServerSettings.ETMEthernetECBLoggingData.control_notice_bits
+            fault_bits = ServerSettings.ETMEthernetECBLoggingData.fault_bits
+            logged_bits = ServerSettings.ETMEthernetECBLoggingData.logged_bits
+            not_logged_bits = ServerSettings.ETMEthernetECBLoggingData.not_logged_bits
+
+            LblSlaveLogValue0.Text = ServerSettings.ETMEthernetECBLoggingData.system_counter.powered_seconds
+            LblSlaveLogValue1.Text = ServerSettings.ETMEthernetECBLoggingData.system_counter.hv_on_seconds
+            LblSlaveLogValue2.Text = ServerSettings.ETMEthernetECBLoggingData.system_counter.xray_on_seconds
+            LblSlaveLogValue3.Text = ServerSettings.ETMEthernetECBLoggingData.system_counter.arc_counter
+            LblSlaveLogValue4.Text = ServerSettings.ETMEthernetECBLoggingData.system_counter.pulse_counter
+            LblSlaveLogValue5.Text = ServerSettings.ETMEthernetECBLoggingData.thyraton_warmup
+            LblSlaveLogValue6.Text = ServerSettings.ETMEthernetECBLoggingData.gun_heater_warmup
+            LblSlaveLogValue7.Text = ServerSettings.ETMEthernetECBLoggingData.magnetron_heater_warmup
+
+
+
+            LblSlaveLogValue8.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_number_high_word
+            LblSlaveLogValue9.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_number_low_word
+            LblSlaveLogValue10.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_dash_number
+            LblSlaveLogValue11.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_agile_rev_ASCII_x2
+            LblSlaveLogValue12.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_serial_number_high_word
+            LblSlaveLogValue13.Text = ServerSettings.ETMEthernetECBLoggingData.config.ecb_serial_number_low_word
+            LblSlaveLogValue14.Text = ServerSettings.ETMEthernetECBLoggingData.config.firmware_agile_rev
+            LblSlaveLogValue15.Text = ServerSettings.ETMEthernetECBLoggingData.config.firmware_branch
+            LblSlaveLogValue16.Text = ServerSettings.ETMEthernetECBLoggingData.config.firmware_branch_rev
+
+        End If
 
         CbxSlaveStatusCntrl0.Checked = control_bits And &H1
         CbxSlaveStatusCntrl1.Checked = control_bits And &H2
@@ -512,30 +631,6 @@
         CbxSlaveStatusNotLoggedE.Checked = not_logged_bits And &H4000
         CbxSlaveStatusNotLoggedF.Checked = not_logged_bits And &H8000
 
-        LblSlaveLogValue0.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(0)
-        LblSlaveLogValue1.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(1)
-        LblSlaveLogValue2.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(2)
-        LblSlaveLogValue3.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(3)
-        LblSlaveLogValue4.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(4)
-        LblSlaveLogValue5.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(5)
-        LblSlaveLogValue6.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(6)
-        LblSlaveLogValue7.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(7)
-        LblSlaveLogValue8.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(8)
-        LblSlaveLogValue9.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(9)
-        LblSlaveLogValue10.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(10)
-        LblSlaveLogValue11.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(11)
-        LblSlaveLogValue12.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(12)
-        LblSlaveLogValue13.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(13)
-        LblSlaveLogValue14.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(14)
-        LblSlaveLogValue15.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(15)
-        LblSlaveLogValue16.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(16)
-        LblSlaveLogValue17.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(17)
-        LblSlaveLogValue18.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(18)
-        LblSlaveLogValue19.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(19)
-        LblSlaveLogValue20.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(20)
-        LblSlaveLogValue21.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(21)
-        LblSlaveLogValue22.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(22)
-        LblSlaveLogValue23.Text = ServerSettings.ETMEthernetBoardLoggingData(board_index).log_data(23)
 
         LblDebugReg0.Text = "Debug_0 = " & ServerSettings.ETMEthernetDebugData.debug_0
         LblDebugReg1.Text = "Debug_1 = " & ServerSettings.ETMEthernetDebugData.debug_1
@@ -648,7 +743,7 @@
         LblDebugCal7ExtOffset.Text = "Cal 7 EO = " & ServerSettings.ETMEthernetDebugData.calibartion_7_external_offset
         ' ADD Cal 1-7 once this is working properly
 
-        If ServerSettings.ETMEthernetBoardLoggingData(board_index).connection_timeout Then
+        If ServerSettings.ETMEthernetBoardLoggingData(board_can_address).connection_timeout Then
             LabelBoardStatus.Text = "NOT CONNECTED!!!"
             Me.BackColor = Color.LightCoral
         Else
@@ -749,7 +844,7 @@
         Dim selected_board_connected As Boolean = False
 #If (0) Then
 
-        ElseIf (board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
+        ElseIf (board_can_address = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
             selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H10
 
 
@@ -1053,62 +1148,6 @@
 
 
 
-
-
-    Private Sub DisplayDebugData()
-
-        LabelValueDebug0.Text = ServerSettings.ETMEthernetDebugData.debug_0
-        LabelValueDebug1.Text = ServerSettings.ETMEthernetDebugData.debug_1
-        LabelValueDebug2.Text = ServerSettings.ETMEthernetDebugData.debug_2
-        LabelValueDebug3.Text = ServerSettings.ETMEthernetDebugData.debug_3
-        LabelValueDebug4.Text = ServerSettings.ETMEthernetDebugData.debug_4
-        LabelValueDebug5.Text = ServerSettings.ETMEthernetDebugData.debug_5
-        LabelValueDebug6.Text = ServerSettings.ETMEthernetDebugData.debug_6
-        LabelValueDebug7.Text = ServerSettings.ETMEthernetDebugData.debug_7
-        LabelValueDebug8.Text = ServerSettings.ETMEthernetDebugData.debug_8
-        LabelValueDebug9.Text = ServerSettings.ETMEthernetDebugData.debug_9
-        LabelValueDebugA.Text = ServerSettings.ETMEthernetDebugData.debug_A
-        LabelValueDebugB.Text = ServerSettings.ETMEthernetDebugData.debug_B
-        LabelValueDebugC.Text = ServerSettings.ETMEthernetDebugData.debug_C
-        LabelValueDebugD.Text = ServerSettings.ETMEthernetDebugData.debug_D
-        LabelValueDebugE.Text = ServerSettings.ETMEthernetDebugData.debug_E
-        LabelValueDebugF.Text = ServerSettings.ETMEthernetDebugData.debug_F
-
-
-        LabelCanCXECReg.Text = "CXEC Register = 0x" & ServerSettings.ETMEthernetDebugData.CXEC_reg_max.ToString("x")
-        LabelCanErrorFlagCount.Text = "Error Flag Cnt = " & ServerSettings.ETMEthernetDebugData.can_error_flag
-        LabelCanTX1Count.Text = "TX1 Cnt = " & ServerSettings.ETMEthernetDebugData.can_tx_1
-        LabelCanTX2Count.Text = "TX2 Cnt = " & ServerSettings.ETMEthernetDebugData.can_tx_2
-        LabelCanRX0Filt0Count.Text = "RX0 Filt 0 Cnt = " & ServerSettings.ETMEthernetDebugData.can_rx_0_filt_0
-        LabelCanRX0Filt1Count.Text = "RX0 Filt 1 Cnt = " & ServerSettings.ETMEthernetDebugData.can_rx_0_filt_1
-        LabelCanRX1Filt2Count.Text = "RX1 Filt 2 Cnt = " & ServerSettings.ETMEthernetDebugData.can_rx_1_filt_2
-        LabelCanISREnteredCount.Text = "CXINTF = 0x" & ServerSettings.ETMEthernetDebugData.CXINTF_max.ToString("X")
-        LabelCanUnknownIdentifierCount.Text = "Unknown ID Cnt = " & ServerSettings.ETMEthernetDebugData.can_unknown_msg_id
-        LabelCanInvalidIndexCount.Text = "Invalid Index Cnt = " & ServerSettings.ETMEthernetDebugData.can_invalid_index
-        LabelCanAddressErrorCount.Text = "Address Error Cnt = " & ServerSettings.ETMEthernetDebugData.can_address_error
-        LabelCanTX0Count.Text = "TX 0 Cnt = " & ServerSettings.ETMEthernetDebugData.can_tx_0
-        LabelCanTXBufOverflowCount.Text = "TX Ovrfl Cnt = " & ServerSettings.ETMEthernetDebugData.can_tx_buf_overflow
-        LabelCanRXBufferOverflowCount.Text = "RX Ovrfl Cnt = " & ServerSettings.ETMEthernetDebugData.can_rx_buf_overflow
-        LabelCAnDataLogRXBufferOVerflowCount.Text = "Log RX Ovrfl Cnt = " & ServerSettings.ETMEthernetDebugData.can_rx_log_buf_overflow
-        LabelCanTimeoutCount.Text = "Can Timeout Cnt = " & ServerSettings.ETMEthernetDebugData.can_timeout
-
-
-        LabelErrorI2CBusCount.Text = "I2C Bus Errors = " & ServerSettings.ETMEthernetDebugData.i2c_bus_error_count
-        LabelErrorSPIBusCount.Text = "SPI Bus Errors = " & ServerSettings.ETMEthernetDebugData.spi_bus_error_count
-        'LabelErrorCanBusCount.Text = "Can Bus Errors = " & ServerSettings.ETMEthernetTXDataStructure(board_index).debug_data.can_bus_error_count
-        LabelErrorScaleCount.Text = "Scale Errors = " & ServerSettings.ETMEthernetDebugData.scale_error_count
-        LabelErrorResetCount.Text = "Reset Count = " & ServerSettings.ETMEthernetDebugData.reset_count
-        LabelErrorSelfTestResultRegister.Text = "Self Test = 0x" & ServerSettings.ETMEthernetDebugData.self_test_results.ToString("x")
-        LabelErrorReserved0.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16).ToString("x") '  "= 0x" & ServerSettings.ETMEthernetDebugData.reserved_0.ToString("x")
-        'LabelErrorReserved1.Text = "Can Ver = 0x" & ServerSettings.ETMEthernetDebugData.reserved_1.ToString("x")
-        LabelRCON.Text = "RCON = " & ServerSettings.ETMEthernetDebugData.RCON_value.ToString("X")
-
-        LabelCommandCount.Text = "Cmd Count = " & ServerSettings.command_rcv_count
-        LabelCommandLengthError.Text = "Cmd Lgth Err = " & ServerSettings.command_length_error
-    End Sub
-
-
-
     Private Sub frmMain_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Try
             TimerUpdate.Enabled = False
@@ -1121,41 +1160,7 @@
 
 
 
-
-
-    Private Sub ComboBoxEEpromRegister_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
-        Dim command_index As UInt16
-        If board_index = MODBUS_COMMANDS.MODBUS_WR_ETHERNET Then
-            command_index = ETM_CAN_ADDR_ETHERNET_BOARD
-            selected_board_index = ETM_CAN_ADDR_ETHERNET_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_ION_PUMP Then
-            command_index = ETM_CAN_ADDR_ION_PUMP_BOARD
-            selected_board_index = ETM_CAN_ADDR_ION_PUMP_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT Then
-            command_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-            selected_board_index = ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA Then
-            command_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
-            selected_board_index = ETM_CAN_ADDR_HV_LAMBDA_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_AFC Then
-            command_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
-            selected_board_index = ETM_CAN_ADDR_AFC_CONTROL_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_COOLING Then
-            command_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
-            selected_board_index = ETM_CAN_ADDR_COOLING_INTERFACE_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET Then
-            command_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
-            selected_board_index = ETM_CAN_ADDR_HEATER_MAGNET_BOARD
-        ElseIf board_index = MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER Then
-            command_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
-            selected_board_index = ETM_CAN_ADDR_GUN_DRIVER_BOARD
-        End If
-
-
-        command_index = command_index * 2 ^ 12
-        EEProm_index = command_index + EEProm_index + &H100
-
-    End Sub
+#If 0 Then
 
 
 
@@ -1168,29 +1173,12 @@
     Public Const ETM_CAN_ADDR_COOLING_INTERFACE_BOARD = 6
     Public Const ETM_CAN_ADDR_HEATER_MAGNET_BOARD = 7
     Public Const ETM_CAN_ADDR_GUN_DRIVER_BOARD = 8
+#End If
 
 
 
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
-        'ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_SEND_SLAVE_RELOAD_EEPROM_WITH_DEFAULTS, selected_board_index, 0, 0)
-    End Sub
 
-
-
-    Private Sub ButtonStartLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStartLog.Click
-        ButtonStartLog.Visible = False
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
-        ServerSettings.OpenPulseLogFile()
-    End Sub
-
-    Private Sub ButtonStopLog_Click(sender As System.Object, e As System.EventArgs) Handles ButtonStopLog.Click
-        ButtonStopLog.Visible = False
-        ServerSettings.ClosePulseLogFile()
-        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
-    End Sub
-
-
-    Private Sub ButtonSetTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSetTime.Click
+    Private Sub ButtonSetTime_Click(sender As System.Object, e As System.EventArgs)
         Dim time_high_word As UInt16
         Dim time_low_word As UInt16
         Dim time_now As Date = DateTime.UtcNow
@@ -1215,15 +1203,15 @@
         End Try
     End Sub
 
-    Private Sub ButtonReloadECBDefaults_Click(sender As System.Object, e As System.EventArgs) Handles ButtonReloadECBDefaults.Click
+    Private Sub ButtonReloadECBDefaults_Click(sender As System.Object, e As System.EventArgs)
         ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0, 0)
     End Sub
 
-    Private Sub ButtonZeroOnTime_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroOnTime.Click
+    Private Sub ButtonZeroOnTime_Click(sender As System.Object, e As System.EventArgs)
         ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0, 0)
     End Sub
 
-    Private Sub ButtonZeroPulseCounters_Click(sender As System.Object, e As System.EventArgs) Handles ButtonZeroPulseCounters.Click
+    Private Sub ButtonZeroPulseCounters_Click(sender As System.Object, e As System.EventArgs)
         ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT, 0, 0, 0, 0)
     End Sub
 
@@ -1397,12 +1385,9 @@
     End Sub
 
 
-
-
-    Private Sub cboIndex_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboIndex.SelectedIndexChanged
-        board_index = cboIndex.SelectedIndex + 1
+    Private Sub BtnMCUReset_Click(sender As Object, e As EventArgs) Handles BtnMCUReset.Click
+        ServerSettings.put_modbus_commands(REGISTER_DEBUG_RESET_MCU, board_can_address, 0, 0, 0)
     End Sub
-
 
     Private Sub BtnSetRevSN_Click(sender As Object, e As EventArgs) Handles BtnSetRevSN.Click
         Dim rev As Double
@@ -1412,14 +1397,14 @@
             data_valid = get_set_data("SN", "More Text", 0, 2 ^ 16 - 1, "Reg", serial_number)
         End If
         If data_valid Then
-            ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, 0, serial_number, rev, 0)
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, board_can_address, serial_number, rev, 0)
         End If
 
         'ServerSettings.put_modbus_commands(REGISTER_ETM_SET_REVISION_AND_SERIAL_NUMBER, 0, 27, &H4332, 0)
     End Sub
 
     Private Sub BtnSlaveDefaultEEProm_Click(sender As Object, e As EventArgs) Handles BtnSlaveDefaultEEProm.Click
-        ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_LOAD_DEFAULT_CALIBRATION, 0, 2, 3, 0)
+        ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_LOAD_DEFAULT_CALIBRATION, board_can_address, 0, 0, 0)
     End Sub
 
 
@@ -1436,7 +1421,7 @@
         End If
 
         If data_valid Then
-            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_RAM_DEBUG, 0, CUShort(ram_a), CUShort(ram_b), CUShort(ram_c))
+            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_RAM_DEBUG, board_can_address, CUShort(ram_a), CUShort(ram_b), CUShort(ram_c))
         End If
 
         'ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_RAM_DEBUG, 0, 110, &HB6C, &HB6C + 2)
@@ -1444,10 +1429,10 @@
 
     Private Sub BtnEEPromDebug_Click(sender As Object, e As EventArgs) Handles BtnEEPromDebug.Click
         Dim input_data As Double
-        Dim data_valid = get_set_data("EEPROM DEBUG", "More Text", 0, 1000, "Reg", input_data)
+        Dim data_valid = get_set_data("EEPROM DEBUG", "More Text", 0, 10000, "Reg", input_data)
 
         If data_valid Then
-            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_EEPROM_DEBUG, 0, CUShort(input_data), CUShort(input_data), CUShort(input_data))
+            ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_EEPROM_DEBUG, board_can_address, CUShort(input_data), CUShort(input_data), CUShort(input_data))
         End If
 
         'ServerSettings.put_modbus_commands(REGISTER_DEBUG_SET_EEPROM_DEBUG, 0, CUShort(TbEEPromDebug.Text), CUShort(TbEEPromDebug.Text), CUShort(TbEEPromDebug.Text))
@@ -1467,7 +1452,7 @@
 
         If data_valid Then
             gain = gain * 2 ^ 15
-            ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR, 0, CUShort(location), CUShort(offset), CUShort(gain))
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR, board_can_address, CUShort(location), CUShort(offset), CUShort(gain))
         End If
 
         'ServerSettings.put_modbus_commands(REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR, 0, &H7, 200, 0.75 * 2 ^ 15)
@@ -2137,4 +2122,40 @@
             ServerSettings.put_modbus_commands(REGISTER_CMD_AFC_MANUAL_TARGET_POSITION, program_word, 0, 0, 0)
         End If
     End Sub
+
+    Private Sub CoBoxSelectedCanBoard_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CoBoxSelectedCanBoard.SelectedIndexChanged
+        Try
+            board_can_address = CByte(CoBoxSelectedCanBoard.SelectedIndex)
+            If board_can_address = 10 Then
+                board_can_address = &HF
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Invalid Board Index")
+        End Try
+    End Sub
+
+
+    Private Sub BtnZeroOnTimeCounter_Click(sender As Object, e As EventArgs) Handles BtnZeroOnTimeCounter.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnZeroArcPulseCounter_Click(sender As Object, e As EventArgs) Handles BtnZeroArcPulseCounter.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnEEpromWriteStatusClear_Click(sender As Object, e As EventArgs) Handles BtnEEpromWriteStatusClear.Click
+        ServerSettings.put_modbus_commands(REGISTER_CLEAR_EEPROM_WRITE_STATUS, 0, 0, 0, 0)
+    End Sub
+
+    Private Sub BtnSystemSerialNumber_Click(sender As Object, e As EventArgs) Handles BtnSystemSerialNumber.Click
+        Dim input_data As Double
+        Dim data_valid = get_set_data("Set System Serial Number", "ECB", 0, 64000, "", input_data)
+
+        If data_valid Then
+            Dim program_word As UInt16 = input_data
+            ServerSettings.put_modbus_commands(REGISTER_ETM_SYSTEM_SERIAL_NUMBER, &H48, 0, program_word, 0)
+        End If
+    End Sub
+
+
 End Class

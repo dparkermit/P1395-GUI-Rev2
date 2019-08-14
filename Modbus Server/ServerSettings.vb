@@ -195,6 +195,7 @@ Public Class ServerSettings
         Dim pulse_data(MAX_PULSE_SIZE_DATA) As Byte
         Dim event_data(MAX_EVENT_SIZE_DATA) As Byte
         Dim command_id As Byte
+        Dim can_address_of_board As UShort
 
         command_id = command_index_number
 
@@ -217,10 +218,15 @@ Public Class ServerSettings
             xmitBuffer(10) = board_to_monitor ' This tells the ECB what slave board to store debug data for
             xmitBuffer(11) = 0
 
+            can_address_of_board = CUShort(CUShort(command_id) - 1)
+            If (can_address_of_board >= 10) Then
+                can_address_of_board = 10
+            End If
+
 
             If (command_id >= CUShort(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) And command_id <= CUShort(MODBUS_COMMANDS.MODBUS_WR_PFN_BOARD)) Then
                 ' DPARKER do we need to check received data
-                ETMEthernetBoardLoggingData(command_id).SetData(recvBuffer, CUShort(word_count * 2), 12)
+                ETMEthernetBoardLoggingData(can_address_of_board).SetData(recvBuffer, CUShort(word_count * 2), 12)
                 stream.BeginWrite(xmitBuffer, 0, 12, New AsyncCallback(AddressOf DoXmitDoneCallback), stream)   ' data are valid, then send ack
 
             ElseIf (command_id = MODBUS_COMMANDS.MODBUS_WR_ETHERNET) Then

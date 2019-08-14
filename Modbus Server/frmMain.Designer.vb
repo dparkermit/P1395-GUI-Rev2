@@ -24,66 +24,13 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
-        Me.Splitter1 = New System.Windows.Forms.Splitter()
-        Me.LabelDisplay8 = New System.Windows.Forms.Label()
-        Me.LabelDisplay7 = New System.Windows.Forms.Label()
-        Me.LabelDisplay6 = New System.Windows.Forms.Label()
-        Me.LabelDisplay5 = New System.Windows.Forms.Label()
-        Me.LabelDisplay4 = New System.Windows.Forms.Label()
-        Me.LabelDisplay3 = New System.Windows.Forms.Label()
-        Me.LabelDisplay2 = New System.Windows.Forms.Label()
-        Me.LabelDisplay1 = New System.Windows.Forms.Label()
-        Me.CheckBoxOperateEthernet = New System.Windows.Forms.CheckBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.CheckBoxOperatePulseSync = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateMagnetronCurrentMon = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateGunDriver = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateHtrMag = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateCooling = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateAFC = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateIonPump = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxOperateHVLambda = New System.Windows.Forms.CheckBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.CheckBoxPulseSyncConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxPulseCurrentMonitorConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxGunDriverConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxHtrMagConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxCoolingConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxAFCConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxIonPumpConnected = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxHVLambdaConnected = New System.Windows.Forms.CheckBox()
         Me.LabelECBTime = New System.Windows.Forms.Label()
         Me.LabelComputerTime = New System.Windows.Forms.Label()
-        Me.ButtonSetTime = New System.Windows.Forms.Button()
-        Me.ButtonStopLog = New System.Windows.Forms.Button()
-        Me.ButtonStartLog = New System.Windows.Forms.Button()
         Me.LabelECBState = New System.Windows.Forms.Label()
-        Me.CheckBoxSyncBitF = New System.Windows.Forms.CheckBox()
-        Me.ButtonToggleResetDebug = New System.Windows.Forms.Button()
-        Me.LabelSyncMessageCntrlBits = New System.Windows.Forms.Label()
         Me.LabelGuiVersion = New System.Windows.Forms.Label()
-        Me.ButtonReloadECBDefaults = New System.Windows.Forms.Button()
-        Me.ButtonZeroOnTime = New System.Windows.Forms.Button()
-        Me.ButtonZeroPulseCounters = New System.Windows.Forms.Button()
-        Me.ButtonSaveFactorySettings = New System.Windows.Forms.Button()
-        Me.ButtonLoadFactorySettings = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
-        Me.LabelSystemSerialNumber = New System.Windows.Forms.Label()
         Me.SerialPortETM = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerWatchdog = New System.Windows.Forms.Timer(Me.components)
-        Me.ButtonETMMode = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.ComboBoxComPorts = New System.Windows.Forms.ComboBox()
         Me.LabelWatchDogResponse = New System.Windows.Forms.Label()
@@ -104,6 +51,7 @@ Partial Class frmMain
         Me.ButtonSetIPAddres = New System.Windows.Forms.Button()
         Me.ButtonSetRemoteIP = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.BntECBEEPromConfigure = New System.Windows.Forms.Button()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.BtnUnused0DoseAll = New System.Windows.Forms.Button()
         Me.BtnUnused1DoseAll = New System.Windows.Forms.Button()
@@ -184,67 +132,9 @@ Partial Class frmMain
         Me.BtnPulseTopDose0 = New System.Windows.Forms.Button()
         Me.BtnMagnetCurrentDose0 = New System.Windows.Forms.Button()
         Me.BtnHVPSDose0 = New System.Windows.Forms.Button()
-        Me.TabPage3Debug = New System.Windows.Forms.TabPage()
-        Me.LabelValueDebug0 = New System.Windows.Forms.Label()
-        Me.LabelDebug0 = New System.Windows.Forms.Label()
-        Me.LabelDebug1 = New System.Windows.Forms.Label()
-        Me.LabelDebug2 = New System.Windows.Forms.Label()
-        Me.LabelDebug3 = New System.Windows.Forms.Label()
-        Me.LabelDebug4 = New System.Windows.Forms.Label()
-        Me.LabelDebug5 = New System.Windows.Forms.Label()
-        Me.LabelDebug6 = New System.Windows.Forms.Label()
-        Me.LabelDebug7 = New System.Windows.Forms.Label()
-        Me.LabelDebug8 = New System.Windows.Forms.Label()
-        Me.LabelDebug9 = New System.Windows.Forms.Label()
-        Me.LabelDebugA = New System.Windows.Forms.Label()
-        Me.LabelDebugB = New System.Windows.Forms.Label()
-        Me.LabelDebugC = New System.Windows.Forms.Label()
-        Me.LabelDebugD = New System.Windows.Forms.Label()
-        Me.LabelDebugE = New System.Windows.Forms.Label()
-        Me.LabelCanCXECReg = New System.Windows.Forms.Label()
-        Me.LabelDebugF = New System.Windows.Forms.Label()
-        Me.LabelValueDebug1 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug2 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug3 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug4 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug5 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug6 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug7 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug8 = New System.Windows.Forms.Label()
-        Me.LabelValueDebug9 = New System.Windows.Forms.Label()
-        Me.LabelValueDebugA = New System.Windows.Forms.Label()
-        Me.LabelValueDebugB = New System.Windows.Forms.Label()
-        Me.LabelValueDebugC = New System.Windows.Forms.Label()
-        Me.LabelValueDebugD = New System.Windows.Forms.Label()
-        Me.LabelValueDebugE = New System.Windows.Forms.Label()
-        Me.LabelValueDebugF = New System.Windows.Forms.Label()
-        Me.LabelErrorI2CBusCount = New System.Windows.Forms.Label()
-        Me.LabelCanErrorFlagCount = New System.Windows.Forms.Label()
-        Me.LabelCanTX1Count = New System.Windows.Forms.Label()
-        Me.LabelCanTX2Count = New System.Windows.Forms.Label()
-        Me.LabelErrorSPIBusCount = New System.Windows.Forms.Label()
-        Me.LabelCanRX0Filt0Count = New System.Windows.Forms.Label()
-        Me.LabelCanRX0Filt1Count = New System.Windows.Forms.Label()
-        Me.LabelCanRX1Filt2Count = New System.Windows.Forms.Label()
-        Me.LabelCanISREnteredCount = New System.Windows.Forms.Label()
-        Me.LabelCanUnknownIdentifierCount = New System.Windows.Forms.Label()
-        Me.LabelCanInvalidIndexCount = New System.Windows.Forms.Label()
-        Me.LabelErrorScaleCount = New System.Windows.Forms.Label()
-        Me.LabelCanAddressErrorCount = New System.Windows.Forms.Label()
-        Me.LabelCanTX0Count = New System.Windows.Forms.Label()
-        Me.LabelCanTXBufOverflowCount = New System.Windows.Forms.Label()
-        Me.LabelErrorResetCount = New System.Windows.Forms.Label()
-        Me.LabelCanRXBufferOverflowCount = New System.Windows.Forms.Label()
-        Me.LabelCAnDataLogRXBufferOVerflowCount = New System.Windows.Forms.Label()
-        Me.LabelCanTimeoutCount = New System.Windows.Forms.Label()
-        Me.LabelErrorSelfTestResultRegister = New System.Windows.Forms.Label()
-        Me.LabelErrorReserved0 = New System.Windows.Forms.Label()
-        Me.LabelErrorReserved1 = New System.Windows.Forms.Label()
-        Me.LabelRCON = New System.Windows.Forms.Label()
         Me.TabPage2Slave = New System.Windows.Forms.TabPage()
-        Me.BtnClearDebug = New System.Windows.Forms.Button()
-        Me.BtnAFCManual = New System.Windows.Forms.Button()
-        Me.BtnAFCAuto = New System.Windows.Forms.Button()
+        Me.BtnMCUReset = New System.Windows.Forms.Button()
+        Me.CoBoxSelectedCanBoard = New System.Windows.Forms.ComboBox()
         Me.BtnSetCalPair = New System.Windows.Forms.Button()
         Me.BtnEEPromDebug = New System.Windows.Forms.Button()
         Me.LblDebug7 = New System.Windows.Forms.Label()
@@ -467,7 +357,6 @@ Partial Class frmMain
         Me.LblSlaveLog5 = New System.Windows.Forms.Label()
         Me.LblSlaveLog6 = New System.Windows.Forms.Label()
         Me.LblSlaveLog7 = New System.Windows.Forms.Label()
-        Me.cboIndex = New System.Windows.Forms.ComboBox()
         Me.LabelFirmwareVerssion = New System.Windows.Forms.Label()
         Me.LblSlaveLog8 = New System.Windows.Forms.Label()
         Me.LabelAgileInfo = New System.Windows.Forms.Label()
@@ -478,13 +367,57 @@ Partial Class frmMain
         Me.LblSlaveLog12 = New System.Windows.Forms.Label()
         Me.LblSlaveLog13 = New System.Windows.Forms.Label()
         Me.LblSlaveLog14 = New System.Windows.Forms.Label()
+        Me.BtnClearDebug = New System.Windows.Forms.Button()
+        Me.BtnAFCAuto = New System.Windows.Forms.Button()
         Me.TabPage1ECB = New System.Windows.Forms.TabPage()
+        Me.BtnSystemSerialNumber = New System.Windows.Forms.Button()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.BtnAFCManual = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.BtnZeroOnTimeCounter = New System.Windows.Forms.Button()
+        Me.BtnZeroArcPulseCounter = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.BtnEEpromWriteStatusClear = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage4Dose = New System.Windows.Forms.TabControl()
-        Me.BntECBEEPromConfigure = New System.Windows.Forms.Button()
+        Me.CbxConnect0 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect1 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect3 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect2 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect7 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect6 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect5 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect4 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect9 = New System.Windows.Forms.CheckBox()
+        Me.CbxConnect8 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady9 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady8 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady7 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady6 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady5 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady4 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady3 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady2 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady1 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady0 = New System.Windows.Forms.CheckBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.CbxConnect10 = New System.Windows.Forms.CheckBox()
+        Me.CbxReady10 = New System.Windows.Forms.CheckBox()
         Me.TabPage5.SuspendLayout()
         Me.TabPage4.SuspendLayout()
-        Me.TabPage3Debug.SuspendLayout()
         Me.TabPage2Slave.SuspendLayout()
+        Me.TabPage1ECB.SuspendLayout()
         Me.TabPage4Dose.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -492,434 +425,12 @@ Partial Class frmMain
         '
         Me.TimerUpdate.Interval = 500
         '
-        'Splitter1
-        '
-        Me.Splitter1.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Splitter1.Location = New System.Drawing.Point(0, 0)
-        Me.Splitter1.Name = "Splitter1"
-        Me.Splitter1.Size = New System.Drawing.Size(364, 961)
-        Me.Splitter1.TabIndex = 322
-        Me.Splitter1.TabStop = False
-        '
-        'LabelDisplay8
-        '
-        Me.LabelDisplay8.AutoSize = True
-        Me.LabelDisplay8.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay8.Location = New System.Drawing.Point(12, 147)
-        Me.LabelDisplay8.Name = "LabelDisplay8"
-        Me.LabelDisplay8.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay8.TabIndex = 330
-        Me.LabelDisplay8.Text = "Display 8"
-        '
-        'LabelDisplay7
-        '
-        Me.LabelDisplay7.AutoSize = True
-        Me.LabelDisplay7.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay7.Location = New System.Drawing.Point(12, 131)
-        Me.LabelDisplay7.Name = "LabelDisplay7"
-        Me.LabelDisplay7.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay7.TabIndex = 329
-        Me.LabelDisplay7.Text = "Display 7"
-        '
-        'LabelDisplay6
-        '
-        Me.LabelDisplay6.AutoSize = True
-        Me.LabelDisplay6.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay6.Location = New System.Drawing.Point(12, 115)
-        Me.LabelDisplay6.Name = "LabelDisplay6"
-        Me.LabelDisplay6.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay6.TabIndex = 328
-        Me.LabelDisplay6.Text = "Display 6"
-        '
-        'LabelDisplay5
-        '
-        Me.LabelDisplay5.AutoSize = True
-        Me.LabelDisplay5.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay5.Location = New System.Drawing.Point(12, 99)
-        Me.LabelDisplay5.Name = "LabelDisplay5"
-        Me.LabelDisplay5.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay5.TabIndex = 327
-        Me.LabelDisplay5.Text = "Display 5"
-        '
-        'LabelDisplay4
-        '
-        Me.LabelDisplay4.AutoSize = True
-        Me.LabelDisplay4.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay4.Location = New System.Drawing.Point(12, 83)
-        Me.LabelDisplay4.Name = "LabelDisplay4"
-        Me.LabelDisplay4.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay4.TabIndex = 326
-        Me.LabelDisplay4.Text = "Display 4"
-        '
-        'LabelDisplay3
-        '
-        Me.LabelDisplay3.AutoSize = True
-        Me.LabelDisplay3.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay3.Location = New System.Drawing.Point(12, 67)
-        Me.LabelDisplay3.Name = "LabelDisplay3"
-        Me.LabelDisplay3.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay3.TabIndex = 325
-        Me.LabelDisplay3.Text = "Display 3"
-        '
-        'LabelDisplay2
-        '
-        Me.LabelDisplay2.AutoSize = True
-        Me.LabelDisplay2.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay2.Location = New System.Drawing.Point(12, 51)
-        Me.LabelDisplay2.Name = "LabelDisplay2"
-        Me.LabelDisplay2.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay2.TabIndex = 324
-        Me.LabelDisplay2.Text = "Display 2"
-        '
-        'LabelDisplay1
-        '
-        Me.LabelDisplay1.AutoSize = True
-        Me.LabelDisplay1.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelDisplay1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDisplay1.Location = New System.Drawing.Point(12, 35)
-        Me.LabelDisplay1.Name = "LabelDisplay1"
-        Me.LabelDisplay1.Size = New System.Drawing.Size(64, 16)
-        Me.LabelDisplay1.TabIndex = 323
-        Me.LabelDisplay1.Text = "Display 1"
-        '
-        'CheckBoxOperateEthernet
-        '
-        Me.CheckBoxOperateEthernet.AutoSize = True
-        Me.CheckBoxOperateEthernet.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateEthernet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateEthernet.Location = New System.Drawing.Point(148, 316)
-        Me.CheckBoxOperateEthernet.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateEthernet.Name = "CheckBoxOperateEthernet"
-        Me.CheckBoxOperateEthernet.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateEthernet.TabIndex = 358
-        Me.CheckBoxOperateEthernet.UseVisualStyleBackColor = False
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(12, 314)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(57, 16)
-        Me.Label13.TabIndex = 357
-        Me.Label13.Text = "Ethernet"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(145, 169)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(32, 16)
-        Me.Label12.TabIndex = 356
-        Me.Label12.Text = "FLT"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(103, 169)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(38, 16)
-        Me.Label2.TabIndex = 355
-        Me.Label2.Text = "COM"
-        '
-        'CheckBoxOperatePulseSync
-        '
-        Me.CheckBoxOperatePulseSync.AutoSize = True
-        Me.CheckBoxOperatePulseSync.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperatePulseSync.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperatePulseSync.Location = New System.Drawing.Point(148, 300)
-        Me.CheckBoxOperatePulseSync.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperatePulseSync.Name = "CheckBoxOperatePulseSync"
-        Me.CheckBoxOperatePulseSync.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperatePulseSync.TabIndex = 354
-        Me.CheckBoxOperatePulseSync.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateMagnetronCurrentMon
-        '
-        Me.CheckBoxOperateMagnetronCurrentMon.AutoSize = True
-        Me.CheckBoxOperateMagnetronCurrentMon.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateMagnetronCurrentMon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateMagnetronCurrentMon.Location = New System.Drawing.Point(148, 284)
-        Me.CheckBoxOperateMagnetronCurrentMon.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateMagnetronCurrentMon.Name = "CheckBoxOperateMagnetronCurrentMon"
-        Me.CheckBoxOperateMagnetronCurrentMon.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateMagnetronCurrentMon.TabIndex = 353
-        Me.CheckBoxOperateMagnetronCurrentMon.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateGunDriver
-        '
-        Me.CheckBoxOperateGunDriver.AutoSize = True
-        Me.CheckBoxOperateGunDriver.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateGunDriver.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateGunDriver.Location = New System.Drawing.Point(148, 268)
-        Me.CheckBoxOperateGunDriver.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateGunDriver.Name = "CheckBoxOperateGunDriver"
-        Me.CheckBoxOperateGunDriver.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateGunDriver.TabIndex = 352
-        Me.CheckBoxOperateGunDriver.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateHtrMag
-        '
-        Me.CheckBoxOperateHtrMag.AutoSize = True
-        Me.CheckBoxOperateHtrMag.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateHtrMag.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateHtrMag.Location = New System.Drawing.Point(148, 252)
-        Me.CheckBoxOperateHtrMag.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateHtrMag.Name = "CheckBoxOperateHtrMag"
-        Me.CheckBoxOperateHtrMag.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateHtrMag.TabIndex = 351
-        Me.CheckBoxOperateHtrMag.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateCooling
-        '
-        Me.CheckBoxOperateCooling.AutoSize = True
-        Me.CheckBoxOperateCooling.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateCooling.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateCooling.Location = New System.Drawing.Point(148, 236)
-        Me.CheckBoxOperateCooling.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateCooling.Name = "CheckBoxOperateCooling"
-        Me.CheckBoxOperateCooling.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateCooling.TabIndex = 350
-        Me.CheckBoxOperateCooling.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateAFC
-        '
-        Me.CheckBoxOperateAFC.AutoSize = True
-        Me.CheckBoxOperateAFC.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateAFC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateAFC.Location = New System.Drawing.Point(148, 220)
-        Me.CheckBoxOperateAFC.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateAFC.Name = "CheckBoxOperateAFC"
-        Me.CheckBoxOperateAFC.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateAFC.TabIndex = 349
-        Me.CheckBoxOperateAFC.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateIonPump
-        '
-        Me.CheckBoxOperateIonPump.AutoSize = True
-        Me.CheckBoxOperateIonPump.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateIonPump.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateIonPump.Location = New System.Drawing.Point(148, 204)
-        Me.CheckBoxOperateIonPump.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateIonPump.Name = "CheckBoxOperateIonPump"
-        Me.CheckBoxOperateIonPump.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateIonPump.TabIndex = 348
-        Me.CheckBoxOperateIonPump.UseVisualStyleBackColor = False
-        '
-        'CheckBoxOperateHVLambda
-        '
-        Me.CheckBoxOperateHVLambda.AutoSize = True
-        Me.CheckBoxOperateHVLambda.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxOperateHVLambda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxOperateHVLambda.Location = New System.Drawing.Point(148, 188)
-        Me.CheckBoxOperateHVLambda.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxOperateHVLambda.Name = "CheckBoxOperateHVLambda"
-        Me.CheckBoxOperateHVLambda.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxOperateHVLambda.TabIndex = 347
-        Me.CheckBoxOperateHVLambda.UseVisualStyleBackColor = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 298)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(75, 16)
-        Me.Label4.TabIndex = 346
-        Me.Label4.Text = "Pulse Sync"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 282)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 16)
-        Me.Label5.TabIndex = 345
-        Me.Label5.Text = "I Pulse"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(12, 266)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(56, 16)
-        Me.Label6.TabIndex = 344
-        Me.Label6.Text = "Gun Dvr"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(12, 250)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(56, 16)
-        Me.Label7.TabIndex = 343
-        Me.Label7.Text = "Htr/Mag"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(12, 234)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(54, 16)
-        Me.Label8.TabIndex = 342
-        Me.Label8.Text = "Cooling"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(12, 218)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(34, 16)
-        Me.Label9.TabIndex = 341
-        Me.Label9.Text = "AFC"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(12, 202)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(64, 16)
-        Me.Label10.TabIndex = 340
-        Me.Label10.Text = "Ion Pump"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(12, 186)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(80, 16)
-        Me.Label11.TabIndex = 339
-        Me.Label11.Text = "HV Lambda"
-        '
-        'CheckBoxPulseSyncConnected
-        '
-        Me.CheckBoxPulseSyncConnected.AutoSize = True
-        Me.CheckBoxPulseSyncConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxPulseSyncConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxPulseSyncConnected.Location = New System.Drawing.Point(106, 300)
-        Me.CheckBoxPulseSyncConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxPulseSyncConnected.Name = "CheckBoxPulseSyncConnected"
-        Me.CheckBoxPulseSyncConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxPulseSyncConnected.TabIndex = 338
-        Me.CheckBoxPulseSyncConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxPulseCurrentMonitorConnected
-        '
-        Me.CheckBoxPulseCurrentMonitorConnected.AutoSize = True
-        Me.CheckBoxPulseCurrentMonitorConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxPulseCurrentMonitorConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxPulseCurrentMonitorConnected.Location = New System.Drawing.Point(106, 284)
-        Me.CheckBoxPulseCurrentMonitorConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxPulseCurrentMonitorConnected.Name = "CheckBoxPulseCurrentMonitorConnected"
-        Me.CheckBoxPulseCurrentMonitorConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxPulseCurrentMonitorConnected.TabIndex = 337
-        Me.CheckBoxPulseCurrentMonitorConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxGunDriverConnected
-        '
-        Me.CheckBoxGunDriverConnected.AutoSize = True
-        Me.CheckBoxGunDriverConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxGunDriverConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxGunDriverConnected.Location = New System.Drawing.Point(106, 268)
-        Me.CheckBoxGunDriverConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxGunDriverConnected.Name = "CheckBoxGunDriverConnected"
-        Me.CheckBoxGunDriverConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxGunDriverConnected.TabIndex = 336
-        Me.CheckBoxGunDriverConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxHtrMagConnected
-        '
-        Me.CheckBoxHtrMagConnected.AutoSize = True
-        Me.CheckBoxHtrMagConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxHtrMagConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxHtrMagConnected.Location = New System.Drawing.Point(106, 252)
-        Me.CheckBoxHtrMagConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxHtrMagConnected.Name = "CheckBoxHtrMagConnected"
-        Me.CheckBoxHtrMagConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxHtrMagConnected.TabIndex = 335
-        Me.CheckBoxHtrMagConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxCoolingConnected
-        '
-        Me.CheckBoxCoolingConnected.AutoSize = True
-        Me.CheckBoxCoolingConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxCoolingConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxCoolingConnected.Location = New System.Drawing.Point(106, 236)
-        Me.CheckBoxCoolingConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxCoolingConnected.Name = "CheckBoxCoolingConnected"
-        Me.CheckBoxCoolingConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxCoolingConnected.TabIndex = 334
-        Me.CheckBoxCoolingConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxAFCConnected
-        '
-        Me.CheckBoxAFCConnected.AutoSize = True
-        Me.CheckBoxAFCConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxAFCConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxAFCConnected.Location = New System.Drawing.Point(106, 220)
-        Me.CheckBoxAFCConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxAFCConnected.Name = "CheckBoxAFCConnected"
-        Me.CheckBoxAFCConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxAFCConnected.TabIndex = 333
-        Me.CheckBoxAFCConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxIonPumpConnected
-        '
-        Me.CheckBoxIonPumpConnected.AutoSize = True
-        Me.CheckBoxIonPumpConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxIonPumpConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxIonPumpConnected.Location = New System.Drawing.Point(106, 204)
-        Me.CheckBoxIonPumpConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxIonPumpConnected.Name = "CheckBoxIonPumpConnected"
-        Me.CheckBoxIonPumpConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxIonPumpConnected.TabIndex = 332
-        Me.CheckBoxIonPumpConnected.UseVisualStyleBackColor = False
-        '
-        'CheckBoxHVLambdaConnected
-        '
-        Me.CheckBoxHVLambdaConnected.AutoSize = True
-        Me.CheckBoxHVLambdaConnected.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxHVLambdaConnected.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxHVLambdaConnected.Location = New System.Drawing.Point(106, 188)
-        Me.CheckBoxHVLambdaConnected.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxHVLambdaConnected.Name = "CheckBoxHVLambdaConnected"
-        Me.CheckBoxHVLambdaConnected.Size = New System.Drawing.Size(15, 14)
-        Me.CheckBoxHVLambdaConnected.TabIndex = 331
-        Me.CheckBoxHVLambdaConnected.UseVisualStyleBackColor = False
-        '
         'LabelECBTime
         '
         Me.LabelECBTime.AutoSize = True
         Me.LabelECBTime.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelECBTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelECBTime.Location = New System.Drawing.Point(12, 343)
+        Me.LabelECBTime.Location = New System.Drawing.Point(12, 402)
         Me.LabelECBTime.Margin = New System.Windows.Forms.Padding(3)
         Me.LabelECBTime.Name = "LabelECBTime"
         Me.LabelECBTime.Size = New System.Drawing.Size(69, 16)
@@ -938,42 +449,6 @@ Partial Class frmMain
         Me.LabelComputerTime.TabIndex = 363
         Me.LabelComputerTime.Text = "Computer Time"
         '
-        'ButtonSetTime
-        '
-        Me.ButtonSetTime.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonSetTime.FlatAppearance.BorderSize = 0
-        Me.ButtonSetTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonSetTime.Location = New System.Drawing.Point(15, 373)
-        Me.ButtonSetTime.Name = "ButtonSetTime"
-        Me.ButtonSetTime.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonSetTime.TabIndex = 362
-        Me.ButtonSetTime.Text = "SetTime"
-        Me.ButtonSetTime.UseVisualStyleBackColor = False
-        '
-        'ButtonStopLog
-        '
-        Me.ButtonStopLog.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonStopLog.FlatAppearance.BorderSize = 0
-        Me.ButtonStopLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonStopLog.Location = New System.Drawing.Point(148, 402)
-        Me.ButtonStopLog.Name = "ButtonStopLog"
-        Me.ButtonStopLog.Size = New System.Drawing.Size(122, 23)
-        Me.ButtonStopLog.TabIndex = 361
-        Me.ButtonStopLog.Text = "Stop Pulse Logging"
-        Me.ButtonStopLog.UseVisualStyleBackColor = False
-        '
-        'ButtonStartLog
-        '
-        Me.ButtonStartLog.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonStartLog.FlatAppearance.BorderSize = 0
-        Me.ButtonStartLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonStartLog.Location = New System.Drawing.Point(15, 402)
-        Me.ButtonStartLog.Name = "ButtonStartLog"
-        Me.ButtonStartLog.Size = New System.Drawing.Size(122, 23)
-        Me.ButtonStartLog.TabIndex = 360
-        Me.ButtonStartLog.Text = "Start Pulse Logging"
-        Me.ButtonStartLog.UseVisualStyleBackColor = False
-        '
         'LabelECBState
         '
         Me.LabelECBState.AutoSize = True
@@ -986,112 +461,16 @@ Partial Class frmMain
         Me.LabelECBState.TabIndex = 359
         Me.LabelECBState.Text = "ECB State"
         '
-        'CheckBoxSyncBitF
-        '
-        Me.CheckBoxSyncBitF.AutoSize = True
-        Me.CheckBoxSyncBitF.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.CheckBoxSyncBitF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxSyncBitF.Location = New System.Drawing.Point(170, 483)
-        Me.CheckBoxSyncBitF.Margin = New System.Windows.Forms.Padding(0)
-        Me.CheckBoxSyncBitF.Name = "CheckBoxSyncBitF"
-        Me.CheckBoxSyncBitF.Size = New System.Drawing.Size(121, 20)
-        Me.CheckBoxSyncBitF.TabIndex = 389
-        Me.CheckBoxSyncBitF.Text = "Clear Debug Bit"
-        Me.CheckBoxSyncBitF.UseVisualStyleBackColor = False
-        '
-        'ButtonToggleResetDebug
-        '
-        Me.ButtonToggleResetDebug.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonToggleResetDebug.FlatAppearance.BorderSize = 0
-        Me.ButtonToggleResetDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonToggleResetDebug.Location = New System.Drawing.Point(10, 479)
-        Me.ButtonToggleResetDebug.Name = "ButtonToggleResetDebug"
-        Me.ButtonToggleResetDebug.Size = New System.Drawing.Size(152, 23)
-        Me.ButtonToggleResetDebug.TabIndex = 388
-        Me.ButtonToggleResetDebug.Text = "Toggle Reset Debug"
-        Me.ButtonToggleResetDebug.UseVisualStyleBackColor = False
-        '
-        'LabelSyncMessageCntrlBits
-        '
-        Me.LabelSyncMessageCntrlBits.AutoSize = True
-        Me.LabelSyncMessageCntrlBits.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelSyncMessageCntrlBits.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelSyncMessageCntrlBits.Location = New System.Drawing.Point(12, 450)
-        Me.LabelSyncMessageCntrlBits.Name = "LabelSyncMessageCntrlBits"
-        Me.LabelSyncMessageCntrlBits.Size = New System.Drawing.Size(152, 16)
-        Me.LabelSyncMessageCntrlBits.TabIndex = 374
-        Me.LabelSyncMessageCntrlBits.Text = "Sync Message Cntrl Bits"
-        '
         'LabelGuiVersion
         '
         Me.LabelGuiVersion.AutoSize = True
         Me.LabelGuiVersion.BackColor = System.Drawing.Color.LightSteelBlue
         Me.LabelGuiVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelGuiVersion.Location = New System.Drawing.Point(12, 330)
+        Me.LabelGuiVersion.Location = New System.Drawing.Point(12, 376)
         Me.LabelGuiVersion.Name = "LabelGuiVersion"
         Me.LabelGuiVersion.Size = New System.Drawing.Size(78, 16)
         Me.LabelGuiVersion.TabIndex = 390
         Me.LabelGuiVersion.Text = "GUI version"
-        '
-        'ButtonReloadECBDefaults
-        '
-        Me.ButtonReloadECBDefaults.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonReloadECBDefaults.FlatAppearance.BorderSize = 0
-        Me.ButtonReloadECBDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonReloadECBDefaults.Location = New System.Drawing.Point(170, 373)
-        Me.ButtonReloadECBDefaults.Name = "ButtonReloadECBDefaults"
-        Me.ButtonReloadECBDefaults.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonReloadECBDefaults.TabIndex = 396
-        Me.ButtonReloadECBDefaults.Text = "Reload Defaults"
-        Me.ButtonReloadECBDefaults.UseVisualStyleBackColor = False
-        '
-        'ButtonZeroOnTime
-        '
-        Me.ButtonZeroOnTime.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonZeroOnTime.FlatAppearance.BorderSize = 0
-        Me.ButtonZeroOnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonZeroOnTime.Location = New System.Drawing.Point(7, 524)
-        Me.ButtonZeroOnTime.Name = "ButtonZeroOnTime"
-        Me.ButtonZeroOnTime.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonZeroOnTime.TabIndex = 397
-        Me.ButtonZeroOnTime.Text = "Zero On Time"
-        Me.ButtonZeroOnTime.UseVisualStyleBackColor = False
-        '
-        'ButtonZeroPulseCounters
-        '
-        Me.ButtonZeroPulseCounters.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonZeroPulseCounters.FlatAppearance.BorderSize = 0
-        Me.ButtonZeroPulseCounters.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonZeroPulseCounters.Location = New System.Drawing.Point(170, 524)
-        Me.ButtonZeroPulseCounters.Name = "ButtonZeroPulseCounters"
-        Me.ButtonZeroPulseCounters.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonZeroPulseCounters.TabIndex = 398
-        Me.ButtonZeroPulseCounters.Text = "Zero Pulse Count"
-        Me.ButtonZeroPulseCounters.UseVisualStyleBackColor = False
-        '
-        'ButtonSaveFactorySettings
-        '
-        Me.ButtonSaveFactorySettings.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonSaveFactorySettings.FlatAppearance.BorderSize = 0
-        Me.ButtonSaveFactorySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonSaveFactorySettings.Location = New System.Drawing.Point(172, 204)
-        Me.ButtonSaveFactorySettings.Name = "ButtonSaveFactorySettings"
-        Me.ButtonSaveFactorySettings.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonSaveFactorySettings.TabIndex = 420
-        Me.ButtonSaveFactorySettings.Text = "Save Factory"
-        Me.ButtonSaveFactorySettings.UseVisualStyleBackColor = False
-        '
-        'ButtonLoadFactorySettings
-        '
-        Me.ButtonLoadFactorySettings.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonLoadFactorySettings.FlatAppearance.BorderSize = 0
-        Me.ButtonLoadFactorySettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonLoadFactorySettings.Location = New System.Drawing.Point(172, 236)
-        Me.ButtonLoadFactorySettings.Name = "ButtonLoadFactorySettings"
-        Me.ButtonLoadFactorySettings.Size = New System.Drawing.Size(100, 23)
-        Me.ButtonLoadFactorySettings.TabIndex = 421
-        Me.ButtonLoadFactorySettings.Text = "Load Factory"
-        Me.ButtonLoadFactorySettings.UseVisualStyleBackColor = False
         '
         'ButtonReset
         '
@@ -1105,18 +484,6 @@ Partial Class frmMain
         Me.ButtonReset.Text = "Reset Fault"
         Me.ButtonReset.UseVisualStyleBackColor = False
         '
-        'LabelSystemSerialNumber
-        '
-        Me.LabelSystemSerialNumber.AutoSize = True
-        Me.LabelSystemSerialNumber.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.LabelSystemSerialNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelSystemSerialNumber.Location = New System.Drawing.Point(180, 169)
-        Me.LabelSystemSerialNumber.Margin = New System.Windows.Forms.Padding(3)
-        Me.LabelSystemSerialNumber.Name = "LabelSystemSerialNumber"
-        Me.LabelSystemSerialNumber.Size = New System.Drawing.Size(27, 16)
-        Me.LabelSystemSerialNumber.TabIndex = 434
-        Me.LabelSystemSerialNumber.Text = "SN"
-        '
         'SerialPortETM
         '
         Me.SerialPortETM.BaudRate = 113000
@@ -1125,52 +492,6 @@ Partial Class frmMain
         '
         Me.TimerWatchdog.Enabled = True
         Me.TimerWatchdog.Interval = 20
-        '
-        'ButtonETMMode
-        '
-        Me.ButtonETMMode.BackColor = System.Drawing.Color.Lavender
-        Me.ButtonETMMode.FlatAppearance.BorderSize = 0
-        Me.ButtonETMMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonETMMode.Location = New System.Drawing.Point(15, 553)
-        Me.ButtonETMMode.Name = "ButtonETMMode"
-        Me.ButtonETMMode.Size = New System.Drawing.Size(71, 23)
-        Me.ButtonETMMode.TabIndex = 448
-        Me.ButtonETMMode.Text = "ETM Mode"
-        Me.ButtonETMMode.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.Lavender
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(172, 270)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 23)
-        Me.Button3.TabIndex = 457
-        Me.Button3.Text = "Save Customer"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.Lavender
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Location = New System.Drawing.Point(172, 300)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(100, 23)
-        Me.Button4.TabIndex = 458
-        Me.Button4.Text = "Load Customer"
-        Me.Button4.UseVisualStyleBackColor = False
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(103, 667)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(56, 16)
-        Me.Label15.TabIndex = 459
-        Me.Label15.Text = "Label15"
         '
         'TabPage5
         '
@@ -1452,15 +773,27 @@ Partial Class frmMain
         Me.TabPage4.Text = "Dose"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'BntECBEEPromConfigure
+        '
+        Me.BntECBEEPromConfigure.BackColor = System.Drawing.Color.Lavender
+        Me.BntECBEEPromConfigure.FlatAppearance.BorderSize = 0
+        Me.BntECBEEPromConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BntECBEEPromConfigure.Location = New System.Drawing.Point(6, 669)
+        Me.BntECBEEPromConfigure.Name = "BntECBEEPromConfigure"
+        Me.BntECBEEPromConfigure.Size = New System.Drawing.Size(175, 23)
+        Me.BntECBEEPromConfigure.TabIndex = 556
+        Me.BntECBEEPromConfigure.Text = "Default EEProm Configure"
+        Me.BntECBEEPromConfigure.UseVisualStyleBackColor = False
+        '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.Location = New System.Drawing.Point(904, 29)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(143, 26)
+        Me.Label17.Size = New System.Drawing.Size(153, 26)
         Me.Label17.TabIndex = 555
-        Me.Label17.Text = "All Settings A"
+        Me.Label17.Text = "All Settings All"
         '
         'BtnUnused0DoseAll
         '
@@ -2402,670 +1735,10 @@ Partial Class frmMain
         Me.BtnHVPSDose0.Text = "HVPS Set"
         Me.BtnHVPSDose0.UseVisualStyleBackColor = False
         '
-        'TabPage3Debug
-        '
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug0)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug0)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug1)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug2)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug3)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug4)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug5)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug6)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug7)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug8)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebug9)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugA)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugB)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugC)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugD)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugE)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanCXECReg)
-        Me.TabPage3Debug.Controls.Add(Me.LabelDebugF)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug1)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug2)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug3)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug4)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug5)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug6)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug7)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug8)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebug9)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugA)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugB)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugC)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugD)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugE)
-        Me.TabPage3Debug.Controls.Add(Me.LabelValueDebugF)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorI2CBusCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanErrorFlagCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX1Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX2Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorSPIBusCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX0Filt0Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX0Filt1Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanRX1Filt2Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanISREnteredCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanUnknownIdentifierCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanInvalidIndexCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorScaleCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanAddressErrorCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanTX0Count)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanTXBufOverflowCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorResetCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanRXBufferOverflowCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCAnDataLogRXBufferOVerflowCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelCanTimeoutCount)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorSelfTestResultRegister)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorReserved0)
-        Me.TabPage3Debug.Controls.Add(Me.LabelErrorReserved1)
-        Me.TabPage3Debug.Controls.Add(Me.LabelRCON)
-        Me.TabPage3Debug.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3Debug.Name = "TabPage3Debug"
-        Me.TabPage3Debug.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3Debug.Size = New System.Drawing.Size(1415, 935)
-        Me.TabPage3Debug.TabIndex = 2
-        Me.TabPage3Debug.Text = "Debug"
-        Me.TabPage3Debug.UseVisualStyleBackColor = True
-        '
-        'LabelValueDebug0
-        '
-        Me.LabelValueDebug0.AutoSize = True
-        Me.LabelValueDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug0.Location = New System.Drawing.Point(297, 102)
-        Me.LabelValueDebug0.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug0.Name = "LabelValueDebug0"
-        Me.LabelValueDebug0.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug0.TabIndex = 241
-        Me.LabelValueDebug0.Text = "ValueDebug"
-        '
-        'LabelDebug0
-        '
-        Me.LabelDebug0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug0.Location = New System.Drawing.Point(55, 102)
-        Me.LabelDebug0.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug0.Name = "LabelDebug0"
-        Me.LabelDebug0.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.LabelDebug0.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug0.TabIndex = 167
-        Me.LabelDebug0.Text = "lbldebug"
-        Me.LabelDebug0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug1
-        '
-        Me.LabelDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug1.Location = New System.Drawing.Point(55, 118)
-        Me.LabelDebug1.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug1.Name = "LabelDebug1"
-        Me.LabelDebug1.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug1.TabIndex = 168
-        Me.LabelDebug1.Text = "lbldebug"
-        Me.LabelDebug1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug2
-        '
-        Me.LabelDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug2.Location = New System.Drawing.Point(55, 134)
-        Me.LabelDebug2.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug2.Name = "LabelDebug2"
-        Me.LabelDebug2.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug2.TabIndex = 169
-        Me.LabelDebug2.Text = "lbldebug"
-        Me.LabelDebug2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug3
-        '
-        Me.LabelDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug3.Location = New System.Drawing.Point(55, 150)
-        Me.LabelDebug3.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug3.Name = "LabelDebug3"
-        Me.LabelDebug3.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug3.TabIndex = 170
-        Me.LabelDebug3.Text = "lbldebug"
-        Me.LabelDebug3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug4
-        '
-        Me.LabelDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug4.Location = New System.Drawing.Point(55, 166)
-        Me.LabelDebug4.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug4.Name = "LabelDebug4"
-        Me.LabelDebug4.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug4.TabIndex = 171
-        Me.LabelDebug4.Text = "lbldebug"
-        Me.LabelDebug4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug5
-        '
-        Me.LabelDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug5.Location = New System.Drawing.Point(55, 182)
-        Me.LabelDebug5.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug5.Name = "LabelDebug5"
-        Me.LabelDebug5.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug5.TabIndex = 172
-        Me.LabelDebug5.Text = "lbldebug"
-        Me.LabelDebug5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug6
-        '
-        Me.LabelDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug6.Location = New System.Drawing.Point(55, 198)
-        Me.LabelDebug6.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug6.Name = "LabelDebug6"
-        Me.LabelDebug6.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug6.TabIndex = 173
-        Me.LabelDebug6.Text = "lbldebug"
-        Me.LabelDebug6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug7
-        '
-        Me.LabelDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug7.Location = New System.Drawing.Point(55, 214)
-        Me.LabelDebug7.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug7.Name = "LabelDebug7"
-        Me.LabelDebug7.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug7.TabIndex = 174
-        Me.LabelDebug7.Text = "lbldebug"
-        Me.LabelDebug7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug8
-        '
-        Me.LabelDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug8.Location = New System.Drawing.Point(55, 230)
-        Me.LabelDebug8.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug8.Name = "LabelDebug8"
-        Me.LabelDebug8.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug8.TabIndex = 175
-        Me.LabelDebug8.Text = "lbldebug"
-        Me.LabelDebug8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebug9
-        '
-        Me.LabelDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebug9.Location = New System.Drawing.Point(55, 246)
-        Me.LabelDebug9.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebug9.Name = "LabelDebug9"
-        Me.LabelDebug9.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebug9.TabIndex = 176
-        Me.LabelDebug9.Text = "lbldebug"
-        Me.LabelDebug9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebugA
-        '
-        Me.LabelDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugA.Location = New System.Drawing.Point(55, 262)
-        Me.LabelDebugA.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugA.Name = "LabelDebugA"
-        Me.LabelDebugA.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugA.TabIndex = 177
-        Me.LabelDebugA.Text = "lbldebug"
-        Me.LabelDebugA.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebugB
-        '
-        Me.LabelDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugB.Location = New System.Drawing.Point(55, 278)
-        Me.LabelDebugB.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugB.Name = "LabelDebugB"
-        Me.LabelDebugB.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugB.TabIndex = 178
-        Me.LabelDebugB.Text = "lbldebug"
-        Me.LabelDebugB.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebugC
-        '
-        Me.LabelDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugC.Location = New System.Drawing.Point(55, 294)
-        Me.LabelDebugC.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugC.Name = "LabelDebugC"
-        Me.LabelDebugC.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugC.TabIndex = 179
-        Me.LabelDebugC.Text = "lbldebug"
-        Me.LabelDebugC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebugD
-        '
-        Me.LabelDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugD.Location = New System.Drawing.Point(55, 310)
-        Me.LabelDebugD.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugD.Name = "LabelDebugD"
-        Me.LabelDebugD.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugD.TabIndex = 180
-        Me.LabelDebugD.Text = "lbldebug"
-        Me.LabelDebugD.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelDebugE
-        '
-        Me.LabelDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugE.Location = New System.Drawing.Point(55, 326)
-        Me.LabelDebugE.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugE.Name = "LabelDebugE"
-        Me.LabelDebugE.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugE.TabIndex = 181
-        Me.LabelDebugE.Text = "lbldebug"
-        Me.LabelDebugE.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelCanCXECReg
-        '
-        Me.LabelCanCXECReg.AutoSize = True
-        Me.LabelCanCXECReg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanCXECReg.Location = New System.Drawing.Point(284, 413)
-        Me.LabelCanCXECReg.Name = "LabelCanCXECReg"
-        Me.LabelCanCXECReg.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanCXECReg.TabIndex = 151
-        Me.LabelCanCXECReg.Text = "LabelCan"
-        '
-        'LabelDebugF
-        '
-        Me.LabelDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDebugF.Location = New System.Drawing.Point(55, 342)
-        Me.LabelDebugF.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelDebugF.Name = "LabelDebugF"
-        Me.LabelDebugF.Size = New System.Drawing.Size(200, 16)
-        Me.LabelDebugF.TabIndex = 182
-        Me.LabelDebugF.Text = "lbldebug"
-        Me.LabelDebugF.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelValueDebug1
-        '
-        Me.LabelValueDebug1.AutoSize = True
-        Me.LabelValueDebug1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug1.Location = New System.Drawing.Point(297, 118)
-        Me.LabelValueDebug1.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug1.Name = "LabelValueDebug1"
-        Me.LabelValueDebug1.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug1.TabIndex = 242
-        Me.LabelValueDebug1.Text = "ValueDebug"
-        '
-        'LabelValueDebug2
-        '
-        Me.LabelValueDebug2.AutoSize = True
-        Me.LabelValueDebug2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug2.Location = New System.Drawing.Point(297, 134)
-        Me.LabelValueDebug2.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug2.Name = "LabelValueDebug2"
-        Me.LabelValueDebug2.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug2.TabIndex = 243
-        Me.LabelValueDebug2.Text = "ValueDebug"
-        '
-        'LabelValueDebug3
-        '
-        Me.LabelValueDebug3.AutoSize = True
-        Me.LabelValueDebug3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug3.Location = New System.Drawing.Point(297, 150)
-        Me.LabelValueDebug3.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug3.Name = "LabelValueDebug3"
-        Me.LabelValueDebug3.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug3.TabIndex = 244
-        Me.LabelValueDebug3.Text = "ValueDebug"
-        '
-        'LabelValueDebug4
-        '
-        Me.LabelValueDebug4.AutoSize = True
-        Me.LabelValueDebug4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug4.Location = New System.Drawing.Point(297, 166)
-        Me.LabelValueDebug4.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug4.Name = "LabelValueDebug4"
-        Me.LabelValueDebug4.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug4.TabIndex = 245
-        Me.LabelValueDebug4.Text = "ValueDebug"
-        '
-        'LabelValueDebug5
-        '
-        Me.LabelValueDebug5.AutoSize = True
-        Me.LabelValueDebug5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug5.Location = New System.Drawing.Point(297, 182)
-        Me.LabelValueDebug5.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug5.Name = "LabelValueDebug5"
-        Me.LabelValueDebug5.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug5.TabIndex = 246
-        Me.LabelValueDebug5.Text = "ValueDebug"
-        '
-        'LabelValueDebug6
-        '
-        Me.LabelValueDebug6.AutoSize = True
-        Me.LabelValueDebug6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug6.Location = New System.Drawing.Point(297, 198)
-        Me.LabelValueDebug6.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug6.Name = "LabelValueDebug6"
-        Me.LabelValueDebug6.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug6.TabIndex = 247
-        Me.LabelValueDebug6.Text = "ValueDebug"
-        '
-        'LabelValueDebug7
-        '
-        Me.LabelValueDebug7.AutoSize = True
-        Me.LabelValueDebug7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug7.Location = New System.Drawing.Point(297, 214)
-        Me.LabelValueDebug7.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug7.Name = "LabelValueDebug7"
-        Me.LabelValueDebug7.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug7.TabIndex = 248
-        Me.LabelValueDebug7.Text = "ValueDebug"
-        '
-        'LabelValueDebug8
-        '
-        Me.LabelValueDebug8.AutoSize = True
-        Me.LabelValueDebug8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug8.Location = New System.Drawing.Point(297, 230)
-        Me.LabelValueDebug8.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug8.Name = "LabelValueDebug8"
-        Me.LabelValueDebug8.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug8.TabIndex = 249
-        Me.LabelValueDebug8.Text = "ValueDebug"
-        '
-        'LabelValueDebug9
-        '
-        Me.LabelValueDebug9.AutoSize = True
-        Me.LabelValueDebug9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebug9.Location = New System.Drawing.Point(297, 246)
-        Me.LabelValueDebug9.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebug9.Name = "LabelValueDebug9"
-        Me.LabelValueDebug9.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebug9.TabIndex = 250
-        Me.LabelValueDebug9.Text = "ValueDebug"
-        '
-        'LabelValueDebugA
-        '
-        Me.LabelValueDebugA.AutoSize = True
-        Me.LabelValueDebugA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugA.Location = New System.Drawing.Point(297, 262)
-        Me.LabelValueDebugA.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugA.Name = "LabelValueDebugA"
-        Me.LabelValueDebugA.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugA.TabIndex = 251
-        Me.LabelValueDebugA.Text = "ValueDebug"
-        '
-        'LabelValueDebugB
-        '
-        Me.LabelValueDebugB.AutoSize = True
-        Me.LabelValueDebugB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugB.Location = New System.Drawing.Point(297, 278)
-        Me.LabelValueDebugB.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugB.Name = "LabelValueDebugB"
-        Me.LabelValueDebugB.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugB.TabIndex = 252
-        Me.LabelValueDebugB.Text = "ValueDebug"
-        '
-        'LabelValueDebugC
-        '
-        Me.LabelValueDebugC.AutoSize = True
-        Me.LabelValueDebugC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugC.Location = New System.Drawing.Point(297, 294)
-        Me.LabelValueDebugC.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugC.Name = "LabelValueDebugC"
-        Me.LabelValueDebugC.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugC.TabIndex = 253
-        Me.LabelValueDebugC.Text = "ValueDebug"
-        '
-        'LabelValueDebugD
-        '
-        Me.LabelValueDebugD.AutoSize = True
-        Me.LabelValueDebugD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugD.Location = New System.Drawing.Point(297, 310)
-        Me.LabelValueDebugD.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugD.Name = "LabelValueDebugD"
-        Me.LabelValueDebugD.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugD.TabIndex = 254
-        Me.LabelValueDebugD.Text = "ValueDebug"
-        '
-        'LabelValueDebugE
-        '
-        Me.LabelValueDebugE.AutoSize = True
-        Me.LabelValueDebugE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugE.Location = New System.Drawing.Point(297, 326)
-        Me.LabelValueDebugE.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugE.Name = "LabelValueDebugE"
-        Me.LabelValueDebugE.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugE.TabIndex = 255
-        Me.LabelValueDebugE.Text = "ValueDebug"
-        '
-        'LabelValueDebugF
-        '
-        Me.LabelValueDebugF.AutoSize = True
-        Me.LabelValueDebugF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelValueDebugF.Location = New System.Drawing.Point(297, 342)
-        Me.LabelValueDebugF.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelValueDebugF.Name = "LabelValueDebugF"
-        Me.LabelValueDebugF.Size = New System.Drawing.Size(84, 16)
-        Me.LabelValueDebugF.TabIndex = 256
-        Me.LabelValueDebugF.Text = "ValueDebug"
-        '
-        'LabelErrorI2CBusCount
-        '
-        Me.LabelErrorI2CBusCount.AutoSize = True
-        Me.LabelErrorI2CBusCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorI2CBusCount.Location = New System.Drawing.Point(101, 541)
-        Me.LabelErrorI2CBusCount.Name = "LabelErrorI2CBusCount"
-        Me.LabelErrorI2CBusCount.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorI2CBusCount.TabIndex = 183
-        Me.LabelErrorI2CBusCount.Text = "LabelError"
-        '
-        'LabelCanErrorFlagCount
-        '
-        Me.LabelCanErrorFlagCount.AutoSize = True
-        Me.LabelCanErrorFlagCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanErrorFlagCount.Location = New System.Drawing.Point(284, 429)
-        Me.LabelCanErrorFlagCount.Name = "LabelCanErrorFlagCount"
-        Me.LabelCanErrorFlagCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanErrorFlagCount.TabIndex = 152
-        Me.LabelCanErrorFlagCount.Text = "LabelCan"
-        '
-        'LabelCanTX1Count
-        '
-        Me.LabelCanTX1Count.AutoSize = True
-        Me.LabelCanTX1Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX1Count.Location = New System.Drawing.Point(284, 445)
-        Me.LabelCanTX1Count.Name = "LabelCanTX1Count"
-        Me.LabelCanTX1Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanTX1Count.TabIndex = 153
-        Me.LabelCanTX1Count.Text = "LabelCan"
-        '
-        'LabelCanTX2Count
-        '
-        Me.LabelCanTX2Count.AutoSize = True
-        Me.LabelCanTX2Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX2Count.Location = New System.Drawing.Point(284, 461)
-        Me.LabelCanTX2Count.Name = "LabelCanTX2Count"
-        Me.LabelCanTX2Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanTX2Count.TabIndex = 154
-        Me.LabelCanTX2Count.Text = "LabelCan"
-        '
-        'LabelErrorSPIBusCount
-        '
-        Me.LabelErrorSPIBusCount.AutoSize = True
-        Me.LabelErrorSPIBusCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorSPIBusCount.Location = New System.Drawing.Point(101, 558)
-        Me.LabelErrorSPIBusCount.Name = "LabelErrorSPIBusCount"
-        Me.LabelErrorSPIBusCount.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorSPIBusCount.TabIndex = 184
-        Me.LabelErrorSPIBusCount.Text = "LabelError"
-        '
-        'LabelCanRX0Filt0Count
-        '
-        Me.LabelCanRX0Filt0Count.AutoSize = True
-        Me.LabelCanRX0Filt0Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX0Filt0Count.Location = New System.Drawing.Point(284, 477)
-        Me.LabelCanRX0Filt0Count.Name = "LabelCanRX0Filt0Count"
-        Me.LabelCanRX0Filt0Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanRX0Filt0Count.TabIndex = 155
-        Me.LabelCanRX0Filt0Count.Text = "LabelCan"
-        '
-        'LabelCanRX0Filt1Count
-        '
-        Me.LabelCanRX0Filt1Count.AutoSize = True
-        Me.LabelCanRX0Filt1Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX0Filt1Count.Location = New System.Drawing.Point(284, 493)
-        Me.LabelCanRX0Filt1Count.Name = "LabelCanRX0Filt1Count"
-        Me.LabelCanRX0Filt1Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanRX0Filt1Count.TabIndex = 156
-        Me.LabelCanRX0Filt1Count.Text = "LabelCan"
-        '
-        'LabelCanRX1Filt2Count
-        '
-        Me.LabelCanRX1Filt2Count.AutoSize = True
-        Me.LabelCanRX1Filt2Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRX1Filt2Count.Location = New System.Drawing.Point(284, 509)
-        Me.LabelCanRX1Filt2Count.Name = "LabelCanRX1Filt2Count"
-        Me.LabelCanRX1Filt2Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanRX1Filt2Count.TabIndex = 157
-        Me.LabelCanRX1Filt2Count.Text = "LabelCan"
-        '
-        'LabelCanISREnteredCount
-        '
-        Me.LabelCanISREnteredCount.AutoSize = True
-        Me.LabelCanISREnteredCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanISREnteredCount.Location = New System.Drawing.Point(284, 525)
-        Me.LabelCanISREnteredCount.Name = "LabelCanISREnteredCount"
-        Me.LabelCanISREnteredCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanISREnteredCount.TabIndex = 158
-        Me.LabelCanISREnteredCount.Text = "LabelCan"
-        '
-        'LabelCanUnknownIdentifierCount
-        '
-        Me.LabelCanUnknownIdentifierCount.AutoSize = True
-        Me.LabelCanUnknownIdentifierCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanUnknownIdentifierCount.Location = New System.Drawing.Point(284, 541)
-        Me.LabelCanUnknownIdentifierCount.Name = "LabelCanUnknownIdentifierCount"
-        Me.LabelCanUnknownIdentifierCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanUnknownIdentifierCount.TabIndex = 159
-        Me.LabelCanUnknownIdentifierCount.Text = "LabelCan"
-        '
-        'LabelCanInvalidIndexCount
-        '
-        Me.LabelCanInvalidIndexCount.AutoSize = True
-        Me.LabelCanInvalidIndexCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanInvalidIndexCount.Location = New System.Drawing.Point(284, 557)
-        Me.LabelCanInvalidIndexCount.Name = "LabelCanInvalidIndexCount"
-        Me.LabelCanInvalidIndexCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanInvalidIndexCount.TabIndex = 160
-        Me.LabelCanInvalidIndexCount.Text = "LabelCan"
-        '
-        'LabelErrorScaleCount
-        '
-        Me.LabelErrorScaleCount.AutoSize = True
-        Me.LabelErrorScaleCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorScaleCount.Location = New System.Drawing.Point(101, 573)
-        Me.LabelErrorScaleCount.Name = "LabelErrorScaleCount"
-        Me.LabelErrorScaleCount.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorScaleCount.TabIndex = 186
-        Me.LabelErrorScaleCount.Text = "LabelError"
-        '
-        'LabelCanAddressErrorCount
-        '
-        Me.LabelCanAddressErrorCount.AutoSize = True
-        Me.LabelCanAddressErrorCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanAddressErrorCount.Location = New System.Drawing.Point(284, 573)
-        Me.LabelCanAddressErrorCount.Name = "LabelCanAddressErrorCount"
-        Me.LabelCanAddressErrorCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanAddressErrorCount.TabIndex = 161
-        Me.LabelCanAddressErrorCount.Text = "LabelCan"
-        '
-        'LabelCanTX0Count
-        '
-        Me.LabelCanTX0Count.AutoSize = True
-        Me.LabelCanTX0Count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTX0Count.Location = New System.Drawing.Point(284, 589)
-        Me.LabelCanTX0Count.Name = "LabelCanTX0Count"
-        Me.LabelCanTX0Count.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanTX0Count.TabIndex = 162
-        Me.LabelCanTX0Count.Text = "LabelCan"
-        '
-        'LabelCanTXBufOverflowCount
-        '
-        Me.LabelCanTXBufOverflowCount.AutoSize = True
-        Me.LabelCanTXBufOverflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTXBufOverflowCount.Location = New System.Drawing.Point(284, 605)
-        Me.LabelCanTXBufOverflowCount.Name = "LabelCanTXBufOverflowCount"
-        Me.LabelCanTXBufOverflowCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanTXBufOverflowCount.TabIndex = 163
-        Me.LabelCanTXBufOverflowCount.Text = "LabelCan"
-        '
-        'LabelErrorResetCount
-        '
-        Me.LabelErrorResetCount.AutoSize = True
-        Me.LabelErrorResetCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorResetCount.Location = New System.Drawing.Point(101, 589)
-        Me.LabelErrorResetCount.Name = "LabelErrorResetCount"
-        Me.LabelErrorResetCount.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorResetCount.TabIndex = 187
-        Me.LabelErrorResetCount.Text = "LabelError"
-        '
-        'LabelCanRXBufferOverflowCount
-        '
-        Me.LabelCanRXBufferOverflowCount.AutoSize = True
-        Me.LabelCanRXBufferOverflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanRXBufferOverflowCount.Location = New System.Drawing.Point(284, 621)
-        Me.LabelCanRXBufferOverflowCount.Name = "LabelCanRXBufferOverflowCount"
-        Me.LabelCanRXBufferOverflowCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanRXBufferOverflowCount.TabIndex = 164
-        Me.LabelCanRXBufferOverflowCount.Text = "LabelCan"
-        '
-        'LabelCAnDataLogRXBufferOVerflowCount
-        '
-        Me.LabelCAnDataLogRXBufferOVerflowCount.AutoSize = True
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Location = New System.Drawing.Point(284, 637)
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Name = "LabelCAnDataLogRXBufferOVerflowCount"
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCAnDataLogRXBufferOVerflowCount.TabIndex = 165
-        Me.LabelCAnDataLogRXBufferOVerflowCount.Text = "LabelCan"
-        '
-        'LabelCanTimeoutCount
-        '
-        Me.LabelCanTimeoutCount.AutoSize = True
-        Me.LabelCanTimeoutCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelCanTimeoutCount.Location = New System.Drawing.Point(284, 653)
-        Me.LabelCanTimeoutCount.Name = "LabelCanTimeoutCount"
-        Me.LabelCanTimeoutCount.Size = New System.Drawing.Size(66, 16)
-        Me.LabelCanTimeoutCount.TabIndex = 166
-        Me.LabelCanTimeoutCount.Text = "LabelCan"
-        '
-        'LabelErrorSelfTestResultRegister
-        '
-        Me.LabelErrorSelfTestResultRegister.AutoSize = True
-        Me.LabelErrorSelfTestResultRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorSelfTestResultRegister.Location = New System.Drawing.Point(101, 605)
-        Me.LabelErrorSelfTestResultRegister.Name = "LabelErrorSelfTestResultRegister"
-        Me.LabelErrorSelfTestResultRegister.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorSelfTestResultRegister.TabIndex = 188
-        Me.LabelErrorSelfTestResultRegister.Text = "LabelError"
-        '
-        'LabelErrorReserved0
-        '
-        Me.LabelErrorReserved0.AutoSize = True
-        Me.LabelErrorReserved0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorReserved0.Location = New System.Drawing.Point(101, 621)
-        Me.LabelErrorReserved0.Name = "LabelErrorReserved0"
-        Me.LabelErrorReserved0.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorReserved0.TabIndex = 189
-        Me.LabelErrorReserved0.Text = "LabelError"
-        '
-        'LabelErrorReserved1
-        '
-        Me.LabelErrorReserved1.AutoSize = True
-        Me.LabelErrorReserved1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelErrorReserved1.Location = New System.Drawing.Point(101, 637)
-        Me.LabelErrorReserved1.Name = "LabelErrorReserved1"
-        Me.LabelErrorReserved1.Size = New System.Drawing.Size(71, 16)
-        Me.LabelErrorReserved1.TabIndex = 190
-        Me.LabelErrorReserved1.Text = "LabelError"
-        '
-        'LabelRCON
-        '
-        Me.LabelRCON.AutoSize = True
-        Me.LabelRCON.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRCON.Location = New System.Drawing.Point(101, 653)
-        Me.LabelRCON.Name = "LabelRCON"
-        Me.LabelRCON.Size = New System.Drawing.Size(71, 16)
-        Me.LabelRCON.TabIndex = 267
-        Me.LabelRCON.Text = "LabelError"
-        '
         'TabPage2Slave
         '
-        Me.TabPage2Slave.Controls.Add(Me.BtnClearDebug)
-        Me.TabPage2Slave.Controls.Add(Me.BtnAFCManual)
-        Me.TabPage2Slave.Controls.Add(Me.BtnAFCAuto)
+        Me.TabPage2Slave.Controls.Add(Me.BtnMCUReset)
+        Me.TabPage2Slave.Controls.Add(Me.CoBoxSelectedCanBoard)
         Me.TabPage2Slave.Controls.Add(Me.BtnSetCalPair)
         Me.TabPage2Slave.Controls.Add(Me.BtnEEPromDebug)
         Me.TabPage2Slave.Controls.Add(Me.LblDebug7)
@@ -3288,7 +1961,6 @@ Partial Class frmMain
         Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog5)
         Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog6)
         Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog7)
-        Me.TabPage2Slave.Controls.Add(Me.cboIndex)
         Me.TabPage2Slave.Controls.Add(Me.LabelFirmwareVerssion)
         Me.TabPage2Slave.Controls.Add(Me.LblSlaveLog8)
         Me.TabPage2Slave.Controls.Add(Me.LabelAgileInfo)
@@ -3307,36 +1979,28 @@ Partial Class frmMain
         Me.TabPage2Slave.Text = "Slave"
         Me.TabPage2Slave.UseVisualStyleBackColor = True
         '
-        'BtnClearDebug
+        'BtnMCUReset
         '
-        Me.BtnClearDebug.Location = New System.Drawing.Point(6, 889)
-        Me.BtnClearDebug.Name = "BtnClearDebug"
-        Me.BtnClearDebug.Size = New System.Drawing.Size(93, 23)
-        Me.BtnClearDebug.TabIndex = 627
-        Me.BtnClearDebug.Text = "Clear Debug"
-        Me.BtnClearDebug.UseVisualStyleBackColor = True
+        Me.BtnMCUReset.Location = New System.Drawing.Point(105, 809)
+        Me.BtnMCUReset.Name = "BtnMCUReset"
+        Me.BtnMCUReset.Size = New System.Drawing.Size(93, 23)
+        Me.BtnMCUReset.TabIndex = 629
+        Me.BtnMCUReset.Text = "Reset MCU"
+        Me.BtnMCUReset.UseVisualStyleBackColor = True
         '
-        'BtnAFCManual
+        'CoBoxSelectedCanBoard
         '
-        Me.BtnAFCManual.Location = New System.Drawing.Point(105, 860)
-        Me.BtnAFCManual.Name = "BtnAFCManual"
-        Me.BtnAFCManual.Size = New System.Drawing.Size(93, 23)
-        Me.BtnAFCManual.TabIndex = 626
-        Me.BtnAFCManual.Text = "AFC Manual"
-        Me.BtnAFCManual.UseVisualStyleBackColor = True
-        '
-        'BtnAFCAuto
-        '
-        Me.BtnAFCAuto.Location = New System.Drawing.Point(105, 889)
-        Me.BtnAFCAuto.Name = "BtnAFCAuto"
-        Me.BtnAFCAuto.Size = New System.Drawing.Size(93, 23)
-        Me.BtnAFCAuto.TabIndex = 625
-        Me.BtnAFCAuto.Text = "AFC AUTO"
-        Me.BtnAFCAuto.UseVisualStyleBackColor = True
+        Me.CoBoxSelectedCanBoard.FormattingEnabled = True
+        Me.CoBoxSelectedCanBoard.Items.AddRange(New Object() {"HVPS Interface", "Ion Pump Interface", "AFC Interface", "Cooling / SF6 Interface", "Magnetron Heater/Magnet", "Gun Driver", "Magnetron Current Monitor", "Target Current Monitor", "Dose Monitor", "PFN Interfacce", "System Control Board"})
+        Me.CoBoxSelectedCanBoard.Location = New System.Drawing.Point(6, 12)
+        Me.CoBoxSelectedCanBoard.Name = "CoBoxSelectedCanBoard"
+        Me.CoBoxSelectedCanBoard.Size = New System.Drawing.Size(204, 21)
+        Me.CoBoxSelectedCanBoard.TabIndex = 628
+        Me.CoBoxSelectedCanBoard.Text = "System Control Board"
         '
         'BtnSetCalPair
         '
-        Me.BtnSetCalPair.Location = New System.Drawing.Point(105, 802)
+        Me.BtnSetCalPair.Location = New System.Drawing.Point(6, 838)
         Me.BtnSetCalPair.Name = "BtnSetCalPair"
         Me.BtnSetCalPair.Size = New System.Drawing.Size(93, 23)
         Me.BtnSetCalPair.TabIndex = 624
@@ -3345,7 +2009,7 @@ Partial Class frmMain
         '
         'BtnEEPromDebug
         '
-        Me.BtnEEPromDebug.Location = New System.Drawing.Point(6, 773)
+        Me.BtnEEPromDebug.Location = New System.Drawing.Point(105, 867)
         Me.BtnEEPromDebug.Name = "BtnEEPromDebug"
         Me.BtnEEPromDebug.Size = New System.Drawing.Size(93, 23)
         Me.BtnEEPromDebug.TabIndex = 622
@@ -3442,7 +2106,7 @@ Partial Class frmMain
         '
         'BtnRamDebug
         '
-        Me.BtnRamDebug.Location = New System.Drawing.Point(6, 802)
+        Me.BtnRamDebug.Location = New System.Drawing.Point(105, 838)
         Me.BtnRamDebug.Name = "BtnRamDebug"
         Me.BtnRamDebug.Size = New System.Drawing.Size(93, 23)
         Me.BtnRamDebug.TabIndex = 613
@@ -3451,7 +2115,7 @@ Partial Class frmMain
         '
         'BtnSlaveDefaultEEProm
         '
-        Me.BtnSlaveDefaultEEProm.Location = New System.Drawing.Point(6, 860)
+        Me.BtnSlaveDefaultEEProm.Location = New System.Drawing.Point(6, 867)
         Me.BtnSlaveDefaultEEProm.Name = "BtnSlaveDefaultEEProm"
         Me.BtnSlaveDefaultEEProm.Size = New System.Drawing.Size(93, 23)
         Me.BtnSlaveDefaultEEProm.TabIndex = 612
@@ -3460,7 +2124,7 @@ Partial Class frmMain
         '
         'BtnSetRevSN
         '
-        Me.BtnSetRevSN.Location = New System.Drawing.Point(6, 831)
+        Me.BtnSetRevSN.Location = New System.Drawing.Point(6, 809)
         Me.BtnSetRevSN.Name = "BtnSetRevSN"
         Me.BtnSetRevSN.Size = New System.Drawing.Size(93, 23)
         Me.BtnSetRevSN.TabIndex = 611
@@ -4979,7 +3643,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedF.AutoSize = True
         Me.CbxSlaveStatusNotLoggedF.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedF.Location = New System.Drawing.Point(189, 745)
+        Me.CbxSlaveStatusNotLoggedF.Location = New System.Drawing.Point(189, 738)
         Me.CbxSlaveStatusNotLoggedF.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedF.Name = "CbxSlaveStatusNotLoggedF"
         Me.CbxSlaveStatusNotLoggedF.Size = New System.Drawing.Size(74, 20)
@@ -4992,7 +3656,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedE.AutoSize = True
         Me.CbxSlaveStatusNotLoggedE.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedE.Location = New System.Drawing.Point(189, 725)
+        Me.CbxSlaveStatusNotLoggedE.Location = New System.Drawing.Point(189, 718)
         Me.CbxSlaveStatusNotLoggedE.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedE.Name = "CbxSlaveStatusNotLoggedE"
         Me.CbxSlaveStatusNotLoggedE.Size = New System.Drawing.Size(74, 20)
@@ -5005,7 +3669,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedD.AutoSize = True
         Me.CbxSlaveStatusNotLoggedD.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedD.Location = New System.Drawing.Point(189, 705)
+        Me.CbxSlaveStatusNotLoggedD.Location = New System.Drawing.Point(189, 698)
         Me.CbxSlaveStatusNotLoggedD.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedD.Name = "CbxSlaveStatusNotLoggedD"
         Me.CbxSlaveStatusNotLoggedD.Size = New System.Drawing.Size(74, 20)
@@ -5018,7 +3682,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedC.AutoSize = True
         Me.CbxSlaveStatusNotLoggedC.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedC.Location = New System.Drawing.Point(189, 685)
+        Me.CbxSlaveStatusNotLoggedC.Location = New System.Drawing.Point(189, 678)
         Me.CbxSlaveStatusNotLoggedC.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedC.Name = "CbxSlaveStatusNotLoggedC"
         Me.CbxSlaveStatusNotLoggedC.Size = New System.Drawing.Size(74, 20)
@@ -5031,7 +3695,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedB.AutoSize = True
         Me.CbxSlaveStatusNotLoggedB.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedB.Location = New System.Drawing.Point(189, 665)
+        Me.CbxSlaveStatusNotLoggedB.Location = New System.Drawing.Point(189, 658)
         Me.CbxSlaveStatusNotLoggedB.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedB.Name = "CbxSlaveStatusNotLoggedB"
         Me.CbxSlaveStatusNotLoggedB.Size = New System.Drawing.Size(74, 20)
@@ -5044,7 +3708,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLoggedA.AutoSize = True
         Me.CbxSlaveStatusNotLoggedA.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLoggedA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLoggedA.Location = New System.Drawing.Point(189, 645)
+        Me.CbxSlaveStatusNotLoggedA.Location = New System.Drawing.Point(189, 638)
         Me.CbxSlaveStatusNotLoggedA.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLoggedA.Name = "CbxSlaveStatusNotLoggedA"
         Me.CbxSlaveStatusNotLoggedA.Size = New System.Drawing.Size(74, 20)
@@ -5057,7 +3721,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged9.AutoSize = True
         Me.CbxSlaveStatusNotLogged9.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged9.Location = New System.Drawing.Point(189, 625)
+        Me.CbxSlaveStatusNotLogged9.Location = New System.Drawing.Point(189, 618)
         Me.CbxSlaveStatusNotLogged9.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged9.Name = "CbxSlaveStatusNotLogged9"
         Me.CbxSlaveStatusNotLogged9.Size = New System.Drawing.Size(74, 20)
@@ -5070,7 +3734,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged8.AutoSize = True
         Me.CbxSlaveStatusNotLogged8.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged8.Location = New System.Drawing.Point(189, 605)
+        Me.CbxSlaveStatusNotLogged8.Location = New System.Drawing.Point(189, 598)
         Me.CbxSlaveStatusNotLogged8.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged8.Name = "CbxSlaveStatusNotLogged8"
         Me.CbxSlaveStatusNotLogged8.Size = New System.Drawing.Size(74, 20)
@@ -5083,7 +3747,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged0.AutoSize = True
         Me.CbxSlaveStatusNotLogged0.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged0.Location = New System.Drawing.Point(189, 445)
+        Me.CbxSlaveStatusNotLogged0.Location = New System.Drawing.Point(189, 438)
         Me.CbxSlaveStatusNotLogged0.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged0.Name = "CbxSlaveStatusNotLogged0"
         Me.CbxSlaveStatusNotLogged0.Size = New System.Drawing.Size(74, 20)
@@ -5096,7 +3760,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged7.AutoSize = True
         Me.CbxSlaveStatusNotLogged7.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged7.Location = New System.Drawing.Point(189, 585)
+        Me.CbxSlaveStatusNotLogged7.Location = New System.Drawing.Point(189, 578)
         Me.CbxSlaveStatusNotLogged7.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged7.Name = "CbxSlaveStatusNotLogged7"
         Me.CbxSlaveStatusNotLogged7.Size = New System.Drawing.Size(74, 20)
@@ -5109,7 +3773,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged6.AutoSize = True
         Me.CbxSlaveStatusNotLogged6.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged6.Location = New System.Drawing.Point(189, 565)
+        Me.CbxSlaveStatusNotLogged6.Location = New System.Drawing.Point(189, 558)
         Me.CbxSlaveStatusNotLogged6.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged6.Name = "CbxSlaveStatusNotLogged6"
         Me.CbxSlaveStatusNotLogged6.Size = New System.Drawing.Size(74, 20)
@@ -5122,7 +3786,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged5.AutoSize = True
         Me.CbxSlaveStatusNotLogged5.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged5.Location = New System.Drawing.Point(189, 545)
+        Me.CbxSlaveStatusNotLogged5.Location = New System.Drawing.Point(189, 538)
         Me.CbxSlaveStatusNotLogged5.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged5.Name = "CbxSlaveStatusNotLogged5"
         Me.CbxSlaveStatusNotLogged5.Size = New System.Drawing.Size(74, 20)
@@ -5135,7 +3799,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged4.AutoSize = True
         Me.CbxSlaveStatusNotLogged4.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged4.Location = New System.Drawing.Point(189, 525)
+        Me.CbxSlaveStatusNotLogged4.Location = New System.Drawing.Point(189, 518)
         Me.CbxSlaveStatusNotLogged4.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged4.Name = "CbxSlaveStatusNotLogged4"
         Me.CbxSlaveStatusNotLogged4.Size = New System.Drawing.Size(74, 20)
@@ -5148,7 +3812,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged3.AutoSize = True
         Me.CbxSlaveStatusNotLogged3.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged3.Location = New System.Drawing.Point(189, 505)
+        Me.CbxSlaveStatusNotLogged3.Location = New System.Drawing.Point(189, 498)
         Me.CbxSlaveStatusNotLogged3.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged3.Name = "CbxSlaveStatusNotLogged3"
         Me.CbxSlaveStatusNotLogged3.Size = New System.Drawing.Size(74, 20)
@@ -5161,7 +3825,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged2.AutoSize = True
         Me.CbxSlaveStatusNotLogged2.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged2.Location = New System.Drawing.Point(189, 485)
+        Me.CbxSlaveStatusNotLogged2.Location = New System.Drawing.Point(189, 478)
         Me.CbxSlaveStatusNotLogged2.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged2.Name = "CbxSlaveStatusNotLogged2"
         Me.CbxSlaveStatusNotLogged2.Size = New System.Drawing.Size(74, 20)
@@ -5174,7 +3838,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusNotLogged1.AutoSize = True
         Me.CbxSlaveStatusNotLogged1.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusNotLogged1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusNotLogged1.Location = New System.Drawing.Point(189, 465)
+        Me.CbxSlaveStatusNotLogged1.Location = New System.Drawing.Point(189, 458)
         Me.CbxSlaveStatusNotLogged1.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusNotLogged1.Name = "CbxSlaveStatusNotLogged1"
         Me.CbxSlaveStatusNotLogged1.Size = New System.Drawing.Size(74, 20)
@@ -5187,7 +3851,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedF.AutoSize = True
         Me.CbxSlaveStatusLoggedF.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedF.Location = New System.Drawing.Point(3, 745)
+        Me.CbxSlaveStatusLoggedF.Location = New System.Drawing.Point(3, 738)
         Me.CbxSlaveStatusLoggedF.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedF.Name = "CbxSlaveStatusLoggedF"
         Me.CbxSlaveStatusLoggedF.Size = New System.Drawing.Size(74, 20)
@@ -5200,7 +3864,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedE.AutoSize = True
         Me.CbxSlaveStatusLoggedE.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedE.Location = New System.Drawing.Point(3, 725)
+        Me.CbxSlaveStatusLoggedE.Location = New System.Drawing.Point(3, 718)
         Me.CbxSlaveStatusLoggedE.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedE.Name = "CbxSlaveStatusLoggedE"
         Me.CbxSlaveStatusLoggedE.Size = New System.Drawing.Size(74, 20)
@@ -5213,7 +3877,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedD.AutoSize = True
         Me.CbxSlaveStatusLoggedD.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedD.Location = New System.Drawing.Point(3, 705)
+        Me.CbxSlaveStatusLoggedD.Location = New System.Drawing.Point(3, 698)
         Me.CbxSlaveStatusLoggedD.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedD.Name = "CbxSlaveStatusLoggedD"
         Me.CbxSlaveStatusLoggedD.Size = New System.Drawing.Size(74, 20)
@@ -5226,7 +3890,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedC.AutoSize = True
         Me.CbxSlaveStatusLoggedC.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedC.Location = New System.Drawing.Point(3, 685)
+        Me.CbxSlaveStatusLoggedC.Location = New System.Drawing.Point(3, 678)
         Me.CbxSlaveStatusLoggedC.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedC.Name = "CbxSlaveStatusLoggedC"
         Me.CbxSlaveStatusLoggedC.Size = New System.Drawing.Size(74, 20)
@@ -5239,7 +3903,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedB.AutoSize = True
         Me.CbxSlaveStatusLoggedB.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedB.Location = New System.Drawing.Point(3, 665)
+        Me.CbxSlaveStatusLoggedB.Location = New System.Drawing.Point(3, 658)
         Me.CbxSlaveStatusLoggedB.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedB.Name = "CbxSlaveStatusLoggedB"
         Me.CbxSlaveStatusLoggedB.Size = New System.Drawing.Size(74, 20)
@@ -5252,7 +3916,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLoggedA.AutoSize = True
         Me.CbxSlaveStatusLoggedA.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLoggedA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLoggedA.Location = New System.Drawing.Point(3, 645)
+        Me.CbxSlaveStatusLoggedA.Location = New System.Drawing.Point(3, 638)
         Me.CbxSlaveStatusLoggedA.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLoggedA.Name = "CbxSlaveStatusLoggedA"
         Me.CbxSlaveStatusLoggedA.Size = New System.Drawing.Size(74, 20)
@@ -5265,7 +3929,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged9.AutoSize = True
         Me.CbxSlaveStatusLogged9.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged9.Location = New System.Drawing.Point(3, 625)
+        Me.CbxSlaveStatusLogged9.Location = New System.Drawing.Point(3, 618)
         Me.CbxSlaveStatusLogged9.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged9.Name = "CbxSlaveStatusLogged9"
         Me.CbxSlaveStatusLogged9.Size = New System.Drawing.Size(74, 20)
@@ -5278,7 +3942,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged8.AutoSize = True
         Me.CbxSlaveStatusLogged8.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged8.Location = New System.Drawing.Point(3, 605)
+        Me.CbxSlaveStatusLogged8.Location = New System.Drawing.Point(3, 598)
         Me.CbxSlaveStatusLogged8.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged8.Name = "CbxSlaveStatusLogged8"
         Me.CbxSlaveStatusLogged8.Size = New System.Drawing.Size(74, 20)
@@ -5291,7 +3955,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged0.AutoSize = True
         Me.CbxSlaveStatusLogged0.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged0.Location = New System.Drawing.Point(3, 445)
+        Me.CbxSlaveStatusLogged0.Location = New System.Drawing.Point(3, 438)
         Me.CbxSlaveStatusLogged0.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged0.Name = "CbxSlaveStatusLogged0"
         Me.CbxSlaveStatusLogged0.Size = New System.Drawing.Size(74, 20)
@@ -5304,7 +3968,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged7.AutoSize = True
         Me.CbxSlaveStatusLogged7.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged7.Location = New System.Drawing.Point(3, 585)
+        Me.CbxSlaveStatusLogged7.Location = New System.Drawing.Point(3, 578)
         Me.CbxSlaveStatusLogged7.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged7.Name = "CbxSlaveStatusLogged7"
         Me.CbxSlaveStatusLogged7.Size = New System.Drawing.Size(74, 20)
@@ -5317,7 +3981,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged6.AutoSize = True
         Me.CbxSlaveStatusLogged6.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged6.Location = New System.Drawing.Point(3, 565)
+        Me.CbxSlaveStatusLogged6.Location = New System.Drawing.Point(3, 558)
         Me.CbxSlaveStatusLogged6.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged6.Name = "CbxSlaveStatusLogged6"
         Me.CbxSlaveStatusLogged6.Size = New System.Drawing.Size(74, 20)
@@ -5330,7 +3994,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged5.AutoSize = True
         Me.CbxSlaveStatusLogged5.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged5.Location = New System.Drawing.Point(3, 545)
+        Me.CbxSlaveStatusLogged5.Location = New System.Drawing.Point(3, 538)
         Me.CbxSlaveStatusLogged5.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged5.Name = "CbxSlaveStatusLogged5"
         Me.CbxSlaveStatusLogged5.Size = New System.Drawing.Size(74, 20)
@@ -5343,7 +4007,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged4.AutoSize = True
         Me.CbxSlaveStatusLogged4.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged4.Location = New System.Drawing.Point(3, 525)
+        Me.CbxSlaveStatusLogged4.Location = New System.Drawing.Point(3, 518)
         Me.CbxSlaveStatusLogged4.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged4.Name = "CbxSlaveStatusLogged4"
         Me.CbxSlaveStatusLogged4.Size = New System.Drawing.Size(74, 20)
@@ -5356,7 +4020,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged3.AutoSize = True
         Me.CbxSlaveStatusLogged3.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged3.Location = New System.Drawing.Point(3, 505)
+        Me.CbxSlaveStatusLogged3.Location = New System.Drawing.Point(3, 498)
         Me.CbxSlaveStatusLogged3.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged3.Name = "CbxSlaveStatusLogged3"
         Me.CbxSlaveStatusLogged3.Size = New System.Drawing.Size(74, 20)
@@ -5369,7 +4033,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged2.AutoSize = True
         Me.CbxSlaveStatusLogged2.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged2.Location = New System.Drawing.Point(3, 485)
+        Me.CbxSlaveStatusLogged2.Location = New System.Drawing.Point(3, 478)
         Me.CbxSlaveStatusLogged2.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged2.Name = "CbxSlaveStatusLogged2"
         Me.CbxSlaveStatusLogged2.Size = New System.Drawing.Size(74, 20)
@@ -5382,7 +4046,7 @@ Partial Class frmMain
         Me.CbxSlaveStatusLogged1.AutoSize = True
         Me.CbxSlaveStatusLogged1.BackColor = System.Drawing.SystemColors.Control
         Me.CbxSlaveStatusLogged1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbxSlaveStatusLogged1.Location = New System.Drawing.Point(3, 465)
+        Me.CbxSlaveStatusLogged1.Location = New System.Drawing.Point(3, 458)
         Me.CbxSlaveStatusLogged1.Margin = New System.Windows.Forms.Padding(0)
         Me.CbxSlaveStatusLogged1.Name = "CbxSlaveStatusLogged1"
         Me.CbxSlaveStatusLogged1.Size = New System.Drawing.Size(74, 20)
@@ -5894,16 +4558,6 @@ Partial Class frmMain
         Me.LblSlaveLog7.Text = "Log Data 7"
         Me.LblSlaveLog7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cboIndex
-        '
-        Me.cboIndex.FormattingEnabled = True
-        Me.cboIndex.Items.AddRange(New Object() {"MODBUS_WR_HVLAMBDA " & Global.Microsoft.VisualBasic.ChrW(9), "MODBUS_WR_ION_PUMP", "MODBUS_WR_AFC", "MODBUS_WR_COOLING", "MODBUS_WR_HTR_MAGNET", "MODBUS_WR_GUN_DRIVER", "MODBUS_WR_MAGNETRON_CURRENT", "MODBUS_WR_PULSE_SYNC", "MODBUS_WR_ETHERNET"})
-        Me.cboIndex.Location = New System.Drawing.Point(3, 13)
-        Me.cboIndex.Name = "cboIndex"
-        Me.cboIndex.Size = New System.Drawing.Size(171, 21)
-        Me.cboIndex.TabIndex = 2
-        Me.cboIndex.Text = "MODBUS_WR_HVLAMBDA " & Global.Microsoft.VisualBasic.ChrW(9)
-        '
         'LabelFirmwareVerssion
         '
         Me.LabelFirmwareVerssion.AutoSize = True
@@ -6009,21 +4663,213 @@ Partial Class frmMain
         Me.LblSlaveLog14.Text = "Log Data 14"
         Me.LblSlaveLog14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'BtnClearDebug
+        '
+        Me.BtnClearDebug.Location = New System.Drawing.Point(816, 170)
+        Me.BtnClearDebug.Name = "BtnClearDebug"
+        Me.BtnClearDebug.Size = New System.Drawing.Size(219, 23)
+        Me.BtnClearDebug.TabIndex = 627
+        Me.BtnClearDebug.Text = "Clear Debug"
+        Me.BtnClearDebug.UseVisualStyleBackColor = True
+        '
+        'BtnAFCAuto
+        '
+        Me.BtnAFCAuto.Location = New System.Drawing.Point(469, 141)
+        Me.BtnAFCAuto.Name = "BtnAFCAuto"
+        Me.BtnAFCAuto.Size = New System.Drawing.Size(219, 23)
+        Me.BtnAFCAuto.TabIndex = 625
+        Me.BtnAFCAuto.Text = "AFC AUTO"
+        Me.BtnAFCAuto.UseVisualStyleBackColor = True
+        '
         'TabPage1ECB
         '
+        Me.TabPage1ECB.Controls.Add(Me.BtnSystemSerialNumber)
+        Me.TabPage1ECB.Controls.Add(Me.BtnClearDebug)
+        Me.TabPage1ECB.Controls.Add(Me.Label19)
+        Me.TabPage1ECB.Controls.Add(Me.BtnAFCAuto)
+        Me.TabPage1ECB.Controls.Add(Me.Label18)
+        Me.TabPage1ECB.Controls.Add(Me.BtnAFCManual)
+        Me.TabPage1ECB.Controls.Add(Me.Label16)
+        Me.TabPage1ECB.Controls.Add(Me.Button16)
+        Me.TabPage1ECB.Controls.Add(Me.BtnZeroOnTimeCounter)
+        Me.TabPage1ECB.Controls.Add(Me.BtnZeroArcPulseCounter)
+        Me.TabPage1ECB.Controls.Add(Me.Button13)
+        Me.TabPage1ECB.Controls.Add(Me.Button12)
+        Me.TabPage1ECB.Controls.Add(Me.Button11)
+        Me.TabPage1ECB.Controls.Add(Me.Button10)
+        Me.TabPage1ECB.Controls.Add(Me.Button9)
+        Me.TabPage1ECB.Controls.Add(Me.BtnEEpromWriteStatusClear)
+        Me.TabPage1ECB.Controls.Add(Me.Button7)
+        Me.TabPage1ECB.Controls.Add(Me.Button6)
+        Me.TabPage1ECB.Controls.Add(Me.Button5)
         Me.TabPage1ECB.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1ECB.Name = "TabPage1ECB"
         Me.TabPage1ECB.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1ECB.Size = New System.Drawing.Size(1415, 935)
         Me.TabPage1ECB.TabIndex = 1
-        Me.TabPage1ECB.Text = "ECB"
+        Me.TabPage1ECB.Text = "Commands"
         Me.TabPage1ECB.UseVisualStyleBackColor = True
+        '
+        'BtnSystemSerialNumber
+        '
+        Me.BtnSystemSerialNumber.Location = New System.Drawing.Point(816, 141)
+        Me.BtnSystemSerialNumber.Name = "BtnSystemSerialNumber"
+        Me.BtnSystemSerialNumber.Size = New System.Drawing.Size(219, 23)
+        Me.BtnSystemSerialNumber.TabIndex = 638
+        Me.BtnSystemSerialNumber.Text = "Set System Serial Number"
+        Me.BtnSystemSerialNumber.UseVisualStyleBackColor = True
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(49, 19)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(125, 26)
+        Me.Label19.TabIndex = 637
+        Me.Label19.Text = "Commands"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(811, 19)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(176, 26)
+        Me.Label18.TabIndex = 636
+        Me.Label18.Text = "ETM Commands"
+        '
+        'BtnAFCManual
+        '
+        Me.BtnAFCManual.Location = New System.Drawing.Point(469, 112)
+        Me.BtnAFCManual.Name = "BtnAFCManual"
+        Me.BtnAFCManual.Size = New System.Drawing.Size(219, 23)
+        Me.BtnAFCManual.TabIndex = 626
+        Me.BtnAFCManual.Text = "AFC Manual"
+        Me.BtnAFCManual.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(484, 19)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(204, 26)
+        Me.Label16.TabIndex = 635
+        Me.Label16.Text = "Service Commands"
+        '
+        'Button16
+        '
+        Me.Button16.Location = New System.Drawing.Point(816, 112)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(219, 23)
+        Me.Button16.TabIndex = 634
+        Me.Button16.Text = "Save Settings to Factory Default"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'BtnZeroOnTimeCounter
+        '
+        Me.BtnZeroOnTimeCounter.Location = New System.Drawing.Point(816, 83)
+        Me.BtnZeroOnTimeCounter.Name = "BtnZeroOnTimeCounter"
+        Me.BtnZeroOnTimeCounter.Size = New System.Drawing.Size(219, 23)
+        Me.BtnZeroOnTimeCounter.TabIndex = 633
+        Me.BtnZeroOnTimeCounter.Text = "Zero On Time Counters"
+        Me.BtnZeroOnTimeCounter.UseVisualStyleBackColor = True
+        '
+        'BtnZeroArcPulseCounter
+        '
+        Me.BtnZeroArcPulseCounter.Location = New System.Drawing.Point(816, 54)
+        Me.BtnZeroArcPulseCounter.Name = "BtnZeroArcPulseCounter"
+        Me.BtnZeroArcPulseCounter.Size = New System.Drawing.Size(219, 23)
+        Me.BtnZeroArcPulseCounter.TabIndex = 632
+        Me.BtnZeroArcPulseCounter.Text = "Zero Pulse and Arc Count"
+        Me.BtnZeroArcPulseCounter.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(469, 315)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(219, 23)
+        Me.Button13.TabIndex = 631
+        Me.Button13.Text = "Load Custom Settings From EEProm"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(469, 286)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(219, 23)
+        Me.Button12.TabIndex = 630
+        Me.Button12.Text = "Save Custom Settings to EEProm"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(469, 257)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(219, 23)
+        Me.Button11.TabIndex = 629
+        Me.Button11.Text = "Load Factory Defaults"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(469, 83)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(219, 23)
+        Me.Button10.TabIndex = 628
+        Me.Button10.Text = "Stop Pulse Log"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(469, 54)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(219, 23)
+        Me.Button9.TabIndex = 627
+        Me.Button9.Text = "Start Pulse Log"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'BtnEEpromWriteStatusClear
+        '
+        Me.BtnEEpromWriteStatusClear.Location = New System.Drawing.Point(6, 140)
+        Me.BtnEEpromWriteStatusClear.Name = "BtnEEpromWriteStatusClear"
+        Me.BtnEEpromWriteStatusClear.Size = New System.Drawing.Size(219, 23)
+        Me.BtnEEpromWriteStatusClear.TabIndex = 626
+        Me.BtnEEpromWriteStatusClear.Text = "Clear EEProm Write Status"
+        Me.BtnEEpromWriteStatusClear.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(6, 112)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(219, 23)
+        Me.Button7.TabIndex = 625
+        Me.Button7.Text = "Access Mode ETM"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(6, 83)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(219, 23)
+        Me.Button6.TabIndex = 624
+        Me.Button6.Text = "Access Mode Service"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(6, 54)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(219, 23)
+        Me.Button5.TabIndex = 623
+        Me.Button5.Text = "Access Mode Default"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'TabPage4Dose
         '
         Me.TabPage4Dose.Controls.Add(Me.TabPage1ECB)
         Me.TabPage4Dose.Controls.Add(Me.TabPage2Slave)
-        Me.TabPage4Dose.Controls.Add(Me.TabPage3Debug)
         Me.TabPage4Dose.Controls.Add(Me.TabPage4)
         Me.TabPage4Dose.Controls.Add(Me.TabPage5)
         Me.TabPage4Dose.Location = New System.Drawing.Point(370, 0)
@@ -6032,17 +4878,250 @@ Partial Class frmMain
         Me.TabPage4Dose.Size = New System.Drawing.Size(1423, 961)
         Me.TabPage4Dose.TabIndex = 460
         '
-        'BntECBEEPromConfigure
+        'CbxConnect0
         '
-        Me.BntECBEEPromConfigure.BackColor = System.Drawing.Color.Lavender
-        Me.BntECBEEPromConfigure.FlatAppearance.BorderSize = 0
-        Me.BntECBEEPromConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BntECBEEPromConfigure.Location = New System.Drawing.Point(6, 669)
-        Me.BntECBEEPromConfigure.Name = "BntECBEEPromConfigure"
-        Me.BntECBEEPromConfigure.Size = New System.Drawing.Size(175, 23)
-        Me.BntECBEEPromConfigure.TabIndex = 556
-        Me.BntECBEEPromConfigure.Text = "Default EEProm Configure"
-        Me.BntECBEEPromConfigure.UseVisualStyleBackColor = False
+        Me.CbxConnect0.AutoSize = True
+        Me.CbxConnect0.Location = New System.Drawing.Point(61, 505)
+        Me.CbxConnect0.Name = "CbxConnect0"
+        Me.CbxConnect0.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect0.TabIndex = 461
+        Me.CbxConnect0.Text = "Connection"
+        Me.CbxConnect0.UseVisualStyleBackColor = True
+        '
+        'CbxConnect1
+        '
+        Me.CbxConnect1.AutoSize = True
+        Me.CbxConnect1.Location = New System.Drawing.Point(61, 525)
+        Me.CbxConnect1.Name = "CbxConnect1"
+        Me.CbxConnect1.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect1.TabIndex = 462
+        Me.CbxConnect1.Text = "Connection"
+        Me.CbxConnect1.UseVisualStyleBackColor = True
+        '
+        'CbxConnect3
+        '
+        Me.CbxConnect3.AutoSize = True
+        Me.CbxConnect3.Location = New System.Drawing.Point(61, 565)
+        Me.CbxConnect3.Name = "CbxConnect3"
+        Me.CbxConnect3.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect3.TabIndex = 631
+        Me.CbxConnect3.Text = "Connection"
+        Me.CbxConnect3.UseVisualStyleBackColor = True
+        '
+        'CbxConnect2
+        '
+        Me.CbxConnect2.AutoSize = True
+        Me.CbxConnect2.Location = New System.Drawing.Point(61, 545)
+        Me.CbxConnect2.Name = "CbxConnect2"
+        Me.CbxConnect2.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect2.TabIndex = 630
+        Me.CbxConnect2.Text = "Connection"
+        Me.CbxConnect2.UseVisualStyleBackColor = True
+        '
+        'CbxConnect7
+        '
+        Me.CbxConnect7.AutoSize = True
+        Me.CbxConnect7.Location = New System.Drawing.Point(61, 645)
+        Me.CbxConnect7.Name = "CbxConnect7"
+        Me.CbxConnect7.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect7.TabIndex = 635
+        Me.CbxConnect7.Text = "Connection"
+        Me.CbxConnect7.UseVisualStyleBackColor = True
+        '
+        'CbxConnect6
+        '
+        Me.CbxConnect6.AutoSize = True
+        Me.CbxConnect6.Location = New System.Drawing.Point(61, 625)
+        Me.CbxConnect6.Name = "CbxConnect6"
+        Me.CbxConnect6.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect6.TabIndex = 634
+        Me.CbxConnect6.Text = "Connection"
+        Me.CbxConnect6.UseVisualStyleBackColor = True
+        '
+        'CbxConnect5
+        '
+        Me.CbxConnect5.AutoSize = True
+        Me.CbxConnect5.Location = New System.Drawing.Point(61, 605)
+        Me.CbxConnect5.Name = "CbxConnect5"
+        Me.CbxConnect5.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect5.TabIndex = 633
+        Me.CbxConnect5.Text = "Connection"
+        Me.CbxConnect5.UseVisualStyleBackColor = True
+        '
+        'CbxConnect4
+        '
+        Me.CbxConnect4.AutoSize = True
+        Me.CbxConnect4.Location = New System.Drawing.Point(61, 585)
+        Me.CbxConnect4.Name = "CbxConnect4"
+        Me.CbxConnect4.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect4.TabIndex = 632
+        Me.CbxConnect4.Text = "Connection"
+        Me.CbxConnect4.UseVisualStyleBackColor = True
+        '
+        'CbxConnect9
+        '
+        Me.CbxConnect9.AutoSize = True
+        Me.CbxConnect9.Location = New System.Drawing.Point(61, 685)
+        Me.CbxConnect9.Name = "CbxConnect9"
+        Me.CbxConnect9.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect9.TabIndex = 637
+        Me.CbxConnect9.Text = "Connection"
+        Me.CbxConnect9.UseVisualStyleBackColor = True
+        '
+        'CbxConnect8
+        '
+        Me.CbxConnect8.AutoSize = True
+        Me.CbxConnect8.Location = New System.Drawing.Point(61, 665)
+        Me.CbxConnect8.Name = "CbxConnect8"
+        Me.CbxConnect8.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect8.TabIndex = 636
+        Me.CbxConnect8.Text = "Connection"
+        Me.CbxConnect8.UseVisualStyleBackColor = True
+        '
+        'CbxReady9
+        '
+        Me.CbxReady9.AutoSize = True
+        Me.CbxReady9.Location = New System.Drawing.Point(22, 686)
+        Me.CbxReady9.Name = "CbxReady9"
+        Me.CbxReady9.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady9.TabIndex = 647
+        Me.CbxReady9.UseVisualStyleBackColor = True
+        '
+        'CbxReady8
+        '
+        Me.CbxReady8.AutoSize = True
+        Me.CbxReady8.Location = New System.Drawing.Point(22, 666)
+        Me.CbxReady8.Name = "CbxReady8"
+        Me.CbxReady8.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady8.TabIndex = 646
+        Me.CbxReady8.UseVisualStyleBackColor = True
+        '
+        'CbxReady7
+        '
+        Me.CbxReady7.AutoSize = True
+        Me.CbxReady7.Location = New System.Drawing.Point(22, 646)
+        Me.CbxReady7.Name = "CbxReady7"
+        Me.CbxReady7.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady7.TabIndex = 645
+        Me.CbxReady7.UseVisualStyleBackColor = True
+        '
+        'CbxReady6
+        '
+        Me.CbxReady6.AutoSize = True
+        Me.CbxReady6.Location = New System.Drawing.Point(22, 626)
+        Me.CbxReady6.Name = "CbxReady6"
+        Me.CbxReady6.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady6.TabIndex = 644
+        Me.CbxReady6.UseVisualStyleBackColor = True
+        '
+        'CbxReady5
+        '
+        Me.CbxReady5.AutoSize = True
+        Me.CbxReady5.Location = New System.Drawing.Point(22, 606)
+        Me.CbxReady5.Name = "CbxReady5"
+        Me.CbxReady5.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady5.TabIndex = 643
+        Me.CbxReady5.UseVisualStyleBackColor = True
+        '
+        'CbxReady4
+        '
+        Me.CbxReady4.AutoSize = True
+        Me.CbxReady4.Location = New System.Drawing.Point(22, 586)
+        Me.CbxReady4.Name = "CbxReady4"
+        Me.CbxReady4.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady4.TabIndex = 642
+        Me.CbxReady4.UseVisualStyleBackColor = True
+        '
+        'CbxReady3
+        '
+        Me.CbxReady3.AutoSize = True
+        Me.CbxReady3.Location = New System.Drawing.Point(22, 566)
+        Me.CbxReady3.Name = "CbxReady3"
+        Me.CbxReady3.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady3.TabIndex = 641
+        Me.CbxReady3.UseVisualStyleBackColor = True
+        '
+        'CbxReady2
+        '
+        Me.CbxReady2.AutoSize = True
+        Me.CbxReady2.Location = New System.Drawing.Point(22, 546)
+        Me.CbxReady2.Name = "CbxReady2"
+        Me.CbxReady2.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady2.TabIndex = 640
+        Me.CbxReady2.UseVisualStyleBackColor = True
+        '
+        'CbxReady1
+        '
+        Me.CbxReady1.AutoSize = True
+        Me.CbxReady1.Location = New System.Drawing.Point(22, 526)
+        Me.CbxReady1.Name = "CbxReady1"
+        Me.CbxReady1.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady1.TabIndex = 639
+        Me.CbxReady1.UseVisualStyleBackColor = True
+        '
+        'CbxReady0
+        '
+        Me.CbxReady0.AutoSize = True
+        Me.CbxReady0.Location = New System.Drawing.Point(22, 506)
+        Me.CbxReady0.Name = "CbxReady0"
+        Me.CbxReady0.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady0.TabIndex = 638
+        Me.CbxReady0.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(13, 476)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(24, 13)
+        Me.Label15.TabIndex = 648
+        Me.Label15.Text = "Not"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(12, 490)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(38, 13)
+        Me.Label20.TabIndex = 649
+        Me.Label20.Text = "Ready"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(51, 490)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(59, 13)
+        Me.Label21.TabIndex = 651
+        Me.Label21.Text = "Connected"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(52, 476)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(24, 13)
+        Me.Label22.TabIndex = 650
+        Me.Label22.Text = "Not"
+        '
+        'CbxConnect10
+        '
+        Me.CbxConnect10.AutoSize = True
+        Me.CbxConnect10.Location = New System.Drawing.Point(61, 704)
+        Me.CbxConnect10.Name = "CbxConnect10"
+        Me.CbxConnect10.Size = New System.Drawing.Size(80, 17)
+        Me.CbxConnect10.TabIndex = 652
+        Me.CbxConnect10.Text = "Connection"
+        Me.CbxConnect10.UseVisualStyleBackColor = True
+        '
+        'CbxReady10
+        '
+        Me.CbxReady10.AutoSize = True
+        Me.CbxReady10.Location = New System.Drawing.Point(22, 705)
+        Me.CbxReady10.Name = "CbxReady10"
+        Me.CbxReady10.Size = New System.Drawing.Size(15, 14)
+        Me.CbxReady10.TabIndex = 653
+        Me.CbxReady10.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -6050,141 +5129,60 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1784, 961)
-        Me.Controls.Add(Me.TabPage4Dose)
+        Me.Controls.Add(Me.CbxReady10)
+        Me.Controls.Add(Me.CbxConnect10)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.Label22)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.ButtonETMMode)
-        Me.Controls.Add(Me.LabelSystemSerialNumber)
+        Me.Controls.Add(Me.CbxReady9)
+        Me.Controls.Add(Me.CbxReady8)
+        Me.Controls.Add(Me.CbxReady7)
+        Me.Controls.Add(Me.CbxReady6)
+        Me.Controls.Add(Me.CbxReady5)
+        Me.Controls.Add(Me.CbxReady4)
+        Me.Controls.Add(Me.CbxReady3)
+        Me.Controls.Add(Me.CbxReady2)
+        Me.Controls.Add(Me.CbxReady1)
+        Me.Controls.Add(Me.CbxReady0)
+        Me.Controls.Add(Me.CbxConnect9)
+        Me.Controls.Add(Me.TabPage4Dose)
+        Me.Controls.Add(Me.CbxConnect8)
         Me.Controls.Add(Me.ButtonReset)
-        Me.Controls.Add(Me.ButtonLoadFactorySettings)
-        Me.Controls.Add(Me.ButtonSaveFactorySettings)
-        Me.Controls.Add(Me.ButtonZeroPulseCounters)
-        Me.Controls.Add(Me.ButtonZeroOnTime)
-        Me.Controls.Add(Me.ButtonReloadECBDefaults)
+        Me.Controls.Add(Me.CbxConnect7)
         Me.Controls.Add(Me.LabelGuiVersion)
-        Me.Controls.Add(Me.CheckBoxSyncBitF)
-        Me.Controls.Add(Me.ButtonToggleResetDebug)
-        Me.Controls.Add(Me.LabelSyncMessageCntrlBits)
+        Me.Controls.Add(Me.CbxConnect6)
         Me.Controls.Add(Me.LabelECBTime)
+        Me.Controls.Add(Me.CbxConnect5)
         Me.Controls.Add(Me.LabelComputerTime)
-        Me.Controls.Add(Me.ButtonSetTime)
-        Me.Controls.Add(Me.ButtonStopLog)
-        Me.Controls.Add(Me.ButtonStartLog)
+        Me.Controls.Add(Me.CbxConnect4)
         Me.Controls.Add(Me.LabelECBState)
-        Me.Controls.Add(Me.CheckBoxOperateEthernet)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.CheckBoxOperatePulseSync)
-        Me.Controls.Add(Me.CheckBoxOperateMagnetronCurrentMon)
-        Me.Controls.Add(Me.CheckBoxOperateGunDriver)
-        Me.Controls.Add(Me.CheckBoxOperateHtrMag)
-        Me.Controls.Add(Me.CheckBoxOperateCooling)
-        Me.Controls.Add(Me.CheckBoxOperateAFC)
-        Me.Controls.Add(Me.CheckBoxOperateIonPump)
-        Me.Controls.Add(Me.CheckBoxOperateHVLambda)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.CheckBoxPulseSyncConnected)
-        Me.Controls.Add(Me.CheckBoxPulseCurrentMonitorConnected)
-        Me.Controls.Add(Me.CheckBoxGunDriverConnected)
-        Me.Controls.Add(Me.CheckBoxHtrMagConnected)
-        Me.Controls.Add(Me.CheckBoxCoolingConnected)
-        Me.Controls.Add(Me.CheckBoxAFCConnected)
-        Me.Controls.Add(Me.CheckBoxIonPumpConnected)
-        Me.Controls.Add(Me.CheckBoxHVLambdaConnected)
-        Me.Controls.Add(Me.LabelDisplay8)
-        Me.Controls.Add(Me.LabelDisplay7)
-        Me.Controls.Add(Me.LabelDisplay6)
-        Me.Controls.Add(Me.LabelDisplay5)
-        Me.Controls.Add(Me.LabelDisplay4)
-        Me.Controls.Add(Me.LabelDisplay3)
-        Me.Controls.Add(Me.LabelDisplay2)
-        Me.Controls.Add(Me.LabelDisplay1)
-        Me.Controls.Add(Me.Splitter1)
+        Me.Controls.Add(Me.CbxConnect3)
+        Me.Controls.Add(Me.CbxConnect2)
+        Me.Controls.Add(Me.CbxConnect1)
+        Me.Controls.Add(Me.CbxConnect0)
         Me.Name = "frmMain"
-        Me.Text = "No Connection"
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        Me.TabPage3Debug.ResumeLayout(False)
-        Me.TabPage3Debug.PerformLayout()
         Me.TabPage2Slave.ResumeLayout(False)
         Me.TabPage2Slave.PerformLayout()
+        Me.TabPage1ECB.ResumeLayout(False)
+        Me.TabPage1ECB.PerformLayout()
         Me.TabPage4Dose.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents TimerUpdate As System.Windows.Forms.Timer
-    Friend WithEvents Splitter1 As System.Windows.Forms.Splitter
-    Friend WithEvents LabelDisplay8 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay7 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay6 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay5 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay4 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay3 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay2 As System.Windows.Forms.Label
-    Friend WithEvents LabelDisplay1 As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxOperateEthernet As System.Windows.Forms.CheckBox
-    Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxOperatePulseSync As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateMagnetronCurrentMon As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateGunDriver As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateHtrMag As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateCooling As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateAFC As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateIonPump As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxOperateHVLambda As System.Windows.Forms.CheckBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxPulseSyncConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxPulseCurrentMonitorConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxGunDriverConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxHtrMagConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxCoolingConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxAFCConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxIonPumpConnected As System.Windows.Forms.CheckBox
-    Friend WithEvents CheckBoxHVLambdaConnected As System.Windows.Forms.CheckBox
     Friend WithEvents LabelECBTime As System.Windows.Forms.Label
     Friend WithEvents LabelComputerTime As System.Windows.Forms.Label
-    Friend WithEvents ButtonSetTime As System.Windows.Forms.Button
-    Friend WithEvents ButtonStopLog As System.Windows.Forms.Button
-    Friend WithEvents ButtonStartLog As System.Windows.Forms.Button
     Friend WithEvents LabelECBState As System.Windows.Forms.Label
-    Friend WithEvents CheckBoxSyncBitF As System.Windows.Forms.CheckBox
-    Friend WithEvents ButtonToggleResetDebug As System.Windows.Forms.Button
-    Friend WithEvents LabelSyncMessageCntrlBits As System.Windows.Forms.Label
     Friend WithEvents LabelGuiVersion As System.Windows.Forms.Label
-    Friend WithEvents ButtonReloadECBDefaults As System.Windows.Forms.Button
-    Friend WithEvents ButtonZeroOnTime As System.Windows.Forms.Button
-    Friend WithEvents ButtonZeroPulseCounters As System.Windows.Forms.Button
-    Friend WithEvents ButtonSaveFactorySettings As System.Windows.Forms.Button
-    Friend WithEvents ButtonLoadFactorySettings As System.Windows.Forms.Button
     Friend WithEvents ButtonReset As System.Windows.Forms.Button
-    Friend WithEvents LabelSystemSerialNumber As System.Windows.Forms.Label
     Friend WithEvents SerialPortETM As System.IO.Ports.SerialPort
     Friend WithEvents TimerWatchdog As System.Windows.Forms.Timer
-    Friend WithEvents ButtonETMMode As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
     Friend WithEvents ComboBoxComPorts As System.Windows.Forms.ComboBox
     Friend WithEvents LabelWatchDogResponse As System.Windows.Forms.Label
@@ -6205,66 +5203,8 @@ Partial Class frmMain
     Friend WithEvents ButtonSetIPAddres As System.Windows.Forms.Button
     Friend WithEvents ButtonSetRemoteIP As System.Windows.Forms.Button
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage3Debug As System.Windows.Forms.TabPage
-    Friend WithEvents LabelValueDebug0 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug0 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug1 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug2 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug3 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug4 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug5 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug6 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug7 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug8 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebug9 As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugA As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugB As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugC As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugD As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugE As System.Windows.Forms.Label
-    Friend WithEvents LabelCanCXECReg As System.Windows.Forms.Label
-    Friend WithEvents LabelDebugF As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug1 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug2 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug3 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug4 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug5 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug6 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug7 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug8 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebug9 As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugA As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugB As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugC As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugD As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugE As System.Windows.Forms.Label
-    Friend WithEvents LabelValueDebugF As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorI2CBusCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanErrorFlagCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanTX1Count As System.Windows.Forms.Label
-    Friend WithEvents LabelCanTX2Count As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorSPIBusCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanRX0Filt0Count As System.Windows.Forms.Label
-    Friend WithEvents LabelCanRX0Filt1Count As System.Windows.Forms.Label
-    Friend WithEvents LabelCanRX1Filt2Count As System.Windows.Forms.Label
-    Friend WithEvents LabelCanISREnteredCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanUnknownIdentifierCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanInvalidIndexCount As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorScaleCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanAddressErrorCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanTX0Count As System.Windows.Forms.Label
-    Friend WithEvents LabelCanTXBufOverflowCount As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorResetCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanRXBufferOverflowCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCAnDataLogRXBufferOVerflowCount As System.Windows.Forms.Label
-    Friend WithEvents LabelCanTimeoutCount As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorSelfTestResultRegister As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorReserved0 As System.Windows.Forms.Label
-    Friend WithEvents LabelErrorReserved1 As System.Windows.Forms.Label
-    Friend WithEvents LabelRCON As System.Windows.Forms.Label
     Friend WithEvents TabPage2Slave As System.Windows.Forms.TabPage
     Friend WithEvents BtnClearDebug As System.Windows.Forms.Button
-    Friend WithEvents BtnAFCManual As System.Windows.Forms.Button
     Friend WithEvents BtnAFCAuto As System.Windows.Forms.Button
     Friend WithEvents BtnSetCalPair As System.Windows.Forms.Button
     Friend WithEvents BtnEEPromDebug As System.Windows.Forms.Button
@@ -6488,7 +5428,6 @@ Partial Class frmMain
     Friend WithEvents LblSlaveLog5 As System.Windows.Forms.Label
     Friend WithEvents LblSlaveLog6 As System.Windows.Forms.Label
     Friend WithEvents LblSlaveLog7 As System.Windows.Forms.Label
-    Friend WithEvents cboIndex As System.Windows.Forms.ComboBox
     Friend WithEvents LabelFirmwareVerssion As System.Windows.Forms.Label
     Friend WithEvents LblSlaveLog8 As System.Windows.Forms.Label
     Friend WithEvents LabelAgileInfo As System.Windows.Forms.Label
@@ -6582,4 +5521,49 @@ Partial Class frmMain
     Friend WithEvents BtnHVPSTrigStart As System.Windows.Forms.Button
     Friend WithEvents BtnMagnetronHeater As System.Windows.Forms.Button
     Friend WithEvents BntECBEEPromConfigure As System.Windows.Forms.Button
+    Friend WithEvents Button10 As System.Windows.Forms.Button
+    Friend WithEvents Button9 As System.Windows.Forms.Button
+    Friend WithEvents BtnEEpromWriteStatusClear As System.Windows.Forms.Button
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents BtnZeroOnTimeCounter As System.Windows.Forms.Button
+    Friend WithEvents BtnZeroArcPulseCounter As System.Windows.Forms.Button
+    Friend WithEvents Button13 As System.Windows.Forms.Button
+    Friend WithEvents Button12 As System.Windows.Forms.Button
+    Friend WithEvents Button11 As System.Windows.Forms.Button
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents BtnAFCManual As System.Windows.Forms.Button
+    Friend WithEvents CoBoxSelectedCanBoard As System.Windows.Forms.ComboBox
+    Friend WithEvents BtnSystemSerialNumber As System.Windows.Forms.Button
+    Friend WithEvents BtnMCUReset As System.Windows.Forms.Button
+    Friend WithEvents CbxConnect0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxConnect8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady1 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady0 As System.Windows.Forms.CheckBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents CbxConnect10 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxReady10 As System.Windows.Forms.CheckBox
 End Class
