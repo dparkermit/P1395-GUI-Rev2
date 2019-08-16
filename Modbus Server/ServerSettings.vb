@@ -199,6 +199,15 @@ Public Class ServerSettings
 
         command_id = command_index_number
 
+        Dim milli_seconds_10 As Long = CLng(DateTime.Now.Ticks / 100000)
+
+
+
+        Dim time_byte_low As Byte = CByte(milli_seconds_10 And &HFF)
+        Dim time_byte_high As Byte = CByte((milli_seconds_10 >> 8) And &HFF)
+
+        test_time = time_byte_high * 256 + time_byte_low
+
         If (function_code = WRITE_FUNCTION) Then
             ' The ECB is writing Data to the GUI
             ' Process the data and send ack back to the ECB
@@ -213,10 +222,10 @@ Public Class ServerSettings
             xmitBuffer(5) = 6 ' Byte length is always 6 for write cmd
             xmitBuffer(6) = command_id ' Respond with the same command_id
             xmitBuffer(7) = recvBuffer(7) ' Respond with the same function code
-            xmitBuffer(8) = 0
+            xmitBuffer(8) = time_byte_high
             xmitBuffer(9) = CByte(QueueCommandToECB.Count) '  This tells the ECB how many messages are waiting on the GUI
             xmitBuffer(10) = board_to_monitor ' This tells the ECB what slave board to store debug data for
-            xmitBuffer(11) = 0
+            xmitBuffer(11) = time_byte_low
 
             can_address_of_board = CUShort(CUShort(command_id) - 1)
             If (can_address_of_board >= 10) Then
@@ -279,7 +288,8 @@ Public Class ServerSettings
             xmitBuffer(5) = CByte(msglen Mod 256)
             xmitBuffer(6) = command_id ' Respond with the same command_id
             xmitBuffer(7) = recvBuffer(7) ' Respond with the same function code
-            xmitBuffer(8) = 0
+            xmitBuffer(8) = time_byte_high
+            xmitBuffer(11) = time_byte_low
 
             If (QueueCommandToECB.Count > 0) Then
                 command_to_ECB = CType(QueueCommandToECB.Dequeue, ETM_ETHERNET_COMMAND_STRUCTURE)
@@ -408,7 +418,7 @@ Public Class ServerSettings
     Public event_log_file As System.IO.StreamWriter
 
     Public Sub OpenEventLogFile()
-        event_log_file_name = "P1395_Event_log.csv"
+        event_log_file_name = "NewEventLog.csv"
         event_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, event_log_file_name)
         event_log_file = My.Computer.FileSystem.OpenTextFileWriter(event_log_file_path, True)
 
@@ -423,58 +433,64 @@ Public Class ServerSettings
         event_log_file.Close()
     End Sub
 
+
+    Dim test_time As Long
+
+    Dim event_count_log As Integer = 0
+
     Private Sub save_event_data(ByRef bytes As Byte(), ByVal length As UInt16)
-        Dim time As UInt32
         Dim event_id As UInt16
-        Dim event_number As UInt16
+        Dim event_time As UInt16
         Dim event_count As Integer
         Dim head As Integer
-        Dim time_log As String
-        Dim year As Integer
-        Dim month As Integer
-        Dim day As Integer
-        Dim hour As Integer
-        Dim minute As Integer
-        Dim second As Integer
         Dim Log_Message As String = ""
         event_log_enabled = True
         If event_log_enabled Then
             If (length > MAX_EVENT_SIZE_DATA) Then length = MAX_EVENT_SIZE_DATA
-            event_count = CInt(length / 8)  ' one event is 8 bytes
+            event_count = CInt(length / 4)  ' one event is 4 bytes
             If (event_count < 1) Then Exit Sub
             OpenEventLogFile()
             For index = 0 To (event_count - 1)
-                head = index * 8
-                event_number = CUShort(bytes(head + 1)) << 8
-                event_number += CUShort(bytes(head + 0))
-                time = CUInt(bytes(head + 5)) << 24
-                time += CUInt(bytes(head + 4)) << 16
-                time += CUInt(bytes(head + 3)) << 8
-                time += CUInt(bytes(head + 2))
+                event_count_log = event_count_log + 1
+                head = index * 4
+                event_time = CUShort(bytes(head + 1)) << 8
+                event_time += CUShort(bytes(head + 0))
 
-                year = CInt(Math.Truncate(time / 31622400))
 
-                time = CUInt(time Mod 31622400)
-                month = CInt(Math.Truncate(time / 2678400))
+                'Dim milli_seconds_10 As Long = CLng(DateTime.UtcNow.Ticks / 100000)
+                'Dim time_byte_low As Byte = CByte(milli_seconds_10 And &HFF)
+                'Dim time_byte_high As Byte = CByte((milli_seconds_10 >> 8) And &HFF)
 
-                time = CUInt(time Mod 2678400)
-                day = CInt(Math.Truncate(time / 86400))
 
-                time = CUInt(time Mod 86400)
-                hour = CInt(Math.Truncate(time / 3600))
+                Dim new_time As Long = CLng(DateTime.Now.Ticks / 100000)
 
-                time = CUInt(time Mod 3600)
-                minute = CInt(Math.Truncate(time / 60))
+                Dim comp As Long = CLng(new_time And &HFFFF)
+                Dim old_time As Long = CLng(new_time And &HFFFFFFFFFFFF0000)
 
-                second = CInt(time Mod 60)
-                time_log = "20" & Format(year, "00") & "/" & Format(month, "00") & "/" & Format(day, "00") & " " & Format(hour, "00") & ":" & Format(minute, "00") & ":" & Format(second, "00")
-                event_id = CUShort(bytes(head + 7)) << 8
-                event_id += CUShort(bytes(head + 6))
-                If EventLogMessages.TryGetValue(event_id, Log_Message) Then
-                    event_log_file.WriteLine(event_number & "," & time_log & "," & Log_Message.Trim())
-                Else
-                    event_log_file.WriteLine(event_number & "," & time_log & "," & "Unknow ID = 0x" & event_id.ToString("X4"))
+                If (comp < event_time) Then
+                    ' The timer has rolled since the time was sent
+                    old_time = CLng(old_time - &H10000)
                 End If
+
+                Dim set_time As Long = old_time + event_time
+
+                Dim event_date As New DateTime(set_time * 100000)
+
+
+                event_id = CUShort(bytes(head + 3)) << 8
+                event_id += CUShort(bytes(head + 2))
+
+                event_log_file.WriteLine(Format(DateTime.Now, "yyyy/MM/dd HH:mm:ss.fff") & "," & Format(event_date, "yyyy/MM/dd HH:mm:ss.fff") & "," & "Unknow ID = 0x" & event_id.ToString("X4"))
+#If 0 Then
+
+
+                If EventLogMessages.TryGetValue(event_id, Log_Message) Then
+                    event_log_file.WriteLine(event_number & "," & Log_Message.Trim())
+                Else
+                    event_log_file.WriteLine(event_number & "," & "Unknow ID = 0x" & event_id.ToString("X4"))
+                End If
+
+#End If
 
             Next
             CloseEventLogFile()
@@ -496,29 +512,34 @@ Public Class ServerSettings
         pulse_log_file_path = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pulse_log_file_name)
         pulse_log_file = My.Computer.FileSystem.OpenTextFileWriter(pulse_log_file_path, True)
         pulse_log_enabled = True
-
-        pulse_log_file.Write("Pulse Count, ")
-        pulse_log_file.Write("Status Bits, ")
-        pulse_log_file.Write("Pulse Seconds, ")
-        pulse_log_file.Write("Pulse Milliseconds, ")
-        pulse_log_file.Write("Lambda Vmon, ")
-        pulse_log_file.Write("Lambda Vmon Pre-Pulse, ")
-        pulse_log_file.Write("Lambda Vprog Pre-Pulse, ")
-        pulse_log_file.Write("Unused, ")
-        pulse_log_file.Write("Unused, ")
-        pulse_log_file.Write("AFC Current Position, ")
-        pulse_log_file.Write("Reverse Power, ")
-        pulse_log_file.Write("Reverse Power Internal, ")
-        pulse_log_file.Write("Ion Pump High Target Current, ")
-        pulse_log_file.Write("Ion Pump Low Target Current, ")
-        pulse_log_file.Write("Magnetron Current Internal ADC, ")
-        pulse_log_file.Write("Magnetron Current External ADC, ")
-        pulse_log_file.Write("Pulse Sync Trigger Width, ")
-        pulse_log_file.Write("Pulse Sync Trigger Width Filtered, ")
-        pulse_log_file.Write("Pulse Grid Start, ")
-        pulse_log_file.Write("Pulse Grid Stop, ")
-        pulse_log_file.Write("Pulse PRF (.1Hz), ")
-        pulse_log_file.Write("ECB Message Count")
+        pulse_log_file.Write("Computer Time, ")
+        pulse_log_file.Write("Pulse Count / Status Bits, ")
+        pulse_log_file.Write("Tick High Word, ")
+        pulse_log_file.Write("Tick Low Word, ")
+        pulse_log_file.Write("Gun Trigger Width A, ")
+        pulse_log_file.Write("Gun Trigger Start A, ")
+        pulse_log_file.Write("Gun Trigger Width B, ")
+        pulse_log_file.Write("Gun Trigger Start B, ")
+        pulse_log_file.Write("HVPS Vmon EOC A, ")
+        pulse_log_file.Write("HVPS Spare A, ")
+        pulse_log_file.Write("HVPS Vmon EOC B, ")
+        pulse_log_file.Write("HVPS Spare B, ")
+        pulse_log_file.Write("AFC Current Position A, ")
+        pulse_log_file.Write("AFC Reverse Power A, ")
+        pulse_log_file.Write("AFC Current Position B, ")
+        pulse_log_file.Write("AFC Reverse Power B, ")
+        pulse_log_file.Write("Magnetron Current Sample A, ")
+        pulse_log_file.Write("Magnetron Current Integral A, ")
+        pulse_log_file.Write("Magnetron Current Sample B, ")
+        pulse_log_file.Write("Magnetron Current Integral B, ")
+        pulse_log_file.Write("Target Current Sample A, ")
+        pulse_log_file.Write("Target Current Integral A, ")
+        pulse_log_file.Write("Target Current Sample B, ")
+        pulse_log_file.Write("Target Current Integral B, ")
+        pulse_log_file.Write("Gun Driver Data 0 A, ")
+        pulse_log_file.Write("Gun Driver Data 1 A, ")
+        pulse_log_file.Write("Gun Driver Data 0 B, ")
+        pulse_log_file.Write("Gun Driver Data 1 B, ")
         pulse_log_file.WriteLine("")
     End Sub
 
@@ -538,38 +559,20 @@ Public Class ServerSettings
         Dim mem_location As Integer
 
         If pulse_log_enabled Then
-            For data_row = 0 To 15
-                For data_column = 0 To 15
-                    mem_location = data_row * 38 + data_column * 2
-                    data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
-                    If data_column = 11 Then
-                        If (data_word > &H8000) Then
-                            data_word = -(data_word - &H8000)
-                        End If
-                    End If
-                    pulse_log_file.Write(data_word & ",")
-                Next
-
-                For data_column = 16 To 17
-                    mem_location = data_row * 38 + data_column * 2
-                    data_word = bytes(mem_location)
-                    pulse_log_file.Write(data_word & ",")
-                    data_word = bytes(mem_location + 1)
-                    pulse_log_file.Write(data_word & ",")
-                Next
-
-                For data_column = 18 To 18
-                    mem_location = data_row * 38 + data_column * 2
+            For data_row = 0 To 7
+                pulse_log_file.Write(Format(DateTime.Now, "yyyy/MM/dd HH:mm:ss.fff"))
+                For data_column = 0 To 26
+                    mem_location = data_row * 54 + data_column * 2
                     data_word = bytes(mem_location + 1) * 256 + bytes(mem_location)
                     pulse_log_file.Write(data_word & ",")
                 Next
 
-                data_word = bytes(0) * 256 + bytes(1)
-                pulse_log_file.Write(data_word)
+                'data_word = bytes(0) * 256 + bytes(1)
+                'pulse_log_file.Write(data_word)
                 pulse_log_file.WriteLine("")
             Next
-            'pulse_log_file.WriteLine("")
-            'pulse_log_file.WriteLine("")
+            pulse_log_file.WriteLine("")
+            pulse_log_file.WriteLine("")
 
         End If
 

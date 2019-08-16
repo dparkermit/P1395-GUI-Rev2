@@ -151,6 +151,7 @@
         End Try
 
 
+
         For Each sp As String In My.Computer.Ports.SerialPortNames
             ComboBoxComPorts.Items.Add(sp)
         Next
@@ -158,7 +159,7 @@
 
 
         ServerSettings.OpenEventLogFile()
-        ServerSettings.event_log_file.WriteLine("GUI Started at " & Format(DateTime.UtcNow, "yyyy/MM/dd HH:mm:ss"))
+        ServerSettings.event_log_file.WriteLine("GUI Started at " & Format(DateTime.Now, "yyyy/MM/dd HH:mm:ss"))
         ServerSettings.CloseEventLogFile()
 
 
@@ -178,92 +179,6 @@
             LabelGUIVersion.Text = "GUI Version not Available in Debug Mode"
         End If
 
-
-
-
-
-
-#If 0 Then
-
-            ' Hide all of the advanced controls
-            LabelCanCXECReg.Visible = False
-            LabelCanErrorFlagCount.Visible = False
-            LabelCanTX1Count.Visible = False
-            LabelCanTX2Count.Visible = False
-            LabelCanRX0Filt0Count.Visible = False
-            LabelCanRX0Filt1Count.Visible = False
-            LabelCanRX1Filt2Count.Visible = False
-            LabelCanISREnteredCount.Visible = False
-            LabelCanUnknownIdentifierCount.Visible = False
-            LabelCanInvalidIndexCount.Visible = False
-            LabelCanAddressErrorCount.Visible = False
-            LabelCanTX0Count.Visible = False
-            LabelCanTXBufOverflowCount.Visible = False
-            LabelCanRXBufferOverflowCount.Visible = False
-            LabelCAnDataLogRXBufferOVerflowCount.Visible = False
-            LabelCanTimeoutCount.Visible = False
-            CbxSlaveStatusCntrl0.Visible = False
-            CbxSlaveStatusCntrl1.Visible = False
-            CbxSlaveStatusCntrl2.Visible = False
-            CbxSlaveStatusCntrl3.Visible = False
-            CbxSlaveStatusCntrl4.Visible = False
-            CbxSlaveStatusCntrl5.Visible = False
-            CbxSlaveStatusCntrl6.Visible = False
-            CbxSlaveStatusCntrl7.Visible = False
-            LabelErrorI2CBusCount.Visible = False
-            LabelErrorResetCount.Visible = False
-            LabelErrorScaleCount.Visible = False
-            LabelErrorSelfTestResultRegister.Visible = False
-            LabelErrorSPIBusCount.Visible = False
-            LabelErrorReserved0.Visible = False
-            LabelErrorReserved1.Visible = False
-            LabelRCON.Visible = False
-            LabelDebug0.Visible = False
-            LabelDebug1.Visible = False
-            LabelDebug2.Visible = False
-            LabelDebug3.Visible = False
-            LabelDebug4.Visible = False
-            LabelDebug5.Visible = False
-            LabelDebug6.Visible = False
-            LabelDebug7.Visible = False
-            LabelDebug8.Visible = False
-            LabelDebug9.Visible = False
-            LabelDebugA.Visible = False
-            LabelDebugB.Visible = False
-            LabelDebugC.Visible = False
-            LabelDebugD.Visible = False
-            LabelDebugE.Visible = False
-            LabelDebugF.Visible = False
-            LabelValueDebug0.Visible = False
-            LabelValueDebug1.Visible = False
-            LabelValueDebug2.Visible = False
-            LabelValueDebug3.Visible = False
-            LabelValueDebug4.Visible = False
-            LabelValueDebug5.Visible = False
-            LabelValueDebug6.Visible = False
-            LabelValueDebug7.Visible = False
-            LabelValueDebug8.Visible = False
-            LabelValueDebug9.Visible = False
-            LabelValueDebugA.Visible = False
-            LabelValueDebugB.Visible = False
-            LabelValueDebugC.Visible = False
-            LabelValueDebugD.Visible = False
-            LabelValueDebugE.Visible = False
-            LabelValueDebugF.Visible = False
-
-
-            LabelComputerTime.Visible = False
-            LabelSyncMessageCntrlBits.Visible = False
-
-            ButtonToggleResetDebug.Visible = False
-            CheckBoxSyncBitF.Visible = False
-            ButtonSetTime.Visible = False
-
-            ButtonReloadECBDefaults.Visible = False
-            ButtonZeroOnTime.Visible = False
-            ButtonZeroPulseCounters.Visible = False
-
-#End If
 
     End Sub
 
@@ -335,46 +250,6 @@
 
         LabelWatchDogResponse.Text = SerialCommandReceiveBuffer(4) + SerialCommandReceiveBuffer(3) * 256
 
-#If (0) Then
-         Try
-
-            If SerialCommandReceiveBuffer(0) = &HF1 Then
-                If SerialCommandReceiveBuffer(1) = &HF2 Then
-                    If SerialCommandReceiveBuffer(2) = &HF3 Then
-                        If CheckCRC() = True Then
-                            valid_command = True
-                            LabelComMsg.Text = "Message Sent/Received"
-                            'A valid return was recieved.  Check what the responce was
-                            If SerialCommandReceiveBuffer(3) <> SerialCommandTransmitBuffer(3) Then
-                                'The pic was not able to process the command
-                                If SerialCommandReceiveBuffer(3) = &H1 Then
-                                    LabelComMsg.Text = "ETM Controller Responds - Unknown Command"
-                                ElseIf SerialCommandReceiveBuffer(3) = &H22 Then
-                                    LabelComMsg.Text = "ETM Controller Responds - Program Value out of Valid Range"
-                                ElseIf SerialCommandReceiveBuffer(3) = &H23 Then
-                                    LabelComMsg.Text = "ETM Controller Responds - EEPROM ERROR - Unable to set value"
-                                Else
-                                    LabelComMsg.Text = "ETM Controller Responce Error - " & SerialCommandReceiveBuffer(3)
-                                End If
-                            End If
-                        End If
-                    End If
-                End If
-            End If
-            If valid_command <> True Then
-                LabelComMsg.Text = "Serial Port return data was not valid"
-                SerialPortETM.Close()
-            End If
-        Catch ex As Exception
-            LabelComMsg.Text = "Error processing Serial Port data"
-            ComError = True
-            Return 0
-        End Try
-        ReturnData = SerialCommandReceiveBuffer(4) * 256 + SerialCommandReceiveBuffer(5)
-#End If
-
-
-
         Return True
     End Function
 
@@ -411,7 +286,7 @@
             ' ------------------------------------------------------------------------------------------------------------'
             ' UDisplay the board specific data and buttons in the right plane
             DisplayBoardCommonElements(board_can_address)
-            DisplayBoardSpecificData(board_can_address)
+            'DisplayBoardSpecificData(board_can_address)
             ' DisplayDebugData()
 
         End If ' connected
@@ -837,108 +712,6 @@
 
     End Sub
 
-    Private Sub DisplayBoardSpecificData(ByVal selected_baord As Byte)
-
-
-
-        Dim selected_board_connected As Boolean = False
-#If (0) Then
-
-        ElseIf (board_can_address = MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA) Then
-            selected_board_connected = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16) And &H10
-
-
-
-
-            CheckBoxFaultBit0.Text = "Can FLT"
-            CheckBoxFaultBit1.Text = "HV ON FLT"
-            CheckBoxFaultBit2.Visible = False
-            CheckBoxFaultBit3.Visible = False
-            CheckBoxFaultBit4.Visible = False
-            CheckBoxFaultBit5.Visible = False
-            CheckBoxFaultBit6.Visible = False
-            CheckBoxFaultBit7.Visible = False
-            CheckBoxFaultBit8.Visible = False
-            CheckBoxFaultBit9.Visible = False
-            CheckBoxFaultBitA.Visible = False
-            CheckBoxFaultBitB.Visible = False
-            CheckBoxFaultBitC.Visible = False
-            CheckBoxFaultBitD.Visible = False
-            CheckBoxFaultBitE.Visible = False
-            CheckBoxFaultBitF.Visible = False
-
-            CheckBoxLoggedBit0.Text = "Power OFF"
-            CheckBoxLoggedBit1.Text = "HV OFF"
-            CheckBoxLoggedBit2.Text = "Phase Loss"
-            CheckBoxLoggedBit3.Text = "Over Temp"
-            CheckBoxLoggedBit4.Text = "Interlock"
-            CheckBoxLoggedBit5.Text = "Load FLT"
-            CheckBoxLoggedBit6.Text = "Sum FLT"
-            CheckBoxLoggedBit7.Visible = False
-            CheckBoxLoggedBit8.Visible = False
-            CheckBoxLoggedBit9.Visible = False
-            CheckBoxLoggedBitA.Visible = False
-            CheckBoxLoggedBitB.Visible = False
-            CheckBoxLoggedBitC.Visible = False
-            CheckBoxLoggedBitD.Visible = False
-            CheckBoxLoggedBitE.Visible = False
-            CheckBoxLoggedBitF.Visible = False
-
-
-
-            LabelValue1.Text = "High Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(2) / 1000, "0.000") & " kV"
-            LabelValue2.Text = "Low Mode Set = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(1) / 1000, "0.000") & " kV"
-            LabelValue3.Text = "EOC Error Count = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(7)
-            LabelValue4.Text = "Vmon Pulse = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(0) / 1000, "0.000") & " kV"
-            LabelValue5.Text = "Imon = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(5) / 1000 & " A"
-            LabelValue6.Text = ""
-            LabelValue7.Text = ""
-            LabelValue8.Text = ""
-            LabelValue9.Text = "Vmon Avg = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).log_data(6) / 1000, "0.000") & " kV"
-            LabelValue10.Text = ""
-            LabelValue11.Text = ""
-            LabelValue12.Text = ""
-            LabelValue13.Text = ""
-            LabelValue14.Text = ""
-            LabelValue15.Text = ""
-
-            inputbutton1.enabled = True
-            inputbutton1.button_only = False
-            inputbutton1.button_name = "Set HV High"
-            inputbutton1.max_value = 22000
-            inputbutton1.min_value = 6000
-            inputbutton1.scale = 1000
-            inputbutton1.offset = 0
-            inputbutton1.button_index = REGISTER_HVPS_SET_POINT_DOSE_0
-
-            inputbutton2.enabled = True
-            inputbutton2.button_only = False
-            inputbutton2.button_name = "Set HV Low"
-            inputbutton2.max_value = 22000
-            inputbutton2.min_value = 6000
-            inputbutton2.scale = 1000
-            inputbutton2.offset = 0
-            inputbutton2.button_index = REGISTER_HVPS_SET_POINT_DOSE_1
-
-
-            inputbutton3.enabled = False
-            inputbutton4.enabled = False
-            inputbutton5.enabled = False
-
-
-#End If
-
-
-
-
-
-
-
-
-    End Sub
-
-
-  
 
 
     Private Sub DisplayLeftPane()
@@ -998,7 +771,7 @@
         time = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(2) * 2 ^ 16
         time += ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(1)
 
-        LabelComputerTime.Text = "Computer UTC = 20" & Format(DateTime.UtcNow, "yy/MM/dd HH:mm:ss")
+        LabelComputerTime.Text = "Computer UTC = 20" & Format(DateTime.Now, "yy/MM/dd HH:mm:ss")
 
         year = CInt(Math.Truncate(time / YEAR_MULT))
         time = CUInt(time Mod YEAR_MULT)
@@ -1045,104 +818,6 @@
         warmuptime = Math.Max(warmuptime, ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(6))
 
 
-#If 0 Then
-        ' Calculate the PRF
-        Dim prf As UInt16
-        prf = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(3)
-        If prf <> 0 Then
-            ' If the PRF is 0, then no trigger data is sent from the pulse sync board, so the "more accurate value" will store the last trigger sent
-            ' If the PRF is not Zero, then triggers are being sent so use the most recent value
-            prf = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(3)
-        End If
-
-        Dim grid_width As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(11)
-        Try
-            grid_width = (Math.Truncate(grid_width / 256) - Math.Truncate(grid_width Mod 256)) * 20
-        Catch ex As Exception
-            grid_width = 0
-        End Try
-
-
-        Dim trigger_width As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).log_data(7)
-        Try
-            trigger_width = Math.Truncate(trigger_width / 256) * 100
-        Catch ex As Exception
-            trigger_width = 0
-        End Try
-
-
-
-
-
-        LabelDisplay1.Text = "Magnetron Current = " & Format(magnetron_current / 100, ".00") & " A"
-        LabelDisplay2.Text = "Magnet Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(1) / 1000, ".000") & " A"
-        LabelDisplay3.Text = "Heater Imon = " & Format(ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).log_data(3) / 1000, ".000") & " A"
-        LabelDisplay4.Text = "Pulses Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(5) * 2 ^ 16 + ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(4)
-        LabelDisplay5.Text = "Arcs Today = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).log_data(12)
-        LabelDisplay6.Text = "PRF = " & Format(prf / 10, ".0") & " Hz"
-        LabelDisplay7.Text = "Trig = " & trigger_width & "nS / " & grid_width & "nS"
-        'LabelDisplay7.Text = "Ion Pump Current = " & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).log_data(3) & " nA"
-        'LabelDisplay8.Text = "Warmup Remaining = " & Math.Truncate(warmuptime / 60) & ":" & Format((warmuptime Mod 60), "00")
-        LabelDisplay8.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(17)
-        LabelSystemSerialNumber.Text = "SN = H" & ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(19)
-
-        Label15.Text = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).ecb_local_data(4)
-
-        ' Update the current Sync Bits
-        Dim Sync_data As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(7)
-
-
-        If (Sync_data And &H2) Then
-            ' High speed data logging is enabled
-            ButtonStopLog.Visible = True
-            ButtonStartLog.Visible = False
-        Else
-            ButtonStopLog.Visible = False
-            ButtonStartLog.Visible = True
-        End If
-
-
-        ' Update the connected Boards
-
-        Dim ConnectedBoards As UInt16 = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).log_data(16)
-        ConnectedBoards = Not ConnectedBoards
-        CheckBoxIonPumpConnected.Checked = ConnectedBoards And &H2
-        CheckBoxPulseCurrentMonitorConnected.Checked = ConnectedBoards And &H4
-        CheckBoxPulseSyncConnected.Checked = ConnectedBoards And &H8
-        CheckBoxHVLambdaConnected.Checked = ConnectedBoards And &H10
-        CheckBoxAFCConnected.Checked = ConnectedBoards And &H20
-        CheckBoxCoolingConnected.Checked = ConnectedBoards And &H40
-        CheckBoxHtrMagConnected.Checked = ConnectedBoards And &H80
-        CheckBoxGunDriverConnected.Checked = ConnectedBoards And &H100
-
-        CheckBoxOperateIonPump.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).fault_bits
-        CheckBoxOperateMagnetronCurrentMon.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).fault_bits
-        CheckBoxOperatePulseSync.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).fault_bits
-        CheckBoxOperateHVLambda.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).fault_bits
-        CheckBoxOperateAFC.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_AFC).fault_bits
-        CheckBoxOperateCooling.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_COOLING).fault_bits
-        CheckBoxOperateHtrMag.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).fault_bits
-        CheckBoxOperateGunDriver.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).fault_bits
-        CheckBoxOperateEthernet.Checked = ServerSettings.ETMEthernetBoardLoggingData(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).fault_bits
-
-#End If
-#If (0) Then
-
-        ' Update the Ready Boards
-        'Dim FaultedBoards As UInt16 = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).custom_data(0)
-        CheckBoxOperateIonPump.Checked = (ConnectedBoards And &H2) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ION_PUMP).status_data.status_word_1)
-        CheckBoxOperateMagnetronCurrentMon.Checked = (ConnectedBoards And &H4) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_MAGNETRON_CURRENT).status_data.status_word_1)
-        CheckBoxOperatePulseSync.Checked = (ConnectedBoards And &H8) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_PULSE_SYNC).status_data.status_word_1)
-        CheckBoxOperateHVLambda.Checked = (ConnectedBoards And &H10) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HVLAMBDA).status_data.status_word_1)
-        CheckBoxOperateAFC.Checked = (ConnectedBoards And &H20) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_AFC).status_data.status_word_1)
-        CheckBoxOperateCooling.Checked = (ConnectedBoards And &H40) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_COOLING).status_data.status_word_1)
-        CheckBoxOperateHtrMag.Checked = (ConnectedBoards And &H80) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_HTR_MAGNET).status_data.status_word_1)
-        CheckBoxOperateGunDriver.Checked = (ConnectedBoards And &H100) Or (ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_GUN_DRIVER).status_data.status_word_1)
-        CheckBoxOperateEthernet.Checked = ServerSettings.ETMEthernetTXDataStructure(MODBUS_COMMANDS.MODBUS_WR_ETHERNET).status_data.status_word_0 And &H1
-
-        ' Update the Fault Boards
-#End If
-
 
     End Sub
 
@@ -1157,147 +832,6 @@
         End Try
 
     End Sub
-
-
-
-#If 0 Then
-
-
-
-    Public Const ETM_CAN_ADDR_ETHERNET_BOARD = 14
-    Public Const ETM_CAN_ADDR_ION_PUMP_BOARD = 1
-    Public Const ETM_CAN_ADDR_MAGNETRON_CURRENT_BOARD = 2
-    Public Const ETM_CAN_ADDR_PULSE_SYNC_BOARD = 3
-    Public Const ETM_CAN_ADDR_HV_LAMBDA_BOARD = 4
-    Public Const ETM_CAN_ADDR_AFC_CONTROL_BOARD = 5
-    Public Const ETM_CAN_ADDR_COOLING_INTERFACE_BOARD = 6
-    Public Const ETM_CAN_ADDR_HEATER_MAGNET_BOARD = 7
-    Public Const ETM_CAN_ADDR_GUN_DRIVER_BOARD = 8
-#End If
-
-
-
-
-    Private Sub ButtonSetTime_Click(sender As System.Object, e As System.EventArgs)
-        Dim time_high_word As UInt16
-        Dim time_low_word As UInt16
-        Dim time_now As Date = DateTime.UtcNow
-        Dim time_seconds As UInt32
-
-        time_seconds = (time_now.Year Mod 100) * YEAR_MULT
-        time_seconds += (time_now.Month) * MONTH_MULT
-        time_seconds += (time_now.Day) * DAY_MULT
-        time_seconds += (time_now.Hour) * HOUR_MULT
-        time_seconds += (time_now.Minute) * MIN_MULT
-        time_seconds += (time_now.Second)
-
-        time_high_word = CUShort(time_seconds >> 16)
-        time_low_word = CUShort(time_seconds And &HFFFF)
-        'LabelTimeSet.Text = Format(time_now, "yy MM dd HH mm ss")
-        'LabelTimeSet2.Text = time_seconds
-        Try
-            ServerSettings.put_modbus_commands(REGISTER_SYSTEM_SET_TIME, time_high_word, time_low_word, 0, 0)
-        Catch ex As Exception
-            MsgBox("Date Time Type conversion failed")
-
-        End Try
-    End Sub
-
-    Private Sub ButtonReloadECBDefaults_Click(sender As System.Object, e As System.EventArgs)
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0, 0)
-    End Sub
-
-    Private Sub ButtonZeroOnTime_Click(sender As System.Object, e As System.EventArgs)
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_SECONDS_POWERED_HV_ON_XRAY_ON, 0, 0, 0, 0)
-    End Sub
-
-    Private Sub ButtonZeroPulseCounters_Click(sender As System.Object, e As System.EventArgs)
-        ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_RESET_ARC_AND_PULSE_COUNT, 0, 0, 0, 0)
-    End Sub
-
-#If 0 Then
-
-
-    Private Sub ButtonToggleMode_Click(sender As System.Object, e As System.EventArgs) Handles ButtonToggleMode.Click
-        LabelCanCXECReg.Visible = True
-        LabelCanErrorFlagCount.Visible = True
-        LabelCanTX1Count.Visible = True
-        LabelCanTX2Count.Visible = True
-        LabelCanRX0Filt0Count.Visible = True
-        LabelCanRX0Filt1Count.Visible = True
-        LabelCanRX1Filt2Count.Visible = True
-        LabelCanISREnteredCount.Visible = True
-        LabelCanUnknownIdentifierCount.Visible = True
-        LabelCanInvalidIndexCount.Visible = True
-        LabelCanAddressErrorCount.Visible = True
-        LabelCanTX0Count.Visible = True
-        LabelCanTXBufOverflowCount.Visible = True
-        LabelCanRXBufferOverflowCount.Visible = True
-        LabelCAnDataLogRXBufferOVerflowCount.Visible = True
-        LabelCanTimeoutCount.Visible = True
-        CbxSlaveStatusCntrl0.Visible = True
-        CbxSlaveStatusCntrl1.Visible = True
-        CbxSlaveStatusCntrl2.Visible = True
-        CbxSlaveStatusCntrl3.Visible = True
-        CbxSlaveStatusCntrl4.Visible = True
-        CbxSlaveStatusCntrl5.Visible = True
-        CbxSlaveStatusCntrl6.Visible = True
-        CbxSlaveStatusCntrl7.Visible = True
-        LabelErrorI2CBusCount.Visible = True
-        LabelErrorResetCount.Visible = True
-        LabelErrorScaleCount.Visible = True
-        LabelErrorSelfTestResultRegister.Visible = True
-        LabelErrorSPIBusCount.Visible = True
-        LabelErrorReserved0.Visible = True
-        LabelErrorReserved1.Visible = True
-        LabelRCON.Visible = True
-        LabelDebug0.Visible = True
-        LabelDebug1.Visible = True
-        LabelDebug2.Visible = True
-        LabelDebug3.Visible = True
-        LabelDebug4.Visible = True
-        LabelDebug5.Visible = True
-        LabelDebug6.Visible = True
-        LabelDebug7.Visible = True
-        LabelDebug8.Visible = True
-        LabelDebug9.Visible = True
-        LabelDebugA.Visible = True
-        LabelDebugB.Visible = True
-        LabelDebugC.Visible = True
-        LabelDebugD.Visible = True
-        LabelDebugE.Visible = True
-        LabelDebugF.Visible = True
-        LabelValueDebug0.Visible = True
-        LabelValueDebug1.Visible = True
-        LabelValueDebug2.Visible = True
-        LabelValueDebug3.Visible = True
-        LabelValueDebug4.Visible = True
-        LabelValueDebug5.Visible = True
-        LabelValueDebug6.Visible = True
-        LabelValueDebug7.Visible = True
-        LabelValueDebug8.Visible = True
-        LabelValueDebug9.Visible = True
-        LabelValueDebugA.Visible = True
-        LabelValueDebugB.Visible = True
-        LabelValueDebugC.Visible = True
-        LabelValueDebugD.Visible = True
-        LabelValueDebugE.Visible = True
-        LabelValueDebugF.Visible = True
-
-        LabelComputerTime.Visible = True
-        LabelSyncMessageCntrlBits.Visible = True
-
-        ButtonToggleResetDebug.Visible = True
-        CheckBoxSyncBitF.Visible = True
-        ButtonSetTime.Visible = True
-
-        ButtonReloadECBDefaults.Visible = True
-        ButtonZeroOnTime.Visible = True
-        ButtonZeroPulseCounters.Visible = True
-
-        ButtonToggleMode.Visible = False
-    End Sub
-#End If
 
 
 
@@ -1373,10 +907,6 @@
         Catch ex As Exception
             MsgBox("Please enter valid data")
         End Try
-    End Sub
-
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs)
-        'ServerSettings.put_modbus_commands(REGISTER_DEBUG_POWER_CYCLE_TEST, 0, 0, 0)
     End Sub
 
 
@@ -2158,4 +1688,20 @@
     End Sub
 
 
+    Private Sub BtnStartPulseLog_Click(sender As Object, e As EventArgs) Handles BtnStartPulseLog.Click
+        If ServerSettings.pulse_log_enabled = False Then
+            ServerSettings.OpenPulseLogFile()
+            'filename = ServerSettings.pulse_log_file_path
+            ServerSettings.pulse_log_enabled = True
+        End If
+
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_ENABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
+
+    End Sub
+
+    Private Sub BtnStopPulseLog_Click(sender As Object, e As EventArgs) Handles BtnStopPulseLog.Click
+        ServerSettings.ClosePulseLogFile()
+        ServerSettings.put_modbus_commands(REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
+
+    End Sub
 End Class

@@ -381,8 +381,8 @@ Partial Class frmMain
         Me.Button13 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.BtnStopPulseLog = New System.Windows.Forms.Button()
+        Me.BtnStartPulseLog = New System.Windows.Forms.Button()
         Me.BtnEEpromWriteStatusClear = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -4696,8 +4696,8 @@ Partial Class frmMain
         Me.TabPage1ECB.Controls.Add(Me.Button13)
         Me.TabPage1ECB.Controls.Add(Me.Button12)
         Me.TabPage1ECB.Controls.Add(Me.Button11)
-        Me.TabPage1ECB.Controls.Add(Me.Button10)
-        Me.TabPage1ECB.Controls.Add(Me.Button9)
+        Me.TabPage1ECB.Controls.Add(Me.BtnStopPulseLog)
+        Me.TabPage1ECB.Controls.Add(Me.BtnStartPulseLog)
         Me.TabPage1ECB.Controls.Add(Me.BtnEEpromWriteStatusClear)
         Me.TabPage1ECB.Controls.Add(Me.Button7)
         Me.TabPage1ECB.Controls.Add(Me.Button6)
@@ -4812,23 +4812,23 @@ Partial Class frmMain
         Me.Button11.Text = "Load Factory Defaults"
         Me.Button11.UseVisualStyleBackColor = True
         '
-        'Button10
+        'BtnStopPulseLog
         '
-        Me.Button10.Location = New System.Drawing.Point(469, 83)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(219, 23)
-        Me.Button10.TabIndex = 628
-        Me.Button10.Text = "Stop Pulse Log"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.BtnStopPulseLog.Location = New System.Drawing.Point(469, 83)
+        Me.BtnStopPulseLog.Name = "BtnStopPulseLog"
+        Me.BtnStopPulseLog.Size = New System.Drawing.Size(219, 23)
+        Me.BtnStopPulseLog.TabIndex = 628
+        Me.BtnStopPulseLog.Text = "Stop Pulse Log"
+        Me.BtnStopPulseLog.UseVisualStyleBackColor = True
         '
-        'Button9
+        'BtnStartPulseLog
         '
-        Me.Button9.Location = New System.Drawing.Point(469, 54)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(219, 23)
-        Me.Button9.TabIndex = 627
-        Me.Button9.Text = "Start Pulse Log"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.BtnStartPulseLog.Location = New System.Drawing.Point(469, 54)
+        Me.BtnStartPulseLog.Name = "BtnStartPulseLog"
+        Me.BtnStartPulseLog.Size = New System.Drawing.Size(219, 23)
+        Me.BtnStartPulseLog.TabIndex = 627
+        Me.BtnStartPulseLog.Text = "Start Pulse Log"
+        Me.BtnStartPulseLog.UseVisualStyleBackColor = True
         '
         'BtnEEpromWriteStatusClear
         '
@@ -5521,8 +5521,8 @@ Partial Class frmMain
     Friend WithEvents BtnHVPSTrigStart As System.Windows.Forms.Button
     Friend WithEvents BtnMagnetronHeater As System.Windows.Forms.Button
     Friend WithEvents BntECBEEPromConfigure As System.Windows.Forms.Button
-    Friend WithEvents Button10 As System.Windows.Forms.Button
-    Friend WithEvents Button9 As System.Windows.Forms.Button
+    Friend WithEvents BtnStopPulseLog As System.Windows.Forms.Button
+    Friend WithEvents BtnStartPulseLog As System.Windows.Forms.Button
     Friend WithEvents BtnEEpromWriteStatusClear As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
