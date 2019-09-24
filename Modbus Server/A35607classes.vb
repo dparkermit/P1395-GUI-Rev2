@@ -496,7 +496,7 @@ Public Class ETM_CAN_DEBUG_DATA
     Public self_test_results As UInt16
 
     ' Can data log - 0x2C
-    Public debugging_tbd_15 As UInt16
+    Public faults_being_ignored As UInt16
     Public debugging_tbd_14 As UInt16
     Public debugging_tbd_13 As UInt16
     Public debugging_tbd_12 As UInt16
@@ -689,7 +689,7 @@ Public Class ETM_CAN_DEBUG_DATA
 
         ' Can data log - 0x2C
         i += 8
-        debugging_tbd_15 = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
+        faults_being_ignored = (CUShort(data(i + 1)) << 8) + CUShort(data(i))
         debugging_tbd_14 = (CUShort(data(i + 3)) << 8) + CUShort(data(i + 2))
         debugging_tbd_13 = (CUShort(data(i + 5)) << 8) + CUShort(data(i + 4))
         debugging_tbd_12 = (CUShort(data(i + 7)) << 8) + CUShort(data(i + 6))

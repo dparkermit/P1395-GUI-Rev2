@@ -23,6 +23,14 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim DataPoint1 As System.Windows.Forms.DataVisualization.Charting.DataPoint = New System.Windows.Forms.DataVisualization.Charting.DataPoint(0.0R, 1.0R)
+        Dim DataPoint2 As System.Windows.Forms.DataVisualization.Charting.DataPoint = New System.Windows.Forms.DataVisualization.Charting.DataPoint(0.0R, 2.0R)
+        Dim DataPoint3 As System.Windows.Forms.DataVisualization.Charting.DataPoint = New System.Windows.Forms.DataVisualization.Charting.DataPoint(0.0R, 1.0R)
+        Dim DataPoint4 As System.Windows.Forms.DataVisualization.Charting.DataPoint = New System.Windows.Forms.DataVisualization.Charting.DataPoint(0.0R, 4.0R)
         Me.TimerUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.LabelECBTime = New System.Windows.Forms.Label()
         Me.LabelComputerTime = New System.Windows.Forms.Label()
@@ -133,6 +141,7 @@ Partial Class frmMain
         Me.BtnMagnetCurrentDose0 = New System.Windows.Forms.Button()
         Me.BtnHVPSDose0 = New System.Windows.Forms.Button()
         Me.TabPage2Slave = New System.Windows.Forms.TabPage()
+        Me.BtnIgnoreFaultTest = New System.Windows.Forms.Button()
         Me.BtnMCUReset = New System.Windows.Forms.Button()
         Me.CoBoxSelectedCanBoard = New System.Windows.Forms.ComboBox()
         Me.BtnSetCalPair = New System.Windows.Forms.Button()
@@ -370,6 +379,12 @@ Partial Class frmMain
         Me.BtnClearDebug = New System.Windows.Forms.Button()
         Me.BtnAFCAuto = New System.Windows.Forms.Button()
         Me.TabPage1ECB = New System.Windows.Forms.TabPage()
+        Me.BtnScopeHVVmon = New System.Windows.Forms.Button()
+        Me.BtnScopeGeneric = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BtnScopeStop = New System.Windows.Forms.Button()
+        Me.BtnScopeStart = New System.Windows.Forms.Button()
+        Me.ChartScope = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.BtnSystemSerialNumber = New System.Windows.Forms.Button()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -414,11 +429,31 @@ Partial Class frmMain
         Me.Label22 = New System.Windows.Forms.Label()
         Me.CbxConnect10 = New System.Windows.Forms.CheckBox()
         Me.CbxReady10 = New System.Windows.Forms.CheckBox()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.LabelChartTest = New System.Windows.Forms.Label()
+        Me.CbxEcbExtF = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExtE = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExtD = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExtC = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExtB = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExtA = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt9 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt8 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt0 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt7 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt6 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt5 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt4 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt3 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt2 = New System.Windows.Forms.CheckBox()
+        Me.CbxEcbExt1 = New System.Windows.Forms.CheckBox()
         Me.TabPage5.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.TabPage2Slave.SuspendLayout()
         Me.TabPage1ECB.SuspendLayout()
+        CType(Me.ChartScope, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4Dose.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TimerUpdate
@@ -1737,6 +1772,23 @@ Partial Class frmMain
         '
         'TabPage2Slave
         '
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtF)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtE)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtD)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtC)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtB)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExtA)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt9)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt8)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt0)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt7)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt6)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt5)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt4)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt3)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt2)
+        Me.TabPage2Slave.Controls.Add(Me.CbxEcbExt1)
+        Me.TabPage2Slave.Controls.Add(Me.BtnIgnoreFaultTest)
         Me.TabPage2Slave.Controls.Add(Me.BtnMCUReset)
         Me.TabPage2Slave.Controls.Add(Me.CoBoxSelectedCanBoard)
         Me.TabPage2Slave.Controls.Add(Me.BtnSetCalPair)
@@ -1978,6 +2030,15 @@ Partial Class frmMain
         Me.TabPage2Slave.TabIndex = 0
         Me.TabPage2Slave.Text = "Slave"
         Me.TabPage2Slave.UseVisualStyleBackColor = True
+        '
+        'BtnIgnoreFaultTest
+        '
+        Me.BtnIgnoreFaultTest.Location = New System.Drawing.Point(359, 809)
+        Me.BtnIgnoreFaultTest.Name = "BtnIgnoreFaultTest"
+        Me.BtnIgnoreFaultTest.Size = New System.Drawing.Size(123, 23)
+        Me.BtnIgnoreFaultTest.TabIndex = 630
+        Me.BtnIgnoreFaultTest.Text = "Ignore Fault Test"
+        Me.BtnIgnoreFaultTest.UseVisualStyleBackColor = True
         '
         'BtnMCUReset
         '
@@ -4683,6 +4744,12 @@ Partial Class frmMain
         '
         'TabPage1ECB
         '
+        Me.TabPage1ECB.Controls.Add(Me.BtnScopeHVVmon)
+        Me.TabPage1ECB.Controls.Add(Me.BtnScopeGeneric)
+        Me.TabPage1ECB.Controls.Add(Me.Button3)
+        Me.TabPage1ECB.Controls.Add(Me.BtnScopeStop)
+        Me.TabPage1ECB.Controls.Add(Me.BtnScopeStart)
+        Me.TabPage1ECB.Controls.Add(Me.ChartScope)
         Me.TabPage1ECB.Controls.Add(Me.BtnSystemSerialNumber)
         Me.TabPage1ECB.Controls.Add(Me.BtnClearDebug)
         Me.TabPage1ECB.Controls.Add(Me.Label19)
@@ -4709,6 +4776,61 @@ Partial Class frmMain
         Me.TabPage1ECB.TabIndex = 1
         Me.TabPage1ECB.Text = "Commands"
         Me.TabPage1ECB.UseVisualStyleBackColor = True
+        '
+        'BtnScopeHVVmon
+        '
+        Me.BtnScopeHVVmon.Location = New System.Drawing.Point(993, 694)
+        Me.BtnScopeHVVmon.Name = "BtnScopeHVVmon"
+        Me.BtnScopeHVVmon.Size = New System.Drawing.Size(219, 23)
+        Me.BtnScopeHVVmon.TabIndex = 661
+        Me.BtnScopeHVVmon.Text = "Scope HV Vmon"
+        Me.BtnScopeHVVmon.UseVisualStyleBackColor = True
+        '
+        'BtnScopeGeneric
+        '
+        Me.BtnScopeGeneric.Location = New System.Drawing.Point(993, 643)
+        Me.BtnScopeGeneric.Name = "BtnScopeGeneric"
+        Me.BtnScopeGeneric.Size = New System.Drawing.Size(219, 23)
+        Me.BtnScopeGeneric.TabIndex = 660
+        Me.BtnScopeGeneric.Text = "Scope Generic"
+        Me.BtnScopeGeneric.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(993, 595)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(219, 23)
+        Me.Button3.TabIndex = 659
+        Me.Button3.Text = "Scope Single"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'BtnScopeStop
+        '
+        Me.BtnScopeStop.Location = New System.Drawing.Point(993, 543)
+        Me.BtnScopeStop.Name = "BtnScopeStop"
+        Me.BtnScopeStop.Size = New System.Drawing.Size(219, 23)
+        Me.BtnScopeStop.TabIndex = 658
+        Me.BtnScopeStop.Text = "Scope Stop"
+        Me.BtnScopeStop.UseVisualStyleBackColor = True
+        '
+        'BtnScopeStart
+        '
+        Me.BtnScopeStart.Location = New System.Drawing.Point(993, 495)
+        Me.BtnScopeStart.Name = "BtnScopeStart"
+        Me.BtnScopeStart.Size = New System.Drawing.Size(219, 23)
+        Me.BtnScopeStart.TabIndex = 657
+        Me.BtnScopeStart.Text = "Scope Start"
+        Me.BtnScopeStart.UseVisualStyleBackColor = True
+        '
+        'ChartScope
+        '
+        Legend1.Name = "Legend1"
+        Me.ChartScope.Legends.Add(Legend1)
+        Me.ChartScope.Location = New System.Drawing.Point(104, 483)
+        Me.ChartScope.Name = "ChartScope"
+        Me.ChartScope.Size = New System.Drawing.Size(901, 300)
+        Me.ChartScope.TabIndex = 656
+        Me.ChartScope.Text = "Chart2"
         '
         'BtnSystemSerialNumber
         '
@@ -5123,12 +5245,254 @@ Partial Class frmMain
         Me.CbxReady10.TabIndex = 653
         Me.CbxReady10.UseVisualStyleBackColor = True
         '
+        'Chart1
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
+        Me.Chart1.Location = New System.Drawing.Point(35, 60)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Series1.Points.Add(DataPoint1)
+        Series1.Points.Add(DataPoint2)
+        Series1.Points.Add(DataPoint3)
+        Series1.Points.Add(DataPoint4)
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(300, 300)
+        Me.Chart1.TabIndex = 654
+        Me.Chart1.Text = "Chart1"
+        '
+        'LabelChartTest
+        '
+        Me.LabelChartTest.AutoSize = True
+        Me.LabelChartTest.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.LabelChartTest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelChartTest.Location = New System.Drawing.Point(86, 38)
+        Me.LabelChartTest.Margin = New System.Windows.Forms.Padding(3)
+        Me.LabelChartTest.Name = "LabelChartTest"
+        Me.LabelChartTest.Size = New System.Drawing.Size(69, 16)
+        Me.LabelChartTest.TabIndex = 655
+        Me.LabelChartTest.Text = "ECB Time"
+        '
+        'CbxEcbExtF
+        '
+        Me.CbxEcbExtF.AutoSize = True
+        Me.CbxEcbExtF.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtF.Location = New System.Drawing.Point(323, 738)
+        Me.CbxEcbExtF.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtF.Name = "CbxEcbExtF"
+        Me.CbxEcbExtF.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtF.TabIndex = 646
+        Me.CbxEcbExtF.Text = "ECB Ext"
+        Me.CbxEcbExtF.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExtE
+        '
+        Me.CbxEcbExtE.AutoSize = True
+        Me.CbxEcbExtE.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtE.Location = New System.Drawing.Point(323, 718)
+        Me.CbxEcbExtE.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtE.Name = "CbxEcbExtE"
+        Me.CbxEcbExtE.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtE.TabIndex = 645
+        Me.CbxEcbExtE.Text = "ECB Ext"
+        Me.CbxEcbExtE.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExtD
+        '
+        Me.CbxEcbExtD.AutoSize = True
+        Me.CbxEcbExtD.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtD.Location = New System.Drawing.Point(323, 698)
+        Me.CbxEcbExtD.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtD.Name = "CbxEcbExtD"
+        Me.CbxEcbExtD.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtD.TabIndex = 644
+        Me.CbxEcbExtD.Text = "ECB Ext"
+        Me.CbxEcbExtD.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExtC
+        '
+        Me.CbxEcbExtC.AutoSize = True
+        Me.CbxEcbExtC.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtC.Location = New System.Drawing.Point(323, 678)
+        Me.CbxEcbExtC.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtC.Name = "CbxEcbExtC"
+        Me.CbxEcbExtC.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtC.TabIndex = 643
+        Me.CbxEcbExtC.Text = "ECB Ext"
+        Me.CbxEcbExtC.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExtB
+        '
+        Me.CbxEcbExtB.AutoSize = True
+        Me.CbxEcbExtB.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtB.Location = New System.Drawing.Point(323, 658)
+        Me.CbxEcbExtB.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtB.Name = "CbxEcbExtB"
+        Me.CbxEcbExtB.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtB.TabIndex = 642
+        Me.CbxEcbExtB.Text = "ECB Ext"
+        Me.CbxEcbExtB.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExtA
+        '
+        Me.CbxEcbExtA.AutoSize = True
+        Me.CbxEcbExtA.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExtA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExtA.Location = New System.Drawing.Point(323, 638)
+        Me.CbxEcbExtA.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExtA.Name = "CbxEcbExtA"
+        Me.CbxEcbExtA.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExtA.TabIndex = 641
+        Me.CbxEcbExtA.Text = "ECB Ext"
+        Me.CbxEcbExtA.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt9
+        '
+        Me.CbxEcbExt9.AutoSize = True
+        Me.CbxEcbExt9.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt9.Location = New System.Drawing.Point(323, 618)
+        Me.CbxEcbExt9.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt9.Name = "CbxEcbExt9"
+        Me.CbxEcbExt9.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt9.TabIndex = 640
+        Me.CbxEcbExt9.Text = "ECB Ext"
+        Me.CbxEcbExt9.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt8
+        '
+        Me.CbxEcbExt8.AutoSize = True
+        Me.CbxEcbExt8.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt8.Location = New System.Drawing.Point(323, 598)
+        Me.CbxEcbExt8.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt8.Name = "CbxEcbExt8"
+        Me.CbxEcbExt8.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt8.TabIndex = 639
+        Me.CbxEcbExt8.Text = "ECB Ext"
+        Me.CbxEcbExt8.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt0
+        '
+        Me.CbxEcbExt0.AutoSize = True
+        Me.CbxEcbExt0.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt0.Location = New System.Drawing.Point(323, 438)
+        Me.CbxEcbExt0.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt0.Name = "CbxEcbExt0"
+        Me.CbxEcbExt0.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt0.TabIndex = 631
+        Me.CbxEcbExt0.Text = "ECB Ext"
+        Me.CbxEcbExt0.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt7
+        '
+        Me.CbxEcbExt7.AutoSize = True
+        Me.CbxEcbExt7.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt7.Location = New System.Drawing.Point(323, 578)
+        Me.CbxEcbExt7.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt7.Name = "CbxEcbExt7"
+        Me.CbxEcbExt7.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt7.TabIndex = 638
+        Me.CbxEcbExt7.Text = "ECB Ext"
+        Me.CbxEcbExt7.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt6
+        '
+        Me.CbxEcbExt6.AutoSize = True
+        Me.CbxEcbExt6.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt6.Location = New System.Drawing.Point(323, 558)
+        Me.CbxEcbExt6.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt6.Name = "CbxEcbExt6"
+        Me.CbxEcbExt6.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt6.TabIndex = 637
+        Me.CbxEcbExt6.Text = "ECB Ext"
+        Me.CbxEcbExt6.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt5
+        '
+        Me.CbxEcbExt5.AutoSize = True
+        Me.CbxEcbExt5.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt5.Location = New System.Drawing.Point(323, 538)
+        Me.CbxEcbExt5.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt5.Name = "CbxEcbExt5"
+        Me.CbxEcbExt5.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt5.TabIndex = 636
+        Me.CbxEcbExt5.Text = "ECB Ext"
+        Me.CbxEcbExt5.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt4
+        '
+        Me.CbxEcbExt4.AutoSize = True
+        Me.CbxEcbExt4.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt4.Location = New System.Drawing.Point(323, 518)
+        Me.CbxEcbExt4.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt4.Name = "CbxEcbExt4"
+        Me.CbxEcbExt4.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt4.TabIndex = 635
+        Me.CbxEcbExt4.Text = "ECB Ext"
+        Me.CbxEcbExt4.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt3
+        '
+        Me.CbxEcbExt3.AutoSize = True
+        Me.CbxEcbExt3.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt3.Location = New System.Drawing.Point(323, 498)
+        Me.CbxEcbExt3.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt3.Name = "CbxEcbExt3"
+        Me.CbxEcbExt3.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt3.TabIndex = 634
+        Me.CbxEcbExt3.Text = "ECB Ext"
+        Me.CbxEcbExt3.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt2
+        '
+        Me.CbxEcbExt2.AutoSize = True
+        Me.CbxEcbExt2.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt2.Location = New System.Drawing.Point(323, 478)
+        Me.CbxEcbExt2.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt2.Name = "CbxEcbExt2"
+        Me.CbxEcbExt2.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt2.TabIndex = 633
+        Me.CbxEcbExt2.Text = "ECB Ext"
+        Me.CbxEcbExt2.UseVisualStyleBackColor = False
+        '
+        'CbxEcbExt1
+        '
+        Me.CbxEcbExt1.AutoSize = True
+        Me.CbxEcbExt1.BackColor = System.Drawing.SystemColors.Control
+        Me.CbxEcbExt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbxEcbExt1.Location = New System.Drawing.Point(323, 458)
+        Me.CbxEcbExt1.Margin = New System.Windows.Forms.Padding(0)
+        Me.CbxEcbExt1.Name = "CbxEcbExt1"
+        Me.CbxEcbExt1.Size = New System.Drawing.Size(75, 20)
+        Me.CbxEcbExt1.TabIndex = 632
+        Me.CbxEcbExt1.Text = "ECB Ext"
+        Me.CbxEcbExt1.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1784, 961)
+        Me.Controls.Add(Me.LabelChartTest)
+        Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.CbxReady10)
         Me.Controls.Add(Me.CbxConnect10)
         Me.Controls.Add(Me.Label21)
@@ -5170,7 +5534,9 @@ Partial Class frmMain
         Me.TabPage2Slave.PerformLayout()
         Me.TabPage1ECB.ResumeLayout(False)
         Me.TabPage1ECB.PerformLayout()
+        CType(Me.ChartScope, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4Dose.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -5566,4 +5932,29 @@ Partial Class frmMain
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents CbxConnect10 As System.Windows.Forms.CheckBox
     Friend WithEvents CbxReady10 As System.Windows.Forms.CheckBox
+    Friend WithEvents Chart1 As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents LabelChartTest As System.Windows.Forms.Label
+    Friend WithEvents ChartScope As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents BtnScopeStop As System.Windows.Forms.Button
+    Friend WithEvents BtnScopeStart As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents BtnScopeHVVmon As System.Windows.Forms.Button
+    Friend WithEvents BtnScopeGeneric As System.Windows.Forms.Button
+    Friend WithEvents BtnIgnoreFaultTest As System.Windows.Forms.Button
+    Friend WithEvents CbxEcbExtF As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExtE As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExtD As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExtC As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExtB As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExtA As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt9 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt8 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt0 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt7 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt6 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt5 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt4 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt3 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CbxEcbExt1 As System.Windows.Forms.CheckBox
 End Class

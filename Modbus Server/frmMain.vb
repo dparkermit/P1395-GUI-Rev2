@@ -86,6 +86,8 @@
     Public Const REGISTER_SYSTEM_LOAD_CUSTOMER_SETTINGS_SAVE_AND_REBOOT As UInt16 = &H110A
     Public Const REGISTER_REMOTE_IP_ADDRESS As UInt16 = &H110B
     Public Const REGISTER_IP_ADDRESS As UInt16 = &H110C
+    Public Const REGISTER_SCOPE_DATA_SOURCE_GENERIC As UInt16 = &H1120
+    Public Const REGISTER_SCOPE_DATA_SOURCE_HV_VMON As UInt16 = &H1121
 
     Public Const REGISTER_DEBUG_TOGGLE_RESET_DEBUG As UInt16 = &H1200
     Public Const REGISTER_DEBUG_RESET_MCU As UInt16 = &H1201
@@ -101,6 +103,7 @@
     Public Const REGISTER_DEBUG_SET_EEPROM_DEBUG As UInt16 = &H1211
     Public Const REGISTER_ETM_SLAVE_SET_CALIBRATION_PAIR As UInt16 = &H1212
     Public Const REGISTER_ETM_CLEAR_DEBUG As UInt16 = &H1213
+    Public Const REGISTER_ETM_IGNORE_FAULTS As UInt16 = &H1214
   
     Public Const YEAR_MULT As UInt32 = 35942400
     Public Const MONTH_MULT As UInt32 = 2764800
@@ -128,6 +131,7 @@
     Public inputbutton4 As New ButtonParameters
     Public inputbutton5 As New ButtonParameters
 
+    Public display_hv_vmon As Boolean
 
     Public EEProm_index As UInt16
 
@@ -302,6 +306,52 @@
         Dim logged_bits As UInt16
         Dim not_logged_bits As UInt16
 
+        ' Draw the scope
+        Chart1.Series.Clear()
+        Chart1.ChartAreas.Clear()
+        Chart1.ChartAreas.Add("dan1")
+        Chart1.ChartAreas("dan1").AxisY.Maximum = 5000
+        Chart1.Series.Add("Mag Current")
+        Chart1.Series("Mag Current").Points.DataBindY(ServerSettings.magnetron_pulse_data)
+        Chart1.Series("Mag Current").ChartType = DataVisualization.Charting.SeriesChartType.Line
+        Chart1.Update()
+        LabelChartTest.Text = "tes"
+
+
+        Try
+
+
+
+            ChartScope.Series.Clear()
+            ChartScope.ChartAreas.Clear()
+            ChartScope.ChartAreas.Add("scope")
+            If display_hv_vmon Then
+                ChartScope.ChartAreas("scope").AxisY.Maximum = 5000
+                ChartScope.ChartAreas("scope").AxisX.Maximum = ServerSettings.SCOPE_DATA_SIZE
+                ChartScope.Series.Add("HV Mon")
+                ChartScope.Series("HV Mon").Points.DataBindY(ServerSettings.q_scope_hv)
+                ChartScope.Series("HV Mon").ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Else
+                ChartScope.ChartAreas("scope").AxisY.Maximum = 70000
+                ChartScope.ChartAreas("scope").AxisX.Maximum = ServerSettings.SCOPE_DATA_SIZE
+                ChartScope.Series.Add("Scope A")
+                ChartScope.Series("Scope A").Points.DataBindY(ServerSettings.q_scope_a)
+                ChartScope.Series("Scope A").ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+                ChartScope.Series.Add("Scope B")
+                ChartScope.Series("Scope B").Points.DataBindY(ServerSettings.q_scope_b)
+                ChartScope.Series("Scope B").ChartType = DataVisualization.Charting.SeriesChartType.Line
+                ChartScope.Update()
+            End If
+        Catch ex As Exception
+
+        End Try
+
+
+
+
+
         LabelECBState.Text = "0x" & Hex(ServerSettings.ETMEthernetECBLoggingData.control_state)
 
 
@@ -471,6 +521,32 @@
         CbxSlaveStatusFaultE.Checked = fault_bits And &H4000
         CbxSlaveStatusFaultF.Checked = fault_bits And &H8000
 
+
+
+        If (ServerSettings.ETMEthernetDebugData.faults_being_ignored And &H1) Then
+            CbxSlaveStatusFault0.BackColor = Color.Yellow
+        Else
+            CbxSlaveStatusFault0.BackColor = System.Drawing.SystemColors.Control
+        End If
+
+        If (ServerSettings.ETMEthernetDebugData.faults_being_ignored And &H2) Then
+            CbxSlaveStatusFault1.BackColor = Color.Yellow
+        Else
+            CbxSlaveStatusFault1.BackColor = System.Drawing.SystemColors.Control
+        End If
+
+        If (ServerSettings.ETMEthernetDebugData.faults_being_ignored And &H4) Then
+            CbxSlaveStatusFault2.BackColor = Color.Yellow
+        Else
+            CbxSlaveStatusFault2.BackColor = System.Drawing.SystemColors.Control
+        End If
+
+        If (ServerSettings.ETMEthernetDebugData.faults_being_ignored And &H8) Then
+            CbxSlaveStatusFault3.BackColor = Color.Yellow
+        Else
+            CbxSlaveStatusFault3.BackColor = System.Drawing.SystemColors.Control
+        End If
+
         CbxSlaveStatusLogged0.Checked = logged_bits And &H1
         CbxSlaveStatusLogged1.Checked = logged_bits And &H2
         CbxSlaveStatusLogged2.Checked = logged_bits And &H4
@@ -505,6 +581,48 @@
         CbxSlaveStatusNotLoggedD.Checked = not_logged_bits And &H2000
         CbxSlaveStatusNotLoggedE.Checked = not_logged_bits And &H4000
         CbxSlaveStatusNotLoggedF.Checked = not_logged_bits And &H8000
+
+
+        CbxEcbExt0.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H1
+        CbxEcbExt1.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H2
+        CbxEcbExt2.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H4
+        CbxEcbExt3.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H8
+        CbxEcbExt4.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H10
+        CbxEcbExt5.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H20
+        CbxEcbExt6.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H40
+        CbxEcbExt7.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H80
+        CbxEcbExt8.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H100
+        CbxEcbExt9.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H200
+        CbxEcbExtA.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H400
+        CbxEcbExtB.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H800
+        CbxEcbExtC.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H1000
+        CbxEcbExtD.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H2000
+        CbxEcbExtE.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H4000
+        CbxEcbExtF.Checked = ServerSettings.ETMEthernetECBLoggingData.discrete_inputs And &H8000
+
+        CbxEcbExt0.Text = "Flt Pwr C"
+        CbxEcbExt1.Text = "Flt Pwr B"
+        CbxEcbExt2.Text = "Flt Pwr A"
+        CbxEcbExt3.Text = "Beam En Stat"
+        CbxEcbExt4.Text = "Spare In OK"
+        CbxEcbExt5.Text = "Intlk 2 Open"
+        CbxEcbExt6.Text = "Intlk 1 Open"
+        CbxEcbExt7.Text = "Unused"
+        CbxEcbExt8.Text = "Flt Phase Mon"
+        CbxEcbExt9.Text = "Flt 24V mon"
+        CbxEcbExtA.Text = "AC Cont Open"
+        CbxEcbExtB.Text = "HV Cont Open"
+        CbxEcbExtC.Text = "Estop 1 Open"
+        CbxEcbExtD.Text = "Estop 2 Open"
+        CbxEcbExtE.Text = "Panel Open"
+        CbxEcbExtF.Text = "Keylok Open"
+
+
+
+
+
+
+
 
 
         LblDebugReg0.Text = "Debug_0 = " & ServerSettings.ETMEthernetDebugData.debug_0
@@ -557,6 +675,9 @@
         LblDebugEEprom13.Text = "CMD Invalid Idx = " & ServerSettings.ETMEthernetDebugData.cmd_data_register_read_invalid_index
         LblDebugEEprom14.Text = "TBD 17 = " & ServerSettings.ETMEthernetDebugData.debugging_tbd_17
         LblDebugEEprom15.Text = "TBD 16 = " & ServerSettings.ETMEthernetDebugData.debugging_tbd_16
+
+
+        LblDebugTBD0.Text = "Ignore bits = 0x" & Hex(ServerSettings.ETMEthernetDebugData.faults_being_ignored)
 
         LblDebugSystem0.Text = "Reset Cnt = " & ServerSettings.ETMEthernetDebugData.reset_count
         LblDebugSystem1.Text = "RCON = " & ServerSettings.ETMEthernetDebugData.RCON_value
@@ -998,6 +1119,7 @@
 
     Private Sub BtnClearDebug_Click(sender As Object, e As EventArgs) Handles BtnClearDebug.Click
         ServerSettings.put_modbus_commands(REGISTER_ETM_CLEAR_DEBUG, 0, 0, 0, 0)
+
     End Sub
 
 
@@ -1058,6 +1180,38 @@
         End Try
 
     End Function
+
+    Function get_set_data_hex(ByVal prompt As String, ByVal title As String, ByVal min As Double, ByVal max As Double, ByVal unit As String, ByRef data As Double) As Boolean
+        ' return true if got valid data
+        Dim strvalue As String
+        Dim prompt_range As String
+
+        If (max < 0 And min < 0) Then
+            prompt_range = prompt & " ( " & max & " " & unit & "  to  " & min & " " & unit & " )"
+        Else
+            prompt_range = prompt & " ( " & min & " " & unit & "  to  " & max & " " & unit & " )"
+        End If
+        strvalue = InputBox(prompt_range, title)
+        Dim dval As Double
+
+        get_set_data_hex = False
+        Try
+            If (strvalue <> "") Then
+                dval = Convert.ToInt32(strvalue, 16)
+                If (dval > max Or dval < min) Then
+                    MsgBox("Input data is out of range, data discarded", MsgBoxStyle.Exclamation)
+                Else
+                    data = dval
+                    get_set_data_hex = True
+                End If
+            End If
+        Catch
+            MsgBox("Invalid input, data discarded", MsgBoxStyle.Exclamation)
+        End Try
+
+    End Function
+
+
     Private Sub BntECBEEPromConfigure_Click(sender As Object, e As EventArgs) Handles BntECBEEPromConfigure.Click
         ServerSettings.put_modbus_commands(REGISTER_ETM_ECB_LOAD_DEFAULT_SYSTEM_SETTINGS_AND_REBOOT, 0, 0, 0, 0)
     End Sub
@@ -1703,5 +1857,70 @@
         ServerSettings.ClosePulseLogFile()
         ServerSettings.put_modbus_commands(REGISTER_SYSTEM_DISABLE_HIGH_SPEED_LOGGING, 0, 0, 0, 0)
 
+    End Sub
+
+
+    Private Sub ClearScopeData()
+        Dim i As Short
+        ServerSettings.q_scope_a.Clear()
+        ServerSettings.q_scope_b.Clear()
+        ServerSettings.q_scope_hv.Clear()
+
+        For i = 0 To ServerSettings.SCOPE_DATA_SIZE
+            ServerSettings.q_scope_a.Enqueue(0)
+            ServerSettings.q_scope_b.Enqueue(0)
+            ServerSettings.q_scope_hv.Enqueue(0)
+        Next
+
+    End Sub
+
+
+    Private Sub BtnScopeStart_Click(sender As Object, e As EventArgs) Handles BtnScopeStart.Click
+        ServerSettings.ScopeRun = True
+        ServerSettings.ScopeRunSingle = False
+        Call ClearScopeData()
+    End Sub
+
+
+
+    Private Sub BtnScopeStop_Click(sender As Object, e As EventArgs) Handles BtnScopeStop.Click
+        ServerSettings.ScopeRun = False
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        ServerSettings.ScopeRun = True
+        ServerSettings.ScopeRunSingle = True
+        ServerSettings.scopecount_a = 0
+        ServerSettings.scopecount_b = 0
+        ServerSettings.scopecount_hv_vmon = 0
+        Call ClearScopeData()
+    End Sub
+
+    Private Sub BtnScopeGeneric_Click(sender As Object, e As EventArgs) Handles BtnScopeGeneric.Click
+        Dim scope_a_source As Double
+        Dim scope_b_source As Double
+
+        Dim data_valid = get_set_data_hex("Scope A Source", "SCOPE", 0, 2 ^ 16 - 1, "", scope_a_source)
+
+        If data_valid Then
+            data_valid = data_valid = get_set_data_hex("Scope B Source", "SCOPE", 0, 2 ^ 16 - 1, "", scope_b_source)
+        End If
+        If data_valid Then
+            Dim src_a As UInt16 = scope_a_source
+            Dim src_b As UInt16 = scope_b_source
+            ServerSettings.put_modbus_commands(REGISTER_SCOPE_DATA_SOURCE_GENERIC, src_a, src_b, 0, 0)
+            Call ClearScopeData()
+        End If
+
+        display_hv_vmon = False
+    End Sub
+
+    Private Sub BtnScopeHVVmon_Click(sender As Object, e As EventArgs) Handles BtnScopeHVVmon.Click
+        ServerSettings.put_modbus_commands(REGISTER_SCOPE_DATA_SOURCE_HV_VMON, &H0, 0, 0, 0)
+        display_hv_vmon = True
+    End Sub
+
+    Private Sub BtnIgnoreFaultTest_Click(sender As Object, e As EventArgs) Handles BtnIgnoreFaultTest.Click
+        ServerSettings.put_modbus_commands(REGISTER_ETM_IGNORE_FAULTS, board_can_address, 0, 0, 6)
     End Sub
 End Class
