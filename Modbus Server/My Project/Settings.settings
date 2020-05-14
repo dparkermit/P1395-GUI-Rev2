@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.70.15</Value>
+      <Value Profile="(Default)">192.168.25.61</Value>
     </Setting>
     <Setting Name="SerialNumber" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">0</Value>
